@@ -16,17 +16,36 @@ body {
   margin: 0 auto;
   color: #AAAAAA;
   background-color: #111111;
+}
 
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
 }
 </style>
 <body>
-      <section>
+      <section >
+        <div id='slider' class='swipe'>
+          <div class='swipe-wrap'>
         <div data-fitter-happier-text>Lille Katt</div>
         <div data-fitter-happier-text>Lille Katt</div>
         <div data-fitter-happier-text>Lille söte katta</div>
         <div data-fitter-happier-text>Vet du att</div>
         <div data-fitter-happier-text>Vet du att</div>
         <div data-fitter-happier-text>De är mörkt om natta</div>
+      </div>
+    </div>
+
         <br><br>
         <div data-fitter-happier-text>Lille gris</div>
         <div data-fitter-happier-text>Lille gris</div>
@@ -36,9 +55,11 @@ body {
         <div data-fitter-happier-text>Gör då eld i spisen</div>
       </section>
   <script src="assets/js/fitter-happier-text.js"></script>
+  <script src="assets/js/Swipe-master/swipe.js"></script>
    <script>
      var nodes = document.querySelectorAll('[data-fitter-happier-text]');
      fitterHappierText(nodes, { baseline: 16 });
+     window.mySwipe = Swipe(document.getElementById('slider'));
    </script>
 </body>
 </html>
