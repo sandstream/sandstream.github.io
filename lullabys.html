@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>sandstream</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+body {
+  font-family: 'Avenir Next', 'AvenirNext-SemiBold', 'Futura-Medium', Futura, 'Futura Std', 'Trebuchet MS', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  line-height: 1.5;
+  padding: 1em 1.5em;
+  margin: 0 auto;
+  color: rgba(1, 1, 1, 1);
+  background-color: rgba(0,0,0,0);
+
+}
+</style>
+<body>
+      <section>
+        <div data-fitter-happier-text>Lille Katt</div>
+        <div data-fitter-happier-text>Lille Katt</div>
+        <div data-fitter-happier-text>Lille söte katta</div>
+        <div data-fitter-happier-text>Vet du att</div>
+        <div data-fitter-happier-text>Vet du att</div>
+        <div data-fitter-happier-text>De är mörkt om natta</div>
+      </section>
+
+      <section>
+        <div data-fitter-happier-text>Lille gris</div>
+        <div data-fitter-happier-text>Lille gris</div>
+        <div data-fitter-happier-text>Lille söte grisen</div>
+        <div data-fitter-happier-text>Om du frys</div>
+        <div data-fitter-happier-text>Om du frys</div>
+        <div data-fitter-happier-text>Gör då eld i spisen</div>
+      </section>
+  <script src="assets/js/fitter-happier-text.js"></script>
+   <script>
+     var nodes = document.querySelectorAll('[data-fitter-happier-text]');
+     fitterHappierText(nodes, { baseline: 16 });
+   </script>
+</body>
+</html>
