@@ -19,6 +19,9 @@
           .intelecomStarterBottom {bottom: 20px;}
           .intelecomchat_infostatelamp_connected {background: #86F200;}
           .intelecomchatinner textarea {border: 1px solid #86F200;}
+          .intelecomchaticon-thumbs-up-solid {background-color: red;}
+
+
         </style>
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
@@ -27,9 +30,19 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <script src=" https://129deloittesverige.boost.ai/chatPanel/chatPanel.js"></script>
     </head>
     <body id="page-top">
 
+      <script>
+        // Initialize the Chat Panel
+        var chatPanel = window.boostChatPanel({
+          apiUrlBase: "https://129deloittesverige.boost.ai/api"
+        });
+
+        // Open the Chat Panel
+        function openChat() {  chatPanel.show(); }
+     </script>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
@@ -68,6 +81,8 @@
                           A solution that understands the customers intent and has a deep understanding of the customer sentiment in real-time. The user experience is but in the first room.
                           This demo will show the real power of understanding the customer journey and how technologies can emphasize the experience.
                               <p><button class="chatstarter btn btn-primary mx-auto" classname="startChat">Try now</button></p>
+                              <p><button type="button" onclick="javascript:openChat()">Open chat</button></p>
+
                         </p>
                     </div>
                 </div>
@@ -218,6 +233,7 @@
         <!--script src="https://chat.puzzel.com/Content/Client/js/jquery-latest.min.js"></script-->
         <script src="https://chat.puzzel.com/Content/Client/js/jquery-intelecomchat.libs.latest.min.js"></script>
         <script src="https://chat.puzzel.com/Content/Client/js/jquery-intelecomchat.latest.min.js"></script>
+
         <script>
            $(document).ready(function() {
                $('#someID').intelecomChat({
