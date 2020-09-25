@@ -174,12 +174,31 @@
   background-color: transparent;
   border: 1px;
 }
-*:focus {
+.intelecomchat__button {
+  outline-color: #86F200 !important;
+  outline-style: dotted !important;
+  outline-width: 1px !important;
+  border-radius: 5px !important;
+}
+
+[class^="intelecomchaticon-"]:focus, [class*=" intelecomchaticon-"]:focus {
 outline-color: #86F200 !important;
 outline-style: dotted !important;
 outline-width: 1px !important;
-}
+border-radius: 5px !important;
 
+}
+.intelecomchatinner input:focus, .intelecomchatinner select:focus, .intelecomchatinner textarea:focus {
+  outline-color: #86F200 !important;
+  outline-style: dotted !important;
+  outline-width: 1px !important;
+  border-radius: 5px !important;
+}
+/*
+*:focus {
+
+
+} */
 /* *:active {
 outline-color: blue !important;
 outline-style: dotted !important;
