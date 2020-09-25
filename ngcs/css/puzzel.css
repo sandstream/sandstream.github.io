@@ -180,6 +180,12 @@ outline-style: dotted !important;
 outline-width: 1px !important;
 }
 
+/* *:active {
+outline-color: blue !important;
+outline-style: dotted !important;
+outline-width: 5px !important;
+border-radius: 5px !important;
+} */
 
 .intelecomchaticon-cancel {
   content: '';
@@ -876,11 +882,11 @@ html .intelecomdialog__answer-text small {
   background: #525252;
   border-bottom: 1px solid #666;
   height: 17px;
-  padding: 11px 0 11px 0;
+  padding: 10px;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
+  user-select: none;}
 
 .intelecomchat__infostate {
   color: #333333;
@@ -922,7 +928,10 @@ html .intelecomdialog__answer-text small {
   background-image: radial-gradient(2px 2px 45deg, circle cover, #fd5638 0%, #bc1c00 100%); }
 
 .intelecomchat__infomessage {
-  font-style: italic; }
+  font: 12px "Open Sans", sans-serif;
+  font-style: italic;
+  margin: 10px;
+  display: inline-block;}
 
 /*spinner*/
 @-moz-keyframes spin {
