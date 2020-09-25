@@ -874,14 +874,14 @@ html .intelecomdialog__answer-text small {
 
 .intelecomchat__info {
   font: 12px "Open Sans", sans-serif;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
   color: #d2d2d2;
   background: #525252;
   border-bottom: 1px solid #666;
-  height: 17px;
+  /* height: 34px; */
   padding: 10px;
   -moz-user-select: none;
   -webkit-user-select: none;
