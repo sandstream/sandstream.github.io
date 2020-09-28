@@ -208,53 +208,61 @@ border-radius: 5px !important;
 
 .intelecomchaticon-cancel {
   content: '';
-  height: 22px;
-  width: 22px;
-    background-color: #525252;
-  background-image: url("../assets/img/cancel.png")
+  height: 23px;
+  width: 23px;
+  background-color: #525252;
+  background-image: url("../assets/img/cancel.png");
+  border-radius: 3px;
   /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAALVBMVEUAAAD///////////////////////////////////////////////////////+hSKubAAAADnRSTlMADxITFBUWFyhlcNPU9xJA5bwAAABdSURBVHjaZc5RDsAgCAPQDnUKKvc/7swkdsn4oM2LMeBSAUf0gvooB8pwhXTvhdBlRRDbLkxSAKkFkOYLnDZ9ti/wzf8fHlbWPtdHjWRhyzsOJRgBuIcbqiVwstUHGToFSlRc8sQAAAAASUVORK5CYII=); } */
 }
 .intelecomchaticon-minus {
   content: '';
-  width: 22px;
-  height: 22px;
+  width: 23px;
+  height: 23px;
   background-color: #525252;
-  background-image: url("../assets/img/minimize.png")
+  background-image: url("../assets/img/minimize.png");
+  border-radius: 3px;
+
   /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAACCAMAAACJ8cf9AAAAA1BMVEX///+nxBvIAAAAC0lEQVQI12NgIAwAACQAAS4ecaAAAAAASUVORK5CYII=); */
   /* background-position: 0 100%; */
 }
 
 .intelecomchaticon-volume-up {
   content: '';
-  width: 22px;
-  height: 22px;
-
+  width: 23px;
+  height: 23px;
+  background-color: #525252;
+    border-radius: 3px;
   background-image: url("../assets/img/volume-on.png")
   /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAASCAMAAACDzGUcAAAAqFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8j1z1tAAAAN3RSTlMAAQMEBQYHCRIUGScoKy4wNDZARVFSVGBmaWxtcXOEioymp6mtxcnMzc/S09fZ7u/x8vb6+/z+UKuuBwAAAI9JREFUeAGFz+cOgkAQxPER9SyoWMQi9l4UFcu8/5t5FMKaM/H/8ZfNJgNZ3YNZ5zY3cfCk1l5LWm5Gaq0FVyfD0pqRWgueCvrGCqtuGSvUmR4woUgrutz/0OKdZVNxoPNX5YfxK+ydqcsdkiqbVNWFI6SpZbJixWNeLJ5Gagd+A7L+QyvcJr5r+1rN7CHiPuxeIBq2KIrmAAAAAElFTkSuQmCC); } */
 }
 .intelecomchaticon-volume-off {
   content: '';
-  width: 22px;
-  height: 22px;
-
+  width: 23px;
+  height: 23px;
+  background-color: #525252;
+    border-radius: 3px;
   background-image: url("../assets/img/volume-off.png")
   /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAASCAMAAACDzGUcAAAAwFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8Do+ZMAAAAP3RSTlMAAAECAwQHERQaGx0eICcrMDEzNDU4OUBCRUhRYGZpbXFzhIqMo6eprrCxtLzCxcnOz9DR1NXd3+7x8vr7/P7HuC42AAAAlElEQVR4AaXOx66CYBRF4bv/W64de+8iFgR7L/v930pOIOaQOHMNv9H6CrKSCLN6CBO9uBWDoMbZVrrgqgCgc6PW4pbTlBmRMUXZ5d6jVvMTlF2KKR1Q9bk6b/XwH2n/Lj0i9uu/r18g4VM60ssoxZ8jOtlxXlIKM5SH9IybllKgfaWN/JrNmKJ2svFdHUNUlesi7AnEIyS65DXh9gAAAABJRU5ErkJggg==); } */
 }
 .intelecomchaticon-fontsize {
   content: '';
-  width: 22px;
-  height: 22px;
-
+  width: 23px;
+  height: 23px;
+  background-color: #525252;
+    border-radius: 3px;
     background-image: url("../assets/img/aa-up.png")
   /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAASCAMAAACU7vXVAAAA/1BMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7tdD8AAAAVHRSTlMAAQIDBAUGBwgQExUXHSIjJygsLTw9QkNIT1BSU1lcX2JjZWZpa2xtcHF1eXuBiY+SlpeYnZ6krrS1urzLzc7Q09XY3eHi4+Tl5unq6/P2+Pv8/f5pAc3yAAAA+UlEQVR4AX3Q2SICYQDF8fNVM5MsQrJQg5KdGMskzKhElsrMef9nUd8ydZPf3bk5F39o1911/GODfBWYzSe5iZnycf+Sj5gQJ8eY4tGb++EqEjXyEIlcP15Bnbcwsj3yw4FxTh9YjgYL0I74/MIaNLvHIoAHXkBx3rm1za4NxWWAkQK/spCqDIQIWIUS0MXYEw/UX4c7wC47FsaKjKm9yUYVhgIQISu6zZBKJBtZ39Q+LdUmB+VUNto3fxH3ANzQgzZqtIZMmyVIJbYzqo1R5x1ctlKQUi26OKOPxFI0mA9ZhlZmiKthARP3v/lGMw0t3WzAWcQU2yzjD+U2MUrsSmUzAAAAAElFTkSuQmCC);  */
 }
 
 .intelecomchaticon-fontsize-m {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+  /* -webkit-transform: scaleX(-1);
+  transform: scaleX(-1); */
   content: '';
-  width: 22px;
-  height: 22px;
+  background-color: #525252;
+    border-radius: 3px;
+  width: 23px;
+  height: 23px;
 
   /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAASCAMAAACU7vXVAAAA/1BMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7tdD8AAAAVHRSTlMAAQIDBAUGBwgQExUXHSIjJygsLTw9QkNIT1BSU1lcX2JjZWZpa2xtcHF1eXuBiY+SlpeYnZ6krrS1urzLzc7Q09XY3eHi4+Tl5unq6/P2+Pv8/f5pAc3yAAAA+UlEQVR4AX3Q2SICYQDF8fNVM5MsQrJQg5KdGMskzKhElsrMef9nUd8ydZPf3bk5F39o1911/GODfBWYzSe5iZnycf+Sj5gQJ8eY4tGb++EqEjXyEIlcP15Bnbcwsj3yw4FxTh9YjgYL0I74/MIaNLvHIoAHXkBx3rm1za4NxWWAkQK/spCqDIQIWIUS0MXYEw/UX4c7wC47FsaKjKm9yUYVhgIQISu6zZBKJBtZ39Q+LdUmB+VUNto3fxH3ANzQgzZqtIZMmyVIJbYzqo1R5x1ctlKQUi26OKOPxFI0mA9ZhlZmiKthARP3v/lGMw0t3WzAWcQU2yzjD+U2MUrsSmUzAAAAAElFTkSuQmCC); */
     background-image: url("../assets/img/aa-down.png") }
@@ -630,14 +638,17 @@ border-radius: 5px !important;
   overflow: auto;
   padding: 5px; }
 
+
+
 .intelecomdialog {
   width: 100%;
   display: inline-block;
   overflow: auto;
   font: 0.8125em "Open Sans", sans-serif;
-  height: 346px;
-  height: calc(100% - 70px - 40px);
-  margin-top: 40px; }
+  height: 326px;
+  height: calc(100% -70px - 40px);
+  margin-top: 0px; }
+
   .lte-ie9 .intelecomdialog {
     height: 100%;
     margin-bottom: -70px;
@@ -780,6 +791,24 @@ html .intelecomdialog__answer-text small {
   font-size: 10px;
   font-style: italic; }
 
+::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #525252;
+  }
+
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #5BA400;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #86F200;
+  }
+
+
 .intelecomthumbs {
   position: absolute;
   bottom: -27px;
@@ -795,7 +824,7 @@ html .intelecomdialog__answer-text small {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 15px 10px 15px 15px;
+  padding: 10px 10px 10px 10px;
   z-index: 999999;
   background: #525252;
   border-top: 1px solid #666; }
@@ -953,8 +982,8 @@ html .intelecomdialog__answer-text small {
   background: #404040;
   border-radius: 10px;
   padding: 1px 10px 1px 10px;
-  margin-right: 10px;
-  margin-left: 10px;
+  /* margin: 10px; */
+  /* margin-left: 10px; */
   font-weight: bold; }
 
 .intelecomchat__infostatelamp {
@@ -990,8 +1019,10 @@ html .intelecomdialog__answer-text small {
 .intelecomchat__infomessage {
   font: 12px "Open Sans", sans-serif;
   font-style: italic;
-  margin: 10px;
-  display: inline-block;}
+  /* margin-right: 10px;*/
+  margin-left: 5px;
+  display: inline-block;
+}
 
 /*spinner*/
 @-moz-keyframes spin {
