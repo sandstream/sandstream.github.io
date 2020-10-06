@@ -178,7 +178,7 @@
   -webkit-justify-content: center;
   align-items: center;
   -webkit-align-items: center;
-
+padding:0;
 }
 .intelecomchat__button {
   outline-color: #86F200 !important;
