@@ -223,7 +223,7 @@ border-radius: 5px !important;
   background-color: #393939;
   -webkit-appearance: none;
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
+               -1px -1px 3px #5b5b5b;
   border-radius: 50%;
   outline: none;
   display: inline-flex;
@@ -246,25 +246,19 @@ border-radius: 5px !important;
  }
 
 .intelecomchaticon-minus {
-  /* position: a  bsolute; */
-  /* transform: translate(-150%, -150%); */
-
-  height: 23px;
-  width: 23px;
+  height: 25px;
+  width: 25px;
   background-color: #393939;
   -webkit-appearance: none;
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
+               -1px -1px 3px #5b5b5b;
   border-radius: 50%;
-  none;
   outline: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAACCAMAAACJ8cf9AAAAA1BMVEX///+nxBvIAAAAC0lEQVQI12NgIAwAACQAAS4ecaAAAAAASUVORK5CYII=); */
-  /* background-position: 0 100%; */
 }
+
 .intelecomchaticon-minus:after {
 font-family: 'Font Awesome\ 5 Free';
 content: '\f068';
@@ -278,13 +272,14 @@ content: '\f068';
 color: #fff;
  font-weight: 900;
 }
+
 .intelecomchaticon-volume-up {
-  height: 23px;
-  width: 23px;
+  height: 25px;
+  width: 25px;
   background-color: #393939;
   -webkit-appearance: none;
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
+               -1px -1px 3px #5b5b5b;
   border-radius: 50%;
   none;
   outline: none;
@@ -295,23 +290,23 @@ color: #fff;
 
 .intelecomchaticon-volume-up:active {
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
 }
 .intelecomchaticon-cancel:active {
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
 }
 .intelecomchaticon-minus:active {
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
 }
 .intelecomchaticon-fontsize:active {
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
 }
 .intelecomchaticon-fontsize:active {
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
 }
 .intelecomchaticon-volume-up:after {
 font-family: 'Font Awesome\ 5 Free';
@@ -327,12 +322,12 @@ color: #fff;
 }
 
 .intelecomchaticon-volume-off {
-  height: 23px;
-  width: 23px;
+  height: 25px;
+  width: 25px;
   background-color: #393939;
   -webkit-appearance: none;
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
   border-radius: 50%;
   outline: none;
   display: inline-flex;
@@ -347,7 +342,7 @@ color: #fff;
 .intelecomchaticon-volume-off:hover:after {
 font-family: 'Font Awesome\ 5 Free';
 content: '\f1f6';
-color: #d2d2d2;
+color: #fff;
 }
 /* .intelecomchaticon-volume-off {
   content: '';
@@ -359,12 +354,12 @@ color: #d2d2d2;
   /* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAASCAMAAACDzGUcAAAAwFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8Do+ZMAAAAP3RSTlMAAAECAwQHERQaGx0eICcrMDEzNDU4OUBCRUhRYGZpbXFzhIqMo6eprrCxtLzCxcnOz9DR1NXd3+7x8vr7/P7HuC42AAAAlElEQVR4AaXOx66CYBRF4bv/W64de+8iFgR7L/v930pOIOaQOHMNv9H6CrKSCLN6CBO9uBWDoMbZVrrgqgCgc6PW4pbTlBmRMUXZ5d6jVvMTlF2KKR1Q9bk6b/XwH2n/Lj0i9uu/r18g4VM60ssoxZ8jOtlxXlIKM5SH9IybllKgfaWN/JrNmKJ2svFdHUNUlesi7AnEIyS65DXh9gAAAABJRU5ErkJggg==); } */
 /* } */
 .intelecomchaticon-fontsize {
-  height: 23px;
-  width: 23px;
+  height: 25px;
+  width: 25px;
   background-color: #393939;
   -webkit-appearance: none;
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
+               -1px -1px 3px #5b5b5b;
   border-radius: 50%;
   none;
   outline: none;
@@ -398,12 +393,12 @@ color: #fff;
 font-weight: 900;
 }
 .intelecomchaticon-fontsize-m {
-  height: 23px;
-  width: 23px;
+  height: 25px;
+  width: 25px;
   background-color: #393939;
   -webkit-appearance: none;
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
+               -1px -1px 3px #5b5b5b;
   border-radius: 50%;
   none;
   outline: none;
@@ -424,7 +419,19 @@ color: #d2d2d2;
 font-weight: 900;
 font-size: 10px;
 }
-
+.intelecomchaticon-fontsize-m:hover:before {
+font-family: 'Open sans';
+content: 'A';
+color: #fff;
+font-weight: 900;
+}
+.intelecomchaticon-fontsize-m:hover:after {
+font-family: 'Font Awesome\ 5 Free';
+content: '\f0d7';
+color: #fff;
+font-weight: 900;
+font-size: 10px;
+}
 
 .intelecomchaticon-right {
   height: 40px;
@@ -432,16 +439,28 @@ font-size: 10px;
   background-color: #393939;
   -webkit-appearance: none;
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
-  border-radius: 3px;
+               -1px -1px 3px #5b5b5b;
+  /* border-radius: 3px; */
   /* border: 1px solid #525252; */
   outline: none;
 }
 .intelecomchaticon-right:active {
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
+}
+.intelecomchaticon-right:after {
+  font-family: 'Font Awesome\ 5 Free';
+  content: '\f1d8';
+  color: #d2d2d2;
+  font-size: 20px;
+  font-weight: 900;
 }
 
+.intelecomchaticon-right:hover:after {
+  font-family: 'Font Awesome\ 5 Free';
+  content: '\f1d8';
+  color: #fff;
+}
 
 /* .intelecomchaticon-right:after {
   font-family: 'FontAwesome\ 5 Free';
@@ -583,7 +602,7 @@ font-size: 10px;
   /* border: 5px solid rgba(0, 0, 0, 0.1); */
   /* box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0.06); */
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
   /* border-radius: 30px; } */
 }
 .intelecomchatinner input[type="radio"] {
@@ -599,7 +618,7 @@ font-size: 10px;
   position: fixed;
   left: 50%;
   top: 40px;
-  width: 300px;
+  width: 250px;
   height: 500px;
   overflow: hidden;
   color: #fff;
@@ -643,7 +662,7 @@ font-size: 10px;
 .intelecomchatinner {
   position: relative;
   width: 100%;
-  /* height: 456px; */
+  height: 100%;
   /*old browsers*/
   height: calc(100% - 44px);
 }
@@ -658,8 +677,8 @@ font-size: 10px;
   color: #fff;
   font: 300 20px/44px "Open Sans", sans-serif;
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
-             boder }
+               inset -1px -1px 3px #5b5b5b;
+ }
 
 .ui-draggable .intelecomchatheader {
   cursor: move; }
@@ -709,7 +728,7 @@ margin-left: 10px;}
   width: 100%;
   height: 100%;
   z-index: 1000019;
-  background: #404040; }
+  background: #393939; }
 
 .intelecomcaptchaform {
   padding: 20px; }
@@ -762,7 +781,7 @@ margin-left: 10px;}
   right: 0;
   width: 100%;
   bottom: 0;
-  background: #404040;
+  background: #393939;
   color: #fff;
   font: 1em "Open Sans", sans-serif;
   padding: 10px;
@@ -829,14 +848,14 @@ margin-left: 10px;}
   padding: 5px; }
 
 
-/* height is intelecomdialog - intelecomchatheader - intelecomfooter ?????*/
+/* height is intelecomdialog - intelecomchatfooter- intelecomchatheader*/
 .intelecomdialog {
   width: 100%;
   display: inline-block;
   overflow: auto;
   font: 0.8125em "Open Sans", sans-serif;
-  /* height: 426px; */
-  height: calc(100% -70px - 40px) ;
+  height: 376px;
+  height: calc(100% - 80px - 45px - 44px);
   margin-top: 0px; }
 
   .lte-ie9 .intelecomdialog {
@@ -854,7 +873,7 @@ margin-left: 10px;}
 
 .intelecomdialog__question-text {
   text-align: left;
-  color: #d2d2d2;
+  color: #86F200;
   word-wrap: break-word;
   word-break: break-word;
   margin-bottom: 10px;
@@ -869,7 +888,7 @@ margin-left: 10px;}
   -webkit-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
   -moz-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
+               -1px -1px 3px #5b5b5b;
 
 }
 
@@ -916,7 +935,7 @@ margin-right: -10px;
 font-size: 10px;
   font-style: italic;
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
+               -1px -1px 3px #5b5b5b;
   border-radius: 55px;
 
  } */
@@ -950,7 +969,7 @@ html .intelecomdialog__answer-text small {
   -webkit-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
   -moz-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
+               -1px -1px 3px #5b5b5b;
 
   /* box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);  */
 
@@ -1034,7 +1053,7 @@ html .intelecomdialog__answer-text small {
 
 .intelecomfooter {
   display: flex;
-  margin-bottom: 10px; */
+  margin-bottom: 10px;
   font-size: inherit;
   min-height: 70px;
   position: absolute;
@@ -1044,7 +1063,7 @@ html .intelecomdialog__answer-text small {
   z-index: 999999;
   background: #393939;
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
+               -1px -1px 3px #5b5b5b;
   /* border-radius: 50px; */
   /* border-top: 1px solid #666;  */
 }
@@ -1081,11 +1100,11 @@ html .intelecomdialog__answer-text small {
 
   /* background: red; */
   -webkit-box-shadow: inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
   -moz-box-shadow: inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 1px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b;
 
   /* box-shadow: inset 0px 0px 1px 0px rgba(50, 50, 50, 0.5); */
   }
@@ -1106,18 +1125,7 @@ html .intelecomdialog__answer-text small {
   font-size: 24px; */
 }
 
-.intelecomsubmit:after {
-  font-family: 'Font Awesome\ 5 Free';
-  content: '\f1d8';
-  color: #d2d2d2;
-  font-weight: 900;
-}
 
-.intelecomsubmit:after:hover {
-  font-family: 'Font Awesome\ 5 Free';
-  content: '\f1d8';
-  color: #fff;
-}
 
 .intelecomcopy a {
   color: #fff;
@@ -1216,9 +1224,9 @@ html .intelecomdialog__answer-text small {
   background: #393939;
   /* border: 2px solid #525252; */
   box-shadow:  1px 1px 3px #171717,
-               -1px -1px 1px #5b5b5b;
-               border-radius: 50px;
-  /* height: 34px; */
+               -1px -1px 3px #5b5b5b;
+  border-radius: 15px;
+  height: 70px;
   padding: 10px;
   margin: 10px;
   -moz-user-select: none;
