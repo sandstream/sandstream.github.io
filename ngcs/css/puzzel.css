@@ -36,13 +36,13 @@
     list-style: none;
 }
 
-.ui-helper-clearfix:before, .ui-helper-clearfix:after {
+.ui-helper-clearfix:before, .ui-helper-clearfix::after {
     content: "";
     display: table;
     border-collapse: collapse;
 }
 
-.ui-helper-clearfix:after {
+.ui-helper-clearfix::after {
     clear: both;
 }
 
@@ -160,7 +160,6 @@
   font-weight: normal;
   speak: none;
   cursor: pointer;
-  display: inline-block;
   text-decoration: inherit;
   width: 1.3em;
   margin-right: .2em;
@@ -173,6 +172,12 @@
   background-repeat: no-repeat;
   background-color: transparent;
   border: 1px;
+  display: inline-flex;
+  display: -webkit-inline-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
 }
 .intelecomchat__button {
   outline-color: #86F200 !important;
@@ -214,10 +219,6 @@ border-radius: 5px !important;
    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAALVBMVEUAAAD///////////////////////////////////////////////////////+hSKubAAAADnRSTlMADxITFBUWFyhlcNPU9xJA5bwAAABdSURBVHjaZc5RDsAgCAPQDnUKKvc/7swkdsn4oM2LMeBSAUf0gvooB8pwhXTvhdBlRRDbLkxSAKkFkOYLnDZ9ti/wzf8fHlbWPtdHjWRhyzsOJRgBuIcbqiVwstUHGToFSlRc8sQAAAAASUVORK5CYII=); }
 } */
 .intelecomchaticon-cancel {
-  font-family: 'Font Awesome\ 5 Free';
-  content: '\f00d';
-  color: #d2d2d2;
-  font-weight: 900;
   height: 25px;
   width: 25px;
   background-color: #393939;
@@ -226,23 +227,24 @@ border-radius: 5px !important;
                -1px -1px 3px #5b5b5b;
   border-radius: 50%;
   outline: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
- .intelecomchaticon-cancel:after {
+ .intelecomchaticon-cancel::after {
  font-family: 'Font Awesome\ 5 Free';
+ text-rendering: optimizeLegibility;
  content: '\f00d';
  color: #d2d2d2;
  font-weight: 900;
+   line-height: 25px;
  }
 
- .intelecomchaticon-cancel:hover:after{
+ .intelecomchaticon-cancel::hover::after{
  font-family: 'Font Awesome\ 5 Free';
+ text-rendering: optimizeLegibility;
  content: '\f00d';
  color: #fff;
  font-weight: 900;
+    line-height: 25px;
  }
 
 .intelecomchaticon-minus {
@@ -254,23 +256,31 @@ border-radius: 5px !important;
                -1px -1px 3px #5b5b5b;
   border-radius: 50%;
   outline: none;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
+  display: -webkit-inline-flex;
   justify-content: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
 }
 
-.intelecomchaticon-minus:after {
+.intelecomchaticon-minus::after {
 font-family: 'Font Awesome\ 5 Free';
+text-rendering: optimizeLegibility;
 content: '\f068';
 color: #d2d2d2;
  font-weight: 900;
+ font-weight: 900;
+   line-height: 25px;
 }
 
-.intelecomchaticon-minus:hover:after{
+.intelecomchaticon-minus::hover::after{
 font-family: 'Font Awesome\ 5 Free';
+text-rendering: optimizeLegibility;
 content: '\f068';
 color: #fff;
  font-weight: 900;
+    line-height: 25px;
 }
 
 .intelecomchaticon-volume-up {
@@ -283,9 +293,12 @@ color: #fff;
   border-radius: 50%;
   none;
   outline: none;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
+  display: -webkit-inline-flex;
   justify-content: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
 }
 
 .intelecomchaticon-volume-up:active {
@@ -308,17 +321,21 @@ color: #fff;
   box-shadow:  inset 1px 1px 3px #171717,
                inset -1px -1px 3px #5b5b5b;
 }
-.intelecomchaticon-volume-up:after {
+.intelecomchaticon-volume-up::after {
 font-family: 'Font Awesome\ 5 Free';
+text-rendering: optimizeLegibility;
 content: '\f0f3';
 color: #d2d2d2;
 /* font-size: 4px; */
+   line-height: 25px;
 }
 
-.intelecomchaticon-volume-up:hover:after{
+.intelecomchaticon-volume-up::hover::after{
 font-family: 'Font Awesome\ 5 Free';
+text-rendering: optimizeLegibility;
 content: '\f0f3';
 color: #fff;
+   line-height: 25px;
 }
 
 .intelecomchaticon-volume-off {
@@ -330,19 +347,27 @@ color: #fff;
                inset -1px -1px 3px #5b5b5b;
   border-radius: 50%;
   outline: none;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
+  display: -webkit-inline-flex;
   justify-content: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
 }
-.intelecomchaticon-volume-off:after {
+.intelecomchaticon-volume-off::after {
 font-family: 'Font Awesome\ 5 Free';
+text-rendering: optimizeLegibility;
 content: '\f1f6';
 color: #fff;
+line-height: 25px;
+
 }
-.intelecomchaticon-volume-off:hover:after {
+.intelecomchaticon-volume-off::hover::after {
 font-family: 'Font Awesome\ 5 Free';
+text-rendering: optimizeLegibility;
 content: '\f1f6';
 color: #fff;
+   line-height: 25px;
 }
 /* .intelecomchaticon-volume-off {
   content: '';
@@ -363,34 +388,37 @@ color: #fff;
   border-radius: 50%;
   none;
   outline: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 .intelecomchaticon-fontsize:before {
 font-family: 'Open sans';
 content: 'A';
 color: #d2d2d2;
 font-weight: 900;
+   line-height: 25px;
 }
-.intelecomchaticon-fontsize:after {
+.intelecomchaticon-fontsize::after {
 font-family: 'Font Awesome\ 5 Free';
+text-rendering: optimizeLegibility;
 content: '\f0d8';
 color: #d2d2d2;
 font-weight: 900;
 font-size: 10px;
+   line-height: 25px;
 }
-.intelecomchaticon-fontsize:hover:after{
+.intelecomchaticon-fontsize::hover::after{
 font-family: 'Font Awesome\ 5 Free';
+text-rendering: optimizeLegibility;
 content: '\f0d8';
 color: #fff;
 font-weight: 900;
+   line-height: 25px;
 }
-.intelecomchaticon-fontsize:hover:before{
+.intelecomchaticon-fontsize::hover:before{
 font-family: 'Open Sans';
 content: 'A';
 color: #fff;
 font-weight: 900;
+   line-height: 25px;
 }
 .intelecomchaticon-fontsize-m {
   height: 25px;
@@ -402,35 +430,38 @@ font-weight: 900;
   border-radius: 50%;
   none;
   outline: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 .intelecomchaticon-fontsize-m:before {
 font-family: 'Open sans';
 content: 'A';
 color: #d2d2d2;
 font-weight: 900;
+   line-height: 25px;
 }
-.intelecomchaticon-fontsize-m:after {
+.intelecomchaticon-fontsize-m::after {
 font-family: 'Font Awesome\ 5 Free';
+text-rendering: optimizeLegibility;
 content: '\f0d7';
 color: #d2d2d2;
 font-weight: 900;
 font-size: 10px;
+   line-height: 25px;
 }
-.intelecomchaticon-fontsize-m:hover:before {
+.intelecomchaticon-fontsize-m::hover:before {
 font-family: 'Open sans';
 content: 'A';
 color: #fff;
 font-weight: 900;
+   line-height: 25px;
 }
-.intelecomchaticon-fontsize-m:hover:after {
+.intelecomchaticon-fontsize-m::hover::after {
 font-family: 'Font Awesome\ 5 Free';
+text-rendering: optimizeLegibility;
 content: '\f0d7';
 color: #fff;
 font-weight: 900;
 font-size: 10px;
+   line-height: 25px;
 }
 
 .intelecomchaticon-right {
@@ -448,21 +479,25 @@ font-size: 10px;
   box-shadow:  inset 1px 1px 3px #171717,
                inset -1px -1px 3px #5b5b5b;
 }
-.intelecomchaticon-right:after {
+.intelecomchaticon-right::after {
   font-family: 'Font Awesome\ 5 Free';
+  text-rendering: optimizeLegibility;
   content: '\f1d8';
   color: #d2d2d2;
   font-size: 20px;
   font-weight: 900;
+     line-height: 25px;
 }
 
-.intelecomchaticon-right:hover:after {
+.intelecomchaticon-right::hover::after {
   font-family: 'Font Awesome\ 5 Free';
+  text-rendering: optimizeLegibility;
   content: '\f1d8';
   color: #fff;
+     line-height: 25px;
 }
 
-/* .intelecomchaticon-right:after {
+/* .intelecomchaticon-right::after {
   font-family: 'FontAwesome\ 5 Free';
   content: '\f0f3'/;
   color: #d2d2d2;
@@ -475,7 +510,7 @@ font-size: 10px;
   width: 19px;
   height: 19px;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAnCAMAAADaZYNFAAAA/1BMVEUAqDbCwsL///8AqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsKENkbqAAAAU3RSTlMAAAABAQQEDQ0PDxMTGxscHB4eLS0xMTo6Pj5CQkdHSEhVVWJiY2NycoaGkpKVlZmZoaGlpba2t7fOztLS1dXX19nZ4+Pw8PPz9PT4+Pn5/f3+/mzZEzwAAAD3SURBVCjPvZFBS8NAEIW/2bVtSNMooYgU3RYPggX9//9CEbx6CAloBY1bTWwt4mHdxMSCoOC7zOxjhn3Mh3jNXVFKKT41nU996z09YaJ9L67OThiVBSD1XM8AptfanY2BsXEPkUESR/GeAngv7LN9WMv58Q4tbW70cjdqe4trvbFJ8NUqLl+0rGwyaCx7UaCFarXv07K+WrgseVaPZbnP1/zcrzMHW7yw9iK/Noxgnd4emD7hsHReyGuaPXKXHpogLEEEjuJ06VZHxmYgdKSaO8Mp3dv/yIM/8OAbjzc5+zWPUtPl8YSmw+P+H3hUW3hU7vYtHjl8AFZzYYVu543WAAAAAElFTkSuQmCC); }
-  .intelecomchaticon-star.active, .intelecomchaticon-star:hover {
+  .intelecomchaticon-star.active, .intelecomchaticon-star::hover {
     background-position: 0 100%; }
 
 .intelecomchaticon-thumbs-down, .intelecomchaticon-thumbs-down-solid, .intelecomchaticon-thumbs-up, .intelecomchaticon-thumbs-up-solid {
@@ -507,7 +542,7 @@ font-size: 10px;
   font-family: "intelecom-icons";
   font-style: normal;
   font-weight: normal;
-  speak: none;
+  /* speak: none; */
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
@@ -547,13 +582,13 @@ font-size: 10px;
   margin: 0 2.5px;
   color: #EB2E63;
     /*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAnCAMAAADaZYNFAAAA/1BMVEUAqDbCwsL///8AqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsKENkbqAAAAU3RSTlMAAAABAQQEDQ0PDxMTGxscHB4eLS0xMTo6Pj5CQkdHSEhVVWJiY2NycoaGkpKVlZmZoaGlpba2t7fOztLS1dXX19nZ4+Pw8PPz9PT4+Pn5/f3+/mzZEzwAAAD3SURBVCjPvZFBS8NAEIW/2bVtSNMooYgU3RYPggX9//9CEbx6CAloBY1bTWwt4mHdxMSCoOC7zOxjhn3Mh3jNXVFKKT41nU996z09YaJ9L67OThiVBSD1XM8AptfanY2BsXEPkUESR/GeAngv7LN9WMv58Q4tbW70cjdqe4trvbFJ8NUqLl+0rGwyaCx7UaCFarXv07K+WrgseVaPZbnP1/zcrzMHW7yw9iK/Noxgnd4emD7hsHReyGuaPXKXHpogLEEEjuJ06VZHxmYgdKSaO8Mp3dv/yIM/8OAbjzc5+zWPUtPl8YSmw+P+H3hUW3hU7vYtHjl8AFZzYYVu543WAAAAAElFTkSuQmCC);
-    &._active, &:hover {
+    &._active, &::hover {
         background-position: 0 100%;
 
     }*/
   font-size: 1.3em; }
 
-.ader:after, .intelecomdialog__question:after, .intelecomdialog__answer:after {
+.ader::after, .intelecomdialog__question::after, .intelecomdialog__answer::after {
   content: "";
   display: table;
   clear: both; }
@@ -689,7 +724,8 @@ font-size: 10px;
 .intelecomchatheader__settings {
   position: relative;
   float: left;
-margin-left: 10px;}
+margin-left: 10px;
+}
 
 .intelecomchatheader__settings-cont {
   cursor: default;
@@ -720,7 +756,8 @@ margin-left: 10px;}
 
 .intelecomchatheader__actions {
   float: right;
-  margin-right: 5px;}
+  margin-right: 10px;
+}
 
 .intelecomchatoverlay {
   font-size: inherit;
@@ -759,7 +796,7 @@ margin-left: 10px;}
   .intelecomchatoverlay__footer .intelecomchatoverlay__footer_logo {
     color: #fff;
     position: relative; }
-    .intelecomchatoverlay__footer .intelecomchatoverlay__footer_logo:after {
+    .intelecomchatoverlay__footer .intelecomchatoverlay__footer_logo::after {
       content: '';
       width: 50px;
       height: 15px;
@@ -1038,7 +1075,7 @@ html .intelecomdialog__answer-text small {
 ::-webkit-scrollbar-thumb {
     background: #5BA400;
   }
-  ::-webkit-scrollbar-thumb:hover {
+  ::-webkit-scrollbar-thumb::hover {
     background: #86F200;
   }
 
@@ -1330,9 +1367,9 @@ html .intelecomdialog__answer-text small {
   font-size: 24px; }
 
 .intelecomprogress:before,
-.intelecomprogress:after,
+.intelecomprogress::after,
 .intelecomprogress > div:before,
-.intelecomprogress > div:after {
+.intelecomprogress > div::after {
   content: '';
   position: absolute;
   top: 0;
@@ -1354,7 +1391,7 @@ html .intelecomdialog__answer-text small {
 .intelecomprogress:before {
   background: #555; }
 
-.intelecomprogress:after {
+.intelecomprogress::after {
   -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
@@ -1370,7 +1407,7 @@ html .intelecomdialog__answer-text small {
   transform: rotate(-90deg);
   background: #999; }
 
-.intelecomprogress > div:after {
+.intelecomprogress > div::after {
   -moz-transform: rotate(-135deg);
   -ms-transform: rotate(-135deg);
   -o-transform: rotate(-135deg);
