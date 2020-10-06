@@ -222,8 +222,8 @@ border-radius: 5px !important;
   width: 25px;
   background-color: #393939;
   -webkit-appearance: none;
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
   border-radius: 50%;
   outline: none;
   display: inline-flex;
@@ -253,8 +253,8 @@ border-radius: 5px !important;
   width: 23px;
   background-color: #393939;
   -webkit-appearance: none;
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
   border-radius: 50%;
   none;
   outline: none;
@@ -283,8 +283,8 @@ color: #fff;
   width: 23px;
   background-color: #393939;
   -webkit-appearance: none;
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
   border-radius: 50%;
   none;
   outline: none;
@@ -294,24 +294,24 @@ color: #fff;
 }
 
 .intelecomchaticon-volume-up:active {
-  box-shadow:  inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
 }
 .intelecomchaticon-cancel:active {
-  box-shadow:  inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
 }
 .intelecomchaticon-minus:active {
-  box-shadow:  inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
 }
 .intelecomchaticon-fontsize:active {
-  box-shadow:  inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
 }
 .intelecomchaticon-fontsize:active {
-  box-shadow:  inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
 }
 .intelecomchaticon-volume-up:after {
 font-family: 'Font Awesome\ 5 Free';
@@ -331,8 +331,8 @@ color: #fff;
   width: 23px;
   background-color: #393939;
   -webkit-appearance: none;
-  box-shadow:  inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
   border-radius: 50%;
   outline: none;
   display: inline-flex;
@@ -363,8 +363,8 @@ color: #d2d2d2;
   width: 23px;
   background-color: #393939;
   -webkit-appearance: none;
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
   border-radius: 50%;
   none;
   outline: none;
@@ -402,8 +402,8 @@ font-weight: 900;
   width: 23px;
   background-color: #393939;
   -webkit-appearance: none;
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
   border-radius: 50%;
   none;
   outline: none;
@@ -431,15 +431,15 @@ font-size: 10px;
   width: 40px;
   background-color: #393939;
   -webkit-appearance: none;
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
   border-radius: 3px;
   /* border: 1px solid #525252; */
   outline: none;
 }
 .intelecomchaticon-right:active {
-  box-shadow:  inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
 }
 
 
@@ -582,8 +582,8 @@ font-size: 10px;
   background: #393939;
   /* border: 5px solid rgba(0, 0, 0, 0.1); */
   /* box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0.06); */
-  box-shadow:  inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
   /* border-radius: 30px; } */
 }
 .intelecomchatinner input[type="radio"] {
@@ -657,8 +657,8 @@ font-size: 10px;
   height: 44px;
   color: #fff;
   font: 300 20px/44px "Open Sans", sans-serif;
-  box-shadow:  inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
              boder }
 
 .ui-draggable .intelecomchatheader {
@@ -868,8 +868,8 @@ margin-left: 10px;}
   z-index: 2;
   -webkit-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
   -moz-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
 
 }
 
@@ -915,8 +915,8 @@ margin-right: -10px;
 
 font-size: 10px;
   font-style: italic;
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
   border-radius: 55px;
 
  } */
@@ -941,6 +941,7 @@ html .intelecomdialog__answer-text small {
   word-break: break-word;
   margin-left: 10px;
   background: #393939;
+  color: #d2d2d2;
   display: inline-block;
   max-width: 80%;
   padding: 5px 15px;
@@ -948,8 +949,8 @@ html .intelecomdialog__answer-text small {
   position: relative;
   -webkit-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
   -moz-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
 
   /* box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);  */
 
@@ -1042,8 +1043,8 @@ html .intelecomdialog__answer-text small {
   padding: 10px 10px 10px 10px;
   z-index: 999999;
   background: #393939;
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
   /* border-radius: 50px; */
   /* border-top: 1px solid #666;  */
 }
@@ -1079,12 +1080,12 @@ html .intelecomdialog__answer-text small {
   border-radius:20px;
 
   /* background: red; */
-  -webkit-box-shadow: inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
-  -moz-box-shadow: inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
-  box-shadow:  inset 2px 2px 6px #171717,
-               inset -2px -2px 6px #5b5b5b;
+  -webkit-box-shadow: inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
+  -moz-box-shadow: inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 1px #5b5b5b;
 
   /* box-shadow: inset 0px 0px 1px 0px rgba(50, 50, 50, 0.5); */
   }
@@ -1214,8 +1215,8 @@ html .intelecomdialog__answer-text small {
   color: #d2d2d2;
   background: #393939;
   /* border: 2px solid #525252; */
-  box-shadow:  2px 2px 6px #171717,
-               -2px -2px 6px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 1px #5b5b5b;
                border-radius: 50px;
   /* height: 34px; */
   padding: 10px;
