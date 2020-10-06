@@ -228,6 +228,8 @@ border-radius: 5px !important;
                -1px -1px 3px #5b5b5b;
   border-radius: 50%;
   outline: none;
+  padding: 0;
+
 }
 
  .intelecomchaticon-cancel::after {
