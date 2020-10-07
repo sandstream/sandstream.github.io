@@ -331,6 +331,7 @@ content: '\f0f3';
 color: #d2d2d2;
 /* font-size: 4px; */
    line-height: 25px;
+   font-weight: 600;
 }
 
 .intelecomchaticon-volume-up::hover::after{
@@ -567,7 +568,7 @@ font-size: 10px;
   color: #d2d2d2;
   font-size: 10px;
   line-height: 20px;
-    font-weight: 10;
+    font-weight: 600;
   /* background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZGF0YS1wcmVmaXg9ImZhbCIgZGF0YS1pY29uPSJ0aHVtYnMtdXAiIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS10aHVtYnMtdXAgZmEtdy0xNiIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik00OTYuNjU2IDI4NS42ODNDNTA2LjU4MyAyNzIuODA5IDUxMiAyNTYgNTEyIDIzNS40NjhjLS4wMDEtMzcuNjc0LTMyLjA3My03Mi41NzEtNzIuNzI3LTcyLjU3MWgtNzAuMTVjOC43Mi0xNy4zNjggMjAuNjk1LTM4LjkxMSAyMC42OTUtNjkuODE3QzM4OS44MTkgMzQuNjcyIDM2Ni41MTggMCAzMDYuOTEgMGMtMjkuOTk1IDAtNDEuMTI2IDM3LjkxOC00Ni44MjkgNjcuMjI4LTMuNDA3IDE3LjUxMS02LjYyNiAzNC4wNTItMTYuNTI1IDQzLjk1MUMyMTkuOTg2IDEzNC43NSAxODQgMTkyIDE2Mi4zODIgMjAzLjYyNWMtMi4xODkuOTIyLTQuOTg2IDEuNjQ4LTguMDMyIDIuMjIzQzE0OC41NzcgMTk3LjQ4NCAxMzguOTMxIDE5MiAxMjggMTkySDMyYy0xNy42NzMgMC0zMiAxNC4zMjctMzIgMzJ2MjU2YzAgMTcuNjczIDE0LjMyNyAzMiAzMiAzMmg5NmMxNy42NzMgMCAzMi0xNC4zMjcgMzItMzJ2LTguNzRjMzIuNDk1IDAgMTAwLjY4NyA0MC43NDcgMTc3LjQ1NSA0MC43MjYgNS41MDUuMDAzIDM3LjY1LjAzIDQxLjAxMyAwIDU5LjI4Mi4wMTQgOTIuMjU1LTM1Ljg4NyA5MC4zMzUtODkuNzkzIDE1LjEyNy0xNy43MjcgMjIuNTM5LTQzLjMzNyAxOC4yMjUtNjcuMTA1IDEyLjQ1Ni0xOS41MjYgMTUuMTI2LTQ3LjA3IDkuNjI4LTY5LjQwNXpNMzIgNDgwVjIyNGg5NnYyNTZIMzJ6bTQyNC4wMTctMjAzLjY0OEM0NzIgMjg4IDQ3MiAzMzYgNDUwLjQxIDM0Ny4wMTdjMTMuNTIyIDIyLjc2IDEuMzUyIDUzLjIxNi0xNS4wMTUgNjEuOTk2IDguMjkzIDUyLjU0LTE4Ljk2MSA3MC42MDYtNTcuMjEyIDcwLjk3NC0zLjMxMi4wMy0zNy4yNDcgMC00MC43MjcgMC03Mi45MjkgMC0xMzQuNzQyLTQwLjcyNy0xNzcuNDU1LTQwLjcyN1YyMzUuNjI1YzM3LjcwOCAwIDcyLjMwNS02Ny45MzkgMTA2LjE4My0xMDEuODE4IDMwLjU0NS0zMC41NDUgMjAuMzYzLTgxLjQ1NCA0MC43MjctMTAxLjgxNyA1MC45MDkgMCA1MC45MDkgMzUuNTE3IDUwLjkwOSA2MS4wOTEgMCA0Mi4xODktMzAuNTQ1IDYxLjA5LTMwLjU0NSAxMDEuODE3aDExMS45OTljMjIuNzMgMCA0MC42MjcgMjAuMzY0IDQwLjcyNyA0MC43MjcuMDk5IDIwLjM2My04LjAwMSAzNi4zNzUtMjMuOTg0IDQwLjcyN3pNMTA0IDQzMmMwIDEzLjI1NS0xMC43NDUgMjQtMjQgMjRzLTI0LTEwLjc0NS0yNC0yNCAxMC43NDUtMjQgMjQtMjQgMjQgMTAuNzQ1IDI0IDI0eiI+PC9wYXRoPjwvc3ZnPg==);  */
 }
 .intelecomchaticon-thumbs-up-solid::after {
@@ -575,8 +576,9 @@ font-size: 10px;
   text-rendering: optimizeLegibility;
   content: '\f164';
   font-size: 10px;
-  color: #86F200;
+  color: #28a745;
   line-height: 20px;
+      font-weight: 600;
   /* background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJ0aHVtYnMtdXAiIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS10aHVtYnMtdXAgZmEtdy0xNiIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik0xMDQgMjI0SDI0Yy0xMy4yNTUgMC0yNCAxMC43NDUtMjQgMjR2MjQwYzAgMTMuMjU1IDEwLjc0NSAyNCAyNCAyNGg4MGMxMy4yNTUgMCAyNC0xMC43NDUgMjQtMjRWMjQ4YzAtMTMuMjU1LTEwLjc0NS0yNC0yNC0yNHpNNjQgNDcyYy0xMy4yNTUgMC0yNC0xMC43NDUtMjQtMjRzMTAuNzQ1LTI0IDI0LTI0IDI0IDEwLjc0NSAyNCAyNC0xMC43NDUgMjQtMjQgMjR6TTM4NCA4MS40NTJjMCA0Mi40MTYtMjUuOTcgNjYuMjA4LTMzLjI3NyA5NC41NDhoMTAxLjcyM2MzMy4zOTcgMCA1OS4zOTcgMjcuNzQ2IDU5LjU1MyA1OC4wOTguMDg0IDE3LjkzOC03LjU0NiAzNy4yNDktMTkuNDM5IDQ5LjE5N2wtLjExLjExYzkuODM2IDIzLjMzNyA4LjIzNyA1Ni4wMzctOS4zMDggNzkuNDY5IDguNjgxIDI1Ljg5NS0uMDY5IDU3LjcwNC0xNi4zODIgNzQuNzU3IDQuMjk4IDE3LjU5OCAyLjI0NCAzMi41NzUtNi4xNDggNDQuNjMyQzQ0MC4yMDIgNTExLjU4NyAzODkuNjE2IDUxMiAzNDYuODM5IDUxMmwtMi44NDUtLjAwMWMtNDguMjg3LS4wMTctODcuODA2LTE3LjU5OC0xMTkuNTYtMzEuNzI1LTE1Ljk1Ny03LjA5OS0zNi44MjEtMTUuODg3LTUyLjY1MS0xNi4xNzgtNi41NC0uMTItMTEuNzgzLTUuNDU3LTExLjc4My0xMS45OTh2LTIxMy43N2MwLTMuMiAxLjI4Mi02LjI3MSAzLjU1OC04LjUyMSAzOS42MTQtMzkuMTQ0IDU2LjY0OC04MC41ODcgODkuMTE3LTExMy4xMTEgMTQuODA0LTE0LjgzMiAyMC4xODgtMzcuMjM2IDI1LjM5My01OC45MDJDMjgyLjUxNSAzOS4yOTMgMjkxLjgxNyAwIDMxMiAwYzI0IDAgNzIgOCA3MiA4MS40NTJ6Ij48L3BhdGg+PC9zdmc+); } */
 }
 .intelecomchaticon-thumbs-down::after {
@@ -587,6 +589,7 @@ font-size: 10px;
   font-weight: 10;
   color: #d2d2d2;
    line-height: 20px;
+       font-weight: 600;
   /*background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZGF0YS1wcmVmaXg9ImZhbCIgZGF0YS1pY29uPSJ0aHVtYnMtZG93biIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLXRodW1icy1kb3duIGZhLXctMTYiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNNDk2LjY1NiAyMjYuMzE3YzUuNDk4LTIyLjMzNiAyLjgyOC00OS44OC05LjYyNy02OS40MDUgNC4zMTQtMjMuNzY4LTMuMDk5LTQ5LjM3Ny0xOC4yMjUtNjcuMTA1QzQ3MC43MjQgMzUuOTAyIDQzNy43NSAwIDM3OC40NjguMDE0Yy0zLjM2My0uMDMtMzUuNTA4LS4wMDMtNDEuMDEzIDBDMjYwLjU5My0uMDA3IDE5NS45MTcgNDAgMTYwIDQwaC0xMC44NDVjLTUuNjQtNC45NzUtMTMuMDQyLTgtMjEuMTU1LThIMzJDMTQuMzI3IDMyIDAgNDYuMzI3IDAgNjR2MjU2YzAgMTcuNjczIDE0LjMyNyAzMiAzMiAzMmg5NmMxNy42NzMgMCAzMi0xNC4zMjcgMzItMzJ2LTEyLjQ4MWMuODUuMjY2IDEuNjUzLjU0OSAyLjM4Mi44NTZDMTg0IDMyMCAyMTkuOTg2IDM3Ny4yNSAyNDMuNTU2IDQwMC44MmM5LjkgOS45IDEzLjExOCAyNi40NCAxNi41MjUgNDMuOTUxQzI2NS43ODQgNDc0LjA4MiAyNzYuOTE1IDUxMiAzMDYuOTEgNTEyYzU5LjYwOCAwIDgyLjkwOS0zNC42NzIgODIuOTA5LTkzLjA4IDAtMzAuOTA2LTExLjk3NS01Mi40NDktMjAuNjk1LTY5LjgxN2g3MC4xNWM0MC42NTQgMCA3Mi43MjYtMzQuODk2IDcyLjcyNy03Mi41NzEtLjAwMS0yMC41MzItNS40MTgtMzcuMzQxLTE1LjM0NS01MC4yMTV6TTEyOCAzMjBIMzJWNjRoOTZ2MjU2em0zMTEuMjczLTIuODk4SDMyNy4yNzRjMCA0MC43MjcgMzAuNTQ1IDU5LjYyOCAzMC41NDUgMTAxLjgxNyAwIDI1LjU3NCAwIDYxLjA5MS01MC45MDkgNjEuMDkxLTIwLjM2My0yMC4zNjQtMTAuMTgyLTcxLjI3Mi00MC43MjctMTAxLjgxNy0yOC42MDctMjguNjA3LTcxLjI3Mi0xMDEuODE4LTEwMS44MTgtMTAxLjgxOEgxNjBWNzIuNzRoNC4zNjVjMzQuNzAxIDAgMTAxLjgxOC00MC43MjcgMTczLjA5LTQwLjcyNyAzLjQ4IDAgMzcuNDE1LS4wMyA0MC43MjcgMCAzOC4yNTEuMzY4IDY1LjUwNSAxOC40MzQgNTcuMjEyIDcwLjk3NCAxNi4zNjcgOC43OCAyOC41MzggMzkuMjM1IDE1LjAxNSA2MS45OTZDNDcyIDE3NiA0NzIgMjI0IDQ1Ni4wMTcgMjM1LjY0OCA0NzIgMjQwIDQ4MC4xIDI1Ni4wMTIgNDgwIDI3Ni4zNzVjLS4xIDIwLjM2NC0xNy45OTcgNDAuNzI3LTQwLjcyNyA0MC43Mjd6TTEwNCAyNzJjMCAxMy4yNTUtMTAuNzQ1IDI0LTI0IDI0cy0yNC0xMC43NDUtMjQtMjQgMTAuNzQ1LTI0IDI0LTI0IDI0IDEwLjc0NSAyNCAyNHoiPjwvcGF0aD48L3N2Zz4=);  */
 }
 
@@ -595,7 +598,7 @@ font-size: 10px;
   text-rendering: optimizeLegibility;
   content: '\f165 ';
   font-size: 10px;
-  color: #86F200;
+  color: #dc3545;
    line-height: 20px;
   /* background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJ0aHVtYnMtZG93biIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLXRodW1icy1kb3duIGZhLXctMTYiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMCA1NnYyNDBjMCAxMy4yNTUgMTAuNzQ1IDI0IDI0IDI0aDgwYzEzLjI1NSAwIDI0LTEwLjc0NSAyNC0yNFY1NmMwLTEzLjI1NS0xMC43NDUtMjQtMjQtMjRIMjRDMTAuNzQ1IDMyIDAgNDIuNzQ1IDAgNTZ6bTQwIDIwMGMwLTEzLjI1NSAxMC43NDUtMjQgMjQtMjRzMjQgMTAuNzQ1IDI0IDI0LTEwLjc0NSAyNC0yNCAyNC0yNC0xMC43NDUtMjQtMjR6bTI3MiAyNTZjLTIwLjE4MyAwLTI5LjQ4NS0zOS4yOTMtMzMuOTMxLTU3Ljc5NS01LjIwNi0yMS42NjYtMTAuNTg5LTQ0LjA3LTI1LjM5My01OC45MDItMzIuNDY5LTMyLjUyNC00OS41MDMtNzMuOTY3LTg5LjExNy0xMTMuMTExYTExLjk4IDExLjk4IDAgMCAxLTMuNTU4LTguNTIxVjU5LjkwMWMwLTYuNTQxIDUuMjQzLTExLjg3OCAxMS43ODMtMTEuOTk4IDE1LjgzMS0uMjkgMzYuNjk0LTkuMDc5IDUyLjY1MS0xNi4xNzhDMjU2LjE4OSAxNy41OTggMjk1LjcwOS4wMTcgMzQzLjk5NSAwaDIuODQ0YzQyLjc3NyAwIDkzLjM2My40MTMgMTEzLjc3NCAyOS43MzcgOC4zOTIgMTIuMDU3IDEwLjQ0NiAyNy4wMzQgNi4xNDggNDQuNjMyIDE2LjMxMiAxNy4wNTMgMjUuMDYzIDQ4Ljg2MyAxNi4zODIgNzQuNzU3IDE3LjU0NCAyMy40MzIgMTkuMTQzIDU2LjEzMiA5LjMwOCA3OS40NjlsLjExLjExYzExLjg5MyAxMS45NDkgMTkuNTIzIDMxLjI1OSAxOS40MzkgNDkuMTk3LS4xNTYgMzAuMzUyLTI2LjE1NyA1OC4wOTgtNTkuNTUzIDU4LjA5OEgzNTAuNzIzQzM1OC4wMyAzNjQuMzQgMzg0IDM4OC4xMzIgMzg0IDQzMC41NDggMzg0IDUwNCAzMzYgNTEyIDMxMiA1MTJ6Ij48L3BhdGg+PC9zdmc+);  */
 }
@@ -713,6 +716,7 @@ font-size: 10px;
   box-shadow:  inset 1px 1px 3px #171717,
                inset -1px -1px 3px #5b5b5b;
 
+
 }
 .intelecomchatinner input[type="radio"] {
   box-shadow: none; }
@@ -739,7 +743,10 @@ font-size: 10px;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
+  user-select: none;
+  padding: 3px;
+
+}
 
 .intelecomchatdialog .ui-resizable-handle {
   z-index: 1000019 !important; }
@@ -774,19 +781,48 @@ font-size: 10px;
   height: 100%;
   /*old browsers*/
   height: calc(100% - 44px);
+  -webkit-box-shadow: 1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  -moz-box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  box-shadow:   1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 .intelecomchatinner.lte-ie9 {
     height: 100%; }
 
+@media only screen and (max-device-width: 400px) {
+      /* For mobile phones: */
+      .intelecomchatheader {
+        height: 88px !important;
+        background: red;
+        vertical-align: middle;
+        line-height: 88px !important;
+      }
+
+      .intelecomchatinner {
+        height: calc(100% - 88px)
+      }
+
+      .intelecomchaticon-cancel, .intelecomchaticon-minus, .intelecomchaticon-volume-up, .intelecomchaticon-fontsize, .intelecomchaticon-fontsize-m, .intelecomchaticon-volume-off {
+        width: 50px;
+        height: 50px;
+        font-size: 28px;
+    }
+}
 .intelecomchatheader {
   background: #393939;
   padding: 0 5px;
   height: 44px;
   color: #fff;
   font: 300 20px/44px "Open Sans", sans-serif;
-  box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 3px #5b5b5b;
+  /* box-shadow:  inset 0px 0px 0px #171717,
+               inset 0px -1px 3px #5b5b5b; */
+  vertical-align: middle;
+  line-height: 44px;
  }
 
 .ui-draggable .intelecomchatheader {
@@ -851,7 +887,15 @@ margin-left: 10px;
   padding: 20px; }
 
 .intelecomleaveform {
-  padding: 20px; }
+  padding: 20px;
+  -webkit-box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  -moz-box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  box-shadow:   1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  border-radius: 20px;
+}
 
 .intelecomleaveform .intelecomchat__button {
   margin-top: 25px; }
@@ -902,13 +946,16 @@ margin-left: 10px;
 .intelecomcaptcha__title {
   text-align: center;
   font-weight: 700;
-  margin: 0 0 5px; }
+  margin: 0 0 5px;
+  color: #d2d2d2;
+ }
 
 .intelecomcaptcha__label {
   font-weight: 400;
   margin: 0 0 5px;
   font-size: 0.8125em;
   display: block;
+  color: #d2d2d2;
   text-align: center; }
   .intelecomcaptcha__label span {
     font-weight: 700;
@@ -959,15 +1006,16 @@ margin-left: 10px;
   padding: 5px; }
 
 
-/* height is intelecomdialog - intelecomchatfooter- intelecomchatheader*/
+/* height is intelecomdialog - intelecomchatfooter- intelecomchatheader -padding*/
 .intelecomdialog {
   width: 100%;
   display: inline-block;
   overflow: auto;
   font: 0.8125em "Open Sans", sans-serif;
-  height: 376px;
-  height: calc(100% - 80px - 45px - 44px);
-  margin-top: 0px; }
+  height: 365px;
+  height: calc(100% - 70px - 80px);
+  margin-top: 3px;
+}
 
   .lte-ie9 .intelecomdialog {
     height: 100%;
@@ -984,7 +1032,7 @@ margin-left: 10px;
 
 .intelecomdialog__question-text {
   text-align: left;
-  color: #86F200;
+  color: #d2d2d2;
   word-wrap: break-word;
   word-break: break-word;
   margin-bottom: 10px;
@@ -998,8 +1046,8 @@ margin-left: 10px;
   z-index: 2;
   -webkit-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
   -moz-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
-  box-shadow:  1px 1px 3px #171717,
-               -1px -1px 3px #5b5b5b;
+  box-shadow:  inset 1px 1px 3px #171717,
+               inset -1px -1px 3px #5b5b5b;
 outline: none;
 }
 
@@ -1164,18 +1212,17 @@ outline: none;
 
 .intelecomfooter {
   display: flex;
-  margin-bottom: 10px;
-  font-size: inherit;
+    /* margin-bottom: 10px; */
   min-height: 70px;
-  position: absolute;
-  bottom: 0;
+  /* position: absolute; */
+
   width: 100%;
   padding: 10px 10px 10px 10px;
   z-index: 999999;
   background: #393939;
   box-shadow:  1px 1px 3px #171717,
                -1px -1px 3px #5b5b5b;
-  /* border-radius: 50px; */
+  border-radius: 20px;
   /* border-top: 1px solid #666;  */
 }
   .lte-ie9 .intelecomfooter {
@@ -1200,14 +1247,19 @@ outline: none;
   color: #d2d2d2;
   display: inline-block;
   vertical-align: middle;
-  width: calc(100% - 38px);
+  width: calc(100% - 44px);
   padding: 10px;
   min-height: 44px;
   min-width: 200px;
   resize: none;
   border: none;
   height:44px;
-  border-radius:20px;
+  border-radius: 10px;
+  /* position: absolute;
+bottom: 0;
+top: auto;
+max-height: 150px;
+overflow: auto;  */
   /* -webkit-box-shadow: inset 1px 1px 3px #171717,
                inset -1px -1px 3px #5b5b5b;
   -moz-box-shadow: inset 1px 1px 3px #171717,
@@ -1325,19 +1377,15 @@ outline: none;
 
 .intelecomchat__info {
   font: 0.8125em "Open Sans", sans-serif;
-  /* position: relative;
-  top: 0;
-  left: 0; */
-  /* width: 95%; */
   color: #d2d2d2;
   background: #393939;
   /* border: 2px solid #525252; */
-  box-shadow:  1px 1px 3px #171717,
-               -1px -1px 3px #5b5b5b;
+  box-shadow: inset  1px 1px 3px #171717,
+              inset  -1px -1px 3px #5b5b5b;
   border-radius: 15px;
   height: 70px;
   padding: 10px;
-  margin: 10px;
+  /* margin: 10px; */
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -1347,11 +1395,11 @@ outline: none;
   color: #d2d2d2;
   background: #393939;
   border-radius: 10px;
-  box-shadow:  inset 1px 1px 4px #212121,
-               inset -1px -1px 4px #838383;
-  padding: 1px 10px 1px 10px;
+  box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  padding: 5px 10px 5px 10px;
   /* margin: 10px; */
-  margin-left: 10px;
+  /* margin-left: 10px; */
   font-size: .75em;
   font-weight: bold;
  }
@@ -1373,7 +1421,7 @@ outline: none;
   background-image: radial-gradient(2px 2px 45deg, circle cover, #FFFF66 0%, #FFAE00 100%, red 95%); }
 
 .intelecomchat_infostatelamp_connected {
-  background: #00fe00;
+  background: #28a745;
   background-image: -moz-radial-gradient(2px 2px 45deg, circle cover, #00fe00 0%, #42a642 100%);
   background-image: -webkit-radial-gradient(2px 2px, circle cover, #00fe00, #42a642);
   background-image: -ms-radial-gradient(2px 2px, circle cover, #00fe00, #42a642);
@@ -1390,9 +1438,10 @@ outline: none;
   font: 0.8125em "Open Sans", sans-serif;
   font-style: italic;
   /* margin-right: 10px;*/
-  margin-left: 15px;
+  padding: 10px 0px 10px 5px;
+  /* margin-left: px; */
   display: inline-block;
-  border-radius: 50%;
+
 }
 
 /*spinner*/
