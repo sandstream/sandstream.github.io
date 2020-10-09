@@ -793,7 +793,7 @@ font-size: 10px;
     height: 100%; }
 
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 380px) {
           /* For mobile phones: */
           .intelecomchatdialog {
             border-radius: 20px 20px 0px 0px;
@@ -1271,7 +1271,7 @@ display: inline-flex;
   min-width: 200px;
 
   max-height: 44px;
-  max-width: 250px;
+  /* max-width: 250px; */
   resize: none;
   border: none;
   border-radius: 20px;
