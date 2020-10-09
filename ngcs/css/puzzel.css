@@ -691,6 +691,12 @@ font-size: 10px;
 
   textarea {
     outline: none;
+    -webkit-box-shadow: inset 1px 1px 3px #171717,
+                 inset -1px -1px 3px #5b5b5b;
+    -moz-box-shadow: inset 1px 1px 3px #171717,
+                 inset -1px -1px 3px #5b5b5b;
+    box-shadow:  inset 1px 1px 3px #171717,
+                 inset -1px -1px 3px #5b5b5b;
   }
 
 .intelecomchatinner button {
@@ -709,12 +715,12 @@ font-size: 10px;
   font-family: "Open Sans", sans-serif;
   color: #d2d2d2;
   background: #393939;
-  -webkit-box-shadow: inset 1px 1px 3px #171717,
+  /* -webkit-box-shadow: inset 1px 1px 3px #171717,
                inset -1px -1px 3px #5b5b5b;
   -moz-box-shadow: inset 1px 1px 3px #171717,
                inset -1px -1px 3px #5b5b5b;
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 3px #5b5b5b;
+               inset -1px -1px 3px #5b5b5b; */
 
 
 }
@@ -780,22 +786,23 @@ font-size: 10px;
   width: 100%;
   height: 100%;
   /*old browsers*/
+  margin-top: 3px;
   height: calc(100% - 44px);
-  -webkit-box-shadow: 1px 1px 3px #171717,
+  /* -webkit-box-shadow: 1px 1px 3px #171717,
                 -1px -1px 3px #5b5b5b;
   -moz-box-shadow:  1px 1px 3px #171717,
                 -1px -1px 3px #5b5b5b;
   box-shadow:   1px 1px 3px #171717,
-                -1px -1px 3px #5b5b5b;
+                -1px -1px 3px #5b5b5b; */
   border-radius: 20px;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .intelecomchatinner.lte-ie9 {
     height: 100%; }
 
-@media only screen and (max-device-width: 400px) {
-      /* For mobile phones: */
+/* @media only screen and (max-device-width: 540px) {
+      For mobile phones:
       .intelecomchatheader {
         height: 88px !important;
         background: red;
@@ -812,17 +819,18 @@ font-size: 10px;
         height: 50px;
         font-size: 28px;
     }
-}
+} */
 .intelecomchatheader {
   background: #393939;
-  padding: 0 5px;
+  /* padding: 0 5px; */
   height: 44px;
   color: #fff;
   font: 300 20px/44px "Open Sans", sans-serif;
-  /* box-shadow:  inset 0px 0px 0px #171717,
-               inset 0px -1px 3px #5b5b5b; */
+  box-shadow:  1px 1px 3px #171717,
+                1px -1px 3px #5b5b5b;
   vertical-align: middle;
   line-height: 44px;
+  border-radius: 20px;
  }
 
 .ui-draggable .intelecomchatheader {
@@ -1013,7 +1021,7 @@ margin-left: 10px;
   overflow: auto;
   font: 0.8125em "Open Sans", sans-serif;
   height: 365px;
-  height: calc(100% - 70px - 80px);
+  height: calc(100% - 76px - 80px);
   margin-top: 3px;
 }
 
@@ -1046,8 +1054,8 @@ margin-left: 10px;
   z-index: 2;
   -webkit-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
   -moz-box-shadow: 0 1px 2px 0 rgba(50, 50, 50, 0.5);
-  box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 3px #5b5b5b;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 3px #5b5b5b;
 outline: none;
 }
 
@@ -1211,10 +1219,11 @@ outline: none;
   margin-bottom: 30px !important; }
 
 .intelecomfooter {
-  display: flex;
+  display: inline-flex;
     /* margin-bottom: 10px; */
   min-height: 70px;
-  /* position: absolute; */
+  /* vertical-align: middle; */
+  /* line-height: 70px; */
 
   width: 100%;
   padding: 10px 10px 10px 10px;
@@ -1222,13 +1231,13 @@ outline: none;
   background: #393939;
   box-shadow:  1px 1px 3px #171717,
                -1px -1px 3px #5b5b5b;
-  border-radius: 20px;
+  border-radius:40px;
   /* border-top: 1px solid #666;  */
 }
   .lte-ie9 .intelecomfooter {
     bottom: 44px; }
 
-.intelecomfooter textarea.
+.intelecomfooter textarea
  {
   font-size: 0.8125em;
 }
@@ -1244,22 +1253,25 @@ outline: none;
   color: #de2c67; }
 
 .intelecomtext {
-  color: #d2d2d2;
-  display: inline-block;
-  vertical-align: middle;
-  width: calc(100% - 44px);
+  color: #d2d2d2
+display: inline-flex ;
+  width: calc(100% - 50px);
+  height:50px;
   padding: 10px;
-  min-height: 44px;
+
+  min-height: 50px;
   min-width: 200px;
+
+  max-height: 44px;
+  max-width: 250px;
   resize: none;
   border: none;
-  height:44px;
-  border-radius: 10px;
-  /* position: absolute;
-bottom: 0;
-top: auto;
-max-height: 150px;
-overflow: auto;  */
+  border-radius: 20px;
+    /* position: absolute; */
+  /* bottom: 0; */
+  /* margin-bottom: 10px; */
+  top: auto;
+  overflow: auto;
   /* -webkit-box-shadow: inset 1px 1px 3px #171717,
                inset -1px -1px 3px #5b5b5b;
   -moz-box-shadow: inset 1px 1px 3px #171717,
@@ -1275,12 +1287,12 @@ overflow: auto;  */
 
 .intelecomsubmit {
   cursor: pointer;
-  display: inline-block;
-  vertical-align: top;
+  display: inline-flex;
+  /* vertical-align: middle; */
   /* width: 22px; */
   padding: 0;
   margin-left: 9px;
-  margin-top: 3px;
+  /* margin-top: 3px; */
   border: none;
   /* color: #b3b3b3;
   font-size: 24px; */
@@ -1380,10 +1392,10 @@ overflow: auto;  */
   color: #d2d2d2;
   background: #393939;
   /* border: 2px solid #525252; */
-  box-shadow: inset  1px 1px 3px #171717,
-              inset  -1px -1px 3px #5b5b5b;
+  /* box-shadow: inset  1px 1px 3px #171717,
+              inset  -1px -1px 3px #5b5b5b; */
   border-radius: 15px;
-  height: 70px;
+  /* height: 70px; */
   padding: 10px;
   /* margin: 10px; */
   -moz-user-select: none;
@@ -1438,9 +1450,12 @@ overflow: auto;  */
   font: 0.8125em "Open Sans", sans-serif;
   font-style: italic;
   /* margin-right: 10px;*/
-  padding: 10px 0px 10px 5px;
-  /* margin-left: px; */
+  padding: 5px;
+margin-top: 10px;
   display: inline-block;
+  box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  border-radius: 20px;
 
 }
 
