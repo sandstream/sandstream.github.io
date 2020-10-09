@@ -643,7 +643,12 @@ font-size: 10px;
   content: '\e801'; }
 
 .intelecom_icon-ok:before {
-  content: '\e800'; }
+    font-family: 'Font Awesome\ 5 Free';
+    content: '\f00c';
+    color: #393939;
+    font-weight: 900;
+      line-height: 19px;
+    }
 
 .intelecom_icon-star, .intelecom_icon-star-empty, .intelecom_icon-ok {
   list-style-type: none;
@@ -651,14 +656,21 @@ font-size: 10px;
   width: 19px;
   height: 19px;
   margin: 0 2.5px;
-  color: #EB2E63;
+  color: #393939;
     /*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAnCAMAAADaZYNFAAAA/1BMVEUAqDbCwsL///8AqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsIAqDbCwsKENkbqAAAAU3RSTlMAAAABAQQEDQ0PDxMTGxscHB4eLS0xMTo6Pj5CQkdHSEhVVWJiY2NycoaGkpKVlZmZoaGlpba2t7fOztLS1dXX19nZ4+Pw8PPz9PT4+Pn5/f3+/mzZEzwAAAD3SURBVCjPvZFBS8NAEIW/2bVtSNMooYgU3RYPggX9//9CEbx6CAloBY1bTWwt4mHdxMSCoOC7zOxjhn3Mh3jNXVFKKT41nU996z09YaJ9L67OThiVBSD1XM8AptfanY2BsXEPkUESR/GeAngv7LN9WMv58Q4tbW70cjdqe4trvbFJ8NUqLl+0rGwyaCx7UaCFarXv07K+WrgseVaPZbnP1/zcrzMHW7yw9iK/Noxgnd4emD7hsHReyGuaPXKXHpogLEEEjuJ06VZHxmYgdKSaO8Mp3dv/yIM/8OAbjzc5+zWPUtPl8YSmw+P+H3hUW3hU7vYtHjl8AFZzYYVu543WAAAAAElFTkSuQmCC);
     &._active, &::hover {
         background-position: 0 100%;
 
     }*/
   font-size: 1.3em; }
-
+/* .intelecom_icon-ok:after {
+  font-family: 'Font Awesome\ 5 Free';
+  text-rendering: optimizeLegibility;
+  content: '\f00c';
+  color: #d2d2d2;
+  font-weight: 900;
+    line-height: 19px;
+} */
 .ader::after, .intelecomdialog__question::after, .intelecomdialog__answer::after {
   content: "";
   display: table;
@@ -1618,16 +1630,21 @@ html {
   max-height: 8em; }
 
 .intelecomoption {
+  position: relative;
   word-wrap: break-word;
-  background: #525252;
-  border: 3px solid #525252;
-  border-radius: 5px;
+  background: #393939;
+  border-radius: 15px 15px 15px 0px;
+  box-shadow:  1px 1px 3px #171717,
+               -1px -1px 3px #5b5b5b;
   padding: 5px;
   position: relative;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  margin-left: 10px;
+ }
   .intelecomoption form h1 {
     margin-top: 0;
-    font-size: 1.1em;
+    color: #d2d2d2;
+    font-size: 1em;
     font-weight: bold;
     font-style: italic;
     text-align: left; }
@@ -1637,22 +1654,30 @@ html {
     padding: 0px;
     margin: 0; }
   .intelecomoption form .liSelected {
-    background: #3e853f;
-    border-color: #3e853f; }
+    background: #393939;
+    /* border-color: #393939; */
+    border-radius: 15px;
+    -webkit-box-shadow: inset 1px 1px 3px #171717,
+                  inset -1px -1px 3px #5b5b5b;
+    -moz-box-shadow: inset 1px 1px 3px #171717,
+                inset  -1px -1px 3px #5b5b5b;
+    box-shadow:  inset 1px 1px 3px #171717,
+                inset  -1px -1px 3px #5b5b5b;
+   }
   .intelecomoption form .liSelected span {
-    color: #fff; }
+    color: #d2d2d2; }
   .intelecomoption form .liSelected .radio {
-    border-color: #67c63b;
-    background-color: #67c63b;
-    color: #fff; }
+    /* border-color: #393939; */
+    /* background-color: #393939; */
+    color: #d2d2d2; }
     .intelecomoption form .liSelected .radio .intelecom_icon-ok {
-      color: #fff;
+      color: #393939;
       font-size: 1em;
       margin: 0; }
   .intelecomoption form button {
-    background: #edf7e9;
-    border: 1px solid #b5ccaa;
-    border-radius: 5px;
+    background: #393939;
+    /* border: 1px solid #393939; */
+    border: 0px;
     margin-bottom: 5px;
     vertical-align: middle;
     padding: 10px 0 10px 0;
@@ -1663,17 +1688,24 @@ html {
     font-size: 1em;
     text-transform: none;
     font-weight: 500;
-    color: #2f312e; }
+    color: #d2d2d2;
+    border-radius: 15px;
+    -webkit-box-shadow:  1px 1px 3px #171717,
+                  -1px -1px 3px #5b5b5b;
+    -moz-box-shadow:  1px 1px 3px #171717,
+                  -1px -1px 3px #5b5b5b;
+    box-shadow:   1px 1px 3px #171717,
+                  -1px -1px 3px #5b5b5b;
+  }
   .intelecomoption form .radioCol {
     display: inline-block; }
   .intelecomoption form .radio {
-    height: 21px;
+    height: 22px;
     width: 22px;
-    background-color: #fff;
+    background-color: #d2d2d2;
     border-radius: 50%;
     display: inline-block;
-    border: 1px solid #b5ccaa;
-    color: #333;
+    color: #393939;
     text-align: center;
     margin-left: 8px;
     margin-right: 5px;
@@ -1688,7 +1720,8 @@ html {
   .intelecomoption form .intelecomoption__footer {
     margin: 5px 0 5px 0; }
     .intelecomoption form .intelecomoption__footer .intelecomoption__confirmed {
-      font-size: 1.1em;
+      font-size: 1em;
+      color: #d2d2d2;
       font-weight: bold;
       text-align: center;
       font-style: italic; }
