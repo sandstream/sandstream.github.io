@@ -902,14 +902,7 @@ margin-left: 10px;
   padding: 20px; }
 
 .intelecomleaveform {
-  padding: 20px;
-  -webkit-box-shadow:  1px 1px 3px #171717,
-                -1px -1px 3px #5b5b5b;
-  -moz-box-shadow:  1px 1px 3px #171717,
-                -1px -1px 3px #5b5b5b;
-  box-shadow:   1px 1px 3px #171717,
-                -1px -1px 3px #5b5b5b;
-  border-radius: 20px;
+  padding: 5px;
 }
 
 .intelecomleaveform .intelecomchat__button {
@@ -924,6 +917,14 @@ margin-left: 10px;
   color: #fff;
   text-align: center;
   border-top: 1px solid #666;
+  -webkit-box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  -moz-box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  box-shadow:   1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  margin-bottom: 3px;
+  border-radius: 20px;
   background: #393939;
   opacity: 0.6; }
   .intelecomchatoverlay__footer .intelecomchatoverlay__footer_logo {
@@ -959,19 +960,40 @@ margin-left: 10px;
   backface-visibility: hidden; }
 
 .intelecomcaptcha__title {
-  text-align: center;
-  font-weight: 700;
-  margin: 0 0 5px;
+  /* text-align: center; */
+  /* font-weight: 700; */
+  /* margin: 0 0 5px; */
+  padding: 10px;
+  margin-bottom: 10px;
   color: #d2d2d2;
+
+  -webkit-box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  -moz-box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  box-shadow:   1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  border-radius: 20px;
  }
 
 .intelecomcaptcha__label {
-  font-weight: 400;
+  /* font-weight: 400; */
   margin: 0 0 5px;
   font-size: 0.8125em;
   display: block;
+  padding: 10px;
   color: #d2d2d2;
-  text-align: center; }
+  text-align: center;
+
+  -webkit-box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  -moz-box-shadow:  1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  box-shadow:   1px 1px 3px #171717,
+                -1px -1px 3px #5b5b5b;
+  border-radius: 20px;
+
+}
   .intelecomcaptcha__label span {
     font-weight: 700;
     color: #F15A40; }
