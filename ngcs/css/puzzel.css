@@ -1238,7 +1238,7 @@ outline: none;
   background: #393939;
   box-shadow:  1px 1px 3px #171717,
                -1px -1px 3px #5b5b5b;
-  border-radius:40px;
+  border-radius:20px;
   /* border-top: 1px solid #666;  */
 }
   .lte-ie9 .intelecomfooter {
