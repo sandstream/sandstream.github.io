@@ -792,6 +792,22 @@ font-size: 10px;
 .intelecomchatinner.lte-ie9 {
     height: 100%; }
 
+
+@media only screen and (max-width: 375px) {
+          /* For mobile phones: */
+          .intelecomchatdialog {
+            border-radius: 20px 20px 0px 0px;
+            width: 98% !important;
+            margin: 10px 1% 0px 1% !important;
+            padding-bottom: 20px;
+          }
+}
+
+/* @media (max-width: 500px) {
+.intelecomchatdialog {
+
+} */
+
 /* @media only screen and (max-device-width: 540px) {
       For mobile phones:
       .intelecomchatheader {
@@ -1270,7 +1286,7 @@ display: inline-flex;
                inset -1px -1px 3px #5b5b5b !important;
   box-shadow:  inset 1px 1px 3px #171717,
                inset -1px -1px 3px #5b5b5b !important;
-
+outline: none;
   /* box-shadow: inset 0px 0px 1px 0px rgba(50, 50, 50, 0.5); */
   }
 
