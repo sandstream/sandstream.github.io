@@ -689,15 +689,6 @@ font-size: 10px;
     color: #d2d2d2;
   }
 
-  textarea {
-    outline: none;
-    -webkit-box-shadow: inset 1px 1px 3px #171717,
-                 inset -1px -1px 3px #5b5b5b;
-    -moz-box-shadow: inset 1px 1px 3px #171717,
-                 inset -1px -1px 3px #5b5b5b;
-    box-shadow:  inset 1px 1px 3px #171717,
-                 inset -1px -1px 3px #5b5b5b;
-  }
 
 .intelecomchatinner button {
   font-size: 0.8125em;
@@ -1253,8 +1244,9 @@ outline: none;
   color: #de2c67; }
 
 .intelecomtext {
+  -webkit-appearance: none;
   color: #d2d2d2
-display: inline-flex ;
+display: inline-flex;
   width: calc(100% - 50px);
   height:50px;
   padding: 10px;
@@ -1272,12 +1264,12 @@ display: inline-flex ;
   /* margin-bottom: 10px; */
   top: auto;
   overflow: auto;
-  /* -webkit-box-shadow: inset 1px 1px 3px #171717,
+  -webkit-box-shadow: inset 1px 1px 3px #171717,
                inset -1px -1px 3px #5b5b5b;
   -moz-box-shadow: inset 1px 1px 3px #171717,
                inset -1px -1px 3px #5b5b5b;
   box-shadow:  inset 1px 1px 3px #171717,
-               inset -1px -1px 3px #5b5b5b; */
+               inset -1px -1px 3px #5b5b5b;
 
   /* box-shadow: inset 0px 0px 1px 0px rgba(50, 50, 50, 0.5); */
   }
