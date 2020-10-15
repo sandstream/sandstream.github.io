@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Teneo Web Chat</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0 user-scalable=no">
+    <style>
+      body {
+        background: #E5F5FE;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="TeneoWebChat.call('reset')">Reset Chat</button><br>
+    
+    <script src="teneo-web-chat.js"></script> <!-- needed for Heroku -->
+    <div id="teneo-web-chat"></div>
+    <script>
+      window.onload = function () {
+        if (
+          window.TeneoWebChat &&
+            typeof window.TeneoWebChat.initialize === 'function'
+        ) {
+          var element = document.getElementById('teneo-web-chat');
+
+          const teneoProps = {
+            'teneoEngineUrl': 'https://ecstaticstorks-1ad44d.bots.teneo.ai/tesolution_69k5ddxsy48kjabyxrfek9g9ww/',
+            'title':'ICAs Stammisbot',
+            'titleIconUrl': '',
+            'showCloseButton' : '',
+            'agentAvatarUrl' : '',
+            'botAvatarUrl' : '',
+            'userAvatarUrl' : '',
+            'minimizeIconUrl' :  'https://assets.icanet.se/image/upload/v1592490640/digitalassistent/icons/ica-angle-down.svg',
+            'closeIconUrl' :  'https://assets.icanet.se/image/upload/v1592490640/digitalassistent/icons/ica-close.svg',
+            'launchIconUrl' :  '',
+          }
+
+          window.TeneoWebChat.initialize(element, teneoProps);
+        }
+      }
+    </script>
+  <script src="main.js"></script></body>
+</html>
+
