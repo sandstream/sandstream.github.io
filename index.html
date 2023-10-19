@@ -4,6 +4,14 @@
   <title>sandstream</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="assets/js/fitter-happier-text.js"></script>
+  <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+ var nodes = document.querySelectorAll('[data-fitter-happier-text]');
+ fitterHappierText(nodes, { baseline: 16 });
+});
+</script>
 </head>
 <style>
 body {
@@ -27,10 +35,5 @@ body {
         <div data-fitter-happier-text>săndstrēm</div>
         <div data-fitter-happier-text>sandstre.am</div>
       </section>
-  <script src="assets/js/fitter-happier-text.js"></script>
-   <script>
-     var nodes = document.querySelectorAll('[data-fitter-happier-text]');
-     fitterHappierText(nodes, { baseline: 16 });
-   </script>
 </body>
 </html>
