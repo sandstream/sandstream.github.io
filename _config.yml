@@ -14,7 +14,7 @@ color:
   blue: '#0000FF'
 
 # Footer settings
-footer: SANDSTREAM AB, Org.nr, 559399-3099, Hankgränd 6 163 55 Spånga 
+footer: SANDSTREAM AB 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
   - title: linkedin

@@ -140,7 +140,7 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(/img/bg.jpg) no-repeat bottom center scroll;
+    background: url(/img/bg-ribbon.webp) no-repeat bottom center scroll;
     background-color: {{ site.color.primary-dark }};
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -195,7 +195,7 @@ a:focus {
 .btn-circle:focus {
     outline: 0;
     color: {{ site.color.links }}
-    background: rgba(255,255,255,.1);
+    background: rgba(64, 224, 208, .1);
 }
 
 .btn-circle i.animated {
@@ -258,36 +258,37 @@ a:focus {
     width: 100%;
     padding: 50px 0;
     color: #fff;
-    background: url(/img/bg3.png) no-repeat center center scroll;
+    /*background: url(/img/bg-wave.webp) no-repeat center center scroll;*/
     background-color: {{ site.color.primary-dark }};
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    background-size: contain;
-    -o-background-size: contain;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 .services-section {
     width: 100%;
     padding: 50px 0;
     color: #fff;
-    background: url(/img/bg2.png) no-repeat right top scroll;
+    background: url(/img/bg-wave.webp) no-repeat center center scroll;
     background-color: {{ site.color.primary-dark }};
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    background-size: contain;
-    -o-background-size: contain;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+
 }
 
 .transform-section {
     width: 100%;
     padding: 50px 0;
     color: #fff;
-   /* background: url(/img/bg.png) no-repeat left center scroll;*/
+   /* background: url(/img/bg-light.webp) no-repeat center center scroll;*/
     background-color: {{ site.color.primary-dark }};
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    background-size: contain;
-    -o-background-size: contain;
+    -webkit-background-size: inherit;
+    -moz-background-size: inherit;
+    background-size: inherit;
+    -o-background-size: inherit;
 }
 
 .about-section {
@@ -307,12 +308,12 @@ a:focus {
     width: 100%;
     padding: 50px 0;
     color: #fff;
-    background: url(/img/brain-bg.png) no-repeat right center scroll;
+    background: url(/img/brain-ribbon.webp) no-repeat center center scroll;
     background-color: {{ site.color.primary-dark }};
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    background-size: contain;
-    -o-background-size: contain;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 
