@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>sandstream</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+body {
+  font-family: 'Avenir Next', 'AvenirNext-SemiBold', 'Futura-Medium', Futura, 'Futura Std', 'Trebuchet MS', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  line-height: 1.5;
+  padding: 1em 1.5em;
+  margin: 0 auto;
+  color: rgba(255, 204, 0, 1);
+  background-color: rgba(0,127,229, 1);
+
+}
+</style>
+<body>
+      <section>
+        <div data-fitter-happier-text>sandström</div>
+        <div data-fitter-happier-text>sandstroem</div>
+        <div data-fitter-happier-text>sandstream</div>
+        <div data-fitter-happier-text>săndstrēm</div>
+        <div data-fitter-happier-text>sandstre.am</div>
+      </section>
+  <script src="dist/fitter-happier-text.js"></script>
+   <script>
+     var nodes = document.querySelectorAll('[data-fitter-happier-text]');
+     fitterHappierText(nodes, { baseline: 16 });
+   </script>
+</body>
+</html>

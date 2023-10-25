@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>sandstream</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+</head>
+<style>
+
+@font-face {
+font-family: Bravura;
+src: url( /assets/js/BravuraText.eot ); /* IE */
+src: url( /assets/js/BravuraText.otf ) format("opentype");
+}
+
+body {
+  font-family: 'Avenir Next', 'AvenirNext-SemiBold', 'Futura-Medium', Futura, 'Futura Std', 'Trebuchet MS', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  /*text-transform: uppercase;*/
+  letter-spacing: .1em;
+  line-height: 1.5;
+  padding: 1em 1.5em;
+  margin: 0 auto;
+  color: #AAAAAA;
+  background-color: #111111;
+}
+
+.notes {
+  font-family: 'Bravura';
+  color: #AAAAAA;
+}
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+}
+</style>
+<body>
+      <section >
+        <div id='slider' class='swipe'>
+          <div class='swipe-wrap'>
+            <div data-fitter-happier-text>
+              <div>Lille katt, lille katt</div>
+              <div>Lille söte katta</div>
+              <div>Vet du att, vet du att</div>
+              <div>De är mörkt om natta</div>
+              <br><br>
+              <div>Lille gris, lille gris</div>
+              <div>Lille söte grisen</div>
+              <div>Om du frys, om du frys</div>
+              <div>Gör då eld i spisen</div>
+              <br><br>
+              <div>Lille ko, lille ko</div>
+              <div>Lille söte koa</div>
+              <div>De va ho, de va ho</div>
+              <div>Ho som sket på broa</div>
+              <br><br>
+              <div>Lille mor, lille mor</div>
+              <div>Lille söte mora</div>
+              <div>Hon fick skor, hon fck skor</div>
+              <div>Men de var för stora</div>
+              <br><br>
+              <div>Lille far, lille far</div>
+              <div>Lille söte faren</div>
+              <div>En sån karl, en sån karl</div>
+              <div>De är tur vi har'en</div>
+              <br><br>
+              <div>Lille jag, lille jag</div>
+              <div>Lille söte Ida</div>
+              <div>Jag vill ha, jag vill ha</div>
+              <div>Rotemos till midda'</div>
+            </div>
+            <div>
+              <div>Du ska inte tro det blir sommar</div>
+              <div>Ifall inte nån sätter fart</div>
+              <div>På sommarn och gör lite somrigt</div>
+              <div>Då kommer blommorna snart</div>
+              <div>Jag gör så att blommorna blommar</div>
+              <div>Jag gör hela kohagen grön</div>
+              <div>Och nu så har sommaren kommit</div>
+              <div>För jag har just tagit bort snön</div>
+              <br><br>
+              <div>Jag gör mycket vatten i bäcken</div>
+              <div>Så där så det hoppar och far</div>
+              <div>Jag gör fullt med svalor som flyger</div>
+              <div>Och myggor som svalorna tar</div>
+              <div>Jag gör löven nya på träden</div>
+              <div>Och små fågelbon här och där</div>
+              <div>Jag gör himlen vacker om kvällen</div>
+              <div>För jag gör den alldeles skär</div>
+              <br><br>
+              <div>Och smultron det gör jag åt barna</div>
+              <div>För det tycker jag dom kan få</div>
+              <div>Och andra små roliga saker</div>
+              <div>Som passar när barna är små</div>
+              <div>Och jag gör så roliga ställen</div>
+              <div>Där barna kan springa omkring</div>
+              <div>Då blir barna fulla med sommar</div>
+              <div>Och bena blir fulla med spring</div>
+          </div>
+        </div>
+      </section>
+  <script src="assets/js/fitter-happier-text.js"></script>
+  <script src="assets/js/Swipe-master/swipe.js"></script>
+   <script>
+     var nodes = document.querySelectorAll('[data-fitter-happier-text]');
+     fitterHappierText(nodes, { baseline: 16 });
+     window.mySwipe = Swipe(document.getElementById('slider'));
+   </script>
+</body>
+</html>
