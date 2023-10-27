@@ -19,8 +19,7 @@ footer: SANDSTREAM AB
 social:
   - title: linkedin
     url: https://www.linkedin.com/in/sandstream/
-  - title: github
-    url: https://github.com/sandstream
+
 
 # Build settings
 markdown: kramdown
