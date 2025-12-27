@@ -721,6 +721,28 @@ body {
   }
 
   .albums-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+  }
+
+  .album-detail .albums-grid {
+    gap: var(--spacing-md);
+  }
+
+  .album-card-image {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  .album-info {
+    text-align: center;
+  }
+
+  .album-info .btn {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .track-list {
+    text-align: left;
   }
 }
