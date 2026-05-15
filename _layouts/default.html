@@ -207,6 +207,23 @@ h1,h2,h3,p{margin:0;}
 .fade-up-1{animation-delay:60ms;}.fade-up-2{animation-delay:120ms;}.fade-up-3{animation-delay:180ms;}
 @media(prefers-reduced-motion:reduce){.fade-up{animation:none;opacity:1;}}
 
+/* Mobile bar & drawer */
+.mobile-bar{display:none;position:fixed;top:0;left:0;right:0;height:56px;padding:0 20px;align-items:center;justify-content:space-between;background:var(--bg);border-bottom:1px solid var(--border);z-index:60;}
+.hamburger{background:none;border:none;cursor:pointer;color:var(--fg);padding:8px;margin:-8px;display:flex;flex-direction:column;gap:5px;width:36px;align-items:flex-end;}
+.hamburger span{display:block;height:1.5px;background:currentColor;transition:all 220ms var(--ease-out);}
+.hamburger span:nth-child(1){width:22px;}.hamburger span:nth-child(2){width:16px;}.hamburger span:nth-child(3){width:22px;}
+.hamburger.open span:nth-child(1){width:22px;transform:rotate(45deg) translate(4.5px,4.5px);}
+.hamburger.open span:nth-child(2){opacity:0;width:0;}
+.hamburger.open span:nth-child(3){width:22px;transform:rotate(-45deg) translate(4.5px,-4.5px);}
+.mobile-nav-overlay{position:fixed;inset:0;z-index:55;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:0 32px;transform:translateX(100%);transition:transform 320ms var(--ease-out);pointer-events:none;}
+.mobile-nav-overlay.open{transform:translateX(0);pointer-events:all;}
+.mobile-nav-links{display:flex;flex-direction:column;}
+.mobile-nav-links a{font-family:var(--font-display);font-size:clamp(36px,10vw,52px);line-height:1.08;letter-spacing:-.025em;color:var(--fg);display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--border);padding:16px 0;transition:color 140ms;}
+.mobile-nav-links a:first-child{border-top:1px solid var(--border);}
+.mobile-nav-links a:hover,.mobile-nav-links a.active{color:var(--signal);}
+.mobile-nav-links .mn{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--fg-3);}
+.mobile-nav-links a.active .mn{color:var(--signal);}
+
 /* Responsive */
 @media(max-width:1024px){
   .rail{width:180px;padding:24px 18px;}.main{margin-left:180px;}
@@ -219,15 +236,27 @@ h1,h2,h3,p{margin:0;}
   .music-grid{grid-template-columns:1fr;}
 }
 @media(max-width:720px){
-  .rail{display:none;}.main{margin-left:0;}
-  .section,.hero,.contact{padding-left:24px;padding-right:24px;}
-  .hero-headline{font-size:clamp(56px,14vw,100px);}
+  .mobile-bar{display:flex;}
+  .rail{display:none;}.main{margin-left:0;padding-top:56px;}
+  html{scroll-padding-top:64px;}
+  .section,.contact{padding-left:24px;padding-right:24px;}
+  .hero{padding-left:24px;padding-right:24px;padding-top:40px;min-height:calc(100vh - 56px);}
+  .hero-headline{font-size:clamp(52px,13vw,96px);}
+  .hero-meta .grp.right{display:none;}
   .contact-grid{grid-template-columns:1fr;gap:28px;}
+  .contact-col a,.contact-col .v{font-size:22px;}
   .footer{flex-direction:column;gap:12px;padding:24px;}
-  .case-name{font-size:40px;}
+  .cases-head{grid-template-columns:1fr;gap:16px;}
+  .case{grid-template-columns:1fr;gap:8px;padding:28px 0;}
+  .case-num{font-size:10px;padding-top:0;}
+  .case-body{grid-column:auto;padding-left:0;padding-top:0;}
+  .case-name{font-size:clamp(32px,9vw,40px);}
   .about-stats{grid-template-columns:1fr 1fr;}
   .stat:nth-child(3){grid-column:1/-1;border-right:none;padding-left:0;padding-top:16px;border-top:1px solid var(--border);}
-  .role{grid-template-columns:100px 1fr;}.role-tag{display:none;}
+  .roles{grid-template-columns:1fr;gap:24px;}
+  .role{grid-template-columns:90px 1fr;}.role-tag{display:none;}
+  .music-grid{grid-template-columns:1fr;}
+  .float-pill{bottom:20px;right:16px;}
 }
 </style>
 </head>
@@ -587,6 +616,48 @@ function Header({ lang, setLang, active, onNav }) {
   );
 }
 
+function MobileBar({ lang, setLang, menuOpen, onToggle, onWordmark }) {
+  return (
+    <div className="mobile-bar" role="banner">
+      <div className="wordmark" onClick={onWordmark} style={{fontSize:22}}>
+        <span>sand</span>
+        <span className="dot" aria-hidden="true"></span>
+        <span className="it">stream</span>
+      </div>
+      <div style={{display:"flex",alignItems:"center",gap:10}}>
+        <button className="lang-btn" style={{margin:0,padding:"4px 8px"}} onClick={() => setLang(lang === "sv" ? "en" : "sv")}>
+          <span className="active-lang">{lang.toUpperCase()}</span>
+          <span>→</span>
+          <span>{lang === "sv" ? "EN" : "SV"}</span>
+        </button>
+        <button className={"hamburger" + (menuOpen ? " open" : "")} onClick={onToggle} aria-label={menuOpen ? "Stäng meny" : "Öppna meny"} aria-expanded={menuOpen}>
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function MobileNavOverlay({ lang, active, onNav, menuOpen }) {
+  const t = T[lang];
+  const navIds = ["about", "work", "music", "roles", "contact"];
+  const nums = ["01","02","03","04","05"];
+  return (
+    <div className={"mobile-nav-overlay" + (menuOpen ? " open" : "")} aria-hidden={!menuOpen}>
+      <nav className="mobile-nav-links">
+        {navIds.map((id, i) => (
+          <a key={id} href={"#"+id}
+            className={active === id ? "active" : ""}
+            onClick={e => { e.preventDefault(); onNav(id); }}>
+            <span className="mn">{nums[i]}</span>
+            {t.navLabels[i]}
+          </a>
+        ))}
+      </nav>
+    </div>
+  );
+}
+
 function Hero({ lang, onSchedule }) {
   const t = T[lang];
   const [hl, italic] = t.heroHeadline;
@@ -829,16 +900,28 @@ function FloatingPill({ lang, onClick }) {
 function App() {
   const [lang, setLang] = useState("sv");
   const [active, setActive] = useState("top");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollTo = useCallback((id) => {
+    setMenuOpen(false);
     const el = document.getElementById(id);
     if (!el) return;
     window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
   }, []);
 
   const openSchedule = useCallback(() => {
+    setMenuOpen(false);
     window.open("https://cal.eu/sandstream/quick-chat", "_blank", "noopener,noreferrer");
   }, []);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
   useEffect(() => {
     const ids = ["top","about","work","music","roles","contact"];
@@ -858,6 +941,12 @@ function App() {
   return (
     <div className="page">
       <Header lang={lang} setLang={setLang} active={active === "top" ? "" : active} onNav={scrollTo} />
+      <MobileBar
+        lang={lang} setLang={setLang}
+        menuOpen={menuOpen} onToggle={() => setMenuOpen(o => !o)}
+        onWordmark={() => scrollTo("top")}
+      />
+      <MobileNavOverlay lang={lang} active={active === "top" ? "" : active} onNav={scrollTo} menuOpen={menuOpen} />
       <main className="main">
         <Hero lang={lang} onSchedule={openSchedule} />
         <About lang={lang} />
