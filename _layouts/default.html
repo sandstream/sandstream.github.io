@@ -588,9 +588,9 @@ function Header({ lang, setLang, active, onNav }) {
     <aside className="rail" aria-label="Primary navigation">
       <div>
         <div className="wordmark" onClick={() => onNav("top")}>
-          <span>sand</span>
+          <span>sandstre</span>
           <span className="dot" aria-hidden="true"></span>
-          <span className="it">stream</span>
+          <span className="it">am</span>
         </div>
         <nav className="nav">
           {navIds.map((id, i) => (
@@ -620,9 +620,9 @@ function MobileBar({ lang, setLang, menuOpen, onToggle, onWordmark }) {
   return (
     <div className="mobile-bar" role="banner">
       <div className="wordmark" onClick={onWordmark} style={{fontSize:22}}>
-        <span>sand</span>
+        <span>sandstre</span>
         <span className="dot" aria-hidden="true"></span>
-        <span className="it">stream</span>
+        <span className="it">am</span>
       </div>
       <div style={{display:"flex",alignItems:"center",gap:10}}>
         <button className="lang-btn" style={{margin:0,padding:"4px 8px"}} onClick={() => setLang(lang === "sv" ? "en" : "sv")}>
@@ -878,7 +878,7 @@ function Contact({ lang, onSchedule }) {
         </div>
       </section>
       <footer className="footer">
-        <span className="wm-sm">sand<span style={{color:"var(--signal)"}}>·</span><em style={{fontStyle:"italic"}}>stream</em> ab</span>
+        <span className="wm-sm">sandstre<span style={{color:"var(--signal)"}}>·</span><em style={{fontStyle:"italic"}}>am</em> ab</span>
         <span>STOCKHOLM · ORG.NR 559399-3099 · HANKGRÄND 6, 163 55 SPÅNGA · © 2026</span>
         <span><a href="https://www.linkedin.com/in/sandstream/" target="_blank" rel="noreferrer" style={{color:"var(--bone-50)"}}>LINKEDIN ↗</a></span>
       </footer>
