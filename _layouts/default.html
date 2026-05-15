@@ -887,8 +887,9 @@ function Contact({ lang, onSchedule }) {
   );
 }
 
-function FloatingPill({ lang, onClick, active }) {
+function FloatingPill({ lang, onClick, active, menuOpen }) {
   const onDark = active === "work" || active === "contact";
+  if (menuOpen) return null;
   return (
     <button className={"float-pill" + (onDark ? " on-dark" : "")} onClick={onClick} aria-label={lang === "sv" ? "Boka ett 30 minuters samtal" : "Schedule a 30 minute call"}>
       <span className="dot" aria-hidden="true"></span>
@@ -908,7 +909,8 @@ function App() {
     setMenuOpen(false);
     const el = document.getElementById(id);
     if (!el) return;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" });
+    const mobileOffset = window.innerWidth <= 720 ? 64 : 0;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - mobileOffset, behavior: "smooth" });
   }, []);
 
   const openSchedule = useCallback(() => {
@@ -958,7 +960,7 @@ function App() {
         <Roles lang={lang} />
         <Contact lang={lang} onSchedule={openSchedule} />
       </main>
-      <FloatingPill lang={lang} onClick={openSchedule} active={active} />
+      <FloatingPill lang={lang} onClick={openSchedule} active={active} menuOpen={menuOpen} />
     </div>
   );
 }
