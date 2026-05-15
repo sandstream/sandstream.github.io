@@ -208,6 +208,18 @@ h1,h2,h3,p{margin:0;}
 .fade-up-1{animation-delay:60ms;}.fade-up-2{animation-delay:120ms;}.fade-up-3{animation-delay:180ms;}
 @media(prefers-reduced-motion:reduce){.fade-up{animation:none;opacity:1;}}
 
+/* Touch: disable sticky hover transforms, add :active feedback */
+@media(hover:none){
+  .case:hover,.role:hover{transform:none;background:transparent;}
+  .float-pill:hover{transform:none;}
+  .case:active{opacity:.8;}
+  .role:active{opacity:.8;}
+  .float-pill:active{transform:scale(.97);}
+  .music-card:hover{border-color:var(--border);}
+  .btn-primary:hover{background:var(--signal);}
+  .btn-ghost:hover{border-color:var(--border);}
+}
+
 /* Mobile bar & drawer */
 .mobile-bar{display:none;position:fixed;top:0;left:0;right:0;height:56px;padding:0 20px;align-items:center;justify-content:space-between;background:var(--bg);border-bottom:1px solid var(--border);z-index:60;}
 .hamburger{background:none;border:none;cursor:pointer;color:var(--fg);padding:8px;margin:-8px;display:flex;flex-direction:column;gap:5px;width:36px;align-items:flex-end;}
