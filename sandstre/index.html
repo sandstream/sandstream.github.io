@@ -219,7 +219,7 @@
 </div>
 
 <div class="enter" id="enter">
-  <a href="../ui_kits/portfolio/index.html">enter site <span class="arr">→</span></a>
+  <a href="../">enter site <span class="arr">→</span></a>
 </div>
 
 <div class="skip" id="skip">PRESS<kbd>ESC</kbd> TO SKIP</div>
@@ -345,12 +345,12 @@
   // Interactions
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') skipToEnd();
-    if (e.key === 'Enter' && done) window.location.href = '../ui_kits/portfolio/index.html';
+    if (e.key === 'Enter' && done) window.location.href = '../';
   });
   document.addEventListener('click', (e) => {
     if (e.target.closest('a')) return;
     if (!done) skipToEnd();
-    else window.location.href = '../ui_kits/portfolio/index.html';
+    else window.location.href = '../';
   });
   window.addEventListener('resize', () => requestAnimationFrame(fitAll));
 </script>

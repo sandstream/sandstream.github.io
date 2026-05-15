@@ -1,6 +1,9 @@
 function About({ lang }) {
+  const { useState } = React;
   const t = T[lang];
   const [pre, em, post] = t.aboutHeadline;
+  const [mode, setMode] = useState("business");
+  const toggle = () => setMode(m => m === "business" ? "casual" : "business");
   return (
     <section id="about" className="section">
       <div className="section-label">
@@ -8,9 +11,25 @@ function About({ lang }) {
         <span className="bar"></span>
       </div>
       <div className="about-grid">
-        <div className="about-portrait">
-          <img src="/assets/peter-portrait.jpg" alt="Peter Sandström" loading="lazy" />
+        <div className="about-portrait" onClick={toggle} style={{cursor: "pointer"}}>
+          <img
+            src="/assets/peter-portrait.jpg"
+            alt="Peter Sandström"
+            loading="lazy"
+            className={mode === "business" ? "p-active" : ""}
+          />
+          <img
+            src="/assets/peter-casual.jpg"
+            alt="Peter Sandström"
+            loading="lazy"
+            className={mode === "casual" ? "p-active" : ""}
+          />
           <div className="corner">PORTRAIT · 2025</div>
+          <div className="portrait-toggle">
+            <span className={mode === "business" ? "pt-active" : ""}>Business</span>
+            <span>·</span>
+            <span className={mode === "casual" ? "pt-active" : ""}>Casual</span>
+          </div>
         </div>
         <div className="about-body">
           <h2 className="about-h">{pre}<em>{em}</em>{post}</h2>

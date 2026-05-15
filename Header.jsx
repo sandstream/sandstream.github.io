@@ -1,3 +1,35 @@
+const { useState, useEffect } = React;
+
+function MorphInner() {
+  const [step, setStep] = useState(0);
+  useEffect(() => {
+    const STEP = 750;
+    const timers = [1,2,3,4].map((i) => setTimeout(() => setStep(i), i * STEP));
+    return () => timers.forEach(clearTimeout);
+  }, []);
+  const cls = (i) => "wm-v" + (step === i ? " wm-in" : step > i ? " wm-out" : "");
+  return (
+    <>
+      <span className="wm-ghost">sandstre<span className="tld-dot">·</span><span className="it">am</span></span>
+      <span className={cls(0)}>sandström</span>
+      <span className={cls(1)}>sandstroem</span>
+      <span className={cls(2)}>sandstream</span>
+      <span className={cls(3)}>săndstrēm</span>
+      <span className={cls(4)}>sandstre<span className="tld-dot">·</span><span className="it">am</span></span>
+    </>
+  );
+}
+
+function WordmarkMorph({ onClick, style }) {
+  const [seed, setSeed] = useState(0);
+  const handleClick = () => { setSeed(s => s + 1); onClick?.(); };
+  return (
+    <div className="wordmark wm-morph" onClick={handleClick} style={style}>
+      <MorphInner key={seed} />
+    </div>
+  );
+}
+
 function Header({ lang, setLang, active, onNav }) {
   const t = T[lang];
   const navIds = ["about", "work", "music", "roles", "contact"];
@@ -5,11 +37,7 @@ function Header({ lang, setLang, active, onNav }) {
   return (
     <aside className="rail" aria-label="Primary navigation">
       <div>
-        <div className="wordmark" onClick={() => onNav("top")}>
-          <span>sandstre</span>
-          <span className="tld-dot" aria-hidden="true">·</span>
-          <span className="it">am</span>
-        </div>
+        <WordmarkMorph onClick={() => onNav("top")} />
         <nav className="nav">
           {navIds.map((id, i) => (
             <a key={id} href={"#" + id} data-num={nums[i]}
@@ -37,11 +65,7 @@ function Header({ lang, setLang, active, onNav }) {
 function MobileBar({ lang, setLang, menuOpen, onToggle, onWordmark }) {
   return (
     <div className="mobile-bar" role="banner">
-      <div className="wordmark" onClick={onWordmark} style={{fontSize: 22}}>
-        <span>sandstre</span>
-        <span className="tld-dot" aria-hidden="true">·</span>
-        <span className="it">am</span>
-      </div>
+      <WordmarkMorph onClick={onWordmark} style={{fontSize: 22}} />
       <div style={{display: "flex", alignItems: "center", gap: 10}}>
         <button className="lang-btn" style={{margin: 0, padding: "4px 8px"}} onClick={() => setLang(lang === "sv" ? "en" : "sv")}>
           <span className="active-lang">{lang.toUpperCase()}</span>

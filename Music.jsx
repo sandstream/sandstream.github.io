@@ -19,8 +19,8 @@ function Music({ lang }) {
           <div className="music-name">Diesel <em>Johnny</em> Raines</div>
           <div className="music-desc">
             {lang === "sv"
-              ? "Eget countryprojekt. Låtar om vägar, förlust och att börja om igen — producerat självständigt och distribuerat globalt. Tillgängligt på alla stora streamingtjänster."
-              : "Country and Americana songwriting project. Songs about roads, loss and starting over — produced independently, distributed worldwide. Available on all major streaming platforms."}
+              ? "Eget countryprojekt. Låtar om vägar, förlust och att börja om igen, producerat självständigt och distribuerat globalt. Tillgängligt på alla stora streamingtjänster."
+              : "Country and Americana songwriting project. Songs about roads, loss and starting over, produced independently and distributed worldwide. Available on all major streaming platforms."}
           </div>
           <div className="music-links">
             <a className="card-link" href="https://www.dieseljohnnyraines.com/" target="_blank" rel="noreferrer">
