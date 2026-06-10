@@ -117,8 +117,8 @@ const CASES = [
     name: ["Kjorre"], italic: 0,
     tagline: { sv: "Kassasystem för föreningskiosker · Swish och kort, en kodbas.", en: "Point-of-sale for club kiosks · Swish and card payments, one codebase." },
     desc: {
-      sv: "Idrottsföreningar driver kiosker på ideell kraft — kassahantering, Swish-betalningar och bokföringsunderlag sköts manuellt. Peter byggde Kjorre från noll: QR-baserad självbetjäning, Swish- och Stripe-integration, kassaregister med journalkrav och en adminportal per förening. Multi-tenant från dag ett. Resultat: Föreningar tar betalt digitalt utan kassapersonal, med bokföringsunderlag genererat automatiskt.",
-      en: "Sports clubs run kiosks on volunteer effort — cash handling, Swish payments and bookkeeping are all manual. Peter built Kjorre from scratch: QR-based self-service, Swish and Stripe integration, a compliant cash-register journal and a per-club admin portal. Multi-tenant from day one. Result: Clubs take digital payments without staffing a till, with bookkeeping records generated automatically.",
+      sv: "Idrottsföreningar driver kiosker på ideell kraft, kassahantering, Swish-betalningar och bokföringsunderlag sköts manuellt. Peter byggde Kjorre från noll: QR-baserad självbetjäning, Swish- och Stripe-integration, kassaregister med journalkrav och en adminportal per förening. Multi-tenant från dag ett. Resultat: Föreningar tar betalt digitalt utan kassapersonal, med bokföringsunderlag genererat automatiskt.",
+      en: "Sports clubs run kiosks on volunteer effort, cash handling, Swish payments and bookkeeping are all manual. Peter built Kjorre from scratch: QR-based self-service, Swish and Stripe integration, a compliant cash-register journal and a per-club admin portal. Multi-tenant from day one. Result: Clubs take digital payments without staffing a till, with bookkeeping records generated automatically.",
     },
     meta: [
       { l: "ROLE", v: "Founding tech · architecture" },
@@ -197,7 +197,7 @@ const CASES = [
     name: ["kit"], italic: 0,
     tagline: { sv: "Säkerhets-CLI för AI-agenter och människor · noll LLM-anrop.", en: "Security-first developer CLI for AI agents and humans · zero LLM calls." },
     desc: {
-      sv: "Varje gång ett projekt startas, av människa eller AI-agent, saknas verktyg, inloggningar och secrets — och API-nycklar läcker. Peter byggde kit: en CLI som tar ett projekt från git clone till körbar miljö med ett kommando. Secrets-hantering över 11 vault-backends, supply-chain-scanning, multi-repo-säkerhetsbaselines och TOTP-gated elevation för destruktiva operationer. Noll LLM-anrop, lokal-först, noll telemetri. Open source under MIT.",
+      sv: "Varje gång ett projekt startas, av människa eller AI-agent, saknas verktyg, inloggningar och secrets, och API-nycklar läcker. Peter byggde kit: en CLI som tar ett projekt från git clone till körbar miljö med ett kommando. Secrets-hantering över 11 vault-backends, supply-chain-scanning, multi-repo-säkerhetsbaselines och TOTP-gated elevation för destruktiva operationer. Noll LLM-anrop, lokal-först, noll telemetri. Open source under MIT.",
       en: "Every time a project starts, by a human or an AI agent, tools are missing, logins are expired, secrets leak. Peter built kit: a CLI taking a project from git clone to a working environment in one command. Secrets management across 11 vault backends, supply-chain scanning, multi-repo security baselines and TOTP-gated elevation for destructive operations. Zero LLM calls, local-first, zero telemetry. Open source under MIT.",
     },
     meta: [

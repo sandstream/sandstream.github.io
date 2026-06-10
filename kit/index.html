@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>kit — developer kit. zero LLM. local-first.</title>
+<title>kit · developer kit. zero LLM. local-first.</title>
 <meta name="description" content="One command from git clone to working dev environment. Zero LLM calls, local-first, multi-vault. For AI agents and humans.">
 <meta name="theme-color" content="#0a0e0e">
-<meta property="og:title" content="kit — developer kit">
+<meta property="og:title" content="kit · developer kit">
 <meta property="og:description" content="Zero LLM. Local-first. Multi-vault. One command from git clone to working dev environment.">
 <meta property="og:url" content="https://sandstre.am/kit">
 <meta property="og:type" content="website">
@@ -68,7 +68,7 @@
     color: var(--ink);
     margin-bottom: 24px;
   }
-  /* KITT scanner — Knight Rider nod (the car's AI was named KITT) */
+  /* KITT scanner, Knight Rider nod (the car's AI was named KITT) */
   h1 span.scanner {
     display: inline-block;
     width: 1.3em;
@@ -270,7 +270,7 @@
   </header>
 
   <section class="hero" style="border-bottom: 1px solid var(--line);">
-    <h1>kit<span class="scanner" title="Named after KITT — and yes, it scans."></span></h1>
+    <h1>kit<span class="scanner" title="Named after KITT, and yes, it scans."></span></h1>
     <p class="tagline">
       <strong>Developer kit</strong> for AI agents and humans.
       One command from <code>git clone</code> to working dev environment.
@@ -301,20 +301,20 @@
     <p>
       I build most things with AI agents now. The same friction kept showing up at the
       start of every project: API keys scattered across <code>.env</code> files, shell
-      history and chat windows — secrets <em>on the loose</em>. Logins expired. Half the
+      history and chat windows, secrets <em>on the loose</em>. Logins expired. Half the
       tools weren't installed. And every fresh agent session re-asked the same setup
-      questions — burning tokens to rediscover what the last session already knew.
+      questions, burning tokens to rediscover what the last session already knew.
     </p>
     <p>
       So I wanted one command that takes a repo from <code>git clone</code> to a working,
-      secret-safe environment — the same way for a human at a new laptop or an agent in a
+      secret-safe environment, the same way for a human at a new laptop or an agent in a
       fresh sandbox. Declarative config, real vaults instead of loose keys, a security
       baseline that doesn't depend on remembering to run it, and <strong>zero LLM calls</strong>
       so the tool itself never leaks a key or bills you to think.
     </p>
     <p>
       <strong>The bet:</strong> the boring, security-critical setup should be deterministic
-      and auditable — and the intelligence should stay where you put it, not baked into the
+      and auditable, and the intelligence should stay where you put it, not baked into the
       tool that holds your secrets.
     </p>
   </section>
@@ -325,7 +325,7 @@
       <div class="card">
         <div class="num">[01]</div>
         <h3>Bootstrap</h3>
-        <p>One config — <code>.devkit.toml</code> — declares tools, services, secrets, hooks. <code>kit setup</code> installs missing CLIs, logs into services, materializes secrets, wires hooks.</p>
+        <p>One config, <code>.devkit.toml</code>, declares tools, services, secrets, hooks. <code>kit setup</code> installs missing CLIs, logs into services, materializes secrets, wires hooks.</p>
       </div>
       <div class="card">
         <div class="num">[02]</div>
@@ -350,7 +350,7 @@
       <div class="card">
         <div class="num">[06]</div>
         <h3>Policy</h3>
-        <p><code>[policy.agent_writes]</code> declares pre-approved scopes. <code>DEVKIT_POLICY_HASH</code> for classifier integration — agents act inside the policy without per-call human approval.</p>
+        <p><code>[policy.agent_writes]</code> declares pre-approved scopes. <code>DEVKIT_POLICY_HASH</code> for classifier integration, agents act inside the policy without per-call human approval.</p>
       </div>
     </div>
   </section>
@@ -360,7 +360,7 @@
     <p>
       Devkit-style tooling traditionally embeds LLM calls (router, triage, summarization).
       <strong>kit doesn't.</strong> Triage delegates to an external Python skill the operator
-      configures. Adapters configure Claude Code / Codex / MCP — they don't invoke models.
+      configures. Adapters configure Claude Code / Codex / MCP, they don't invoke models.
     </p>
     <p>
       <strong>Why:</strong> smaller attack surface. No vendor API key in <code>kit</code>. No LLM
@@ -430,7 +430,7 @@ $ kit setup
 <span class="c">  → installs pre-commit + post-merge hooks</span>
 <span class="c">  → runs full security baseline</span>
 
-<span class="c"># 3. work normally — agents + humans both go</span>
+<span class="c"># 3. work normally, agents + humans both go</span>
 $ pnpm dev</pre>
   </section>
 
@@ -462,7 +462,7 @@ $ pnpm dev</pre>
       <a href="https://github.com/sandstream/kit/issues">issues</a>
       <a href="https://sandstre.am">sandstre.am</a>
     </div>
-    <div class="copy">© 2026 Sandstream — MIT licensed — security@sandstre.am</div>
+    <div class="copy">© 2026 Sandstream · MIT licensed · security@sandstre.am</div>
   </footer>
 
 </div>
