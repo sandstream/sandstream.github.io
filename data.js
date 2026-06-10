@@ -27,7 +27,7 @@ const T = {
     aboutP1: "Peter förstår affären, inte bara tekniken. Han tar ägarskap från kravsamling och produktstrategi till arkitektur, bygge och lansering. Med 20+ års erfarenhet vet han var teknik skapar värde och var den bara kostar pengar.",
     aboutP2: "Idag bygger Peter med agentisk AI som primärt verktyg: snabba prototyper, produkter som skalas och automatiseringar som faktiskt går i produktion. Han täcker hela kedjan: från affärskrav och säkerhet till marknadsföring och produktlansering.",
     stat1l: "År av teknikbyggande",
-    stat2l: "Largest team led · Devoteam",
+    stat2l: "Största teamet · Devoteam",
     stat3l: "Idéer → prod, varje gång",
     s02: "byggen",
     casesHeadline: ["Åtta byggen. ", "En metod."],
@@ -48,7 +48,7 @@ const T = {
   },
   en: {
     heroHeadline: ["Ideas and code, ", "every day."],
-    heroSub: "Peter Sandström, hands-on tech lead and consultant. Takes engagements requiring deep technical depth, rapid idea generation and the ability to ship real code. Interim, project and advisory.",
+    heroSub: "Peter Sandström, hands-on tech lead and consultant. Takes engagements requiring deep technical expertise, rapid idea generation and the ability to ship real code. Interim, project and advisory.",
     heroCta: "Book a meeting",
     heroEmail: "Send email",
     heroMetaLeft: [
@@ -56,7 +56,7 @@ const T = {
       { label: "SANDSTREAM AB", value: "· ORG.NR 559399-3099" },
     ],
     heroMetaRight: [
-      { label: "OPEN FOR", value: "ENGAGEMENT" },
+      { label: "OPEN TO", value: "ENGAGEMENTS" },
       { value: "RESPONSE < 24H" },
     ],
     heroMetaBottomLeft: [
@@ -70,7 +70,7 @@ const T = {
     navLabels: ["Bio", "Builds", "Music", "Roles", "Contact"],
     s01: "about peter",
     aboutHeadline: ["Builds fast. Thinks deep. ", "Ships.", ""],
-    aboutP1: "Peter understands the business, not just the technology. He takes ownership from requirements and product strategy through to architecture, build and launch. 20+ years of experience knowing where technology creates value and where it just costs money.",
+    aboutP1: "Peter understands the business, not just the technology. He takes ownership from requirements and product strategy through to architecture, build and launch. 20+ years of knowing where technology creates value and where it just costs money.",
     aboutP2: "Today Peter builds with agentic AI as his primary tool: fast prototypes, products that scale, and automations that actually ship to production. He covers the full chain: from business requirements and security to marketing and go-to-market.",
     stat1l: "Years building tech",
     stat2l: "Largest team led · Devoteam",
@@ -115,15 +115,15 @@ const CASES = [
   {
     num: "/02",
     name: ["Kjorre"], italic: 0,
-    tagline: { sv: "Internationell QR-kioskbetalning · en kodbas, alla valutor.", en: "International QR-kiosk payments · one codebase, every currency." },
+    tagline: { sv: "Kassasystem för föreningskiosker · Swish och kort, en kodbas.", en: "Point-of-sale for club kiosks · Swish and card payments, one codebase." },
     desc: {
-      sv: "Internationella verksamheter saknade ett smidigt sätt att ta betalt i självbetjäningskiosker med olika valutor, leverantörer och regelverk per marknad. Peter tog det tekniska ansvaret från noll, byggde arkitekturen och plattformsfundamentet: Stripe-integration, logisk isolering per kund och en adminportal för operatörer. Levererade produktionsklar mjukvara. Resultat: En kodbas hanterar nu gränsöverskridande betalningar på flera marknader, med enkel uppstart för nya operatörer.",
-      en: "International venues lacked a smooth way to handle payments in self-service kiosks across currencies, providers and regulations per market. Peter took technical ownership from zero, built the architecture and platform foundations: Stripe integration, logical isolation per tenant and an admin portal for venue operators. Delivered production-ready software. Result: One codebase now handles cross-border payments across multiple markets, with straightforward onboarding for new operators.",
+      sv: "Idrottsföreningar driver kiosker på ideell kraft — kassahantering, Swish-betalningar och bokföringsunderlag sköts manuellt. Peter byggde Kjorre från noll: QR-baserad självbetjäning, Swish- och Stripe-integration, kassaregister med journalkrav och en adminportal per förening. Multi-tenant från dag ett. Resultat: Föreningar tar betalt digitalt utan kassapersonal, med bokföringsunderlag genererat automatiskt.",
+      en: "Sports clubs run kiosks on volunteer effort — cash handling, Swish payments and bookkeeping are all manual. Peter built Kjorre from scratch: QR-based self-service, Swish and Stripe integration, a compliant cash-register journal and a per-club admin portal. Multi-tenant from day one. Result: Clubs take digital payments without staffing a till, with bookkeeping records generated automatically.",
     },
     meta: [
       { l: "ROLE", v: "Founding tech · architecture" },
-      { l: "STACK", v: "Next.js · Stripe · multi-tenant" },
-      { l: "SECTOR", v: "Fintech · self-service" },
+      { l: "STACK", v: "Next.js · Swish · Stripe" },
+      { l: "SECTOR", v: "Payments · self-service" },
       { l: "YEAR", v: "2025–26" },
     ],
     href: "https://www.kjorre.com", hrefLabel: "kjorre.com",
@@ -171,7 +171,7 @@ const CASES = [
     meta: [
       { l: "ROLE", v: "Tech lead · full-stack" },
       { l: "STACK", v: "FastAPI · React 19 · Firebase · Visma.NET · GCP" },
-      { l: "SECTOR", v: "Fintech · stiftelseförvaltning" },
+      { l: "SECTOR", v: "Fintech · foundation mgmt" },
       { l: "YEAR", v: "2025–26" },
     ],
     href: null, hrefLabel: null,
@@ -185,28 +185,28 @@ const CASES = [
       en: "Sordin's marketing team (three people) lacked capacity to scale content production to 10–20 new ad variants per week. AI tools were used in fragments across private accounts, with no shared tone of voice, claim library or asset bank. Peter built Sordin Brand Brain: a RAG-based AI assistant carrying Sordin's tone, approved claims and visual rules, connected to a creative pipeline that automatically generates on-brand ad variants in multiple formats. Stack: Python orchestrator, Imagen 4, Claude and DeepL. Ongoing. Prototype phase delivered, phase 1 in planning.",
     },
     meta: [
-      { l: "ROLE", v: "AI-arkitekt · tech lead" },
+      { l: "ROLE", v: "AI architect · tech lead" },
       { l: "STACK", v: "Python · RAG · Imagen 4 · Claude · DeepL" },
-      { l: "SECTOR", v: "Marknadstech · brand AI" },
+      { l: "SECTOR", v: "Martech · brand AI" },
       { l: "YEAR", v: "2025–26" },
     ],
     href: null, hrefLabel: null,
   },
   {
     num: "/07",
-    name: ["Symbiont", "DevKit"], italic: 1,
-    tagline: { sv: "Ett kommando från git clone till fungerande miljö · för AI-agenter och utvecklare.", en: "One command from git clone to fully working environment · for AI agents and developers." },
+    name: ["kit"], italic: 0,
+    tagline: { sv: "Säkerhets-CLI för AI-agenter och människor · noll LLM-anrop.", en: "Security-first developer CLI for AI agents and humans · zero LLM calls." },
     desc: {
-      sv: "Varje gång ett nytt projekt startas, av en människa eller AI-agent, saknas verktyg, inloggningar, hemligheter och rätt versioner. Peter byggde Symbiont DevKit: en `.devkit.toml` per projekt som deklarerar exakt vilka verktyg, tjänster och hemligheter som behövs, och en CLI som ställer upp allt automatiskt. Stödjer 1Password, Vercel, Supabase, Stripe med flera. Resultat: Noll manuell miljöuppsättning. AI-agenter och utvecklare på plats på ett kommando.",
-      en: "Every time a new project starts, by a human or an AI agent, tools are missing, logins are expired, secrets aren't there, versions are wrong. Peter built Symbiont DevKit: a .devkit.toml per project that declares exactly which tools, services and secrets are needed, and a CLI that sets everything up automatically. Supports 1Password, Vercel, Supabase, Stripe and more. Result: Zero manual environment setup. AI agents and developers ready in one command.",
+      sv: "Varje gång ett projekt startas, av människa eller AI-agent, saknas verktyg, inloggningar och secrets — och API-nycklar läcker. Peter byggde kit: en CLI som tar ett projekt från git clone till körbar miljö med ett kommando. Secrets-hantering över 11 vault-backends, supply-chain-scanning, multi-repo-säkerhetsbaselines och TOTP-gated elevation för destruktiva operationer. Noll LLM-anrop, lokal-först, noll telemetri. Open source under MIT.",
+      en: "Every time a project starts, by a human or an AI agent, tools are missing, logins are expired, secrets leak. Peter built kit: a CLI taking a project from git clone to a working environment in one command. Secrets management across 11 vault backends, supply-chain scanning, multi-repo security baselines and TOTP-gated elevation for destructive operations. Zero LLM calls, local-first, zero telemetry. Open source under MIT.",
     },
     meta: [
       { l: "ROLE", v: "Creator · open source" },
-      { l: "STACK", v: "Node.js · CLI · TOML · 1Password" },
-      { l: "SECTOR", v: "Developer tooling" },
+      { l: "STACK", v: "Node.js · TypeScript · npm" },
+      { l: "SECTOR", v: "DevSecOps · AI tooling" },
       { l: "YEAR", v: "2025–26" },
     ],
-    href: null, hrefLabel: null,
+    href: "/kit", hrefLabel: "sandstre.am/kit",
   },
   {
     num: "/08",

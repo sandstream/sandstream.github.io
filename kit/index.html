@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kit — developer kit. zero LLM. local-first.</title>
+<meta name="description" content="One command from git clone to working dev environment. Zero LLM calls, local-first, multi-vault. For AI agents and humans.">
+<meta name="theme-color" content="#0a0e0e">
+<meta property="og:title" content="kit — developer kit">
+<meta property="og:description" content="Zero LLM. Local-first. Multi-vault. One command from git clone to working dev environment.">
+<meta property="og:url" content="https://sandstre.am/kit">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e0e;
+    --bg-2: #11181a;
+    --bg-3: #1a2326;
+    --line: #243133;
+    --line-2: #2e3d40;
+    --ink: #e6f0ed;
+    --ink-2: #a8b8b5;
+    --ink-3: #6b7a78;
+    --accent: #00ff9c;
+    --accent-dim: #00cc7d;
+    --accent-bg: #00ff9c14;
+    --warn: #ffb84d;
+    --error: #ff5577;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.55;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  code, pre, .mono { font-family: var(--mono); font-feature-settings: "calt" 0, "liga" 0; }
+
+  /* Header */
+  header { padding: 64px 0 32px; border-bottom: 1px solid var(--line); }
+  .brand {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-2);
+    letter-spacing: 0.02em;
+  }
+  .brand::before { content: "$ "; color: var(--accent); }
+
+  /* Hero */
+  .hero { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  h1 {
+    font-family: var(--mono);
+    font-size: clamp(48px, 9vw, 96px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  h1 span.cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 0.85em;
+    background: var(--accent);
+    vertical-align: text-bottom;
+    margin-left: 0.05em;
+    animation: blink 1.1s steps(2) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .tagline {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--ink-2);
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+  .tagline strong { color: var(--ink); font-weight: 500; }
+
+  /* Install block */
+  .install-block {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .install-block::before {
+    content: "$";
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .install-block .cmd { color: var(--ink); flex: 1; word-break: break-all; }
+  .install-block button {
+    background: transparent;
+    border: 1px solid var(--line-2);
+    color: var(--ink-3);
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all .15s;
+  }
+  .install-block button:hover { color: var(--accent); border-color: var(--accent); }
+  .install-block button.copied { color: var(--accent); border-color: var(--accent); }
+
+  /* Pills row */
+  .pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+  .pill {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--ink-2);
+    background: var(--bg-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .pill.accent {
+    border-color: var(--accent-dim);
+    color: var(--accent);
+    background: var(--accent-bg);
+  }
+
+  /* Sections */
+  section { padding: 80px 0; border-bottom: 1px solid var(--line); }
+  h2 {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink-3);
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  h2::before {
+    content: "// ";
+    color: var(--accent);
+  }
+  h3 {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  p { color: var(--ink-2); margin-bottom: 16px; max-width: 640px; }
+
+  /* Feature grid */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 720px) { .grid, .grid-3 { grid-template-columns: 1fr; } }
+  .card {
+    padding: 28px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    transition: border .15s, transform .15s;
+  }
+  .card:hover { border-color: var(--line-2); transform: translateY(-2px); }
+  .card .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    letter-spacing: 0.08em;
+  }
+  .card h3 { font-size: 18px; margin-bottom: 12px; }
+  .card p { font-size: 14px; color: var(--ink-2); margin: 0; }
+
+  /* Code block */
+  pre.code {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  pre.code .c { color: var(--ink-3); }
+  pre.code .k { color: var(--accent); }
+  pre.code .v { color: var(--warn); }
+
+  /* Comparison table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  th, td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    color: var(--ink-3);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  td { color: var(--ink-2); }
+  td.yes { color: var(--accent); font-weight: 600; }
+  td.no { color: var(--ink-3); }
+
+  /* Footer */
+  footer { padding: 48px 0 64px; color: var(--ink-3); font-size: 13px; }
+  footer a {
+    color: var(--ink-2);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line-2);
+    transition: color .15s, border .15s;
+  }
+  footer a:hover { color: var(--accent); border-color: var(--accent); }
+  footer .links { display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 24px; }
+  footer .copy { font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+
+  /* Selection */
+  ::selection { background: var(--accent); color: var(--bg); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="brand">sandstre.am/kit</div>
+  </header>
+
+  <section class="hero" style="border-bottom: 1px solid var(--line);">
+    <h1>kit<span class="cursor"></span></h1>
+    <p class="tagline">
+      <strong>Developer kit</strong> for AI agents and humans.
+      One command from <code>git clone</code> to working dev environment.
+      <strong>Zero LLM calls</strong>, local-first, multi-vault.
+    </p>
+
+    <div class="install-block">
+      <span class="cmd" id="install-cmd">npx @sandstream/kit setup</span>
+      <button onclick="copyCmd(this)">copy</button>
+    </div>
+    <div class="install-block">
+      <span class="cmd">npm install -g @sandstream/kit</span>
+      <button onclick="copyCmd(this)">copy</button>
+    </div>
+
+    <div class="pills">
+      <span class="pill accent">v1.0.0</span>
+      <span class="pill">MIT</span>
+      <span class="pill">Node 22+</span>
+      <span class="pill">SLSA provenance</span>
+      <span class="pill">11 vault backends</span>
+      <span class="pill">Zero telemetry</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="num">[01]</div>
+        <h3>Bootstrap</h3>
+        <p>One config — <code>.devkit.toml</code> — declares tools, services, secrets, hooks. <code>kit setup</code> installs missing CLIs, logs into services, materializes secrets, wires hooks.</p>
+      </div>
+      <div class="card">
+        <div class="num">[02]</div>
+        <h3>Vaults</h3>
+        <p>11 secret backends: 1Password, Infisical, Vault, AWS Secrets Manager, GCP Secret Manager, Azure Key Vault, Doppler, Bitwarden, EAS, OneCLI, env. Migrate plaintext → vault, propagate to deploy targets, rotate without dashboard clicks.</p>
+      </div>
+      <div class="card">
+        <div class="num">[03]</div>
+        <h3>Prescan</h3>
+        <p>Multi-repo baseline sweep: gitleaks history, .gitignore holes, tracked-secret files, public-vs-private repos, branch protection, CVEs. <code>--vs-baseline</code> for drift detection on cron.</p>
+      </div>
+      <div class="card">
+        <div class="num">[04]</div>
+        <h3>Supply chain</h3>
+        <p>Bundled Bumblebee scanner verifies every dep against a pinned exposure catalog. Re-verifies cache before reuse. Catches typosquats, credential-stealers, compromised packages.</p>
+      </div>
+      <div class="card">
+        <div class="num">[05]</div>
+        <h3>Elevation</h3>
+        <p>Destructive ops (rotate, history rewrite, prod-key reads) require TTL'd TOTP-gated elevation. Audit log records every grant + bypass attempt.</p>
+      </div>
+      <div class="card">
+        <div class="num">[06]</div>
+        <h3>Policy</h3>
+        <p><code>[policy.agent_writes]</code> declares pre-approved scopes. <code>DEVKIT_POLICY_HASH</code> for classifier integration — agents act inside the policy without per-call human approval.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why "zero LLM"</h2>
+    <p>
+      Devkit-style tooling traditionally embeds LLM calls (router, triage, summarization).
+      <strong>kit doesn't.</strong> Triage delegates to an external Python skill the operator
+      configures. Adapters configure Claude Code / Codex / MCP — they don't invoke models.
+    </p>
+    <p>
+      <strong>Why:</strong> smaller attack surface. No vendor API key in <code>kit</code>. No LLM
+      cost from running <code>kit check</code>. No vendor lock. The tool stays a tool;
+      intelligence stays where you decide.
+    </p>
+  </section>
+
+  <section>
+    <h2>Compare</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>kit</th>
+        <th>traditional devkit-style tool</th>
+      </tr>
+      <tr>
+        <td>LLM calls in core</td>
+        <td class="yes">none</td>
+        <td class="no">router + summarization</td>
+      </tr>
+      <tr>
+        <td>Default telemetry</td>
+        <td class="yes">none</td>
+        <td class="no">opt-out</td>
+      </tr>
+      <tr>
+        <td>Secret backends</td>
+        <td class="yes">11</td>
+        <td class="no">1–2</td>
+      </tr>
+      <tr>
+        <td>Supply-chain scanner bundled</td>
+        <td class="yes">bumblebee</td>
+        <td class="no">external</td>
+      </tr>
+      <tr>
+        <td>SLSA-provenance on releases</td>
+        <td class="yes">yes</td>
+        <td class="no">often missing</td>
+      </tr>
+      <tr>
+        <td>Multi-repo prescan</td>
+        <td class="yes">yes</td>
+        <td class="no">no</td>
+      </tr>
+      <tr>
+        <td>Elevation gate for destructive ops</td>
+        <td class="yes">TOTP + TTL</td>
+        <td class="no">none</td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Quick example</h2>
+    <pre class="code"><span class="c"># 1. clone a project</span>
+$ git clone git@github.com:you/your-app.git
+$ cd your-app
+
+<span class="c"># 2. one-shot bootstrap</span>
+$ kit setup
+<span class="c">  → detects stack (Next.js + Supabase + Stripe)</span>
+<span class="c">  → installs node@22, pnpm, supabase-cli</span>
+<span class="c">  → logs into 1Password</span>
+<span class="c">  → materializes 14 secrets from op://Development/...</span>
+<span class="c">  → installs pre-commit + post-merge hooks</span>
+<span class="c">  → runs full security baseline</span>
+
+<span class="c"># 3. work normally — agents + humans both go</span>
+$ pnpm dev</pre>
+  </section>
+
+  <section>
+    <h2>Get it</h2>
+    <div class="grid-3 grid">
+      <div class="card">
+        <h3>One-shot</h3>
+        <pre class="code" style="margin-top:12px;font-size:13px;"><span class="k">npx</span> @sandstream/kit setup</pre>
+      </div>
+      <div class="card">
+        <h3>Global</h3>
+        <pre class="code" style="margin-top:12px;font-size:13px;"><span class="k">npm</span> i -g @sandstream/kit</pre>
+      </div>
+      <div class="card">
+        <h3>Source</h3>
+        <pre class="code" style="margin-top:12px;font-size:13px;"><span class="k">git</span> clone github.com/<wbr>sandstream/devkit</pre>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="https://github.com/sandstream/devkit">github</a>
+      <a href="https://www.npmjs.com/package/@sandstream/kit">npm</a>
+      <a href="https://github.com/sandstream/devkit/blob/master/docs/THREAT_MODEL.md">threat model</a>
+      <a href="https://github.com/sandstream/devkit/blob/master/docs/COMMANDS.md">commands</a>
+      <a href="https://github.com/sandstream/devkit/blob/master/CHANGELOG.md">changelog</a>
+      <a href="https://github.com/sandstream/devkit/issues">issues</a>
+      <a href="https://sandstre.am">sandstre.am</a>
+    </div>
+    <div class="copy">© 2026 Sandstream — MIT licensed — security@frontwalker.se</div>
+  </footer>
+
+</div>
+
+<script>
+  function copyCmd(btn) {
+    const cmd = btn.previousElementSibling.textContent;
+    navigator.clipboard.writeText(cmd).then(() => {
+      btn.classList.add('copied');
+      btn.textContent = 'copied';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.textContent = 'copy';
+      }, 1500);
+    });
+  }
+</script>
+
+</body>
+</html>
