@@ -25,3 +25,10 @@ Temporary Items
 
 ### Sass ###
 .sass-cache
+
+### Project cruft (never track) ###
+node_modules/
+_site/
+.jekyll-cache/
+*.icloud
+archive/
