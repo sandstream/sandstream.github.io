@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>kit · developer kit. zero LLM. local-first.</title>
-<meta name="description" content="One command from git clone to working dev environment. Zero LLM calls, local-first, multi-vault. For AI agents and humans.">
+<title>kit · developer kit. deterministic. local-first.</title>
+<meta name="description" content="One command from git clone to working dev environment. Deterministic, local-first, multi-vault. For AI agents and humans.">
 <meta name="theme-color" content="#0a0e0e">
 <meta property="og:title" content="kit · developer kit">
-<meta property="og:description" content="Zero LLM. Local-first. Multi-vault. One command from git clone to working dev environment.">
+<meta property="og:description" content="Deterministic. Local-first. Multi-vault. One command from git clone to working dev environment.">
 <meta property="og:url" content="https://sandstre.am/kit">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -274,7 +274,7 @@
     <p class="tagline">
       <strong>Developer kit</strong> for AI agents and humans.
       One command from <code>git clone</code> to working dev environment.
-      <strong>Zero LLM calls</strong>, local-first, multi-vault.
+      <strong>Deterministic</strong>, local-first, multi-vault.
     </p>
 
     <div class="install-block">
@@ -291,7 +291,7 @@
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">SLSA provenance</span>
-      <span class="pill">11 vault backends</span>
+      <span class="pill">12 vault backends</span>
       <span class="pill">Zero telemetry</span>
     </div>
   </section>
@@ -309,8 +309,8 @@
       So I wanted one command that takes a repo from <code>git clone</code> to a working,
       secret-safe environment, the same way for a human at a new laptop or an agent in a
       fresh sandbox. Declarative config, real vaults instead of loose keys, a security
-      baseline that doesn't depend on remembering to run it, and <strong>zero LLM calls</strong>
-      so the tool itself never leaks a key or bills you to think.
+      baseline that doesn't depend on remembering to run it, and a <strong>deterministic</strong>
+      tool that makes no model calls of its own, so it never leaks a key or bills you to think.
     </p>
     <p>
       <strong>The bet:</strong> the boring, security-critical setup should be deterministic
@@ -325,12 +325,12 @@
       <div class="card">
         <div class="num">[01]</div>
         <h3>Bootstrap</h3>
-        <p>One config, <code>.devkit.toml</code>, declares tools, services, secrets, hooks. <code>kit setup</code> installs missing CLIs, logs into services, materializes secrets, wires hooks.</p>
+        <p>One config, <code>.kit.toml</code>, declares tools, services, secrets, hooks. <code>kit setup</code> installs missing CLIs, logs into services, materializes secrets, wires hooks.</p>
       </div>
       <div class="card">
         <div class="num">[02]</div>
         <h3>Vaults</h3>
-        <p>11 secret backends: 1Password, Infisical, Vault, AWS Secrets Manager, GCP Secret Manager, Azure Key Vault, Doppler, Bitwarden, EAS, OneCLI, env. Migrate plaintext → vault, propagate to deploy targets, rotate without dashboard clicks.</p>
+        <p>12 secret backends: 1Password, Infisical, Vault, AWS Secrets Manager, GCP Secret Manager, Azure Key Vault, Doppler, Bitwarden, dotenvx, EAS, OneCLI, env. Migrate plaintext → vault, propagate to deploy targets, rotate without dashboard clicks.</p>
       </div>
       <div class="card">
         <div class="num">[03]</div>
@@ -350,22 +350,24 @@
       <div class="card">
         <div class="num">[06]</div>
         <h3>Policy</h3>
-        <p><code>[policy.agent_writes]</code> declares pre-approved scopes. <code>DEVKIT_POLICY_HASH</code> for classifier integration, agents act inside the policy without per-call human approval.</p>
+        <p><code>[policy.agent_writes]</code> declares pre-approved scopes. <code>KIT_POLICY_HASH</code> for classifier integration, agents act inside the policy without per-call human approval.</p>
       </div>
     </div>
   </section>
 
   <section>
-    <h2>Why "zero LLM"</h2>
+    <h2>Why deterministic</h2>
     <p>
-      Devkit-style tooling traditionally embeds LLM calls (router, triage, summarization).
-      <strong>kit doesn't.</strong> Triage delegates to an external Python skill the operator
-      configures. Adapters configure Claude Code / Codex / MCP, they don't invoke models.
+      <code>kit check</code> and <code>kit triage</code> give the same result every run.
+      The tool makes <strong>no model calls of its own</strong>: triage delegates to an
+      external Python skill the operator configures, and adapters configure Claude Code /
+      Codex / MCP, they don't invoke models. LLM-augmented triage is available as explicit
+      opt-in, you bring the key.
     </p>
     <p>
-      <strong>Why:</strong> smaller attack surface. No vendor API key in <code>kit</code>. No LLM
-      cost from running <code>kit check</code>. No vendor lock. The tool stays a tool;
-      intelligence stays where you decide.
+      <strong>Why:</strong> smaller attack surface. No vendor API key baked into <code>kit</code>.
+      No token cost from running <code>kit check</code>. No vendor lock. The tool stays a tool;
+      intelligence stays where you put it.
     </p>
   </section>
 
@@ -375,7 +377,7 @@
       <tr>
         <th>Feature</th>
         <th>kit</th>
-        <th>traditional devkit-style tool</th>
+        <th>traditional setup tool</th>
       </tr>
       <tr>
         <td>LLM calls in core</td>
