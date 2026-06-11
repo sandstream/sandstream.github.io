@@ -352,6 +352,11 @@
         <h3>Policy</h3>
         <p><code>[policy.agent_writes]</code> declares pre-approved scopes. <code>KIT_POLICY_HASH</code> for classifier integration, agents act inside the policy without per-call human approval.</p>
       </div>
+      <div class="card">
+        <div class="num">[07]</div>
+        <h3>Agent setup</h3>
+        <p><code>kit agent-config</code> writes a managed "use kit" block into the agent's rules file, <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> / <code>.clinerules</code>, so Claude Code, Codex, Cursor and Cline run <code>kit check</code>, triage before installs, and vault their secrets. Idempotent, edit outside the markers freely.</p>
+      </div>
     </div>
   </section>
 
