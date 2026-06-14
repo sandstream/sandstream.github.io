@@ -245,6 +245,22 @@
   td.yes { color: var(--accent); font-weight: 600; }
   td.no { color: var(--ink-3); }
 
+  /* Docs section */
+  .docs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 720px) { .docs-grid { grid-template-columns: 1fr; } }
+  .doc-card h3 { font-size: 15px; margin-bottom: 14px; color: var(--ink); }
+  .doc-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .doc-card a {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-2);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .15s, border .15s;
+    width: fit-content;
+  }
+  .doc-card a:hover { color: var(--accent); border-color: var(--accent); }
+
   /* Footer */
   footer { padding: 48px 0 64px; color: var(--ink-3); font-size: 13px; }
   footer a {
@@ -287,7 +303,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent">v1.0.0</span>
+      <span class="pill accent">v1.0.1</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">SLSA provenance</span>
@@ -459,13 +475,81 @@ $ pnpm dev</pre>
     </div>
   </section>
 
+  <section>
+    <h2>Documentation</h2>
+    <p>Everything is in the repo. Read up before you wire it in.</p>
+    <div class="docs-grid">
+
+      <div class="card doc-card">
+        <h3>Usage</h3>
+        <ul>
+          <li><a href="https://github.com/sandstream/kit/blob/main/README.md">Readme &amp; overview</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/COMMANDS.md">Command reference</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/GETTING_STARTED_PLUGINS.md">Getting started</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/MIGRATION_GUIDE.md">Migration guide</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/VERIFY.md">Verify a release</a></li>
+        </ul>
+      </div>
+
+      <div class="card doc-card">
+        <h3>Security</h3>
+        <ul>
+          <li><a href="https://github.com/sandstream/kit/blob/main/SECURITY.md">Security policy</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/THREAT_MODEL.md">Threat model</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/SECURITY-HARDENING.md">Hardening checklist</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/SECURITY-SCANNING.md">Scanning pipeline</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/OWASP_2025.md">OWASP 2025 mapping</a></li>
+        </ul>
+      </div>
+
+      <div class="card doc-card">
+        <h3>Architecture</h3>
+        <ul>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/DATA_FLOW.md">Data flow</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/PERFORMANCE_AND_DIAGNOSTICS.md">Performance &amp; diagnostics</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/API_STABILITY_AND_VERSIONING.md">API stability &amp; versioning</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/MCP_TOOLS_GUIDE.md">MCP tools guide</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/MCP_TOOLS_REFERENCE.md">MCP tools reference</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/TEAM_MANAGEMENT_API.md">Team management API</a></li>
+        </ul>
+      </div>
+
+      <div class="card doc-card">
+        <h3>Plugins &amp; adapters</h3>
+        <ul>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/PLUGIN_DEVELOPMENT.md">Plugin development</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/PLUGIN_AUTHORING.md">Plugin authoring</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/ADAPTERS.md">Adapters</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/ADAPTER_GUIDE.md">Adapter guide</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/ADAPTER_PATTERNS.md">Adapter patterns</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/CUSTOM_ADAPTERS.md">Custom adapters</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/PLUGIN_PUBLISHING_CHECKLIST.md">Publishing checklist</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/docs/PLUGIN_DOCUMENTATION_STANDARDS.md">Doc standards</a></li>
+        </ul>
+      </div>
+
+      <div class="card doc-card">
+        <h3>Project</h3>
+        <ul>
+          <li><a href="https://github.com/sandstream/kit/blob/main/ROADMAP.md">Roadmap</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/CHANGELOG.md">Changelog</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/CONTRIBUTING.md">Contributing</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/GOVERNANCE.md">Governance</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/COMMUNITY.md">Community</a></li>
+          <li><a href="https://github.com/sandstream/kit/blob/main/CODE_OF_CONDUCT.md">Code of conduct</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
   <footer>
     <div class="links">
       <a href="https://github.com/sandstream/kit">github</a>
       <a href="https://www.npmjs.com/package/sandstream-kit">npm</a>
-      <a href="https://github.com/sandstream/kit/blob/master/docs/THREAT_MODEL.md">threat model</a>
-      <a href="https://github.com/sandstream/kit/blob/master/docs/COMMANDS.md">commands</a>
-      <a href="https://github.com/sandstream/kit/blob/master/CHANGELOG.md">changelog</a>
+      <a href="https://github.com/sandstream/kit/blob/main/docs/THREAT_MODEL.md">threat model</a>
+      <a href="https://github.com/sandstream/kit/blob/main/docs/COMMANDS.md">commands</a>
+      <a href="https://github.com/sandstream/kit/blob/main/CHANGELOG.md">changelog</a>
       <a href="https://github.com/sandstream/kit/issues">issues</a>
       <a href="https://sandstre.am">sandstre.am</a>
     </div>
