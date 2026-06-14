@@ -245,6 +245,28 @@
   td.yes { color: var(--accent); font-weight: 600; }
   td.no { color: var(--ink-3); }
 
+  /* Stack / landscape */
+  .stack { display: flex; flex-direction: column; gap: 8px; font-family: var(--mono); }
+  .layer {
+    display: grid;
+    grid-template-columns: 44px 170px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    padding: 16px 20px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .layer .lv { color: var(--ink-3); font-size: 12px; }
+  .layer .ln { color: var(--ink); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .layer .lx { color: var(--ink-2); font-size: 13px; }
+  .layer.kit { border-color: var(--accent-dim); background: var(--accent-bg); }
+  .layer.kit .ln, .layer.kit .lx { color: var(--accent); }
+  @media (max-width: 600px) {
+    .layer { grid-template-columns: 40px 1fr; }
+    .layer .lx { grid-column: 1 / -1; }
+  }
+
   /* Docs section */
   .docs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 720px) { .docs-grid { grid-template-columns: 1fr; } }
@@ -373,6 +395,23 @@
         <h3>Agent setup</h3>
         <p><code>kit agent-config</code> writes a managed "use kit" block into the agent's rules file, <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> / <code>.clinerules</code>, so Claude Code, Codex, Cursor and Cline run <code>kit check</code>, triage before installs, and vault their secrets. Idempotent, edit outside the markers freely.</p>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where kit fits</h2>
+    <p>
+      The agent stack has layers. kit sits at the <strong>governance</strong> floor —
+      deterministic, local-first, model-agnostic. Everything above stays swappable;
+      the security-critical setup underneath doesn't move.
+    </p>
+    <div class="stack">
+      <div class="layer"><span class="lv">L6</span><span class="ln">Product</span><span class="lx">your apps &amp; services</span></div>
+      <div class="layer kit"><span class="lv">L5</span><span class="ln">Governance · kit</span><span class="lx">setup · vaults · supply-chain · elevation · policy</span></div>
+      <div class="layer"><span class="lv">L4</span><span class="ln">Orchestration</span><span class="lx">multi-agent runners, task queues</span></div>
+      <div class="layer"><span class="lv">L3</span><span class="ln">Integration</span><span class="lx">MCP servers &amp; tools</span></div>
+      <div class="layer"><span class="lv">L2</span><span class="ln">Harness</span><span class="lx">Claude Code · Codex · Cursor · Aider · pi.dev</span></div>
+      <div class="layer"><span class="lv">L1</span><span class="ln">Model</span><span class="lx">Claude · GPT · Gemini · local (Ollama)</span></div>
     </div>
   </section>
 
