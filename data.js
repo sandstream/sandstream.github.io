@@ -34,7 +34,7 @@ const T = {
     casesIntro: "Projekt som visar hur Peter jobbar: tätt team, snabba beslut, idéer varje dag och stark dragning mot att leverera något verkligt på veckor, inte planera det i kvartal.",
     s03: "musikprojekt",
     musicHeadline: ["Vid sidan av: ", "musik."],
-    musicSub: "Två projekt, två register. Båda skrivna, producerade och framförda självständigt.",
+    musicSub: "Två projekt, två register. Båda skrivna, producerade och framförda.",
     s04: "valda roller · 20 år",
     rolesHeadline: ["Tjugo år av ", "uppdrag."],
     rolesP: "En kortfattad timeline över formella roller. Fullständigt CV och case-beskrivningar på begäran.",
@@ -80,7 +80,7 @@ const T = {
     casesIntro: "Projects showing how Peter works: tight team, fast decisions, daily ideas and a strong bias toward shipping something real in weeks, not planning it in quarters.",
     s03: "music projects",
     musicHeadline: ["On the side: ", "music."],
-    musicSub: "Two projects, two different registers. Both written, produced and performed independently.",
+    musicSub: "Two projects, two different registers. Both written, produced and performed.",
     s04: "selected roles · 20 years",
     rolesHeadline: ["Twenty years of ", "engagements."],
     rolesP: "A concise timeline of formal roles. Full CV and case descriptions available on request.",
@@ -101,24 +101,24 @@ const CASES = [
     name: ["Hunter", "Matcher"], italic: 1,
     tagline: { sv: "AI-driven konsultmatchning · från idé till produktion på tre månader.", en: "AI-driven consultant matching · from idea to production in three months." },
     desc: {
-      sv: "Frontwalkers interna matchningsprocess körde på mejl, Excel och magkänsla. Varje matchning tog timmar och ledde till missar. Peter designade och byggde hela kedjan: mejlintag, AI-tolkning av uppdragskrav, vektorrepresentationer av konsultprofiler och realtidsrankning med Vertex AI. Satte ihop hela stacken: frontend, backend, integrationer och AI-lager. Resultat: 180 konsulter matchas automatiskt. Driftkostnad 13 kr/konsult/månad. Manuell hantering borta.",
-      en: "Frontwalker's internal matching process ran on email, spreadsheets and gut feel. Every match took hours and caused misses. Peter designed and built the entire pipeline: email ingress, LLM parsing of assignment requirements, vector embeddings of consultant profiles and real-time ranking with Vertex AI. Assembled the full stack: frontend, backend, integrations and AI layer. Result: 180 consultants matched automatically. Operating cost 13 SEK/consultant/month. Manual handling eliminated.",
+      sv: "Frontwalkers interna matchningsprocess körde på mejl, Excel och magkänsla. Varje matchning tog timmar och ledde till missar. Peter designade och byggde hela kedjan: mejlintag, AI-tolkning av uppdragskrav, vektorrepresentationer av konsultprofiler och realtidsrankning med Vertex AI. Satte ihop hela stacken: frontend, backend, integrationer och AI-lager. Resultat: 180 konsulter matchas automatiskt. Manuell hantering borta.",
+      en: "Frontwalker's internal matching process ran on email, spreadsheets and gut feel. Every match took hours and caused misses. Peter designed and built the entire pipeline: email ingress, LLM parsing of assignment requirements, vector embeddings of consultant profiles and real-time ranking with Vertex AI. Assembled the full stack: frontend, backend, integrations and AI layer. Result: 180 consultants matched automatically. Manual handling eliminated.",
     },
     meta: [
       { l: "ROLE", v: "Tech lead · AI architect" },
       { l: "STACK", v: "React 19 · Convex · Vertex AI" },
-      { l: "RESULT", v: "180 consultants · 13 kr/mo" },
+      { l: "RESULT", v: "180 consultants · auto-matched" },
       { l: "YEAR", v: "2025–26" },
     ],
-    href: "https://huntermatcher.vercel.app/", hrefLabel: "huntermatcher.vercel.app",
+    href: "https://huntermatcher.frontwalker.se", hrefLabel: "huntermatcher.frontwalker.se",
   },
   {
     num: "/02",
     name: ["Kjorre"], italic: 0,
     tagline: { sv: "Kassasystem för föreningskiosker · Swish och kort, en kodbas.", en: "Point-of-sale for club kiosks · Swish and card payments, one codebase." },
     desc: {
-      sv: "Idrottsföreningar driver kiosker på ideell kraft, kassahantering, Swish-betalningar och bokföringsunderlag sköts manuellt. Peter byggde Kjorre från noll: QR-baserad självbetjäning, Swish- och Stripe-integration, kassaregister med journalkrav och en adminportal per förening. Multi-tenant från dag ett. Resultat: Föreningar tar betalt digitalt utan kassapersonal, med bokföringsunderlag genererat automatiskt.",
-      en: "Sports clubs run kiosks on volunteer effort, cash handling, Swish payments and bookkeeping are all manual. Peter built Kjorre from scratch: QR-based self-service, Swish and Stripe integration, a compliant cash-register journal and a per-club admin portal. Multi-tenant from day one. Result: Clubs take digital payments without staffing a till, with bookkeeping records generated automatically.",
+      sv: "Idrottsföreningar driver kiosker på ideell kraft, kassahantering, Swish-betalningar och bokföringsunderlag sköts manuellt. Peter byggde Kjorre från noll: QR-baserad självbetjäning, Swish- och Stripe-integration, kassaregister med journalkrav och en adminportal per förening. Multi-tenant från dag ett. Resultat: Föreningar tar betalt digitalt, med lageruppföljning, automatisk inköpslista och bokföringsunderlag genererat automatiskt.",
+      en: "Sports clubs run kiosks on volunteer effort, cash handling, Swish payments and bookkeeping are all manual. Peter built Kjorre from scratch: QR-based self-service, Swish and Stripe integration, a compliant cash-register journal and a per-club admin portal. Multi-tenant from day one. Result: Clubs take digital payments, with inventory tracking, automatic purchase lists and bookkeeping records generated automatically.",
     },
     meta: [
       { l: "ROLE", v: "Founding tech · architecture" },
@@ -133,8 +133,8 @@ const CASES = [
     name: ["Game Day", "DJ"], italic: 1,
     tagline: { sv: "Realtidsljud för amatörsport · stadionkänsla utan stadionbudget.", en: "Real-time arena sound for amateur sports · stadium energy, zero budget." },
     desc: {
-      sv: "Tränare och funktionärer vid amatörsportmatcher saknade enkel tillgång till stämningsskapande ljud: det som skiljer en riktig match från ett träningspass. Peter byggde en iOS-app med signalbaserad uppspelning och nedladdningsbara ljudpaket utan streamingberoenden under match. Satte ihop hela ljudbiblioteket och byggde systemet för livehändelser. Resultat: App live i App Store. Aktiv användarbas. Fungerar utan uppkoppling. Tränare använder den från dag ett.",
-      en: "Coaches and volunteers at amateur sports events had no easy access to crowd-energising audio: the thing that separates a real game from a training session. Peter built an iOS app with cue-based playback and offline-first audio packs with no streaming dependency during the game. Curated the entire sound library and built the live event trigger system. Result: App live on the App Store. Active user base. Works without connectivity. Coaches use it from day one.",
+      sv: "Tränare och funktionärer vid amatörsportmatcher saknade enkel tillgång till stämningsskapande ljud: det som skiljer en riktig match från ett träningspass. Peter byggde en iOS-app med uppspelning och nedladdningsbara ljudpaket utan streamingberoenden under match. Satte ihop hela ljudbiblioteket och byggde systemet för livehändelser. Resultat: App live i App Store. Fungerar utan uppkoppling.",
+      en: "Coaches and volunteers at amateur sports events had no easy access to crowd-energising audio: the thing that separates a real game from a training session. Peter built an iOS app with playback and offline-first audio packs with no streaming dependency during the game. Curated the entire sound library and built the live event trigger system. Result: App live on the App Store. Works without connectivity.",
     },
     meta: [
       { l: "ROLE", v: "Product · iOS · audio" },
@@ -149,8 +149,8 @@ const CASES = [
     name: ["Ralph", "Inferno"], italic: 1,
     tagline: { sv: "Autonom kodningsworkflow · bygger medan du sover.", en: "Autonomous coding workflow · builds while you sleep." },
     desc: {
-      sv: "Agentiska kodningsverktyg saknade tydliga kontrollpunkter och kollapsade på långa uppgifter. Ingen visste vad agenten egentligen gjort. Peter designade och byggde en AI-agnostisk orkestreringsmotor för autonom kodgenerering med explicita verifikationspunkter och full spårbarhet. Kommandoradsverktyg utan beroende av specifik AI-leverantör. Gjort reproducerbart och granskningsbart. Resultat: Öppen källkod med aktiv community. Byggd för långsiktiga autonoma kodningsflöden med kontroll inbyggd från dag ett.",
-      en: "Agentic coding tools lacked transparent safety gates and collapsed on long-horizon tasks. Nobody knew what the agent had actually done. Peter designed and built an LLM-agnostic orchestration engine for autonomous code generation with explicit verification gates and full traceability. CLI-first, no provider lock-in. Made it reproducible and auditable. Result: Open source with active community. Designed for long-horizon autonomous coding workflows with control and traceability built in from day one.",
+      sv: "Agentiska kodningsverktyg saknade tydliga kontrollpunkter och kollapsade på långa uppgifter. Ingen visste vad agenten egentligen gjort. Peter designade och byggde en AI-agnostisk orkestreringsmotor för autonom kodgenerering med explicita verifikationspunkter och full spårbarhet. Kommandoradsverktyg utan beroende av specifik AI-leverantör. Gjort reproducerbart och granskningsbart. Resultat: Öppen källkod. Byggd för långsiktiga autonoma kodningsflöden med kontroll inbyggd från dag ett.",
+      en: "Agentic coding tools lacked transparent safety gates and collapsed on long-horizon tasks. Nobody knew what the agent had actually done. Peter designed and built an LLM-agnostic orchestration engine for autonomous code generation with explicit verification gates and full traceability. CLI-first, no provider lock-in. Made it reproducible and auditable. Result: Open source. Designed for long-horizon autonomous coding workflows with control and traceability built in from day one.",
     },
     meta: [
       { l: "ROLE", v: "Creator · open source" },
@@ -162,11 +162,11 @@ const CASES = [
   },
   {
     num: "/05",
-    name: ["Iris", "Rapporter"], italic: 1,
-    tagline: { sv: "Automatiserad stiftelserapportering · lagstadgade rapporter utan manuellt arbete.", en: "Automated foundation reporting · statutory reports without manual effort." },
+    name: ["Lumen"], italic: 0,
+    tagline: { sv: "Automatiserad stiftelserapportering · rapporter utan manuellt arbete.", en: "Automated foundation reporting · reports without manual effort." },
     desc: {
-      sv: "Stiftelseförvaltare lägger hundratals timmar per år på att producera lagstadgade rapporter: kapitalförvaltning, avkastning, kontoprickning och kursuppdateringar, allt manuellt i kalkylark. Peter designade och byggde hela plattformen från noll: FastAPI-backend, React-frontend och integrationer mot Visma.NET ERP och Google Document AI för automatisk datainläsning och dokumenthantering. Kollegan ansvarade för det juridiska och finansiella regelverket. Resultat: Produktionsklar plattform i drift. Lagstadgade rapporter genereras automatiskt. Manuellt arbete ersatt av ett klick.",
-      en: "Foundation managers spend hundreds of hours per year producing statutory reports: capital management, yield analysis, account reconciliation and price updates, all manually in spreadsheets. Peter designed and built the entire platform from scratch: FastAPI backend, React frontend and integrations with Visma.NET ERP and Google Document AI for automated data ingestion and document processing. His colleague owned the legal and financial regulatory domain. Result: Production-ready platform in operation. Statutory reports generated automatically. Manual work replaced by a click.",
+      sv: "Stiftelseförvaltare lägger hundratals timmar per år på att producera rapporter: kapitalförvaltning, avkastning, kontoprickning och kursuppdateringar, allt manuellt i kalkylark. Peter designade och byggde hela plattformen från noll: FastAPI-backend, React-frontend och integrationer mot Visma.NET ERP och Google Document AI för automatisk datainläsning och dokumenthantering. Resultat: Produktionsklar plattform i drift. Rapporter genereras automatiskt. Manuellt arbete ersatt av ett klick.",
+      en: "Foundation managers spend hundreds of hours per year producing reports: capital management, yield analysis, account reconciliation and price updates, all manually in spreadsheets. Peter designed and built the entire platform from scratch: FastAPI backend, React frontend and integrations with Visma.NET ERP and Google Document AI for automated data ingestion and document processing. Result: Production-ready platform in operation. Reports generated automatically. Manual work replaced by a click.",
     },
     meta: [
       { l: "ROLE", v: "Tech lead · full-stack" },
@@ -242,8 +242,8 @@ const ROLES = [
     title: { sv: "AI-konsult & medgrundare", en: "AI Consultant & Co-founder" },
     tag: { sv: "Grundade HunterMatcher", en: "Co-founded HunterMatcher" },
     desc: {
-      sv: "Peter grundade Frontwalker AIDA AB tillsammans med moderbolaget, ett dedikerat erbjudande för att bygga AI-produkter och AI-tjänster. Byggde HunterMatcher och Iris Rapporter som de första leveranserna: ett internt matchningssystem och en plattform för automatiserad stiftelserapportering. Rollen la grunden för den bredare AI-omställningen av hela Frontwalker-koncernen.",
-      en: "Peter co-founded Frontwalker AIDA AB with the parent company, a dedicated offering to build AI products and services. Built HunterMatcher and Iris Rapporter as the first deliveries: an internal matching system and a platform for automated foundation reporting. The role laid the foundation for the broader AI transformation across the entire Frontwalker group.",
+      sv: "Peter grundade Frontwalker AIDA AB tillsammans med moderbolaget, ett dedikerat erbjudande för att bygga AI-produkter och AI-tjänster. Byggde HunterMatcher och Lumen som de första leveranserna: ett internt matchningssystem och en plattform för automatiserad stiftelserapportering. Rollen la grunden för den bredare AI-omställningen av hela Frontwalker-koncernen.",
+      en: "Peter co-founded Frontwalker AIDA AB with the parent company, a dedicated offering to build AI products and services. Built HunterMatcher and Lumen as the first deliveries: an internal matching system and a platform for automated foundation reporting. The role laid the foundation for the broader AI transformation across the entire Frontwalker group.",
     },
   },
   {
