@@ -30,7 +30,7 @@ const T = {
     stat2l: "Största teamet · Devoteam",
     stat3l: "Idéer → prod, varje gång",
     s02: "byggen",
-    casesHeadline: ["Åtta byggen. ", "En metod."],
+    casesHeadline: ["Nio byggen. ", "En metod."],
     casesIntro: "Projekt som visar hur Peter jobbar: tätt team, snabba beslut, idéer varje dag och stark dragning mot att leverera något verkligt på veckor, inte planera det i kvartal.",
     s03: "musikprojekt",
     musicHeadline: ["Vid sidan av: ", "musik."],
@@ -76,7 +76,7 @@ const T = {
     stat2l: "Largest team led · Devoteam",
     stat3l: "Ideas → prod, every time",
     s02: "builds",
-    casesHeadline: ["Eight builds. ", "One method."],
+    casesHeadline: ["Nine builds. ", "One method."],
     casesIntro: "Projects showing how Peter works: tight team, fast decisions, daily ideas and a strong bias toward shipping something real in weeks, not planning it in quarters.",
     s03: "music projects",
     musicHeadline: ["On the side: ", "music."],
@@ -223,6 +223,22 @@ const CASES = [
       { l: "YEAR", v: "2026" },
     ],
     href: null, hrefLabel: null,
+  },
+  {
+    num: "/09",
+    name: ["Synapse"], italic: 0,
+    tagline: { sv: "LLM-agnostisk kodningsagent i ren bash · vilken modell som helst blir en agent.", en: "LLM-agnostic coding agent in pure bash · turn any model into an agent." },
+    desc: {
+      sv: "Agentiska kodningsverktyg är låsta till en leverantör. Peter byggde Synapse: en agent i ren bash som gör vilken LLM som helst till ett Claude-Code-liknande verktyg. En keyword-router väljer modell per uppgift, dual-mode tool-calling (native för Anthropic/OpenAI/Google, JSON-proxy för svagare modeller) över sju leverantörer, och ett verktygsbibliotek (fil, git, web, sub-agenter) bakom en scope- och kommando-gate. Öppen källkod under MIT.",
+      en: "Agentic coding tools are locked to a single provider. Peter built Synapse: an agent in pure bash that turns any LLM into a Claude-Code-style tool. A keyword router selects the model per task, dual-mode tool-calling (native for Anthropic/OpenAI/Google, JSON-proxy for weaker models) across seven providers, and a tool library (file, git, web, sub-agents) behind a scope and command gate. Open source under MIT.",
+    },
+    meta: [
+      { l: "ROLE", v: "Creator · open source" },
+      { l: "STACK", v: "Bash · curl · jq · multi-LLM" },
+      { l: "SECTOR", v: "Developer tooling · agents" },
+      { l: "YEAR", v: "2026" },
+    ],
+    href: "https://github.com/sandstream/synapse", hrefLabel: "github.com/sandstream/synapse",
   },
 ];
 
