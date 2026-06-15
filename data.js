@@ -206,7 +206,7 @@ const CASES = [
       { l: "SECTOR", v: "DevSecOps · AI tooling" },
       { l: "YEAR", v: "2025–26" },
     ],
-    href: "/kit", hrefLabel: "sandstre.am/kit",
+    href: "/kit", hrefLabel: "www.sandstre.am/kit",
   },
   {
     num: "/08",
