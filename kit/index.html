@@ -325,11 +325,12 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent">v1.0.1</span>
+      <span class="pill accent">v1.1.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">SLSA provenance</span>
       <span class="pill">12 vault backends</span>
+      <span class="pill">Local-first memory</span>
       <span class="pill">Zero telemetry</span>
     </div>
   </section>
@@ -399,6 +400,24 @@
   </section>
 
   <section>
+    <h2>Memory</h2>
+    <p>
+      <strong>Memory is the moat.</strong> The model is becoming a commodity; the system around it
+      is not. <code>kit memory</code> gives a (swappable) model a <strong>verifiable second brain</strong>:
+      it stores your raw conversation history and searches it <em>before</em> answering, so it pulls
+      receipts instead of guessing. SQLite + FTS5, two hooks, no vectors, no model calls.
+    </p>
+    <p>
+      A <strong>personal</strong> tier stays private, with an encrypted backup so a stolen laptop does
+      not lose your context. A curated, area-organized <strong>shared</strong> tier travels with the repo
+      and is reviewed like code. <a href="https://github.com/sandstream/kit/blob/main/docs/MEMORY.md">Read the guide.</a>
+    </p>
+    <pre class="code"><span class="c"># index your history, then search it before you answer</span>
+$ kit memory install &amp;&amp; kit memory index
+$ kit memory search "what did we decide about X"</pre>
+  </section>
+
+  <section>
     <h2>Where kit fits</h2>
     <p>
       The agent stack has layers. kit sits at the <strong>governance</strong> floor —
@@ -407,7 +426,7 @@
     </p>
     <div class="stack">
       <div class="layer"><span class="lv">L6</span><span class="ln">Product</span><span class="lx">your apps &amp; services</span></div>
-      <div class="layer kit"><span class="lv">L5</span><span class="ln">Governance · kit</span><span class="lx">setup · vaults · supply-chain · elevation · policy</span></div>
+      <div class="layer kit"><span class="lv">L5</span><span class="ln">Governance · kit</span><span class="lx">setup · vaults · supply-chain · elevation · policy · memory</span></div>
       <div class="layer"><span class="lv">L4</span><span class="ln">Orchestration</span><span class="lx"><a href="https://github.com/gastownhall/gastown">gastown</a> · <a href="https://github.com/ruvnet/ruflo">ruflo</a> · multi-agent runners</span></div>
       <div class="layer"><span class="lv">L3</span><span class="ln">Integration</span><span class="lx"><a href="https://modelcontextprotocol.io">MCP</a> servers &amp; tools</span></div>
       <div class="layer"><span class="lv">L2</span><span class="ln">Harness</span><span class="lx"><a href="https://www.anthropic.com/product/claude-code">Claude Code</a> · <a href="https://openai.com/codex/">Codex</a> · <a href="https://cursor.com">Cursor</a> · <a href="https://aider.chat/">Aider</a> · <a href="https://pi.dev/">pi.dev</a></span></div>
