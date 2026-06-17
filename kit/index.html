@@ -325,7 +325,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent">v1.1.0</span>
+      <span class="pill accent">v1.3.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">SLSA provenance</span>
@@ -406,6 +406,9 @@
       is not. <code>kit memory</code> gives a (swappable) model a <strong>verifiable second brain</strong>:
       it stores your raw conversation history and searches it <em>before</em> answering, so it pulls
       receipts instead of guessing. SQLite + FTS5, two hooks, no vectors, no model calls.
+      It indexes transcripts from <strong>seven</strong> coding agents (Claude Code, Codex, Gemini,
+      Continue, Cursor, Amazon Q and Cline), each parsed against the agent's own serialization
+      format, never guessed.
     </p>
     <p>
       A <strong>personal</strong> tier stays private, with an encrypted backup so a stolen laptop does
@@ -414,13 +417,15 @@
     </p>
     <pre class="code"><span class="c"># index your history, then search it before you answer</span>
 $ kit memory install &amp;&amp; kit memory index
-$ kit memory search "what did we decide about X"</pre>
+$ kit memory search "what did we decide about X"
+<span class="c"># zero-LLM core: pipe a review prompt to YOUR own model</span>
+$ kit memory suggest | your-llm</pre>
   </section>
 
   <section>
     <h2>Where kit fits</h2>
     <p>
-      The agent stack has layers. kit sits at the <strong>governance</strong> floor —
+      The agent stack has layers. kit sits at the <strong>governance</strong> floor,
       deterministic, local-first, model-agnostic. Everything above stays swappable;
       the security-critical setup underneath doesn't move.
     </p>
@@ -437,7 +442,7 @@ $ kit memory search "what did we decide about X"</pre>
   <section>
     <h2>Integrations</h2>
     <p>
-      kit's modules are pluggable — this is where it meets the outside world while
+      kit's modules are pluggable, this is where it meets the outside world while
       the core stays deterministic. Secrets resolve from <strong>12 vault backends</strong>;
       services and deploy targets provision through first-class adapters / plugins.
     </p>
