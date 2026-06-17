@@ -579,6 +579,15 @@ $ pnpm dev</pre>
         <pre class="code" style="margin-top:12px;font-size:13px;"><span class="k">git</span> clone github.com/<wbr>sandstream/kit</pre>
       </div>
     </div>
+    <p style="margin-top:16px;">
+      <strong>Prereqs:</strong> Node 22+, git, and <a href="https://mise.jdx.dev">mise</a> for installing
+      tools (<code>brew install mise</code>). The one-shot <code>npx</code> path needs no global install.
+    </p>
+    <pre class="code"><span class="c"># then, in a repo</span>
+$ kit init      <span class="c"># detect stack → .kit.toml</span>
+$ kit check     <span class="c"># what's set up vs missing</span>
+$ kit setup     <span class="c"># install tools, hooks, logins, secrets</span>
+$ kit context check  <span class="c"># lock each CLI to the right account + project</span></pre>
   </section>
 
   <section>
