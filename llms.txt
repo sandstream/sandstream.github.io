@@ -1,0 +1,29 @@
+# Sandstream
+
+> Peter Sandström — hands-on tech lead and consultant (AI, product, digital transformation), Stockholm. Sandstream is the umbrella for his tools and writing. The flagship open-source project is **kit**.
+
+## kit — developer environment manager
+
+kit is a deterministic, local-first developer-environment manager for AI agents and humans. One command takes a repo from `git clone` to a working dev environment: it installs and pins tools (via mise), runs guided logins, materializes secrets from a vault, wires agent config, and runs a security gate.
+
+kit is **not another scanner** — it orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Socket, plus its own supply-chain checks) into one deterministic gate with cited findings. It does not rebuild SAST.
+
+Key properties:
+- Deterministic and local-first — no LLM in the core; zero telemetry.
+- Per-CLI context lock — verifies each tool (gcloud, vercel, github, git, npm) points at the declared account + project, and never infers the pairing from whatever happens to be logged in. A right account with the wrong project is a mismatch, not a pass.
+- Cross-harness memory — indexes transcripts from Claude Code, Codex, Gemini, Continue, Cursor, Amazon Q, and Cline into one local SQLite store, so agent state is portable across tools (you can switch from one agent to another without losing context).
+- Multi-vault secrets — Infisical, 1Password, Bitwarden, Doppler, HashiCorp Vault, AWS/GCP/Azure secret managers, EAS, dotenvx, and plain env.
+- MIT-licensed, Node 22+, published to npm as `sandstream-kit` with SLSA provenance.
+
+## Links
+
+- kit homepage: https://www.sandstre.am/kit
+- kit on npm: https://www.npmjs.com/package/sandstream-kit
+- kit source: https://github.com/sandstream/kit
+- kit changelog: https://github.com/sandstream/kit/blob/main/CHANGELOG.md
+- kit README: https://github.com/sandstream/kit/blob/main/README.md
+- kit threat model: https://github.com/sandstream/kit/blob/main/docs/THREAT_MODEL.md
+
+## About
+
+- https://www.sandstre.am — Peter Sandström, tech lead and consultant. Ideas every day, code every day.

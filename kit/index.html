@@ -10,6 +10,30 @@
 <meta property="og:description" content="Deterministic. Local-first. Multi-vault. One command from git clone to working dev environment.">
 <meta property="og:url" content="https://www.sandstre.am/kit">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Sandstream">
+<link rel="canonical" href="https://www.sandstre.am/kit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kit · developer kit">
+<meta name="twitter:description" content="Deterministic. Local-first. Multi-vault. One command from git clone to a working dev environment. For AI agents and humans.">
+<link rel="icon" href="/assets/mark-favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "kit",
+  "alternateName": "sandstream-kit",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "macOS, Linux",
+  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, and cross-harness memory.",
+  "url": "https://www.sandstre.am/kit",
+  "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
+  "softwareVersion": "1.4.2",
+  "license": "https://opensource.org/licenses/MIT",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Peter Sandström", "url": "https://www.sandstre.am" }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -325,7 +349,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent">v1.3.0</span>
+      <span class="pill accent" id="version-pill">v1.4.2</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">SLSA provenance</span>
@@ -658,6 +682,30 @@ $ kit context check  <span class="c"># lock each CLI to the right account + proj
     </div>
   </section>
 
+  <section>
+    <h2>FAQ</h2>
+    <h3>What is kit?</h3>
+    <p>kit is a deterministic, local-first developer-environment manager for AI agents and humans. One command takes a repo from <code>git clone</code> to a working dev environment: it installs and pins tools, runs guided logins, materializes secrets from your vault, and wires agent config.</p>
+    <h3>Does kit replace Semgrep, Snyk, or Trivy?</h3>
+    <p>No — kit is not another scanner. It orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Socket, plus its own supply-chain checks) into one deterministic gate with cited findings. It does not rebuild SAST.</p>
+    <h3>How is kit agent-native?</h3>
+    <p>The core is deterministic and local — no LLM. kit externalizes agent state: a cross-harness memory store (Claude Code, Codex, Gemini, Cursor, …) and a per-CLI context lock that verifies each tool points at the right account and project, so you can switch agents without losing context or contaminating environments.</p>
+    <h3>Is kit free and open source?</h3>
+    <p>Yes. kit is MIT-licensed, published to npm as <code>sandstream-kit</code> with SLSA provenance, requires Node 22+, and sends zero telemetry.</p>
+  </section>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is kit?", "acceptedAnswer": { "@type": "Answer", "text": "kit is a deterministic, local-first developer-environment manager for AI agents and humans. One command takes a repo from git clone to a working dev environment: it installs and pins tools, runs guided logins, materializes secrets from your vault, and wires agent config." } },
+      { "@type": "Question", "name": "Does kit replace Semgrep, Snyk, or Trivy?", "acceptedAnswer": { "@type": "Answer", "text": "No. kit is not another scanner. It orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Socket, plus its own supply-chain checks) into one deterministic gate with cited findings. It does not rebuild SAST." } },
+      { "@type": "Question", "name": "How is kit agent-native?", "acceptedAnswer": { "@type": "Answer", "text": "The core is deterministic and local, with no LLM. kit externalizes agent state: a cross-harness memory store (Claude Code, Codex, Gemini, Cursor, and more) and a per-CLI context lock that verifies each tool points at the right account and project, so you can switch agents without losing context or contaminating environments." } },
+      { "@type": "Question", "name": "Is kit free and open source?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. kit is MIT-licensed, published to npm as sandstream-kit with SLSA provenance, requires Node 22+, and sends zero telemetry." } }
+    ]
+  }
+  </script>
+
   <footer>
     <div class="links">
       <a href="https://github.com/sandstream/kit">github</a>
@@ -685,6 +733,18 @@ $ kit context check  <span class="c"># lock each CLI to the right account + proj
       }, 1500);
     });
   }
+
+  // Keep the version pill in sync with the published npm release (no drift).
+  // Fails open: the hardcoded fallback above stays if the fetch is blocked.
+  fetch('https://registry.npmjs.org/sandstream-kit/latest')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((d) => {
+      if (d && d.version) {
+        const el = document.getElementById('version-pill');
+        if (el) el.textContent = 'v' + d.version;
+      }
+    })
+    .catch(() => { /* offline / blocked — keep fallback */ });
 </script>
 
 </body>
