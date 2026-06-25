@@ -27,7 +27,7 @@
   "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, and cross-harness memory.",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "1.5.0",
+  "softwareVersion": "1.31.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -349,7 +349,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v1.5.0</span>
+      <span class="pill accent" id="version-pill">v1.31.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">SLSA provenance</span>
@@ -449,7 +449,7 @@ $ kit memory suggest | your-llm</pre>
   <section>
     <h2>Not another scanner</h2>
     <p>
-      You already have Semgrep, Snyk, Trivy, Socket. kit does not compete with them: it
+      You already have Semgrep, Snyk, Trivy, Grype. kit does not compete with them: it
       runs them, folds in their findings, and adds the layer they lack. One command from
       git clone to a working, secret-safe environment, and the single deterministic gate
       your agent runs before it acts. Zero LLM, local-first, no telemetry. Use kit with
@@ -487,7 +487,7 @@ $ kit hooks add context-check</pre>
     </p>
     <div class="stack">
       <div class="layer"><span class="lv">L6</span><span class="ln">Product</span><span class="lx">your apps &amp; services</span></div>
-      <div class="layer kit"><span class="lv">L5</span><span class="ln">Governance · kit</span><span class="lx">setup · vaults · supply-chain · elevation · policy · memory</span></div>
+      <div class="layer kit"><span class="lv">L5</span><span class="ln">Governance · kit</span><span class="lx">setup · vaults · scan · supply-chain · sentinel · provenance · elevation · policy · memory</span></div>
       <div class="layer"><span class="lv">L4</span><span class="ln">Orchestration</span><span class="lx"><a href="https://github.com/gastownhall/gastown">gastown</a> · <a href="https://github.com/ruvnet/ruflo">ruflo</a> · multi-agent runners</span></div>
       <div class="layer"><span class="lv">L3</span><span class="ln">Integration</span><span class="lx"><a href="https://modelcontextprotocol.io">MCP</a> servers &amp; tools</span></div>
       <div class="layer"><span class="lv">L2</span><span class="ln">Harness</span><span class="lx"><a href="https://www.anthropic.com/product/claude-code">Claude Code</a> · <a href="https://openai.com/codex/">Codex</a> · <a href="https://cursor.com">Cursor</a> · <a href="https://aider.chat/">Aider</a> · <a href="https://pi.dev/">pi.dev</a></span></div>
@@ -687,7 +687,7 @@ $ kit context check  <span class="c"># lock each CLI to the right account + proj
     <h3>What is kit?</h3>
     <p>kit is a deterministic, local-first developer-environment manager for AI agents and humans. One command takes a repo from <code>git clone</code> to a working dev environment: it installs and pins tools, runs guided logins, materializes secrets from your vault, and wires agent config.</p>
     <h3>Does kit replace Semgrep, Snyk, or Trivy?</h3>
-    <p>No — kit is not another scanner. It orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Socket, plus its own supply-chain checks) into one deterministic gate with cited findings. It does not rebuild SAST.</p>
+    <p>No — kit is not another scanner. It orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Grype, osv-scanner, plus GuardDog malware detection and its own supply-chain checks) into one deterministic gate with cited findings. Cloud-only tools like Socket that can't run air-gapped surface as an honest skip, never a false green. It does not rebuild SAST.</p>
     <h3>How is kit agent-native?</h3>
     <p>The core is deterministic and local — no LLM. kit externalizes agent state: a cross-harness memory store (Claude Code, Codex, Gemini, Cursor, …) and a per-CLI context lock that verifies each tool points at the right account and project, so you can switch agents without losing context or contaminating environments.</p>
     <h3>Is kit free and open source?</h3>
@@ -699,7 +699,7 @@ $ kit context check  <span class="c"># lock each CLI to the right account + proj
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "What is kit?", "acceptedAnswer": { "@type": "Answer", "text": "kit is a deterministic, local-first developer-environment manager for AI agents and humans. One command takes a repo from git clone to a working dev environment: it installs and pins tools, runs guided logins, materializes secrets from your vault, and wires agent config." } },
-      { "@type": "Question", "name": "Does kit replace Semgrep, Snyk, or Trivy?", "acceptedAnswer": { "@type": "Answer", "text": "No. kit is not another scanner. It orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Socket, plus its own supply-chain checks) into one deterministic gate with cited findings. It does not rebuild SAST." } },
+      { "@type": "Question", "name": "Does kit replace Semgrep, Snyk, or Trivy?", "acceptedAnswer": { "@type": "Answer", "text": "No. kit is not another scanner. It orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Grype, osv-scanner, plus GuardDog malware detection and its own supply-chain checks) into one deterministic gate with cited findings. Cloud-only tools like Socket that can't run air-gapped surface as an honest skip, never a false green. It does not rebuild SAST." } },
       { "@type": "Question", "name": "How is kit agent-native?", "acceptedAnswer": { "@type": "Answer", "text": "The core is deterministic and local, with no LLM. kit externalizes agent state: a cross-harness memory store (Claude Code, Codex, Gemini, Cursor, and more) and a per-CLI context lock that verifies each tool points at the right account and project, so you can switch agents without losing context or contaminating environments." } },
       { "@type": "Question", "name": "Is kit free and open source?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. kit is MIT-licensed, published to npm as sandstream-kit with SLSA provenance, requires Node 22+, and sends zero telemetry." } }
     ]
