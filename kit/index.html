@@ -24,10 +24,10 @@
   "alternateName": "sandstream-kit",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "macOS, Linux",
-  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, and cross-harness memory.",
+  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, and cross-harness memory. The governance floor you can prove (signed attestation, scanner-health gate, provable air-gap) and build on (frozen, versioned CLI, config, and SDK contracts).",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "1.31.0",
+  "softwareVersion": "2.0.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -336,7 +336,9 @@
     <p class="tagline">
       <strong>Developer kit</strong> for AI agents and humans.
       One command from <code>git clone</code> to working dev environment.
-      <strong>Deterministic</strong>, local-first, multi-vault.
+      <strong>Deterministic</strong>, local-first, multi-vault: the governance floor
+      you can <strong>prove</strong> and build on. Green is provable, and kit's CLI,
+      config, and SDK are frozen, versioned contracts.
     </p>
 
     <div class="install-block">
@@ -349,13 +351,16 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v1.31.0</span>
+      <span class="pill accent" id="version-pill">v2.0.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">SLSA provenance</span>
       <span class="pill">12 vault backends</span>
       <span class="pill">Local-first memory</span>
       <span class="pill">Zero telemetry</span>
+      <span class="pill accent">Provable green</span>
+      <span class="pill accent">ASVS L2 evidence map</span>
+      <span class="pill accent">Frozen 2.x contracts</span>
     </div>
   </section>
 
@@ -424,6 +429,33 @@
   </section>
 
   <section>
+    <h2>kit 2.0: prove it, then freeze it</h2>
+    <p>
+      2.0 makes kit's two promises real. <strong>green = honest</strong> stops being a
+      claim and becomes externally <strong>provable</strong>, and kit's public surfaces
+      become <strong>frozen, versioned contracts</strong>. Same deterministic, local-first,
+      model-agnostic floor, now one you can prove and build on.
+    </p>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="num">[provable green]</div>
+        <h3>Provable green</h3>
+        <p>A crashed or missing scanner can no longer exit 0: the scanner-health gate scores scanner health, not just findings. <code>kit airgap verify</code> proves every scanner resolves to a local artifact, with registry egress refused in both scan paths (local rulesets only). An external HMAC-anchored audit chain plus a signed <code>kit check --attest</code> receipt record which scanners actually ran and that none failed open, verifiable offline. Honest limit: the anchor key is machine-local, so this is not tamper-proof against a same-UID principal; it raises forgery from anyone who can write the log to someone who can read a 0600 key.</p>
+      </div>
+      <div class="card">
+        <div class="num">[frozen contracts]</div>
+        <h3>Frozen contracts</h3>
+        <p>Versioned <code>.kit.toml</code> with deterministic <code>kit config migrate</code> (dry-run by default, auto-backup, restore-on-failure). Every command carries a stability tier, the adapter SDK is frozen at <code>adapter-sdk@1.0</code> on its own semver track, and a committed public-surface snapshot has a drift test that fails CI on any unreviewed change. The CLI, config schema, and plugin SDK will not break across 2.x.</p>
+      </div>
+      <div class="card">
+        <div class="num">[evidence map]</div>
+        <h3>Evidence map, not compliance</h3>
+        <p><code>kit coverage</code> maps kit's deterministic checks to OWASP ASVS 4.0.3 L2, bucketing each control as auto-verified, gap, manual, or n-a. It is explicitly an <strong>evidence map, not a compliance attestation</strong>: it never claims "compliant". The point is to be the deterministic evidence source a GRC tool consumes (<code>--json</code>), not a worse one.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <h2>Memory</h2>
     <p>
       <strong>Memory is the moat.</strong> The model is becoming a commodity; the system around it
@@ -455,6 +487,12 @@ $ kit memory suggest | your-llm</pre>
       your agent runs before it acts. Zero LLM, local-first, no telemetry. Use kit with
       your scanners, not instead of them.
     </p>
+    <p>
+      And in 2.0 it <strong>proves</strong> it ran them: a crashed or missing scanner fails
+      the gate instead of passing green, a signed <code>kit check --attest</code> receipt
+      records which scanners actually ran, and <code>kit coverage</code> maps that to OWASP
+      ASVS L2 as an evidence map (an evidence source for a GRC tool, never a compliance claim).
+    </p>
   </section>
 
   <section>
@@ -483,11 +521,13 @@ $ kit hooks add context-check</pre>
     <p>
       The agent stack has layers. kit sits at the <strong>governance</strong> floor,
       deterministic, local-first, model-agnostic. Everything above stays swappable;
-      the security-critical setup underneath doesn't move.
+      the security-critical setup underneath doesn't move, and in 2.0 it is a floor
+      you can prove (signed attestation, scanner-health gate) and build on (frozen,
+      versioned contracts).
     </p>
     <div class="stack">
       <div class="layer"><span class="lv">L6</span><span class="ln">Product</span><span class="lx">your apps &amp; services</span></div>
-      <div class="layer kit"><span class="lv">L5</span><span class="ln">Governance · kit</span><span class="lx">setup · vaults · scan · supply-chain · sentinel · provenance · elevation · policy · memory</span></div>
+      <div class="layer kit"><span class="lv">L5</span><span class="ln">Governance · kit</span><span class="lx">setup · vaults · scan · supply-chain · sentinel · provenance · attest · coverage · elevation · policy · memory</span></div>
       <div class="layer"><span class="lv">L4</span><span class="ln">Orchestration</span><span class="lx"><a href="https://github.com/gastownhall/gastown">gastown</a> · <a href="https://github.com/ruvnet/ruflo">ruflo</a> · multi-agent runners</span></div>
       <div class="layer"><span class="lv">L3</span><span class="ln">Integration</span><span class="lx"><a href="https://modelcontextprotocol.io">MCP</a> servers &amp; tools</span></div>
       <div class="layer"><span class="lv">L2</span><span class="ln">Harness</span><span class="lx"><a href="https://www.anthropic.com/product/claude-code">Claude Code</a> · <a href="https://openai.com/codex/">Codex</a> · <a href="https://cursor.com">Cursor</a> · <a href="https://aider.chat/">Aider</a> · <a href="https://pi.dev/">pi.dev</a></span></div>
@@ -563,6 +603,31 @@ $ kit hooks add context-check</pre>
       <tr>
         <td>Elevation gate for destructive ops</td>
         <td class="yes">TOTP + TTL</td>
+        <td class="no">none</td>
+      </tr>
+      <tr>
+        <td>Crashed / missing scanner</td>
+        <td class="yes">fails the gate</td>
+        <td class="no">findings-only (false green)</td>
+      </tr>
+      <tr>
+        <td>Signed check attestation</td>
+        <td class="yes">opt-in, HMAC-anchored</td>
+        <td class="no">none</td>
+      </tr>
+      <tr>
+        <td>Provable air-gap</td>
+        <td class="yes">kit airgap verify</td>
+        <td class="no">no</td>
+      </tr>
+      <tr>
+        <td>OWASP ASVS L2 evidence map</td>
+        <td class="yes">kit coverage</td>
+        <td class="no">none</td>
+      </tr>
+      <tr>
+        <td>Public-surface stability contract</td>
+        <td class="yes">frozen across 2.x</td>
         <td class="no">none</td>
       </tr>
     </table>
