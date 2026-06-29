@@ -424,7 +424,7 @@
       <div class="card">
         <div class="num">[07]</div>
         <h3>Agent setup</h3>
-        <p><code>kit agent-config</code> writes a managed "use kit" block into the agent's rules file, <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> / <code>.clinerules</code> / OpenCode, so agents run <code>kit check</code>, triage before installs, and vault their secrets. The <code>--install-gate</code> wires a fail-closed pre-tool gate that blocks an un-triaged install across <strong>7 agents</strong> (Claude Code, Codex, Amazon Q, Gemini CLI, Cursor, OpenCode, Cline). Idempotent, edit outside the markers freely.</p>
+        <p><code>kit agent-config</code> writes a managed "use kit" block into the agent's rules file, <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> / <code>.clinerules</code> (OpenCode reads the shared <code>AGENTS.md</code>), so agents run <code>kit check</code>, triage before installs, and vault their secrets. The <code>--install-gate</code> wires a fail-closed pre-tool gate that blocks an un-triaged install across <strong>7 agents</strong> (Claude Code, Codex, Amazon Q, Gemini CLI, Cursor, OpenCode, Cline). Idempotent, edit outside the markers freely.</p>
       </div>
     </div>
   </section>
@@ -684,7 +684,7 @@ $ pnpm dev</pre>
 
   <section>
     <h2>Get it</h2>
-    <div class="grid-3 grid">
+    <div class="grid">
       <div class="card">
         <h3>One-shot</h3>
         <pre class="code" style="margin-top:12px;font-size:13px;"><span class="k">npx</span> sandstream-kit setup</pre>
@@ -694,6 +694,10 @@ $ pnpm dev</pre>
         <pre class="code" style="margin-top:12px;font-size:13px;"><span class="k">npm</span> i -g sandstream-kit</pre>
       </div>
       <div class="card">
+        <h3>Docker</h3>
+        <pre class="code" style="margin-top:12px;font-size:13px;"><span class="k">docker</span> run --rm -v "$PWD":/work <wbr>-w /work sandstream/kit check</pre>
+      </div>
+      <div class="card">
         <h3>Source</h3>
         <pre class="code" style="margin-top:12px;font-size:13px;"><span class="k">git</span> clone github.com/<wbr>sandstream/kit</pre>
       </div>
@@ -701,8 +705,13 @@ $ pnpm dev</pre>
     <p style="margin-top:16px;">
       <strong>Prereqs:</strong> Node 22+, git, and <a href="https://mise.jdx.dev">mise</a> for installing
       tools (<code>brew install mise</code> on macOS, or <code>curl https://mise.run | sh</code> on Linux / Windows).
-      The one-shot <code>npx</code> path needs no global install.
+      The one-shot <code>npx</code> path needs no global install. The Docker image is a
+      signed, multi-arch OCI image (version + <code>latest</code> tags) — verify it before you trust it:
     </p>
+    <pre class="code"><span class="c"># every release is keyless-signed (cosign) + ships a CycloneDX SBOM</span>
+$ cosign verify sandstream/kit:latest \
+    --certificate-identity-regexp <span class="v">'https://github.com/sandstream/kit/\.github/workflows/docker-build\.yml@.*'</span> \
+    --certificate-oidc-issuer <span class="v">https://token.actions.githubusercontent.com</span></pre>
     <pre class="code"><span class="c"># then, in a repo</span>
 $ kit init      <span class="c"># detect stack → .kit.toml</span>
 $ kit check     <span class="c"># what's set up vs missing</span>
