@@ -356,7 +356,7 @@
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
       <span class="pill">SLSA provenance</span>
-      <span class="pill">12 vault backends</span>
+      <span class="pill">12 secret backends · 8 vaults</span>
       <span class="pill">Local-first memory · 8 agents</span>
       <span class="pill">Zero telemetry</span>
       <span class="pill accent">Provable green</span>
@@ -399,7 +399,7 @@
       <div class="card">
         <div class="num">[02]</div>
         <h3>Vaults</h3>
-        <p>12 secret backends: 1Password, Infisical, Vault, AWS Secrets Manager, GCP Secret Manager, Azure Key Vault, Doppler, Bitwarden, dotenvx, EAS, config, env. Migrate plaintext → vault, propagate to deploy targets, rotate without dashboard clicks.</p>
+        <p>12 secret backends resolve end to end. 8 are writable vaults — 1Password, Infisical, Vault, AWS Secrets Manager, GCP Secret Manager, Azure Key Vault, Doppler, dotenvx — that also migrate plaintext → vault, propagate to deploy targets, and rotate without dashboard clicks. The other four (Bitwarden, EAS, config, env) resolve read-only.</p>
       </div>
       <div class="card">
         <div class="num">[03]</div>
@@ -488,7 +488,7 @@
       <strong>Memory is the moat.</strong> The model is becoming a commodity; the system around it
       is not. <code>kit memory</code> gives a (swappable) model a <strong>verifiable second brain</strong>:
       it stores your raw conversation history and searches it <em>before</em> answering, so it pulls
-      receipts instead of guessing. SQLite + FTS5, two hooks, no vectors, no model calls.
+      receipts instead of guessing. SQLite + FTS5, three hooks, no vectors, no model calls.
       It indexes transcripts from <strong>eight</strong> coding agents (Claude Code, Codex, Gemini,
       Continue, Cursor, Amazon Q, Cline and OpenCode), each parsed against the agent's own
       serialization format, never guessed.
@@ -568,10 +568,11 @@ $ kit hooks add context-check</pre>
     <h2>Integrations</h2>
     <p>
       kit's modules are pluggable, this is where it meets the outside world while
-      the core stays deterministic. Secrets resolve from <strong>12 vault backends</strong>;
-      services and deploy targets provision through first-class adapters / plugins.
+      the core stays deterministic. Secrets resolve from <strong>12 secret backends</strong>
+      (8 writable vaults + read-only sources); services and deploy targets provision
+      through first-class adapters / plugins.
     </p>
-    <p><strong>Vaults:</strong> <a href="https://1password.com">1Password</a> · <a href="https://infisical.com">Infisical</a> · <a href="https://www.vaultproject.io">HashiCorp Vault</a> · <a href="https://aws.amazon.com/secrets-manager/">AWS Secrets Manager</a> · <a href="https://cloud.google.com/secret-manager">GCP Secret Manager</a> · <a href="https://azure.microsoft.com/products/key-vault">Azure Key Vault</a> · <a href="https://www.doppler.com">Doppler</a> · <a href="https://bitwarden.com">Bitwarden</a> · <a href="https://dotenvx.com">dotenvx</a> · <a href="https://expo.dev/eas">EAS</a> · config · env</p>
+    <p><strong>Writable vaults:</strong> <a href="https://1password.com">1Password</a> · <a href="https://infisical.com">Infisical</a> · <a href="https://www.vaultproject.io">HashiCorp Vault</a> · <a href="https://aws.amazon.com/secrets-manager/">AWS Secrets Manager</a> · <a href="https://cloud.google.com/secret-manager">GCP Secret Manager</a> · <a href="https://azure.microsoft.com/products/key-vault">Azure Key Vault</a> · <a href="https://www.doppler.com">Doppler</a> · <a href="https://dotenvx.com">dotenvx</a><br><strong>Read-only sources:</strong> <a href="https://bitwarden.com">Bitwarden</a> · <a href="https://expo.dev/eas">EAS</a> · config · env</p>
     <p><strong>Services &amp; deploy:</strong> <a href="https://stripe.com">Stripe</a> · <a href="https://supabase.com">Supabase</a> · <a href="https://clerk.com">Clerk</a> · <a href="https://vercel.com">Vercel</a> · <a href="https://neon.tech">Neon</a> · <a href="https://planetscale.com">PlanetScale</a> · <a href="https://upstash.com">Upstash</a> · <a href="https://www.cloudflare.com">Cloudflare</a> · <a href="https://fly.io">Fly.io</a> · <a href="https://railway.com">Railway</a> · <a href="https://sentry.io">Sentry</a> · <a href="https://resend.com">Resend</a> · <a href="https://loops.so">Loops</a> · <a href="https://posthog.com">PostHog</a> · <a href="https://www.tinybird.co">Tinybird</a> · <a href="https://www.inngest.com">Inngest</a> · <a href="https://trigger.dev">Trigger.dev</a> · <a href="https://liveblocks.io">Liveblocks</a> · <a href="https://www.flagsmith.com">Flagsmith</a> · <a href="https://expo.dev">Expo EAS</a> · <a href="https://docs.searxng.org">SearXNG</a> · <a href="https://github.com">GitHub</a> · <a href="https://snyk.io">Snyk</a> · <a href="https://www.wiz.io">Wiz</a></p>
   </section>
 
@@ -699,7 +700,8 @@ $ pnpm dev</pre>
     </div>
     <p style="margin-top:16px;">
       <strong>Prereqs:</strong> Node 22+, git, and <a href="https://mise.jdx.dev">mise</a> for installing
-      tools (<code>brew install mise</code>). The one-shot <code>npx</code> path needs no global install.
+      tools (<code>brew install mise</code> on macOS, or <code>curl https://mise.run | sh</code> on Linux / Windows).
+      The one-shot <code>npx</code> path needs no global install.
     </p>
     <pre class="code"><span class="c"># then, in a repo</span>
 $ kit init      <span class="c"># detect stack → .kit.toml</span>
