@@ -6,7 +6,7 @@
 
 kit is a deterministic, local-first developer-environment manager for AI agents and humans. One command takes a repo from `git clone` to a working dev environment: it installs and pins tools (via mise), runs guided logins, materializes secrets from a vault, wires agent config, and runs a security gate. Runs on macOS, Linux, and natively on Windows. Current release: 2.2.0.
 
-kit is **not another scanner** — it orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Grype, osv-scanner, plus GuardDog malware detection and its own supply-chain checks) into one deterministic gate with cited findings. Cloud-only tools that can't run air-gapped surface as an honest skip, never a false green. It does not rebuild SAST.
+kit is **not another scanner** — it orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Grype, osv-scanner, plus opt-in GuardDog malware detection and its own supply-chain checks) into one deterministic gate with cited findings. Cloud-only tools that can't run air-gapped surface as an honest skip, never a false green. It does not rebuild SAST.
 
 Key properties:
 - Deterministic and local-first — no LLM in the core; zero telemetry.
@@ -16,8 +16,8 @@ Key properties:
 - Cross-harness memory — indexes transcripts from Claude Code, Codex, Gemini, Continue, Cursor, Amazon Q, Cline, and OpenCode (8 agents) into one local SQLite store, so agent state is portable across tools. `kit memory sync` merges another machine's store into the local one, no cloud ledger.
 - Install-gate — a fail-closed pre-tool gate blocks an un-triaged package install across 7 agents (Claude Code, Codex, Amazon Q, Gemini CLI, Cursor, OpenCode, Cline).
 - Local Ed25519 identity — `kit identity` gives each machine/agent an attributable signing key; a verifier needs only the public key.
-- Multi-vault secrets — 12 backends: 1Password, Infisical, Bitwarden, Doppler, HashiCorp Vault, AWS/GCP/Azure secret managers, EAS, dotenvx, config, and plain env.
-- MIT-licensed, Node 22+, published to npm as `sandstream-kit` with SLSA provenance.
+- Multi-vault secrets — 12 secret backends resolve. 8 are writable vaults (1Password, Infisical, HashiCorp Vault, AWS/GCP/Azure secret managers, Doppler, dotenvx) that also migrate plaintext → vault, propagate to deploy targets, and rotate; the other four (Bitwarden, EAS, config, env) resolve read-only.
+- MIT-licensed, Node 22+, published to npm as `sandstream-kit` with SLSA provenance, and as a signed (cosign), multi-arch Docker image `sandstream/kit` with a CycloneDX SBOM.
 
 ## Links
 
