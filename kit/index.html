@@ -23,11 +23,11 @@
   "name": "kit",
   "alternateName": "sandstream-kit",
   "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "macOS, Linux",
-  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, and cross-harness memory. The governance floor you can prove (signed attestation, scanner-health gate, provable air-gap) and build on (frozen, versioned CLI, config, and SDK contracts).",
+  "operatingSystem": "macOS, Linux, Windows",
+  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a local Ed25519 machine/agent identity. The governance floor you can prove (signed attestation, scanner-health gate, provable air-gap) and build on (frozen, versioned CLI, config, and SDK contracts).",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "2.0.0",
+  "softwareVersion": "2.2.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -351,12 +351,13 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v2.0.0</span>
+      <span class="pill accent" id="version-pill">v2.2.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
+      <span class="pill">macOS · Linux · Windows</span>
       <span class="pill">SLSA provenance</span>
       <span class="pill">12 vault backends</span>
-      <span class="pill">Local-first memory</span>
+      <span class="pill">Local-first memory · 8 agents</span>
       <span class="pill">Zero telemetry</span>
       <span class="pill accent">Provable green</span>
       <span class="pill accent">ASVS L2 evidence map</span>
@@ -423,7 +424,7 @@
       <div class="card">
         <div class="num">[07]</div>
         <h3>Agent setup</h3>
-        <p><code>kit agent-config</code> writes a managed "use kit" block into the agent's rules file, <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> / <code>.clinerules</code>, so Claude Code, Codex, Cursor and Cline run <code>kit check</code>, triage before installs, and vault their secrets. Idempotent, edit outside the markers freely.</p>
+        <p><code>kit agent-config</code> writes a managed "use kit" block into the agent's rules file, <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> / <code>.clinerules</code> / OpenCode, so agents run <code>kit check</code>, triage before installs, and vault their secrets. The <code>--install-gate</code> wires a fail-closed pre-tool gate that blocks an un-triaged install across <strong>7 agents</strong> (Claude Code, Codex, Amazon Q, Gemini CLI, Cursor, OpenCode, Cline). Idempotent, edit outside the markers freely.</p>
       </div>
     </div>
   </section>
@@ -456,20 +457,48 @@
   </section>
 
   <section>
+    <h2>Since 2.0: reach and coverage</h2>
+    <p>
+      2.0 set the floor; 2.1 and 2.2 widened it without breaking a single
+      <strong>stable</strong> contract. Same deterministic core, now running everywhere a
+      fleet actually does, with the agent gate covering more harnesses.
+    </p>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="num">[2.1 · reach]</div>
+        <h3>Native Windows</h3>
+        <p>kit builds and passes its full suite on Windows (PowerShell / cmd), not only via WSL2 — separator-agnostic paths, <code>icacls</code> secret-file hardening on NTFS, and one canonicalized public-surface snapshot shared across macOS, Linux and Windows. POSIX-only scanners honest-skip rather than false-green. Plus a headless-bootstrap self-heal so capture fires in containers and CI.</p>
+      </div>
+      <div class="card">
+        <div class="num">[2.1 · memory sync]</div>
+        <h3>Cross-machine memory</h3>
+        <p><code>kit memory sync</code> merges another machine's <code>~/.kit/memory.db</code> into your local store (last-write-wins on session conflicts; machine-local index excluded). Transport is your own git repo or an encrypted backup file — no cloud ledger. Pairs with <code>kit memory backup</code> so agent B recalls agent A's decisions.</p>
+      </div>
+      <div class="card">
+        <div class="num">[2.2 · coverage]</div>
+        <h3>Gate covers 7 agents</h3>
+        <p>The <code>--install-gate</code> blocks an un-triaged install before it runs across Claude Code, Codex, Amazon Q, Gemini CLI, Cursor, OpenCode and Cline — each adapter built against the agent's verified hook + payload schema, fail-closed. New <code>kit identity</code> (local Ed25519 machine/agent identity) and <code>kit ci --init gitlab|bitbucket</code> with extended GitLab/Bitbucket pipeline auditing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <h2>Memory</h2>
     <p>
       <strong>Memory is the moat.</strong> The model is becoming a commodity; the system around it
       is not. <code>kit memory</code> gives a (swappable) model a <strong>verifiable second brain</strong>:
       it stores your raw conversation history and searches it <em>before</em> answering, so it pulls
       receipts instead of guessing. SQLite + FTS5, two hooks, no vectors, no model calls.
-      It indexes transcripts from <strong>seven</strong> coding agents (Claude Code, Codex, Gemini,
-      Continue, Cursor, Amazon Q and Cline), each parsed against the agent's own serialization
-      format, never guessed.
+      It indexes transcripts from <strong>eight</strong> coding agents (Claude Code, Codex, Gemini,
+      Continue, Cursor, Amazon Q, Cline and OpenCode), each parsed against the agent's own
+      serialization format, never guessed.
     </p>
     <p>
       A <strong>personal</strong> tier stays private, with an encrypted backup so a stolen laptop does
       not lose your context. A curated, area-organized <strong>shared</strong> tier travels with the repo
-      and is reviewed like code. <a href="https://github.com/sandstream/kit/blob/main/docs/MEMORY.md">Read the guide.</a>
+      and is reviewed like code. And <code>kit memory sync</code> merges another machine's store into
+      your local one — last-write-wins, transport over your own git repo or an encrypted backup, no
+      cloud ledger — so agent B recalls what agent A decided. <a href="https://github.com/sandstream/kit/blob/main/docs/MEMORY.md">Read the guide.</a>
     </p>
     <pre class="code"><span class="c"># index your history, then search it before you answer</span>
 $ kit memory install &amp;&amp; kit memory index

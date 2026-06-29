@@ -4,15 +4,19 @@
 
 ## kit — developer environment manager
 
-kit is a deterministic, local-first developer-environment manager for AI agents and humans. One command takes a repo from `git clone` to a working dev environment: it installs and pins tools (via mise), runs guided logins, materializes secrets from a vault, wires agent config, and runs a security gate.
+kit is a deterministic, local-first developer-environment manager for AI agents and humans. One command takes a repo from `git clone` to a working dev environment: it installs and pins tools (via mise), runs guided logins, materializes secrets from a vault, wires agent config, and runs a security gate. Runs on macOS, Linux, and natively on Windows. Current release: 2.2.0.
 
-kit is **not another scanner** — it orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Socket, plus its own supply-chain checks) into one deterministic gate with cited findings. It does not rebuild SAST.
+kit is **not another scanner** — it orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Grype, osv-scanner, plus GuardDog malware detection and its own supply-chain checks) into one deterministic gate with cited findings. Cloud-only tools that can't run air-gapped surface as an honest skip, never a false green. It does not rebuild SAST.
 
 Key properties:
 - Deterministic and local-first — no LLM in the core; zero telemetry.
+- Provable green — a crashed or missing scanner fails the gate instead of exiting 0; a signed `kit check --attest` receipt and provable air-gap (`kit airgap verify`) record which scanners actually ran, verifiable offline.
+- Frozen 2.x contracts — the CLI, `.kit.toml` config schema, and adapter SDK are versioned, tiered, and drift-tested; they will not break across any 2.x release.
 - Per-CLI context lock — verifies each tool (gcloud, vercel, github, git, npm) points at the declared account + project, and never infers the pairing from whatever happens to be logged in. A right account with the wrong project is a mismatch, not a pass.
-- Cross-harness memory — indexes transcripts from Claude Code, Codex, Gemini, Continue, Cursor, Amazon Q, and Cline into one local SQLite store, so agent state is portable across tools (you can switch from one agent to another without losing context).
-- Multi-vault secrets — Infisical, 1Password, Bitwarden, Doppler, HashiCorp Vault, AWS/GCP/Azure secret managers, EAS, dotenvx, and plain env.
+- Cross-harness memory — indexes transcripts from Claude Code, Codex, Gemini, Continue, Cursor, Amazon Q, Cline, and OpenCode (8 agents) into one local SQLite store, so agent state is portable across tools. `kit memory sync` merges another machine's store into the local one, no cloud ledger.
+- Install-gate — a fail-closed pre-tool gate blocks an un-triaged package install across 7 agents (Claude Code, Codex, Amazon Q, Gemini CLI, Cursor, OpenCode, Cline).
+- Local Ed25519 identity — `kit identity` gives each machine/agent an attributable signing key; a verifier needs only the public key.
+- Multi-vault secrets — 12 backends: 1Password, Infisical, Bitwarden, Doppler, HashiCorp Vault, AWS/GCP/Azure secret managers, EAS, dotenvx, config, and plain env.
 - MIT-licensed, Node 22+, published to npm as `sandstream-kit` with SLSA provenance.
 
 ## Links
