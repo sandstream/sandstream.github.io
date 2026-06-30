@@ -24,10 +24,10 @@
   "alternateName": "sandstream-kit",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "macOS, Linux, Windows",
-  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a local Ed25519 machine/agent identity. The governance floor you can prove (signed attestation, scanner-health gate, provable air-gap) and build on (frozen, versioned CLI, config, and SDK contracts).",
+  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a local Ed25519 identity. kit 3.0 adds signable policy-as-code and governed cross-device memory — an org-governed control plane on a floor you can prove (signed attestation, scanner-health gate, provable air-gap) and build on (frozen, versioned CLI, config, and SDK contracts, additive across 3.0).",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "2.2.0",
+  "softwareVersion": "3.0.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -307,6 +307,21 @@
   }
   .doc-card a:hover { color: var(--accent); border-color: var(--accent); }
 
+  /* Command reference */
+  .cmd-card h3 { font-size: 15px; margin-bottom: 16px; color: var(--ink); }
+  .cmd-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .cmd-list li { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+  .cmd-list code {
+    color: var(--accent);
+    font-weight: 600;
+    background: var(--accent-bg);
+    border: 1px solid var(--line-2);
+    border-radius: 4px;
+    padding: 1px 6px;
+    white-space: nowrap;
+  }
+  .cmd-list .d { display: block; color: var(--ink-3); margin-top: 3px; }
+
   /* Footer */
   footer { padding: 48px 0 64px; color: var(--ink-3); font-size: 13px; }
   footer a {
@@ -338,7 +353,8 @@
       One command from <code>git clone</code> to working dev environment.
       <strong>Deterministic</strong>, local-first, multi-vault: the governance floor
       you can <strong>prove</strong> and build on. Green is provable, and kit's CLI,
-      config, and SDK are frozen, versioned contracts.
+      config, and SDK are frozen, versioned contracts. In <strong>3.0</strong>,
+      identity + signable policy-as-code make it an <strong>org-governed control plane</strong>.
     </p>
 
     <div class="install-block">
@@ -351,7 +367,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v2.2.0</span>
+      <span class="pill accent" id="version-pill">v3.0.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
@@ -361,7 +377,8 @@
       <span class="pill">Zero telemetry</span>
       <span class="pill accent">Provable green</span>
       <span class="pill accent">ASVS L2 evidence map</span>
-      <span class="pill accent">Frozen 2.x contracts</span>
+      <span class="pill accent">Stable contracts · additive to 3.0</span>
+      <span class="pill accent">Policy-as-code</span>
     </div>
   </section>
 
@@ -443,15 +460,21 @@
     <p>
       A <strong>personal</strong> tier stays private, with an encrypted backup so a stolen laptop does
       not lose your context. A curated, area-organized <strong>shared</strong> tier travels with the repo
-      and is reviewed like code. And <code>kit memory sync</code> merges another machine's store into
-      your local one — last-write-wins, transport over your own git repo or an encrypted backup, no
-      cloud ledger — so agent B recalls what agent A decided. <a href="https://github.com/sandstream/kit/blob/main/docs/MEMORY.md">Read the guide.</a>
+      and is reviewed like code. In 3.0, <strong>governed cross-device memory</strong> lets
+      <code>kit memory push</code> / <code>pull</code> sync your private store over <strong>your own</strong>
+      encrypted transport — a private git remote or a <code>command</code> transport (S3/rclone/scp/USB),
+      AES-256-GCM, opt-in, no cloud ledger — so an ephemeral container recalls what your laptop decided.
+      <a href="https://github.com/sandstream/kit/blob/main/docs/MEMORY.md">Read the guide.</a>
     </p>
     <pre class="code"><span class="c"># index your history, then search it before you answer</span>
 $ kit memory install &amp;&amp; kit memory index
 $ kit memory search "what did we decide about X"
 <span class="c"># zero-LLM core: pipe a review prompt to YOUR own model</span>
-$ kit memory suggest | your-llm</pre>
+$ kit memory suggest | your-llm
+<span class="c"># 3.0: sync your private store across machines (your transport)</span>
+$ kit memory sync init --remote git@github.com:you/kit-memory.git
+$ kit memory push   <span class="c"># from one machine</span>
+$ kit memory pull   <span class="c"># on another</span></pre>
   </section>
 
   <section>
@@ -528,45 +551,46 @@ $ kit hooks add context-check</pre>
   </section>
 
   <section>
-    <h2>kit 2.x: prove it, freeze it, reach further</h2>
+    <h2>kit 3.0: an org-governed control plane</h2>
     <p>
-      kit keeps two promises and now proves them. <strong>green = honest</strong> is externally
-      <strong>provable</strong>, and kit's public surfaces are <strong>frozen, versioned contracts</strong> —
-      the same deterministic, local-first, model-agnostic floor, one you can prove and build on. 2.1 and
-      2.2 widened that floor without breaking a single <strong>stable</strong> contract: kit now runs
-      everywhere a fleet does, with the agent gate covering more harnesses.
+      3.0 takes kit from a provable local floor to an <strong>org-governed control plane</strong> —
+      identity + policy is the contract. It's all <strong>additive over 2.x</strong> (no stable command
+      removed, enforced by a public-surface invariant), on top of the floor 2.0–2.2 built: provable
+      green, frozen contracts, native macOS/Linux/Windows, and a fail-closed install-gate across seven
+      agents. 3.0 also hardens the gate (closed bypasses, two ReDoS) and adds a deterministic,
+      zero-LLM <em>smart</em> UX — <code>💡 tip:</code> hints at the right moment plus
+      <code>kit config knobs</code> to discover every power-user setting.
     </p>
     <div class="grid grid-3">
+      <div class="card">
+        <div class="num">[identity + policy]</div>
+        <h3>Identity &amp; signable policy</h3>
+        <p>A local Ed25519 <code>kit identity</code> plus a signable, distributable <code>.kit-policy.toml</code> (policy-as-code) any kit verifies <strong>offline</strong> before enforcing, anchored to a committed org trust file (<code>.kit-policy.signers</code>). <code>kit panic</code> rotates the key and emits a signed revocation. Asymmetric and attributable — a verifier needs only the public key; no forge-capable secret leaves the machine.</p>
+      </div>
+      <div class="card">
+        <div class="num">[governed memory]</div>
+        <h3>Governed cross-device memory</h3>
+        <p><code>kit memory push</code> / <code>pull</code> sync your private store over <strong>your own</strong> encrypted transport — a private git remote or any <code>command</code> transport (S3/rclone/scp/USB), AES-256-GCM, opt-in, no backdoor. <code>kit memory sync init</code> scaffolds it; opt-in pull-on-start / push-on-end makes ephemeral containers durable. PAL action items are device-coupled, so a throwaway session never nags your laptop.</p>
+      </div>
+      <div class="card">
+        <div class="num">[attributable audit]</div>
+        <h3>Tamper-evident, attributable audit</h3>
+        <p>The HMAC anchor now binds attribution (<code>kid</code>/<code>sig</code>) into the seal (anchor v3): stripping or forging the signer of a sealed entry is caught, not silently re-counted as unsigned. <code>kit audit anchor --external</code> folds a third-party receipt (RFC3161 TSA, notary, append-only log) into the seal via a command transport you wire, and <code>--require-external</code> can demand it. Still no network client shipped — no-egress by default.</p>
+      </div>
       <div class="card">
         <div class="num">[provable green]</div>
         <h3>Provable green</h3>
         <p>A crashed or missing scanner can no longer exit 0: the scanner-health gate scores scanner health, not just findings. <code>kit airgap verify</code> proves every scanner resolves to a local artifact, with registry egress refused in both scan paths (local rulesets only). An external HMAC-anchored audit chain plus a signed <code>kit check --attest</code> receipt record which scanners actually ran and that none failed open, verifiable offline. Honest limit: the anchor key is machine-local, so this is not tamper-proof against a same-UID principal; it raises forgery from anyone who can write the log to someone who can read a 0600 key.</p>
       </div>
       <div class="card">
-        <div class="num">[frozen contracts]</div>
-        <h3>Frozen contracts</h3>
-        <p>Versioned <code>.kit.toml</code> with deterministic <code>kit config migrate</code> (dry-run by default, auto-backup, restore-on-failure). Every command carries a stability tier, the adapter SDK is frozen at <code>adapter-sdk@1.0</code> on its own semver track, and a committed public-surface snapshot has a drift test that fails CI on any unreviewed change. The CLI, config schema, and plugin SDK will not break across 2.x.</p>
+        <div class="num">[stable contracts]</div>
+        <h3>Stable contracts</h3>
+        <p>Versioned <code>.kit.toml</code> with deterministic <code>kit config migrate</code> (dry-run by default, auto-backup, restore-on-failure). Every command carries a stability tier, the adapter SDK is frozen at <code>adapter-sdk@1.0</code> on its own semver track, and a committed public-surface snapshot has a drift test that fails CI on any unreviewed change. The promise held across the 3.0 major: additive over 2.x, no stable command removed or downgraded.</p>
       </div>
       <div class="card">
         <div class="num">[evidence map]</div>
         <h3>Evidence map, not compliance</h3>
         <p><code>kit coverage</code> maps kit's deterministic checks to OWASP ASVS 4.0.3 L2, bucketing each control as auto-verified, gap, manual, or n-a. It is explicitly an <strong>evidence map, not a compliance attestation</strong>: it never claims "compliant". The point is to be the deterministic evidence source a GRC tool consumes (<code>--json</code>), not a worse one.</p>
-      </div>
-    
-      <div class="card">
-        <div class="num">[2.1 · reach]</div>
-        <h3>Native Windows</h3>
-        <p>kit builds and passes its full suite on Windows (PowerShell / cmd), not only via WSL2 — separator-agnostic paths, <code>icacls</code> secret-file hardening on NTFS, and one canonicalized public-surface snapshot shared across macOS, Linux and Windows. POSIX-only scanners honest-skip rather than false-green. Plus a headless-bootstrap self-heal so capture fires in containers and CI.</p>
-      </div>
-      <div class="card">
-        <div class="num">[2.1 · memory sync]</div>
-        <h3>Cross-machine memory</h3>
-        <p><code>kit memory sync</code> merges another machine's <code>~/.kit/memory.db</code> into your local store (last-write-wins on session conflicts; machine-local index excluded). Transport is your own git repo or an encrypted backup file — no cloud ledger. Pairs with <code>kit memory backup</code> so agent B recalls agent A's decisions.</p>
-      </div>
-      <div class="card">
-        <div class="num">[2.2 · coverage]</div>
-        <h3>Gate covers 7 agents</h3>
-        <p>The <code>--install-gate</code> blocks an un-triaged install before it runs across Claude Code, Codex, Amazon Q, Gemini CLI, Cursor, OpenCode and Cline — each adapter built against the agent's verified hook + payload schema, fail-closed. New <code>kit identity</code> (local Ed25519 machine/agent identity) and <code>kit ci --init gitlab|bitbucket</code> with extended GitLab/Bitbucket pipeline auditing.</p>
       </div>
     </div>
   </section>
@@ -671,6 +695,70 @@ $ kit setup
 
 <span class="c"># 3. work normally, agents + humans both go</span>
 $ pnpm dev</pre>
+  </section>
+
+  <section>
+    <h2>Core commands</h2>
+    <p>
+      The commands you'll actually run, grouped by what you're doing. Every command is
+      <code>stable</code> unless noted; <code>kit &lt;cmd&gt; --help</code> shows the full surface,
+      and <code>kit config knobs</code> lists every power-user setting.
+    </p>
+    <div class="grid grid-3">
+      <div class="card cmd-card">
+        <h3>Set up a repo</h3>
+        <ul class="cmd-list">
+          <li><code>kit init</code><span class="d">Detect the stack → generate <code>.kit.toml</code> and run setup.</span></li>
+          <li><code>kit install</code><span class="d">Install missing tools via mise.</span></li>
+          <li><code>kit setup</code><span class="d">Full pipeline: install → login → secrets → agent config → verify.</span></li>
+          <li><code>kit check</code><span class="d">What's set up vs missing: tools, services, secrets, hooks, security.</span></li>
+          <li><code>kit fix</code> · <code>kit heal</code><span class="d">Auto-fix what's safe; <code>heal</code> loops until green, fail-closed.</span></li>
+        </ul>
+      </div>
+      <div class="card cmd-card">
+        <h3>Secrets &amp; context</h3>
+        <ul class="cmd-list">
+          <li><code>kit secrets</code><span class="d">Materialize <code>.env.local</code> from template + your vault.</span></li>
+          <li><code>kit login</code><span class="d">Guided login to every configured service.</span></li>
+          <li><code>kit context check</code><span class="d">Lock each CLI to the declared account + project — no wrong-org pushes.</span></li>
+          <li><code>kit run</code><span class="d">Run a command with the project's env vars loaded.</span></li>
+        </ul>
+      </div>
+      <div class="card cmd-card">
+        <h3>Security gate</h3>
+        <ul class="cmd-list">
+          <li><code>kit scan</code><span class="d">Run external scanners (snyk/trivy/grype/semgrep/osv) → one verdict.</span></li>
+          <li><code>kit pkg</code> · <code>kit triage</code><span class="d">Vet a package before install: <code>kit pkg npm:express</code>.</span></li>
+          <li><code>kit coverage</code><span class="d">OWASP ASVS L2 evidence map (not a compliance claim).</span></li>
+        </ul>
+      </div>
+      <div class="card cmd-card">
+        <h3>Memory</h3>
+        <ul class="cmd-list">
+          <li><code>kit memory index</code><span class="d">Index agent transcripts into the local SQLite store.</span></li>
+          <li><code>kit memory search</code><span class="d">Full-text recall — pull receipts before answering.</span></li>
+          <li><code>kit memory push</code> · <code>pull</code><span class="d">Governed cross-device sync over your own encrypted transport (3.0).</span></li>
+        </ul>
+      </div>
+      <div class="card cmd-card">
+        <h3>Governance <span style="color:var(--ink-3);font-size:12px;">(3.0)</span></h3>
+        <ul class="cmd-list">
+          <li><code>kit identity</code><span class="d">Local Ed25519 machine/agent identity (init/show/rotate).</span></li>
+          <li><code>kit policy</code><span class="d">Signable org policy-as-code in <code>.kit-policy.toml</code>, enforced offline.</span></li>
+          <li><code>kit audit</code><span class="d">Tamper-evident, attributable audit log (verify / anchor / export).</span></li>
+          <li><code>kit panic</code><span class="d">Compromise response: rotate identity + emit a signed revocation.</span></li>
+        </ul>
+      </div>
+      <div class="card cmd-card">
+        <h3>Status &amp; help</h3>
+        <ul class="cmd-list">
+          <li><code>kit status</code><span class="d">Adoption checklist + the next step for each gap.</span></li>
+          <li><code>kit statusline</code><span class="d">One-line status (score · update · open PAL) for your prompt or agent bar.</span></li>
+          <li><code>kit doctor</code><span class="d">Deep environment diagnostics, granular pass/fail.</span></li>
+          <li><code>kit config knobs</code><span class="d">List every power-user env var + <code>.kit.toml</code> field kit honors.</span></li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section>
