@@ -24,10 +24,10 @@
   "alternateName": "sandstream-kit",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "macOS, Linux, Windows",
-  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a local Ed25519 identity. kit 3.0 adds signable policy-as-code and governed cross-device memory — an org-governed control plane on a floor you can prove (signed attestation, scanner-health gate, provable air-gap) and build on (frozen, versioned CLI, config, and SDK contracts, additive across 3.0).",
+  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a local Ed25519 identity. kit 3 adds signable policy-as-code and governed cross-device memory (encrypted, public-key sync) — an org-governed control plane on a floor you can prove (signed attestation, scanner-health gate, provable air-gap) and build on (frozen, versioned CLI, config, and SDK contracts, additive across 3.x).",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "3.0.0",
+  "softwareVersion": "3.2.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -367,7 +367,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v3.0.0</span>
+      <span class="pill accent" id="version-pill">v3.2.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
@@ -441,7 +441,7 @@
       <div class="card">
         <div class="num">[07]</div>
         <h3>Agent setup</h3>
-        <p><code>kit agent-config</code> writes a managed "use kit" block into the agent's rules file, <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> / <code>.clinerules</code> (OpenCode reads the shared <code>AGENTS.md</code>), so agents run <code>kit check</code>, triage before installs, and vault their secrets. The <code>--install-gate</code> wires a fail-closed pre-tool gate that blocks an un-triaged install across <strong>7 agents</strong> (Claude Code, Codex, Amazon Q, Gemini CLI, Cursor, OpenCode, Cline). Idempotent, edit outside the markers freely.</p>
+        <p><code>kit agent-config</code> writes a managed "use kit" block into the agent's rules file, <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> / <code>.clinerules</code> / <code>.github/copilot-instructions.md</code> (OpenCode reads the shared <code>AGENTS.md</code>), so agents run <code>kit check</code>, triage before installs, and vault their secrets. The <code>--install-gate</code> wires a fail-closed pre-tool gate that blocks an un-triaged install across <strong>7 agents</strong> (Claude Code, Codex, Amazon Q, Gemini CLI, Cursor, OpenCode, Cline). Idempotent, edit outside the markers freely.</p>
       </div>
     </div>
   </section>
@@ -460,21 +460,26 @@
     <p>
       A <strong>personal</strong> tier stays private, with an encrypted backup so a stolen laptop does
       not lose your context. A curated, area-organized <strong>shared</strong> tier travels with the repo
-      and is reviewed like code. In 3.0, <strong>governed cross-device memory</strong> lets
+      and is reviewed like code. <strong>Governed cross-device memory</strong> lets
       <code>kit memory push</code> / <code>pull</code> sync your private store over <strong>your own</strong>
       encrypted transport — a private git remote or a <code>command</code> transport (S3/rclone/scp/USB),
-      AES-256-GCM, opt-in, no cloud ledger — so an ephemeral container recalls what your laptop decided.
-      <a href="https://github.com/sandstream/kit/blob/main/docs/MEMORY.md">Read the guide.</a>
+      gzip-compressed inside AES-256-GCM, opt-in, no cloud ledger. In <strong>public-key mode</strong>
+      (X25519) an ephemeral session pushes with <strong>no secret</strong> — just a public recipient
+      string — so a throwaway container contributes its memory and nothing secret leaves it. And
+      <code>kit memory learn</code> mines the store for instructions you keep re-typing, so you can turn
+      them into a rule. <a href="https://github.com/sandstream/kit/blob/main/docs/MEMORY.md">Read the guide.</a>
     </p>
     <pre class="code"><span class="c"># index your history, then search it before you answer</span>
 $ kit memory install &amp;&amp; kit memory index
 $ kit memory search "what did we decide about X"
 <span class="c"># zero-LLM core: pipe a review prompt to YOUR own model</span>
 $ kit memory suggest | your-llm
-<span class="c"># 3.0: sync your private store across machines (your transport)</span>
-$ kit memory sync init --remote git@github.com:you/kit-memory.git
+<span class="c"># sync across machines — public-key mode pushes with no secret</span>
+$ kit memory keygen &amp;&amp; kit memory sync init --remote git@github.com:you/kit-memory.git
 $ kit memory push   <span class="c"># from one machine</span>
-$ kit memory pull   <span class="c"># on another</span></pre>
+$ kit memory pull   <span class="c"># on another</span>
+<span class="c"># surface instructions you keep re-typing → make it a rule</span>
+$ kit memory learn</pre>
   </section>
 
   <section>
@@ -551,7 +556,7 @@ $ kit hooks add context-check</pre>
   </section>
 
   <section>
-    <h2>kit 3.0: an org-governed control plane</h2>
+    <h2>kit 3: an org-governed control plane</h2>
     <p>
       3.0 takes kit from a provable local floor to an <strong>org-governed control plane</strong> —
       identity + policy is the contract. It's all <strong>additive over 2.x</strong> (no stable command
@@ -560,6 +565,9 @@ $ kit hooks add context-check</pre>
       agents. 3.0 also hardens the gate (closed bypasses, two ReDoS) and adds a deterministic,
       zero-LLM <em>smart</em> UX — <code>💡 tip:</code> hints at the right moment plus
       <code>kit config knobs</code> to discover every power-user setting.
+      <strong>3.1–3.2</strong> keep building on it: GitHub Copilot support, <strong>public-key memory
+      sync</strong> (an ephemeral session pushes with no secret), <code>kit memory learn</code>,
+      atomic PAL claims for parallel agents, and a Sentrux plugin that gates architectural decay.
     </p>
     <div class="grid grid-3">
       <div class="card">
@@ -737,7 +745,8 @@ $ pnpm dev</pre>
         <ul class="cmd-list">
           <li><code>kit memory index</code><span class="d">Index agent transcripts into the local SQLite store.</span></li>
           <li><code>kit memory search</code><span class="d">Full-text recall — pull receipts before answering.</span></li>
-          <li><code>kit memory push</code> · <code>pull</code><span class="d">Governed cross-device sync over your own encrypted transport (3.0).</span></li>
+          <li><code>kit memory push</code> · <code>pull</code><span class="d">Governed cross-device sync over your own encrypted transport (public-key mode: no secret).</span></li>
+          <li><code>kit memory learn</code><span class="d">Surface instructions you keep re-typing so you can make them a rule.</span></li>
         </ul>
       </div>
       <div class="card cmd-card">
