@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kit · developer kit. deterministic. local-first.</title>
 <meta name="description" content="One command from git clone to working dev environment. Deterministic, local-first, multi-vault. For AI agents and humans.">
-<meta name="theme-color" content="#0a0e0e">
+<meta name="theme-color" content="#0a0e0e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7faf9" media="(prefers-color-scheme: light)">
 <meta property="og:title" content="kit · developer kit">
 <meta property="og:description" content="Deterministic. Local-first. Multi-vault. One command from git clone to working dev environment.">
 <meta property="og:url" content="https://www.sandstre.am/kit">
@@ -56,6 +57,28 @@
     --error: #ff5577;
     --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
     --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  /* Light theme — the page reads all colours through the variables above, so a
+     prefers-color-scheme override flips the whole surface. Every value below clears
+     WCAG AA on the light --bg (ink/ink-2/ink-3 ≥ 6:1; --accent #00744c = 5.5:1 for
+     the small pill/keyword text; warn/error ≥ 4.5:1). The decorative red "scanner"
+     widget is self-contained and left as-is. */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f7faf9;
+      --bg-2: #eef3f2;
+      --bg-3: #e3ecea;
+      --line: #d3dddb;
+      --line-2: #c0cecb;
+      --ink: #0c1514;
+      --ink-2: #31413e;
+      --ink-3: #4f5f5c;
+      --accent: #00744c;
+      --accent-dim: #005f3e;
+      --accent-bg: #00744c14;
+      --warn: #9a6300;
+      --error: #c22348;
+    }
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { font-size: 16px; -webkit-text-size-adjust: 100%; }
@@ -626,72 +649,64 @@ $ kit hooks add context-check</pre>
   </section>
 
   <section>
-    <h2>Compare</h2>
+    <h2>What kit provides</h2>
+    <p>
+      The governance-floor capabilities kit ships out of the box — the parts a plain
+      setup tool typically leaves to you, omits, or can't prove. Every row is a claim
+      you can verify against the CLI, not a comparison against an unnamed competitor.
+    </p>
     <table>
       <tr>
-        <th>Feature</th>
+        <th>Capability</th>
         <th>kit</th>
-        <th>traditional setup tool</th>
       </tr>
       <tr>
         <td>LLM calls in core</td>
-        <td class="yes">none</td>
-        <td class="no">router + summarization</td>
+        <td class="yes">none (deterministic, BYO model)</td>
       </tr>
       <tr>
         <td>Default telemetry</td>
         <td class="yes">none</td>
-        <td class="no">opt-out</td>
       </tr>
       <tr>
         <td>Secret backends</td>
-        <td class="yes">12</td>
-        <td class="no">1–2</td>
+        <td class="yes">12 (8 writable vaults + read-only sources)</td>
       </tr>
       <tr>
         <td>Supply-chain scanner bundled</td>
         <td class="yes">bumblebee</td>
-        <td class="no">external</td>
       </tr>
       <tr>
         <td>SLSA-provenance on releases</td>
         <td class="yes">yes</td>
-        <td class="no">often missing</td>
       </tr>
       <tr>
         <td>Multi-repo prescan</td>
         <td class="yes">yes</td>
-        <td class="no">no</td>
       </tr>
       <tr>
         <td>Elevation gate for destructive ops</td>
         <td class="yes">TOTP + TTL</td>
-        <td class="no">none</td>
       </tr>
       <tr>
         <td>Crashed / missing scanner</td>
-        <td class="yes">fails the gate</td>
-        <td class="no">findings-only (false green)</td>
+        <td class="yes">fails the gate (no false green)</td>
       </tr>
       <tr>
         <td>Signed check attestation</td>
         <td class="yes">opt-in, HMAC-anchored</td>
-        <td class="no">none</td>
       </tr>
       <tr>
         <td>Provable air-gap</td>
         <td class="yes">kit airgap verify</td>
-        <td class="no">no</td>
       </tr>
       <tr>
         <td>OWASP ASVS L2 evidence map</td>
         <td class="yes">kit coverage</td>
-        <td class="no">none</td>
       </tr>
       <tr>
         <td>Public-surface stability contract</td>
-        <td class="yes">frozen across 2.x</td>
-        <td class="no">none</td>
+        <td class="yes">frozen + versioned (drift test in CI)</td>
       </tr>
     </table>
   </section>
