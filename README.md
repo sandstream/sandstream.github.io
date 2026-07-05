@@ -52,7 +52,7 @@ python3 -m http.server 8900
 
 ## Deploy
 
-Push to `master` — GitHub Pages serves files as-is (`.nojekyll` disables Jekyll).
+Push to `main` — GitHub Pages serves files as-is (`.nojekyll` disables Jekyll).
 
 ## Design system
 
