@@ -178,11 +178,11 @@ const CASES = [
   },
   {
     num: "/06",
-    name: ["Sordin", "Brand Brain"], italic: 1,
+    name: ["Brand", "Brain"], italic: 1,
     tagline: { sv: "AI-driven kreativ pipeline · från kampanjhypotes till 20 brandade annonsvarianter.", en: "AI-driven creative pipeline · from campaign hypothesis to 20 on-brand ad variants." },
     desc: {
-      sv: "Sordins marknadsteam (tre personer) saknade kapacitet att skala innehållsproduktionen till 10–20 nya annonsvarianter i veckan. AI-verktyg användes fragmenterat i privata konton, utan gemensam ton, claim-bibliotek eller bildbank. Peter byggde Sordin Brand Brain: en RAG-baserad AI-assistent som bär Sordins tonalitet, tillåtna claims och visuella regler, kopplad till en kreativ pipeline som automatiskt genererar brandkonsekventa annonsvarianter i flera format. Stack: Python-orkestrator, Imagen 4, Claude och DeepL. Pågående. Prototypfas levererad, fas 1 under planering.",
-      en: "Sordin's marketing team (three people) lacked capacity to scale content production to 10–20 new ad variants per week. AI tools were used in fragments across private accounts, with no shared tone of voice, claim library or asset bank. Peter built Sordin Brand Brain: a RAG-based AI assistant carrying Sordin's tone, approved claims and visual rules, connected to a creative pipeline that automatically generates on-brand ad variants in multiple formats. Stack: Python orchestrator, Imagen 4, Claude and DeepL. Ongoing. Prototype phase delivered, phase 1 in planning.",
+      sv: "Ett konsumentvarumärkes marknadsteam (tre personer) saknade kapacitet att skala innehållsproduktionen till 10–20 nya annonsvarianter i veckan. AI-verktyg användes fragmenterat i privata konton, utan gemensam ton, claim-bibliotek eller bildbank. Peter byggde Brand Brain: en RAG-baserad AI-assistent som bär varumärkets tonalitet, tillåtna claims och visuella regler, kopplad till en kreativ pipeline som automatiskt genererar brandkonsekventa annonsvarianter i flera format. Stack: Python-orkestrator, Imagen 4, Claude och DeepL. Pågående. Prototypfas levererad, fas 1 under planering.",
+      en: "A consumer brand's marketing team (three people) lacked capacity to scale content production to 10–20 new ad variants per week. AI tools were used in fragments across private accounts, with no shared tone of voice, claim library or asset bank. Peter built Brand Brain: a RAG-based AI assistant carrying the brand's tone, approved claims and visual rules, connected to a creative pipeline that automatically generates on-brand ad variants in multiple formats. Stack: Python orchestrator, Imagen 4, Claude and DeepL. Ongoing. Prototype phase delivered, phase 1 in planning.",
     },
     meta: [
       { l: "ROLE", v: "AI architect · tech lead" },
