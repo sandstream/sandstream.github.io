@@ -25,10 +25,10 @@
   "alternateName": "sandstream-kit",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "macOS, Linux, Windows",
-  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a local Ed25519 identity. kit 3 added signable policy-as-code and governed cross-device memory (encrypted, public-key sync) — an org-governed control plane. kit 4 is strict by default: a check that could not run FAILS the gate (no false green), so green means every check actually ran. Built on a floor you can prove (signed attestation, scanner-health gate, provable air-gap) and frozen, versioned CLI, config, and SDK contracts.",
+  "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a hardware-rooted Ed25519 identity. kit 5 makes it a portable, fail-closed governance layer for the agent loop — hardware-rooted identity with honest degradation, an offline-verified control plane (org-signed policy pull + keyless RFC 9421 credentials), one exec-broker enforcing a signed scope across the CLI gates and MCP runtime, and a traveling profile you can export/import to a fresh host. Strict by default (a check that could not run FAILS the gate — no false green), built on a floor you can prove and frozen, versioned CLI, config, and SDK contracts.",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "4.0.0",
+  "softwareVersion": "5.0.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -378,8 +378,9 @@
       One command from <code>git clone</code> to working dev environment.
       <strong>Deterministic</strong>, local-first, multi-vault: the governance floor
       you can <strong>prove</strong> and build on. Green is provable, and kit's CLI,
-      config, and SDK are frozen, versioned contracts. In <strong>3.0</strong>,
-      identity + signable policy-as-code make it an <strong>org-governed control plane</strong>.
+      config, and SDK are frozen, versioned contracts. In <strong>5.0</strong>,
+      hardware-rooted identity, an offline control plane, one exec-broker, and a
+      traveling profile make it a <strong>portable, fail-closed governance layer for the agent loop</strong>.
     </p>
 
     <div class="install-block">
@@ -392,7 +393,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v4.0.0</span>
+      <span class="pill accent" id="version-pill">v5.0.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
@@ -402,7 +403,7 @@
       <span class="pill">Zero telemetry</span>
       <span class="pill accent">Provable green</span>
       <span class="pill accent">ASVS L2 evidence map</span>
-      <span class="pill accent">Stable contracts · additive to 3.0</span>
+      <span class="pill accent">Stable contracts · additive to 4.x</span>
       <span class="pill accent">Policy-as-code</span>
     </div>
   </section>
@@ -581,59 +582,86 @@ $ kit hooks add context-check</pre>
   </section>
 
   <section>
-    <h2>kit 4: strict by default — green means it ran</h2>
+    <h2>kit 5: a portable, fail-closed governance layer for the agent loop</h2>
     <p>
-      <strong>4.0</strong> closes the last way a gate could lie: a check that <em>could not run</em>
-      — scanner missing, no token, crashed — now <strong>fails</strong> the gate instead of passing as
-      a warning. Green means every check genuinely ran (<strong>no false green</strong>). A single pure
-      <code>gateStatus()</code> decides it for both <code>kit check</code> and <code>kit ci</code>;
-      <code>--lenient</code> restores warn-and-pass where a scanner is legitimately unavailable.
-      <code>kit coverage --verify</code> binds each ASVS control to its backing check's <em>live</em>
-      result (verified / failing / not-run — never "passing" without evidence), and a new self-audit
-      rule flags any <code>catch</code> that reports success while swallowing the error. This is a
-      <strong>breaking</strong> change: provision your toolchain so real scanners run, or opt out per
-      invocation.
+      <strong>5.0</strong> takes kit from a point-in-time verifier to a <strong>continuous, portable,
+      fail-closed governance layer for the agent loop</strong>. Four pillars land — hardware-rooted
+      identity, an offline control plane, one exec-broker, and a traveling profile — all
+      <strong>additive over 4.x</strong> (no stable command removed, enforced by a public-surface
+      invariant). The 4.0 promise still holds underneath: a check that could not run <strong>fails</strong>
+      the gate — green means every check actually ran (<strong>no false green</strong>).
     </p>
     <p>
-      It sits on the <strong>org-governed control plane</strong> kit 3 built — identity + policy as the
-      contract — itself additive over the 2.x floor (provable green, frozen contracts, native
-      macOS/Linux/Windows, a fail-closed install-gate across the supported agents) and enforced by a
-      public-surface invariant. 3.x added signable policy-as-code, governed cross-device memory,
-      GitHub Copilot support, <strong>public-key memory sync</strong> (an ephemeral session pushes with
-      no secret), and atomic PAL claims for parallel agents.
+      It sits on everything before it: the provable local floor (signed attestation, scanner-health
+      gate, provable air-gap) from 2.x, the org-governed control plane and governed cross-device
+      memory from 3.x, and strict-by-default gating from 4.0 — now unified so the CLI gates, the MCP
+      runtime, and <code>kit doctor</code> all read <strong>one</strong> signed decision.
     </p>
     <div class="grid grid-3">
       <div class="card">
-        <div class="num">[identity + policy]</div>
-        <h3>Identity &amp; signable policy</h3>
-        <p>A local Ed25519 <code>kit identity</code> plus a signable, distributable <code>.kit-policy.toml</code> (policy-as-code) any kit verifies <strong>offline</strong> before enforcing, anchored to a committed org trust file (<code>.kit-policy.signers</code>). <code>kit panic</code> rotates the key and emits a signed revocation. Asymmetric and attributable — a verifier needs only the public key; no forge-capable secret leaves the machine.</p>
+        <div class="num">[hardware identity]</div>
+        <h3>Hardware-rooted identity</h3>
+        <p><code>kit doctor</code> surfaces WHICH backend signs kit's identity — Secure Enclave / TPM / external command vs. a file-backed 0600 key — and <strong>never silently downgrades</strong>: a file key is a warn, and <code>KIT_REQUIRE_HARDWARE</code> makes a missing hardware backend fail-closed. <code>kit identity migrate</code> moves onto hardware and revokes the old key in one attributable, audited step.</p>
       </div>
       <div class="card">
-        <div class="num">[governed memory]</div>
-        <h3>Governed cross-device memory</h3>
-        <p><code>kit memory push</code> / <code>pull</code> sync your private store over <strong>your own</strong> encrypted transport — a private git remote or any <code>command</code> transport (S3/rclone/scp/USB), AES-256-GCM, opt-in, no backdoor. <code>kit memory sync init</code> scaffolds it; opt-in pull-on-start / push-on-end makes ephemeral containers durable. PAL action items are device-coupled, so a throwaway session never nags your laptop.</p>
+        <div class="num">[control plane]</div>
+        <h3>Offline control plane + keyless creds</h3>
+        <p><code>kit policy pull</code> / <code>pull-revocations</code> distribute an org-signed <code>.kit-policy.toml</code>, verified against the anchored signers and enforced <strong>entirely offline</strong>; revocations propagate monotonically. <code>kit policy approve</code> mints offline signed approval tokens. Keyless egress signs requests with <strong>RFC 9421 HTTP Message Signatures</strong> for hosts in <code>[scope].sign</code> — sign, don't store.</p>
       </div>
       <div class="card">
-        <div class="num">[attributable audit]</div>
-        <h3>Tamper-evident, attributable audit</h3>
-        <p>The HMAC anchor now binds attribution (<code>kid</code>/<code>sig</code>) into the seal (anchor v3): stripping or forging the signer of a sealed entry is caught, not silently re-counted as unsigned. <code>kit audit anchor --external</code> folds a third-party receipt (RFC3161 TSA, notary, append-only log) into the seal via a command transport you wire, and <code>--require-external</code> can demand it. Still no network client shipped — no-egress by default.</p>
+        <div class="num">[exec-broker]</div>
+        <h3>One exec-broker</h3>
+        <p>A single signed-scope governance floor drives the PreToolUse gates (<code>kit gate-egress</code> / <code>gate-fs</code>), the MCP runtime, and the <code>kit doctor</code> posture — one broker, not two. Runtime mediation is <strong>on by default in observe mode</strong> (audits what it <em>would</em> deny, breaks nothing); enforce is an explicit opt-in. No verified scope ⇒ grants nothing.</p>
       </div>
       <div class="card">
-        <div class="num">[provable green]</div>
-        <h3>Provable green</h3>
-        <p>A crashed or missing scanner can no longer exit 0 — and in <strong>4.0 that is the default</strong>: a check that could not run FAILS the gate (<code>--lenient</code> to opt out), so the scanner-health gate scores health, not just findings. <code>kit airgap verify</code> proves every scanner resolves to a local artifact, with registry egress refused in both scan paths (local rulesets only). An external HMAC-anchored audit chain plus a signed <code>kit check --attest</code> receipt record which scanners actually ran and that none failed open, verifiable offline. Honest limit: the anchor key is machine-local, so this is not tamper-proof against a same-UID principal; it raises forgery from anyone who can write the log to someone who can read a 0600 key.</p>
+        <div class="num">[traveling profile]</div>
+        <h3>Traveling profile</h3>
+        <p><code>kit profile</code> declares your <code>{skills, mcp, workflows, plugins, vault, gates, scope}</code>, audits declared-vs-discovered drift, and signs the scope/RoE. <strong><code>kit profile export</code> / <code>import</code></strong> move a portable signed bundle to a fresh host — integrity-verified offline, <strong>fail-closed on tamper or revocation</strong>. Lifecycle insight flags loaded-but-unused MCP servers and skills.</p>
+      </div>
+      <div class="card">
+        <div class="num">[deep skill triage]</div>
+        <h3>Deep skill triage — borrowed authority</h3>
+        <p><code>kit triage skill --deep</code> delegates to NVIDIA <strong>SkillSpector</strong>'s static Stage 1 (regex + AST + offline OSV) and folds its findings into kit's verdict, attributed to the source. kit <strong>never</strong> runs its LLM stage — enforced by a scrubbed env and static invocation. <code>kit setup --recommended</code> wires the triage gates into your pre-commit hook.</p>
+      </div>
+      <div class="card">
+        <div class="num">[repo-map]</div>
+        <h3>Repo-map — load a slice, not the tree</h3>
+        <p><code>kit map</code> (and the <code>kit_map</code> MCP tool — one shared core, so CLI and agent surface can't disagree) builds a <strong>deterministic, zero-LLM</strong> import graph (TS/JS + Python) and returns the relevant <em>slice</em> around a seed file: import neighbors to a chosen depth, a <code>--budget</code> cap where <strong>every dropped file is logged</strong> (never silent truncation), owner attribution (CODEOWNERS or git-blame), and <code>--co-change</code> coupling from git history. An agent loads the part of a growing repo that matters — not the whole tree.</p>
       </div>
       <div class="card">
         <div class="num">[stable contracts]</div>
         <h3>Stable contracts</h3>
-        <p>Versioned <code>.kit.toml</code> with deterministic <code>kit config migrate</code> (dry-run by default, auto-backup, restore-on-failure). Every command carries a stability tier, the adapter SDK is frozen at <code>adapter-sdk@1.0</code> on its own semver track, and a committed public-surface snapshot has a drift test that fails CI on any unreviewed change. The promise held across the 3.0 major: additive over 2.x, no stable command removed or downgraded.</p>
-      </div>
-      <div class="card">
-        <div class="num">[evidence map]</div>
-        <h3>Evidence map, not compliance</h3>
-        <p><code>kit coverage</code> maps kit's deterministic checks to OWASP ASVS 4.0.3 L2, bucketing each control as auto-verified, gap, manual, or n-a. <strong>4.0's <code>--verify</code></strong> binds each AUTO control to its backing check's live result — <em>verified</em>, <em>failing</em>, or <em>not-run</em> — so a control never reads "passing" without evidence. It is explicitly an <strong>evidence map, not a compliance attestation</strong>: it never claims "compliant". The point is to be the deterministic evidence source a GRC tool consumes (<code>--json</code>), not a worse one.</p>
+        <p>Versioned <code>.kit.toml</code> with deterministic <code>kit config migrate</code> (dry-run by default, auto-backup, restore-on-failure). Every command carries a stability tier, the adapter SDK is frozen at <code>adapter-sdk@1.0</code> on its own semver track, and a committed public-surface snapshot has a drift test that fails CI on any unreviewed change. 5.0 is a major for the <em>scope of new capability</em>, not for any break — additive over 4.x, no stable command removed.</p>
       </div>
     </div>
+  </section>
+
+  <section>
+    <h2>Proven against the real world: 200 repos + a red-team</h2>
+    <p>
+      Before 5.0 we pointed kit at <strong>200 real repositories</strong> — the 100 most-used apps
+      and libraries on GitHub across 15+ language ecosystems, then a <em>fresh, harder</em> 100 as a
+      validation set — running <code>kit init</code> + <code>kit check</code> on each with fully
+      isolated per-repo state, and recording every result to raw per-repo data. Outcome:
+      <strong>0 crashes, 0 init errors</strong>, including monorepos at <code>linux</code> /
+      <code>next.js</code> / <code>elasticsearch</code> / <code>flutter</code> scale. Stack detection
+      went 71→95/100 on the first corpus after the fixes it exposed; the fresh corpus honestly
+      scored lower first (78 — the first set had effectively become the tuning set), reached
+      ~85 with <strong>zero regressions</strong>, and the remaining misses are documented edge cases
+      (manifest-less repos, tools-written-in-X shipping a <code>package.json</code>). That analysis
+      is what motivated the Linguist-style source-byte census that ships in 5.0.
+    </p>
+    <p>
+      In parallel, a <strong>12-probe adversarial battery</strong> attacked kit's core promise —
+      <em>no false green</em>: scan-result poisoning, baseline-whitelisting of findings, symlinked
+      findings files, a fully weaponized "green machine" repo, malicious-package triage. On
+      <strong>every false-green attack kit stayed red / fail-closed.</strong> The red-team did find
+      three real defects — a malformed baseline or <code>.kit.toml</code> could crash the gate, and
+      one check was non-deterministic — every one a <em>denial-of-verdict</em>, not a false green,
+      and all three were fixed with regression tests before release. Honest limits are documented
+      too: manifest-based detection tops out in the mid-80s on polyglot repos, and the degraded
+      no-trufflehog secret path has known gaps.
+    </p>
   </section>
 
   <section>
@@ -775,10 +803,12 @@ $ pnpm dev</pre>
         </ul>
       </div>
       <div class="card cmd-card">
-        <h3>Governance <span style="color:var(--ink-3);font-size:12px;">(3.0)</span></h3>
+        <h3>Governance</h3>
         <ul class="cmd-list">
-          <li><code>kit identity</code><span class="d">Local Ed25519 machine/agent identity (init/show/rotate).</span></li>
-          <li><code>kit policy</code><span class="d">Signable org policy-as-code in <code>.kit-policy.toml</code>, enforced offline.</span></li>
+          <li><code>kit identity</code><span class="d">Hardware-rooted Ed25519 identity (init/show/rotate/migrate).</span></li>
+          <li><code>kit policy</code><span class="d">Signable org policy-as-code, pulled + enforced offline (pull/approve).</span></li>
+          <li><code>kit profile</code><span class="d">Traveling signed profile — scope/RoE, drift, export/import to a fresh host.</span></li>
+          <li><code>kit gate-egress</code><span class="d">Exec-broker PreToolUse gate: block egress/writes outside the signed scope.</span></li>
           <li><code>kit audit</code><span class="d">Tamper-evident, attributable audit log (verify / anchor / export).</span></li>
           <li><code>kit panic</code><span class="d">Compromise response: rotate identity + emit a signed revocation.</span></li>
         </ul>
@@ -789,6 +819,7 @@ $ pnpm dev</pre>
           <li><code>kit status</code><span class="d">Adoption checklist + the next step for each gap.</span></li>
           <li><code>kit statusline</code><span class="d">One-line status (score · update · open PAL) for your prompt or agent bar.</span></li>
           <li><code>kit doctor</code><span class="d">Deep environment diagnostics, granular pass/fail.</span></li>
+          <li><code>kit map</code><span class="d">Deterministic repo-map: the relevant slice around a file (owners, budget, co-change).</span></li>
           <li><code>kit config knobs</code><span class="d">List every power-user env var + <code>.kit.toml</code> field kit honors.</span></li>
         </ul>
       </div>
