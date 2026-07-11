@@ -637,6 +637,34 @@ $ kit hooks add context-check</pre>
   </section>
 
   <section>
+    <h2>Proven against the real world: 200 repos + a red-team</h2>
+    <p>
+      Before 5.0 we pointed kit at <strong>200 real repositories</strong> — the 100 most-used apps
+      and libraries on GitHub across 15+ language ecosystems, then a <em>fresh, harder</em> 100 as a
+      validation set — running <code>kit init</code> + <code>kit check</code> on each with fully
+      isolated per-repo state, and recording every result to raw per-repo data. Outcome:
+      <strong>0 crashes, 0 init errors</strong>, including monorepos at <code>linux</code> /
+      <code>next.js</code> / <code>elasticsearch</code> / <code>flutter</code> scale. Stack detection
+      went 71→95/100 on the first corpus after the fixes it exposed; the fresh corpus honestly
+      scored lower first (78 — the first set had effectively become the tuning set), reached
+      ~85 with <strong>zero regressions</strong>, and the remaining misses are documented edge cases
+      (manifest-less repos, tools-written-in-X shipping a <code>package.json</code>). That analysis
+      is what motivated the Linguist-style source-byte census that ships in 5.0.
+    </p>
+    <p>
+      In parallel, a <strong>12-probe adversarial battery</strong> attacked kit's core promise —
+      <em>no false green</em>: scan-result poisoning, baseline-whitelisting of findings, symlinked
+      findings files, a fully weaponized "green machine" repo, malicious-package triage. On
+      <strong>every false-green attack kit stayed red / fail-closed.</strong> The red-team did find
+      three real defects — a malformed baseline or <code>.kit.toml</code> could crash the gate, and
+      one check was non-deterministic — every one a <em>denial-of-verdict</em>, not a false green,
+      and all three were fixed with regression tests before release. Honest limits are documented
+      too: manifest-based detection tops out in the mid-80s on polyglot repos, and the degraded
+      no-trufflehog secret path has known gaps.
+    </p>
+  </section>
+
+  <section>
     <h2>Integrations</h2>
     <p>
       kit's modules are pluggable, this is where it meets the outside world while
