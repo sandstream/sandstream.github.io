@@ -197,8 +197,8 @@ const CASES = [
     name: ["kit"], italic: 0,
     tagline: { sv: "Säkerhets-CLI för AI-agenter och människor · noll LLM-anrop.", en: "Security-first developer CLI for AI agents and humans · zero LLM calls." },
     desc: {
-      sv: "Varje gång ett projekt startas, av människa eller AI-agent, saknas verktyg, inloggningar och secrets, och API-nycklar läcker. Peter byggde kit: en CLI som tar ett projekt från git clone till körbar miljö med ett kommando. Secrets-hantering över 11 vault-backends, supply-chain-scanning, multi-repo-säkerhetsbaselines och TOTP-gated elevation för destruktiva operationer. Noll LLM-anrop, lokal-först, noll telemetri. Open source under MIT.",
-      en: "Every time a project starts, by a human or an AI agent, tools are missing, logins are expired, secrets leak. Peter built kit: a CLI taking a project from git clone to a working environment in one command. Secrets management across 11 vault backends, supply-chain scanning, multi-repo security baselines and TOTP-gated elevation for destructive operations. Zero LLM calls, local-first, zero telemetry. Open source under MIT.",
+      sv: "Varje gång ett projekt startas, av människa eller AI-agent, saknas verktyg, inloggningar och secrets, och API-nycklar läcker. Peter byggde kit: en CLI som tar ett projekt från git clone till körbar miljö med ett kommando. Secrets-hantering över 12 secret-backends, supply-chain-scanning, multi-repo-säkerhetsbaselines och TOTP-gated elevation för destruktiva operationer. Noll LLM-anrop, lokal-först, noll telemetri. Open source under MIT.",
+      en: "Every time a project starts, by a human or an AI agent, tools are missing, logins are expired, secrets leak. Peter built kit: a CLI taking a project from git clone to a working environment in one command. Secrets management across 12 secret backends, supply-chain scanning, multi-repo security baselines and TOTP-gated elevation for destructive operations. Zero LLM calls, local-first, zero telemetry. Open source under MIT.",
     },
     meta: [
       { l: "ROLE", v: "Creator · open source" },
