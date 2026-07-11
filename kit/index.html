@@ -624,6 +624,11 @@ $ kit hooks add context-check</pre>
         <p><code>kit triage skill --deep</code> delegates to NVIDIA <strong>SkillSpector</strong>'s static Stage 1 (regex + AST + offline OSV) and folds its findings into kit's verdict, attributed to the source. kit <strong>never</strong> runs its LLM stage — enforced by a scrubbed env and static invocation. <code>kit setup --recommended</code> wires the triage gates into your pre-commit hook.</p>
       </div>
       <div class="card">
+        <div class="num">[repo-map]</div>
+        <h3>Repo-map — load a slice, not the tree</h3>
+        <p><code>kit map</code> (and the <code>kit_map</code> MCP tool — one shared core, so CLI and agent surface can't disagree) builds a <strong>deterministic, zero-LLM</strong> import graph (TS/JS + Python) and returns the relevant <em>slice</em> around a seed file: import neighbors to a chosen depth, a <code>--budget</code> cap where <strong>every dropped file is logged</strong> (never silent truncation), owner attribution (CODEOWNERS or git-blame), and <code>--co-change</code> coupling from git history. An agent loads the part of a growing repo that matters — not the whole tree.</p>
+      </div>
+      <div class="card">
         <div class="num">[stable contracts]</div>
         <h3>Stable contracts</h3>
         <p>Versioned <code>.kit.toml</code> with deterministic <code>kit config migrate</code> (dry-run by default, auto-backup, restore-on-failure). Every command carries a stability tier, the adapter SDK is frozen at <code>adapter-sdk@1.0</code> on its own semver track, and a committed public-surface snapshot has a drift test that fails CI on any unreviewed change. 5.0 is a major for the <em>scope of new capability</em>, not for any break — additive over 4.x, no stable command removed.</p>
@@ -786,6 +791,7 @@ $ pnpm dev</pre>
           <li><code>kit status</code><span class="d">Adoption checklist + the next step for each gap.</span></li>
           <li><code>kit statusline</code><span class="d">One-line status (score · update · open PAL) for your prompt or agent bar.</span></li>
           <li><code>kit doctor</code><span class="d">Deep environment diagnostics, granular pass/fail.</span></li>
+          <li><code>kit map</code><span class="d">Deterministic repo-map: the relevant slice around a file (owners, budget, co-change).</span></li>
           <li><code>kit config knobs</code><span class="d">List every power-user env var + <code>.kit.toml</code> field kit honors.</span></li>
         </ul>
       </div>
