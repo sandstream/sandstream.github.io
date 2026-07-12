@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kit · developer kit. deterministic. local-first.</title>
-<meta name="description" content="One command from git clone to working dev environment. Deterministic, local-first, multi-vault. For AI agents and humans.">
+<meta name="description" content="One command from git clone to working dev environment — and a portable, fail-closed governance layer for the agent loop. Deterministic, local-first, multi-vault. For AI agents and humans.">
 <meta name="theme-color" content="#0a0e0e" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f7faf9" media="(prefers-color-scheme: light)">
 <meta property="og:title" content="kit · developer kit">
-<meta property="og:description" content="Deterministic. Local-first. Multi-vault. One command from git clone to working dev environment.">
+<meta property="og:description" content="Deterministic. Local-first. Multi-vault. One command from git clone to a working dev environment — and a portable, fail-closed governance layer for the agent loop.">
 <meta property="og:url" content="https://www.sandstre.am/kit">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sandstream">
 <link rel="canonical" href="https://www.sandstre.am/kit">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kit · developer kit">
-<meta name="twitter:description" content="Deterministic. Local-first. Multi-vault. One command from git clone to a working dev environment. For AI agents and humans.">
+<meta name="twitter:description" content="Deterministic. Local-first. Multi-vault. One command from git clone to a working dev environment — and a portable, fail-closed governance layer for the agent loop.">
 <link rel="icon" href="/assets/mark-favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
 {
@@ -399,7 +399,7 @@
       <span class="pill">macOS · Linux · Windows</span>
       <span class="pill">SLSA provenance</span>
       <span class="pill">12 secret backends · 8 vaults</span>
-      <span class="pill">Local-first memory · 8 agents</span>
+      <span class="pill">Local-first memory · 12 agents</span>
       <span class="pill">Zero telemetry</span>
       <span class="pill accent">Provable green</span>
       <span class="pill accent">ASVS L2 evidence map</span>
@@ -467,7 +467,7 @@
       <div class="card">
         <div class="num">[07]</div>
         <h3>Agent setup</h3>
-        <p><code>kit agent-config</code> writes a managed "use kit" block into the agent's rules file, <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>.cursorrules</code> / <code>.clinerules</code> / <code>.github/copilot-instructions.md</code> (OpenCode reads the shared <code>AGENTS.md</code>), so agents run <code>kit check</code>, triage before installs, and vault their secrets. The <code>--install-gate</code> wires a fail-closed pre-tool gate that blocks an un-triaged install across <strong>7 agents</strong> (Claude Code, Codex, Amazon Q, Gemini CLI, Cursor, OpenCode, Cline). Idempotent, edit outside the markers freely.</p>
+        <p><code>kit agent-config</code> writes a managed "use kit" block into the agent's rules file, <code>CLAUDE.md</code> / <code>AGENTS.md</code> / <code>GEMINI.md</code> / <code>.cursorrules</code> / <code>.clinerules</code> / <code>.augment-guidelines</code> / <code>.github/copilot-instructions.md</code> (OpenCode, Kiro, Factory Droid and Kilo Code read the shared <code>AGENTS.md</code>), so agents run <code>kit check</code>, triage before installs, and vault their secrets. By default it also wires a fail-closed pre-tool install-gate that blocks an un-triaged install across <strong>11 agents</strong> (Claude Code, Codex, Amazon Q, Kiro, Factory Droid, Augment, Antigravity, Gemini CLI, Cursor, OpenCode, Cline); <code>--no-install-gate</code> opts out. Idempotent, edit outside the markers freely.</p>
       </div>
     </div>
   </section>
@@ -479,9 +479,9 @@
       is not. <code>kit memory</code> gives a (swappable) model a <strong>verifiable second brain</strong>:
       it stores your raw conversation history and searches it <em>before</em> answering, so it pulls
       receipts instead of guessing. SQLite + FTS5, three hooks, no vectors, no model calls.
-      It indexes transcripts from <strong>eight</strong> coding agents (Claude Code, Codex, Gemini,
-      Continue, Cursor, Amazon Q, Cline and OpenCode), each parsed against the agent's own
-      serialization format, never guessed.
+      It indexes transcripts from <strong>twelve</strong> coding agents (Claude Code, Codex, Gemini,
+      Continue, Cursor, Amazon Q, AWS Kiro, Factory Droid, Aider, Antigravity, Cline and OpenCode),
+      each parsed against the agent's own serialization format, never guessed.
     </p>
     <p>
       A <strong>personal</strong> tier stays private, with an encrypted backup so a stolen laptop does
@@ -534,7 +534,7 @@ $ kit hooks add context-check</pre>
     <p>
       The agent stack has layers. kit sits at the <strong>governance</strong> floor,
       deterministic, local-first, model-agnostic. Everything above stays swappable;
-      the security-critical setup underneath doesn't move, and in 2.0 it is a floor
+      the security-critical setup underneath doesn't move, and since 2.0 it is a floor
       you can prove (signed attestation, scanner-health gate) and build on (frozen,
       versioned contracts).
     </p>
@@ -558,7 +558,7 @@ $ kit hooks add context-check</pre>
       your scanners, not instead of them.
     </p>
     <p>
-      And in 2.0 it <strong>proves</strong> it ran them: a crashed or missing scanner fails
+      And since 2.0 it <strong>proves</strong> it ran them: a crashed or missing scanner fails
       the gate instead of passing green, a signed <code>kit check --attest</code> receipt
       records which scanners actually ran, and <code>kit coverage</code> maps that to OWASP
       ASVS L2 as an evidence map (an evidence source for a GRC tool, never a compliance claim).
