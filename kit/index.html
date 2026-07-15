@@ -668,6 +668,78 @@ $ kit hooks add context-check</pre>
     </p>
   </section>
 
+  <section id="proof-findings">
+    <h2>What the floor found</h2>
+    <p>
+      Robustness is one thing; what the checks actually <em>surface</em> is another. Pointed
+      at that same corpus with <code>kit check --category security</code> (kit 5.0.0, one
+      command per repo, no model calls), 197 repositories returned results. The headline is
+      how quiet it was.
+    </p>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="num">197</div>
+        <h3>repos scanned</h3>
+        <p>The 200-repo corpus above, minus a few that could not be cloned. <span class="pill">kit 5.0.0</span></p>
+      </div>
+      <div class="card">
+        <div class="num">70%</div>
+        <h3>zero kit fails</h3>
+        <p>139 of 197 came back clean on kit's gating checks. The floor holds against the code the world already runs.</p>
+      </div>
+      <div class="card">
+        <div class="num">0</div>
+        <h3>first-party live secrets</h3>
+        <p>No verified-live credential belonging to a project itself. The two a scanner flagged were vendored test fixtures, not the projects' own.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:2rem;">Known-vulnerable dependencies</h3>
+    <p>
+      Across the repos that commit a lockfile, <code>npm audit</code> reported this severity
+      spread (summed):
+    </p>
+    <div style="display:flex;height:34px;border:1px solid var(--line);border-radius:6px;overflow:hidden;font:600 12px/34px var(--mono);text-align:center;color:#0a0e0e;">
+      <div style="width:21.5%;background:var(--error);" title="critical">67</div>
+      <div style="width:39.2%;background:var(--warn);" title="high">122</div>
+      <div style="width:34.7%;background:var(--accent-dim);" title="moderate">108</div>
+      <div style="width:4.5%;background:var(--ink-3);" title="low">14</div>
+    </div>
+    <p class="mono" style="color:var(--ink-3);font-size:12px;margin-top:.4rem;">
+      <span style="color:var(--error);">■</span> 67 critical &nbsp;
+      <span style="color:var(--warn);">■</span> 122 high &nbsp;
+      <span style="color:var(--accent-dim);">■</span> 108 moderate &nbsp;
+      <span style="color:var(--ink-3);">■</span> 14 low
+    </p>
+    <p>
+      With open network egress, <code>osv-scanner</code> resolved deeper across Go, Rust,
+      Python and the JVM: <strong>9,054 advisory IDs across 2,711 packages</strong> in 117 of
+      the repos.
+    </p>
+    <div style="border:1px solid var(--line-2);border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:6px;padding:.9rem 1.1rem;margin:1rem 0;">
+      <strong>A known-vulnerable dependency version is not an exploitable project.</strong>
+      Standard-library advisories and deep transitive hits dominate that long tail; most never
+      reach a reachable code path. We publish the aggregate as a hygiene signal, not a
+      scoreboard, and we do not rank repositories by it.
+    </div>
+
+    <h3 style="margin-top:2rem;">Secrets: counted, never named</h3>
+    <p>
+      121 repos carried secret-shaped strings in git history, almost entirely test fixtures
+      and example connection strings, with <strong>zero verified-live</strong>. The two
+      verified-live hits were vendored third-party test fixtures, not the projects' own
+      credentials. Per responsible disclosure we report only the count: anything that could be
+      a real leak goes privately to the maintainer first and is never named here.
+    </p>
+
+    <p style="color:var(--ink-3);font-size:13px;">
+      Method: shallow clone → <code>kit init --no-setup</code> → <code>kit check --category security</code>
+      → <code>osv-scanner</code> → <code>npm audit</code>, kit 5.0.0, run 2026-07. Machine-local
+      checks excluded; clones deleted after each repo. Raw per-repo data is kept in a private
+      research repository.
+    </p>
+  </section>
+
   <section>
     <h2>Integrations</h2>
     <p>
