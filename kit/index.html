@@ -641,19 +641,18 @@ $ kit hooks add context-check</pre>
   </section>
 
   <section>
-    <h2>Proven against the real world: 200 repos + a red-team</h2>
+    <h2>Proven against the real world: 198 repos + a red-team</h2>
     <p>
-      Before 5.0 we pointed kit at <strong>200 real repositories</strong> — the 100 most-used apps
-      and libraries on GitHub across 15+ language ecosystems, then a <em>fresh, harder</em> 100 as a
+      We pointed kit at <strong>198 real repositories</strong> — the 100 most-used apps and
+      libraries on GitHub across 15+ language ecosystems, then a <em>fresh, harder</em> 98 as a
       validation set — running <code>kit init</code> + <code>kit check</code> on each with fully
-      isolated per-repo state, and recording every result to raw per-repo data. Outcome:
-      <strong>0 crashes, 0 init errors</strong>, including monorepos at <code>linux</code> /
-      <code>next.js</code> / <code>elasticsearch</code> / <code>flutter</code> scale. Stack detection
-      went 71→95/100 on the first corpus after the fixes it exposed; the fresh corpus honestly
-      scored lower first (78 — the first set had effectively become the tuning set), reached
-      ~85 with <strong>zero regressions</strong>, and the remaining misses are documented edge cases
-      (manifest-less repos, tools-written-in-X shipping a <code>package.json</code>). That analysis
-      is what motivated the Linguist-style source-byte census that ships in 5.0.
+      isolated per-repo state, and recording every result to raw per-repo data. Across the
+      100-repo compatibility set: <strong>0 crashes, 0 init errors</strong>, including monorepos
+      at <code>linux</code> / <code>next.js</code> / <code>elasticsearch</code> / <code>flutter</code>
+      scale. Stack detection is scored against each repo's primary implementation language; the
+      misses are documented polyglot edge cases (manifest-less repos, tools-written-in-X shipping
+      a <code>package.json</code>), and that analysis is what motivated the Linguist-style
+      source-byte census that ships in 5.0.
     </p>
     <p>
       In parallel, a <strong>14-probe adversarial battery</strong> attacked kit's core promise —
@@ -663,7 +662,7 @@ $ kit hooks add context-check</pre>
       three real defects — a malformed baseline or <code>.kit.toml</code> could crash the gate, and
       one check was non-deterministic — every one a <em>denial-of-verdict</em>, not a false green,
       and all three were fixed with regression tests before release. Honest limits are documented
-      too: manifest-based detection tops out in the mid-80s on polyglot repos, and the degraded
+      too: manifest-based detection has documented misses on polyglot repos, and the degraded
       no-trufflehog secret path has known gaps.
     </p>
   </section>
@@ -680,7 +679,7 @@ $ kit hooks add context-check</pre>
       <div class="card">
         <div class="num">197</div>
         <h3>repos scanned</h3>
-        <p>The 200-repo corpus above, minus a few that could not be cloned. <span class="pill">kit 5.0.0</span></p>
+        <p>The 198-repo corpus above, minus 1 that could not be cloned. <span class="pill">kit 5.0.0</span></p>
       </div>
       <div class="card">
         <div class="num">70%</div>
