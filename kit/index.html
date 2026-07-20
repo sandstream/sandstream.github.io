@@ -32,7 +32,7 @@
   "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a hardware-rooted Ed25519 identity. kit 5 makes it a portable, fail-closed governance layer for the agent loop — hardware-rooted identity with honest degradation, an offline-verified control plane (org-signed policy pull + keyless RFC 9421 credentials), one exec-broker enforcing a signed scope across the CLI gates and MCP runtime, and a traveling profile you can export/import to a fresh host. Strict by default (a check that could not run FAILS the gate — no false green), built on a floor you can prove and frozen, versioned CLI, config, and SDK contracts.",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "5.0.0",
+  "softwareVersion": "5.2.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -397,7 +397,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v5.0.0</span>
+      <span class="pill accent" id="version-pill">v5.2.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
@@ -637,6 +637,11 @@ $ kit hooks add context-check</pre>
         <h3>Stable contracts</h3>
         <p>Versioned <code>.kit.toml</code> with deterministic <code>kit config migrate</code> (dry-run by default, auto-backup, restore-on-failure). Every command carries a stability tier, the adapter SDK is frozen at <code>adapter-sdk@1.0</code> on its own semver track, and a committed public-surface snapshot has a drift test that fails CI on any unreviewed change. 5.0 is a major for the <em>scope of new capability</em>, not for any break — additive over 4.x, no stable command removed.</p>
       </div>
+      <div class="card">
+        <div class="num">[skills as modules]</div>
+        <h3>Skills, governed as software modules</h3>
+        <p><code>kit skill test</code> treats an agent skill as a module: deterministic, zero-LLM checks for <strong>contract</strong>, <strong>trigger</strong> (declared + no collision with a sibling), <strong>least-privilege scope</strong>, and <strong>regression</strong> vs a committed snapshot (<code>--gate</code> fails CI on drift, like the public-surface invariant). <code>--runtime</code> then audits what the agent <em>actually did</em>: it reconstructs each skill run as a span from the recorded transcript and proves the <strong>negative controls held</strong> — a forbidden action the broker <em>denied</em> lands as a <code>gate-egress</code>/<code>gate-fs</code> deny, so kit reports <em>"control held — N forbidden attempt(s) denied"</em> with evidence, and catches exfil-via-allowed-tool (an off-scope host or write) against the signed scope. kit <strong>never runs the skill</strong>; whether the output is <em>good</em> is an LLM judgement kit <strong>delegates</strong>. Honest floor: coverage is <em>observed</em> runs, never a false-green pass.</p>
+      </div>
     </div>
   </section>
 
@@ -849,6 +854,7 @@ $ pnpm dev</pre>
           <li><code>kit init</code><span class="d">Detect the stack → generate <code>.kit.toml</code> and run setup.</span></li>
           <li><code>kit install</code><span class="d">Install missing tools via mise.</span></li>
           <li><code>kit setup</code><span class="d">Full pipeline: install → login → secrets → agent config → verify.</span></li>
+          <li><code>kit bootstrap</code><span class="d">One-command cold start for an ephemeral box: setup → identity → policy → profile → memory, from one seed.</span></li>
           <li><code>kit check</code><span class="d">What's set up vs missing: tools, services, secrets, hooks, security.</span></li>
           <li><code>kit fix</code> · <code>kit heal</code><span class="d">Auto-fix what's safe; <code>heal</code> loops until green, fail-closed.</span></li>
         </ul>
@@ -868,6 +874,7 @@ $ pnpm dev</pre>
           <li><code>kit scan</code><span class="d">Run external scanners (snyk/trivy/grype/semgrep/osv) → one verdict.</span></li>
           <li><code>kit pkg</code> · <code>kit triage</code><span class="d">Vet a package before install: <code>kit pkg npm:express</code>.</span></li>
           <li><code>kit coverage</code><span class="d">OWASP ASVS L2 evidence map (not a compliance claim).</span></li>
+          <li><code>kit skill test</code><span class="d">Lint a skill as a module (contract/trigger/scope/regression); <code>--runtime</code> proves negative controls held.</span></li>
         </ul>
       </div>
       <div class="card cmd-card">
