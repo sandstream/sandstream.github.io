@@ -32,7 +32,7 @@
   "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a hardware-rooted Ed25519 identity. kit 5 makes it a portable, fail-closed governance layer for the agent loop — hardware-rooted identity with honest degradation, an offline-verified control plane (org-signed policy pull + keyless RFC 9421 credentials), one exec-broker enforcing a signed scope across the CLI gates and MCP runtime, and a traveling profile you can export/import to a fresh host. Strict by default (a check that could not run FAILS the gate — no false green), built on a floor you can prove and frozen, versioned CLI, config, and SDK contracts.",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "5.2.0",
+  "softwareVersion": "5.4.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -397,7 +397,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v5.2.0</span>
+      <span class="pill accent" id="version-pill">v5.4.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
@@ -565,7 +565,8 @@ $ kit hooks add context-check</pre>
       And since 2.0 it <strong>proves</strong> it ran them: a crashed or missing scanner fails
       the gate instead of passing green, a signed <code>kit check --attest</code> receipt
       records which scanners actually ran, and <code>kit coverage</code> maps that to OWASP
-      ASVS L2 as an evidence map (an evidence source for a GRC tool, never a compliance claim).
+      ASVS L2, OWASP LLM Top 10, NIST SSDF, and the OWASP Agentic &amp; MCP Top 10 as toggleable
+      evidence maps (an evidence source for a GRC tool, never a compliance claim).
     </p>
   </section>
 
@@ -615,7 +616,7 @@ $ kit hooks add context-check</pre>
       <div class="card">
         <div class="num">[exec-broker]</div>
         <h3>One exec-broker</h3>
-        <p>A single signed-scope governance floor drives the PreToolUse gates (<code>kit gate-egress</code> / <code>gate-fs</code>), the MCP runtime, and the <code>kit doctor</code> posture — one broker, not two. Runtime mediation is <strong>on by default in observe mode</strong> (audits what it <em>would</em> deny, breaks nothing); enforce is an explicit opt-in. No verified scope ⇒ grants nothing.</p>
+        <p>A single signed-scope governance floor drives the PreToolUse gates (<code>kit gate-egress</code> / <code>gate-fs</code>), the MCP runtime, and the <code>kit doctor</code> posture — one broker, not two. Runtime mediation is <strong>on by default in observe mode</strong> (audits what it <em>would</em> deny, breaks nothing); enforce is an explicit opt-in. <code>kit broker enforce-readiness</code> grades the observed window so you flip observe→enforce <strong>on evidence, not nerve</strong>, and <code>kit broker enforce</code> re-signs the scope and refuses unless the verdict is <code>ready</code>. No verified scope ⇒ grants nothing.</p>
       </div>
       <div class="card">
         <div class="num">[traveling profile]</div>
@@ -811,8 +812,8 @@ $ kit hooks add context-check</pre>
         <td class="yes">kit airgap verify</td>
       </tr>
       <tr>
-        <td>OWASP ASVS L2 evidence map</td>
-        <td class="yes">kit coverage</td>
+        <td>OWASP evidence maps — ASVS L2 · LLM Top 10 · SSDF · Agentic Top 10 · MCP Top 10</td>
+        <td class="yes">kit coverage --standard=…</td>
       </tr>
       <tr>
         <td>Public-surface stability contract</td>
@@ -871,9 +872,9 @@ $ pnpm dev</pre>
       <div class="card cmd-card">
         <h3>Security gate</h3>
         <ul class="cmd-list">
-          <li><code>kit scan</code><span class="d">Run external scanners (snyk/trivy/grype/semgrep/osv) → one verdict.</span></li>
+          <li><code>kit scan</code><span class="d">Run external scanners (snyk/trivy/grype/semgrep/osv) → one verdict; toggleable via <code>--list-delegates</code>.</span></li>
           <li><code>kit pkg</code> · <code>kit triage</code><span class="d">Vet a package before install: <code>kit pkg npm:express</code>.</span></li>
-          <li><code>kit coverage</code><span class="d">OWASP ASVS L2 evidence map (not a compliance claim).</span></li>
+          <li><code>kit coverage</code><span class="d">Evidence maps: ASVS L2 · LLM · SSDF · Agentic &amp; MCP Top 10 (toggleable; not a compliance claim).</span></li>
           <li><code>kit skill test</code><span class="d">Lint a skill as a module (contract/trigger/scope/regression); <code>--runtime</code> proves negative controls held.</span></li>
         </ul>
       </div>
@@ -881,7 +882,8 @@ $ pnpm dev</pre>
         <h3>Memory</h3>
         <ul class="cmd-list">
           <li><code>kit memory index</code><span class="d">Index agent transcripts into the local SQLite store.</span></li>
-          <li><code>kit memory search</code><span class="d">Full-text recall — pull receipts before answering.</span></li>
+          <li><code>kit memory search</code><span class="d">Full-text recall — pull receipts before answering; <code>--brief</code> returns the minimal slice with an explicit withheld count.</span></li>
+          <li><code>kit memory export</code><span class="d">Export the shared tier to an Obsidian vault (wikilinks + per-area index); rule aging flags stale machine-origin rules.</span></li>
           <li><code>kit memory push</code> · <code>pull</code><span class="d">Governed cross-device sync over your own encrypted transport (public-key mode: no secret).</span></li>
           <li><code>kit memory learn</code><span class="d">Surface instructions you keep re-typing so you can make them a rule.</span></li>
         </ul>
