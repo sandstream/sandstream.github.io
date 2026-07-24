@@ -876,6 +876,7 @@ $ pnpm dev</pre>
           <li><code>kit pkg</code> · <code>kit triage</code><span class="d">Vet a package before install: <code>kit pkg npm:express</code>.</span></li>
           <li><code>kit coverage</code><span class="d">Evidence maps: ASVS L2 · LLM · SSDF · Agentic &amp; MCP Top 10 (toggleable; not a compliance claim).</span></li>
           <li><code>kit skill test</code><span class="d">Lint a skill as a module (contract/trigger/scope/regression); <code>--runtime</code> proves negative controls held.</span></li>
+          <li><code>kit adr check</code><span class="d">Turn an Architecture Decision Record into a deterministic gate — enforce its <code>kit-enforce</code> rules (forbid/require pattern, import-aware forbid, incl. transitive), cited to the ADR. Zero-LLM.</span></li>
         </ul>
       </div>
       <div class="card cmd-card">
@@ -904,7 +905,7 @@ $ pnpm dev</pre>
         <ul class="cmd-list">
           <li><code>kit status</code><span class="d">Adoption checklist + the next step for each gap.</span></li>
           <li><code>kit statusline</code><span class="d">One-line status (score · update · open PAL) for your prompt or agent bar.</span></li>
-          <li><code>kit doctor</code><span class="d">Deep environment diagnostics, granular pass/fail.</span></li>
+          <li><code>kit doctor</code><span class="d">Deep environment diagnostics + OS-containment posture (container/seccomp + gVisor/Firecracker fingerprints; honest <code>unknown</code> off-Linux). <code>[governance.containment] require</code> makes it fail-closed.</span></li>
           <li><code>kit map</code><span class="d">Deterministic repo-map: the relevant slice around a file (owners, budget, co-change).</span></li>
           <li><code>kit config knobs</code><span class="d">List every power-user env var + <code>.kit.toml</code> field kit honors.</span></li>
         </ul>
