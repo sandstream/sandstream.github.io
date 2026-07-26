@@ -36,7 +36,7 @@
   "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a hardware-rooted Ed25519 identity. kit 5 makes it a portable, fail-closed governance layer for the agent loop — hardware-rooted identity with honest degradation, an offline-verified control plane (org-signed policy pull + keyless RFC 9421 credentials), one exec-broker enforcing a signed scope across the CLI gates and MCP runtime, and a traveling profile you can export/import to a fresh host. Strict by default (a check that could not run FAILS the gate — no false green), built on a floor you can prove and frozen, versioned CLI, config, and SDK contracts.",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "5.15.0",
+  "softwareVersion": "5.21.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -389,6 +389,7 @@
       config, and SDK are frozen, versioned contracts. In <strong>5.0</strong>,
       hardware-rooted identity, an offline control plane, one exec-broker, and a
       traveling profile make it a <strong>portable, fail-closed governance layer for the agent loop</strong>.
+      And it ships zero opinions about your code — <strong>your standards, not ours</strong>.
     </p>
 
     <div class="install-block">
@@ -401,7 +402,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v5.15.0</span>
+      <span class="pill accent" id="version-pill">v5.21.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
@@ -572,6 +573,48 @@ $ kit hooks add context-check</pre>
       ASVS L2, OWASP LLM Top 10, NIST SSDF, and the OWASP Agentic &amp; MCP Top 10 as toggleable
       evidence maps (an evidence source for a GRC tool, never a compliance claim).
     </p>
+  </section>
+
+  <section>
+    <h2>One audit, one verdict</h2>
+    <p>
+      <code>kit review</code> runs the four gates — environment + security
+      (<code>check</code>), a11y and design tokens (<code>design</code>), code standards
+      (<code>standards</code>), and architecture decisions (<code>adr</code>) — and returns
+      <strong>one structured report</strong>: <code>{ ok, failed, stages }</code>, exit 1 on
+      red. The agent-facing <code>kit_review</code> MCP tool serializes the <em>same</em>
+      report from the <em>same</em> core, so the CLI and the agent surface can never
+      disagree about what ran or what green means. <code>concise: true</code> trims
+      pass/skip rows for context economy — per-stage counts keep the totals honest,
+      nothing is silently truncated.
+    </p>
+    <pre class="code"><span class="c"># the one gate an agent runs before it acts — human-readable or structured</span>
+$ kit review
+$ kit review --json   <span class="c"># { ok, failed, stages: check · design · standards · adr }</span></pre>
+  </section>
+
+  <section>
+    <h2>Your standards, not ours</h2>
+    <p>
+      kit ships <strong>zero opinions</strong> about your architecture, your framework
+      choices, or your taste. There is no bundled ruleset to inherit and no vendor's
+      "best practice" to adopt — the usual reason standards tooling feels like someone
+      else's rules. You declare the standard: thresholds in <code>.kit.toml</code>, your
+      own rules as standards plugins, architecture decisions (monolith vs. services,
+      caching strategy, your React setup) as ADRs with <code>kit-enforce</code> blocks.
+      kit enforces the declaration deterministically — and proves the checks ran.
+    </p>
+    <p>
+      Taste is allowed to change. An ADR is <strong>superseded, not deleted</strong> — the
+      decision, its date, and its <em>why</em> stay in history while the gate moves with
+      you. And the baseline keeps day one honest: <code>kit baseline freeze</code>
+      snapshots today's findings so gates trip only on <strong>net-new</strong> ones — no
+      wall of legacy findings shaming a real repo into ignoring the tool.
+    </p>
+    <pre class="code"><span class="c"># your architecture decisions as enforced gates — cited back to the ADR</span>
+$ kit adr check
+<span class="c">✓ 3 enforced ADR(s) — no new violations</span>
+<span class="c"># taste changed in 2027? supersede the ADR — history keeps the why</span></pre>
   </section>
 
   <section>
@@ -876,6 +919,7 @@ $ pnpm dev</pre>
       <div class="card cmd-card">
         <h3>Security gate</h3>
         <ul class="cmd-list">
+          <li><code>kit review</code><span class="d">The one-shot audit: check + design + standards + ADR as <strong>one structured verdict</strong> (<code>--json</code>) — same core as the <code>kit_review</code> MCP tool.</span></li>
           <li><code>kit scan</code><span class="d">Run external scanners (snyk/trivy/grype/semgrep/osv) → one verdict; toggleable via <code>--list-delegates</code>.</span></li>
           <li><code>kit pkg</code> · <code>kit triage</code><span class="d">Vet a package before install: <code>kit pkg npm:express</code>.</span></li>
           <li><code>kit coverage</code><span class="d">Evidence maps: ASVS L2 · LLM · SSDF · Agentic &amp; MCP Top 10 (toggleable; not a compliance claim).</span></li>
@@ -1031,6 +1075,8 @@ $ kit context check  <span class="c"># lock each CLI to the right account + proj
     <p>No — kit is not another scanner. It orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Grype, osv-scanner, plus opt-in GuardDog malware detection and its own supply-chain checks) into one deterministic gate with cited findings. Cloud-only tools like Socket that can't run air-gapped surface as an honest skip, never a false green. It does not rebuild SAST.</p>
     <h3>How is kit agent-native?</h3>
     <p>The core is deterministic and local — no LLM. kit externalizes agent state: a cross-harness memory store (Claude Code, Codex, Gemini, Cursor, …) and a per-CLI context lock that verifies each tool points at the right account and project, so you can switch agents without losing context or contaminating environments.</p>
+    <h3>Does kit impose a coding standard?</h3>
+    <p>No. kit ships zero opinions — you declare your standards (config thresholds, your own plugin rules, architecture decisions as ADRs with enforce blocks) and kit enforces the declaration deterministically, then proves the checks ran. Taste can change: supersede the ADR, and history keeps the why.</p>
     <h3>Is kit free and open source?</h3>
     <p>Yes. kit is MIT-licensed, published to npm as <code>sandstream-kit</code> with SLSA provenance, requires Node 22+, and sends zero telemetry.</p>
   </section>
@@ -1042,6 +1088,7 @@ $ kit context check  <span class="c"># lock each CLI to the right account + proj
       { "@type": "Question", "name": "What is kit?", "acceptedAnswer": { "@type": "Answer", "text": "kit is a deterministic, local-first developer-environment manager for AI agents and humans. One command takes a repo from git clone to a working dev environment: it installs and pins tools, runs guided logins, materializes secrets from your vault, and wires agent config." } },
       { "@type": "Question", "name": "Does kit replace Semgrep, Snyk, or Trivy?", "acceptedAnswer": { "@type": "Answer", "text": "No. kit is not another scanner. It orchestrates and normalizes the scanners you already use (Semgrep, Snyk, Trivy, Grype, osv-scanner, plus opt-in GuardDog malware detection and its own supply-chain checks) into one deterministic gate with cited findings. Cloud-only tools like Socket that can't run air-gapped surface as an honest skip, never a false green. It does not rebuild SAST." } },
       { "@type": "Question", "name": "How is kit agent-native?", "acceptedAnswer": { "@type": "Answer", "text": "The core is deterministic and local, with no LLM. kit externalizes agent state: a cross-harness memory store (Claude Code, Codex, Gemini, Cursor, and more) and a per-CLI context lock that verifies each tool points at the right account and project, so you can switch agents without losing context or contaminating environments." } },
+      { "@type": "Question", "name": "Does kit impose a coding standard?", "acceptedAnswer": { "@type": "Answer", "text": "No. kit ships zero opinions — you declare your standards (config thresholds, your own plugin rules, architecture decisions as ADRs with enforce blocks) and kit enforces the declaration deterministically, then proves the checks ran. Taste can change: supersede the ADR, and history keeps the why." } },
       { "@type": "Question", "name": "Is kit free and open source?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. kit is MIT-licensed, published to npm as sandstream-kit with SLSA provenance, requires Node 22+, and sends zero telemetry." } }
     ]
   }
