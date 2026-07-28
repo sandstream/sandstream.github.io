@@ -618,6 +618,44 @@ $ kit adr check
   </section>
 
   <section>
+    <h2>Adopt with one pasted line</h2>
+    <p>
+      Paste one line into the repo's <code>CLAUDE.md</code> / <code>AGENTS.md</code> and the
+      next agent session bootstraps kit itself — install, <code>kit init</code>, <code>kit check</code>
+      — and asks the human only for what is genuinely theirs (interactive logins, suggested as
+      commands you run yourself).
+    </p>
+    <pre class="code"><span class="c"># the line you paste (before)</span>
+This project uses kit (github.com/sandstream/kit). If `kit` is missing:
+`npm i -g sandstream-kit`, then `kit init`. Start every session with
+`kit check` and act on its verdict; `kit &lt;command&gt; --help` self-documents.</pre>
+    <p>
+      <strong>Transparent end state:</strong> you should know exactly what a pasted line turns
+      into. When the bootstrap completes, the rules file contains this managed block — visible
+      BEGIN/END markers, idempotent, nothing outside them touched — and a drift test in kit's
+      own CI pins the documented block to what the code actually writes:
+    </p>
+    <pre class="code"><span class="c">&lt;!-- BEGIN kit (managed block — edit outside the markers, not inside) --&gt;</span>
+## kit
+This repo is managed by kit (env, secrets, security gates). Hooks enforce
+the hard rules; what you need to know:
+- Start: `kit check` — on `fail`, run `kit fix`, then re-check.
+- Prior decisions: `kit memory search "&lt;query&gt;"` (cross-session, cross-agent).
+- Secrets: `kit secrets` (vault-backed); placeholders in `.env.example`, never plaintext in `.env*`.
+- Un-gated deps (git repos, URLs, vendored code): `kit triage repo &lt;target&gt;` first.
+- After a batch of edits: `kit check --category security`; halt on `fail`.
+- Everything else: `kit --help` — the commands are self-documenting.
+<span class="c">&lt;!-- END kit --&gt;</span></pre>
+    <p>
+      The block is an index, not an encyclopedia — every agent turn pays for these tokens, so
+      anything a hook already enforces deterministically carries zero prose. The first install
+      is your trust root (kit cannot triage its own bootstrap): releases carry SLSA provenance
+      and cosign-signed images — <a href="https://github.com/sandstream/kit/blob/main/docs/VERIFY.md">verify
+      before you paste the line into an org template</a>.
+    </p>
+  </section>
+
+  <section>
     <h2>Why deterministic</h2>
     <p>
       <code>kit check</code> and <code>kit triage</code> give the same result every run.
