@@ -36,7 +36,7 @@
   "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a hardware-rooted Ed25519 identity. kit 5 makes it a portable, fail-closed governance layer for the agent loop — hardware-rooted identity with honest degradation, an offline-verified control plane (org-signed policy pull + keyless RFC 9421 credentials), one exec-broker enforcing a signed scope across the CLI gates and MCP runtime, and a traveling profile you can export/import to a fresh host. Strict by default (a check that could not run FAILS the gate — no false green), built on a floor you can prove and frozen, versioned CLI, config, and SDK contracts.",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "5.23.0",
+  "softwareVersion": "6.3.1",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -402,7 +402,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v5.23.0</span>
+      <span class="pill accent" id="version-pill">v6.3.1</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
@@ -653,6 +653,37 @@ the hard rules; what you need to know:
       and cosign-signed images — <a href="https://github.com/sandstream/kit/blob/main/docs/VERIFY.md">verify
       before you paste the line into an org template</a>.
     </p>
+  </section>
+
+  <section>
+    <h2>What the 6.x line added</h2>
+    <p>
+      <strong>6.0</strong> was the deletion major: the deprecation cycle completed and the MCP
+      surface landed at <strong>10 tools</strong> — no CLI changes, just the removals semver
+      reserves for a major. Since then:
+    </p>
+    <div class="grid">
+      <div class="card">
+        <div class="num">[shell guard]</div>
+        <h3>The install gate reaches your terminal</h3>
+        <p><code>kit guard install</code> puts PATH shims in front of <code>npm npx pnpm yarn bun bunx pip pipx uv uvx brew gem cargo</code> — the same hardened parser + triage verdict the agent gate uses, in <strong>observe mode</strong> (logs what it would decide, never blocks, never breaks the tool). It even sees the npx-spawned MCP servers no PreToolUse hook can. Enforce ships when the observe data proves the precision — the same observe → evidence → enforce ladder the exec-broker walked.</p>
+      </div>
+      <div class="card">
+        <div class="num">[scan diff]</div>
+        <h3>Lost coverage outranks a regression</h3>
+        <p><code>kit check</code> diffs run-to-run scan results: a scanner that silently stopped running is flagged ABOVE new findings — losing your eyes matters more than what they saw last time.</p>
+      </div>
+      <div class="card">
+        <div class="num">[claim gates]</div>
+        <h3>kit is what kit says it is</h3>
+        <p>Documentation claims are tested as behaviour: README pillars run against real projects in CI, <code>--category</code> filters actually filter (an unknown value refuses instead of silently running everything), and a claims table maps every promise to the test that proves it.</p>
+      </div>
+      <div class="card">
+        <div class="num">[13 packages]</div>
+        <h3>The plugin ecosystem is on npm</h3>
+        <p>The CLI, the frozen <code>sandstream-kit-adapter-sdk@1.x</code> contract, and eleven first-party plugins (Vercel, Cloudflare, Fly, Railway, Supabase, GitHub, Stripe secret-rotation; Snyk, Wiz, Sentry, Sentrux ingestion) publish together — idempotently, peer-ordered, with npm provenance. The SDK name third-party authors are told to install is now owned, not squattable.</p>
+      </div>
+    </div>
   </section>
 
   <section>
