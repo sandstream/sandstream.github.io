@@ -600,8 +600,10 @@ $ kit review --json   <span class="c"># { ok, failed, stages: check · design ·
       choices, or your taste. There is no bundled ruleset to inherit and no vendor's
       "best practice" to adopt — the usual reason standards tooling feels like someone
       else's rules. You declare the standard: thresholds in <code>.kit.toml</code>, your
-      own rules as standards plugins, architecture decisions (monolith vs. services,
-      caching strategy, your React setup) as ADRs with <code>kit-enforce</code> blocks.
+      own rules as standards plugins — <code>mode = "forbid"</code> for a pattern that must
+      not appear, <code>mode = "require"</code> for one that must — architecture decisions
+      (monolith vs. services, caching strategy, your React setup) as ADRs with
+      <code>kit-enforce</code> blocks.
       kit enforces the declaration deterministically — and proves the checks ran.
     </p>
     <p>
