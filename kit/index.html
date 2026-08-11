@@ -683,6 +683,26 @@ the hard rules; what you need to know:
         <h3>The plugin ecosystem is on npm</h3>
         <p>The CLI, the frozen <code>sandstream-kit-adapter-sdk@1.x</code> contract, and eleven first-party plugins (Vercel, Cloudflare, Fly, Railway, Supabase, GitHub, Stripe secret-rotation; Snyk, Wiz, Sentry, Sentrux ingestion) publish together — idempotently, peer-ordered, with npm provenance. The SDK name third-party authors are told to install is now owned, not squattable.</p>
       </div>
+      <div class="card">
+        <div class="num">[policy enforced]</div>
+        <h3>A config block that changed no decision now changes them</h3>
+        <p><code>[policy.agent_writes]</code> was parsed, hashed into <code>KIT_POLICY_HASH</code>, travelled with the repo — and was consulted by nothing. <strong>6.3.2</strong> gave it a choke point inside kit; <strong>6.4.0</strong> carried it into the <code>kit-plugin-*</code> packages kit-core cannot call, which receive an exported deny list rather than your config. It narrows only, by design: unsigned config an agent could edit must never be able to satisfy a gate.</p>
+      </div>
+      <div class="card">
+        <div class="num">[deploy env]</div>
+        <h3>Your platform's env, diffed without reading a value</h3>
+        <p><code>kit check --category deploy</code> compares the env key <em>names</em> a project declares against what the platform actually has — missing keys, cross-environment drift, and build-time variables like <code>NEXT_PUBLIC_*</code> that need a redeploy to take effect. Names only; kit never reads the values to do it.</p>
+      </div>
+      <div class="card">
+        <div class="num">[reachable green]</div>
+        <h3>A warning nobody can clear is a warning nobody reads</h3>
+        <p>Git history is immutable, so one committed test fixture pinned <code>secrets scan</code> at <strong>warn</strong> forever — and a permanent warning is how a real finding gets missed. Findings whose own value proves they name nothing real (an unreachable host, a published doc sample) now count in their own bucket, and reviewed ones can be accepted by name in <code>.kit-secretsignore</code>. Two limits keep it honest: an entry names a single commit, so it can never wave through a later occurrence of the same string, and a <strong>verified-live</strong> finding is never ignorable.</p>
+      </div>
+      <div class="card">
+        <div class="num">[browser doctor]</div>
+        <h3>Which browser your verification actually gets</h3>
+        <p><code>kit browser doctor</code> reports the strategy a repo really resolves to — Playwright, system Chrome, or CDP — or names the blocker standing in the way, with <code>status</code>, <code>cdp-url</code> and <code>playwright-env</code> for wiring a test runner. <code>--json</code> on each.</p>
+      </div>
     </div>
   </section>
 
@@ -972,7 +992,7 @@ $ pnpm dev</pre>
           <li><code>kit install</code><span class="d">Install missing tools via mise.</span></li>
           <li><code>kit setup</code><span class="d">Full pipeline: install → login → secrets → agent config → verify.</span></li>
           <li><code>kit bootstrap</code><span class="d">One-command cold start for an ephemeral box: setup → identity → policy → profile → memory, from one seed.</span></li>
-          <li><code>kit check</code><span class="d">What's set up vs missing: tools, services, secrets, hooks, security.</span></li>
+          <li><code>kit check</code><span class="d">What's set up vs missing: tools, services, secrets, hooks, security. <code>--category deploy</code> also diffs your declared deploy env key <em>names</em> against the platform — never their values.</span></li>
           <li><code>kit fix</code> · <code>kit heal</code><span class="d">Auto-fix what's safe; <code>heal</code> loops until green, fail-closed.</span></li>
         </ul>
       </div>
@@ -1023,6 +1043,7 @@ $ pnpm dev</pre>
           <li><code>kit status</code><span class="d">Adoption checklist + the next step for each gap.</span></li>
           <li><code>kit statusline</code><span class="d">One-line status (score · update · open PAL) for your prompt or agent bar.</span></li>
           <li><code>kit doctor</code><span class="d">Deep environment diagnostics + OS-containment posture (container/seccomp + gVisor/Firecracker fingerprints; honest <code>unknown</code> off-Linux). <code>[governance.containment] require</code> makes it fail-closed.</span></li>
+          <li><code>kit browser doctor</code><span class="d">Which browser strategy a repo actually gets for verification — Playwright, system Chrome, CDP — or the blocker in the way; plus <code>status</code>, <code>cdp-url</code>, <code>playwright-env</code>.</span></li>
           <li><code>kit map</code><span class="d">Deterministic repo-map: the relevant slice around a file (owners, budget, co-change).</span></li>
           <li><code>kit config knobs</code><span class="d">List every power-user env var + <code>.kit.toml</code> field kit honors.</span></li>
         </ul>
