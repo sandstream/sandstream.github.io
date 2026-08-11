@@ -471,7 +471,7 @@
       <div class="card">
         <div class="num">[06]</div>
         <h3>Policy</h3>
-        <p><code>[policy.agent_writes]</code> declares pre-approved scopes. <code>KIT_POLICY_HASH</code> for classifier integration, agents act inside the policy without per-call human approval.</p>
+        <p><code>[policy.agent_writes]</code> declares which vendor writes are pre-approved — and it only ever <strong>narrows</strong>. Enforced since 6.3.2 inside kit (at <code>propagate()</code>'s choke point and the rotation path) and since 6.4.0 in the <code>kit-plugin-*</code> packages, which receive the decision as an exported deny list and never see your config. Because the block is unsigned config an agent could edit, declaring an op never <em>satisfies</em> a gate: elevation, read-only and signed approval stay authoritative. An empty list is a lock, not a wildcard. <code>KIT_POLICY_HASH</code> travels with the repo for classifier integration; every grant and every refusal is audited with vendor, op, state and hash.</p>
       </div>
       <div class="card">
         <div class="num">[07]</div>
