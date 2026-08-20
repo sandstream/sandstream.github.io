@@ -1,0 +1,86 @@
+# Keep the kit page's two non-self-healing version values in step with npm.
+#
+# The visible version pill fetches the registry at load, so live visitors always see the
+# current release. The JSON-LD `softwareVersion` (which crawlers read, with no JS) and the
+# pill's hardcoded fallback do not self-heal, and were maintained by hand. That produced a
+# field four releases behind, and then stale again nine hours after being corrected.
+#
+# This COMMITS rather than opening a PR, on purpose: the last hand-fix for this exact field
+# sat in an unmerged PR for nine days, so a PR-based repair would reproduce the failure it
+# is supposed to remove. The safety comes from the script being fail-closed instead — it
+# rewrites two lines, then refuses to write at all if any other line moved or if the value
+# does not read back as intended. A guard on the outcome, not trust in a regex.
+name: kit version sync
+
+on:
+  schedule:
+    - cron: "17 6 * * *" # daily, offset off the hour so it is not queued with everything else
+  workflow_dispatch: {}
+
+# Least privilege: the only thing this job may do is write this repo's contents.
+permissions:
+  contents: write
+
+concurrency:
+  group: kit-version-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: master
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      # A non-zero exit here is either "the registry answered something unusable" or "the
+      # guard refused" — both must fail the run loudly rather than pass quietly.
+      - name: Sync the version fields
+        id: sync
+        run: node scripts/sync-kit-version.mjs | tee /tmp/sync.log
+
+      - name: Commit if anything changed
+        id: commit
+        run: |
+          if git diff --quiet -- kit/index.html; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Belt and braces on top of the script's own guard: this job may only ever touch
+          # this one file. Anything else in the tree means something unexpected happened.
+          if [ -n "$(git diff --name-only | grep -v '^kit/index.html$')" ]; then
+            echo "::error::unexpected files modified — refusing to commit"
+            git diff --name-only
+            exit 1
+          fi
+          version="$(node -e "const m=require('fs').readFileSync('kit/index.html','utf8').match(/\"softwareVersion\":\s*\"([^\"]+)\"/);console.log(m[1])")"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -aqm "kit site: version → ${version} (automated)"
+          git push origin HEAD:master
+          echo "changed=true"       >> "$GITHUB_OUTPUT"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+
+      # State what happened either way, so a quiet run is evidence rather than silence.
+      - name: Report
+        if: always()
+        run: |
+          {
+            echo "### kit version sync"
+            echo
+            if [ "${{ steps.commit.outputs.changed }}" = "true" ]; then
+              echo "Synced the page to **${{ steps.commit.outputs.version }}** and pushed to \`master\`."
+            elif [ "${{ steps.sync.outcome }}" = "success" ]; then
+              echo "Already in step with npm — nothing to do."
+            else
+              echo "**Did not sync.** The script refused or the registry answered something unusable; see the step log."
+            fi
+            echo
+            echo '```'
+            cat /tmp/sync.log 2>/dev/null || echo "(no output captured)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
