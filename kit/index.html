@@ -36,7 +36,7 @@
   "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a hardware-rooted Ed25519 identity. kit 5 makes it a portable, fail-closed governance layer for the agent loop — hardware-rooted identity with honest degradation, an offline-verified control plane (org-signed policy pull + keyless RFC 9421 credentials), one exec-broker enforcing a signed scope across the CLI gates and MCP runtime, and a traveling profile you can export/import to a fresh host. Strict by default (a check that could not run FAILS the gate — no false green), built on a floor you can prove and frozen, versioned CLI, config, and SDK contracts.",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "6.3.1",
+  "softwareVersion": "6.6.5",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -402,7 +402,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v6.3.1</span>
+      <span class="pill accent" id="version-pill">v6.6.5</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
@@ -471,7 +471,7 @@
       <div class="card">
         <div class="num">[06]</div>
         <h3>Policy</h3>
-        <p><code>[policy.agent_writes]</code> declares pre-approved scopes. <code>KIT_POLICY_HASH</code> for classifier integration, agents act inside the policy without per-call human approval.</p>
+        <p><code>[policy.agent_writes]</code> declares which vendor writes are pre-approved — and it only ever <strong>narrows</strong>. Enforced since 6.3.2 inside kit (at <code>propagate()</code>'s choke point and the rotation path) and since 6.4.0 in the <code>kit-plugin-*</code> packages, which receive the decision as an exported deny list and never see your config. Because the block is unsigned config an agent could edit, declaring an op never <em>satisfies</em> a gate: elevation, read-only and signed approval stay authoritative. An empty list is a lock, not a wildcard. <code>KIT_POLICY_HASH</code> travels with the repo for classifier integration; every grant and every refusal is audited with vendor, op, state and hash.</p>
       </div>
       <div class="card">
         <div class="num">[07]</div>
@@ -600,8 +600,10 @@ $ kit review --json   <span class="c"># { ok, failed, stages: check · design ·
       choices, or your taste. There is no bundled ruleset to inherit and no vendor's
       "best practice" to adopt — the usual reason standards tooling feels like someone
       else's rules. You declare the standard: thresholds in <code>.kit.toml</code>, your
-      own rules as standards plugins, architecture decisions (monolith vs. services,
-      caching strategy, your React setup) as ADRs with <code>kit-enforce</code> blocks.
+      own rules as standards plugins — <code>mode = "forbid"</code> for a pattern that must
+      not appear, <code>mode = "require"</code> for one that must — architecture decisions
+      (monolith vs. services, caching strategy, your React setup) as ADRs with
+      <code>kit-enforce</code> blocks.
       kit enforces the declaration deterministically — and proves the checks ran.
     </p>
     <p>
@@ -682,6 +684,26 @@ the hard rules; what you need to know:
         <div class="num">[13 packages]</div>
         <h3>The plugin ecosystem is on npm</h3>
         <p>The CLI, the frozen <code>sandstream-kit-adapter-sdk@1.x</code> contract, and eleven first-party plugins (Vercel, Cloudflare, Fly, Railway, Supabase, GitHub, Stripe secret-rotation; Snyk, Wiz, Sentry, Sentrux ingestion) publish together — idempotently, peer-ordered, with npm provenance. The SDK name third-party authors are told to install is now owned, not squattable.</p>
+      </div>
+      <div class="card">
+        <div class="num">[policy enforced]</div>
+        <h3>A config block that changed no decision now changes them</h3>
+        <p><code>[policy.agent_writes]</code> was parsed, hashed into <code>KIT_POLICY_HASH</code>, travelled with the repo — and was consulted by nothing. <strong>6.3.2</strong> gave it a choke point inside kit; <strong>6.4.0</strong> carried it into the <code>kit-plugin-*</code> packages kit-core cannot call, which receive an exported deny list rather than your config. It narrows only, by design: unsigned config an agent could edit must never be able to satisfy a gate.</p>
+      </div>
+      <div class="card">
+        <div class="num">[deploy env]</div>
+        <h3>Your platform's env, diffed without reading a value</h3>
+        <p><code>kit check --category deploy</code> compares the env key <em>names</em> a project declares against what the platform actually has — missing keys, cross-environment drift, and build-time variables like <code>NEXT_PUBLIC_*</code> that need a redeploy to take effect. Names only; kit never reads the values to do it.</p>
+      </div>
+      <div class="card">
+        <div class="num">[reachable green]</div>
+        <h3>A warning nobody can clear is a warning nobody reads</h3>
+        <p>Git history is immutable, so one committed test fixture pinned <code>secrets scan</code> at <strong>warn</strong> forever — and a permanent warning is how a real finding gets missed. Findings whose own value proves they name nothing real (an unreachable host, a published doc sample) now count in their own bucket, and reviewed ones can be accepted by name in <code>.kit-secretsignore</code>. Two limits keep it honest: an entry names a single commit, so it can never wave through a later occurrence of the same string, and a <strong>verified-live</strong> finding is never ignorable.</p>
+      </div>
+      <div class="card">
+        <div class="num">[browser doctor]</div>
+        <h3>Which browser your verification actually gets</h3>
+        <p><code>kit browser doctor</code> reports the strategy a repo really resolves to — Playwright, system Chrome, or CDP — or names the blocker standing in the way, with <code>status</code>, <code>cdp-url</code> and <code>playwright-env</code> for wiring a test runner. <code>--json</code> on each.</p>
       </div>
     </div>
   </section>
@@ -972,7 +994,7 @@ $ pnpm dev</pre>
           <li><code>kit install</code><span class="d">Install missing tools via mise.</span></li>
           <li><code>kit setup</code><span class="d">Full pipeline: install → login → secrets → agent config → verify.</span></li>
           <li><code>kit bootstrap</code><span class="d">One-command cold start for an ephemeral box: setup → identity → policy → profile → memory, from one seed.</span></li>
-          <li><code>kit check</code><span class="d">What's set up vs missing: tools, services, secrets, hooks, security.</span></li>
+          <li><code>kit check</code><span class="d">What's set up vs missing: tools, services, secrets, hooks, security. <code>--category deploy</code> also diffs your declared deploy env key <em>names</em> against the platform — never their values.</span></li>
           <li><code>kit fix</code> · <code>kit heal</code><span class="d">Auto-fix what's safe; <code>heal</code> loops until green, fail-closed.</span></li>
         </ul>
       </div>
@@ -1023,6 +1045,7 @@ $ pnpm dev</pre>
           <li><code>kit status</code><span class="d">Adoption checklist + the next step for each gap.</span></li>
           <li><code>kit statusline</code><span class="d">One-line status (score · update · open PAL) for your prompt or agent bar.</span></li>
           <li><code>kit doctor</code><span class="d">Deep environment diagnostics + OS-containment posture (container/seccomp + gVisor/Firecracker fingerprints; honest <code>unknown</code> off-Linux). <code>[governance.containment] require</code> makes it fail-closed.</span></li>
+          <li><code>kit browser doctor</code><span class="d">Which browser strategy a repo actually gets for verification — Playwright, system Chrome, CDP — or the blocker in the way; plus <code>status</code>, <code>cdp-url</code>, <code>playwright-env</code>.</span></li>
           <li><code>kit map</code><span class="d">Deterministic repo-map: the relevant slice around a file (owners, budget, co-change).</span></li>
           <li><code>kit config knobs</code><span class="d">List every power-user env var + <code>.kit.toml</code> field kit honors.</span></li>
         </ul>
