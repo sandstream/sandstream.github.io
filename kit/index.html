@@ -687,8 +687,8 @@ the hard rules; what you need to know:
       </div>
       <div class="card">
         <div class="num">[policy enforced]</div>
-        <h3>A config block that changed no decision now changes them</h3>
-        <p><code>[policy.agent_writes]</code> was parsed, hashed into <code>KIT_POLICY_HASH</code>, travelled with the repo — and was consulted by nothing. <strong>6.3.2</strong> gave it a choke point inside kit; <strong>6.4.0</strong> carried it into the <code>kit-plugin-*</code> packages kit-core cannot call, which receive an exported deny list rather than your config. It narrows only, by design: unsigned config an agent could edit must never be able to satisfy a gate.</p>
+        <h3>An agent cannot approve its own writes</h3>
+        <p><code>[policy.agent_writes]</code> declares which vendor writes an agent may make without asking, and it is enforced at kit's own choke points <em>and</em> inside the <code>kit-plugin-*</code> packages kit-core cannot call — they receive the resolved decision as a deny list and never see your config. It <strong>narrows only</strong>, by design: the block is unsigned config anyone who can edit the repo could add a line to, so declaring an op must never be able to satisfy a gate. That is what keeps an agent from approving its own writes.</p>
       </div>
       <div class="card">
         <div class="num">[deploy env]</div>
@@ -708,7 +708,7 @@ the hard rules; what you need to know:
       <div class="card">
         <div class="num">[no token]</div>
         <h3>Nothing left to steal from the publish job</h3>
-        <p>All 13 packages publish over <strong>trusted publishing (OIDC)</strong>, and <code>NODE_AUTH_TOKEN</code> is <em>gone</em> from both publish steps — which is the part that actually switches the credential, because npm prefers a token whenever one is present, so the two cannot both be in effect. Each publisher names this repo, this workflow and the <code>npm-publish</code> environment, with the single permission <code>npm publish</code>. A re-added token would be a <strong>silent downgrade</strong> back to the credential npm is retiring, so a test fails if any executing line in the workflow carries one.</p>
+        <p>All 13 packages publish over <strong>trusted publishing (OIDC)</strong> — there is no npm token to leak, rotate, or steal, because none exists. No credential sits in the publish steps at all, and that absence is the mechanism: npm prefers a token whenever one is present, so leaving one in place would quietly keep the old credential in effect instead. Each publisher names this repository, this workflow and a review-gated environment, with the single permission <code>npm publish</code>.</p>
       </div>
       <div class="card">
         <div class="num">[grants]</div>
@@ -717,23 +717,23 @@ the hard rules; what you need to know:
       </div>
       <div class="card">
         <div class="num">[one machine]</div>
-        <h3>N working trees gave N green verdicts and no answer</h3>
+        <h3>One answer for a machine running many working trees</h3>
         <p><code>kit audit verify</code> answers for one working tree — correctly, since a git worktree <em>is</em> a distinct working tree with its own chain. Under a worktree-per-session harness that produced a green per tree and no whole-machine answer. <code>kit audit verify --all</code> reads the anchor record that was already on disk and unread, and reports four outcomes rather than collapsing them: <code>verified</code>, <code>stalled</code>, <code>missing</code> and <code>failed</code> — because a deleted temp clone and a rewritten log are not the same event, and a report that says "problem" to both is one nobody reads.</p>
       </div>
       <div class="card">
         <div class="num">[wrong account]</div>
         <h3>Authenticated is not the same as authorised</h3>
-        <p>A CLI logged in as the wrong account was <em>green</em>: the check printed <code>✓ vercel authenticated &lt;account&gt;</code> and compared it to nothing. <code>[context]</code> now declares the identity a repo must use — <code>vercel.user</code>, <code>github.user</code> (distinct from the remote's owner), <code>convex.account</code> — and kit asserts it, exactly like <code>git.email</code>: declared → asserted, mismatch → red and non-zero, unreadable → <code>unknown</code>. "Cannot tell" and "wrong account" are different findings and are reported as such.</p>
+        <p>A CLI can be logged in and still be pointed at the wrong account — which is how work lands in a personal org instead of the company's. <code>[context]</code> declares the identity a repo <em>must</em> use — <code>vercel.user</code>, <code>github.user</code> (distinct from the remote's owner), <code>convex.account</code> — and kit asserts it the way it already asserts <code>git.email</code>: a mismatch is red and non-zero, while something unreadable comes back <code>unknown</code>. <strong>"Cannot tell" and "wrong account" are different findings</strong>, and collapsing them is how one of them gets ignored.</p>
       </div>
       <div class="card">
         <div class="num">[present ≠ current]</div>
-        <h3>A config that fell behind, silently</h3>
-        <p><code>kit status</code> used to say <code>✓ .kit.toml present</code> — and "present" is not "current". The schema-drift detector had existed since versioning landed and had <strong>no caller</strong>; measured on kit's own repo, the config was at v0 while the schema was v1 and nothing said so. Both kinds of drift are now reported, through a read-only planner that can answer without a write path.</p>
+        <h3>Your config, checked against the schema it was written for</h3>
+        <p><code>kit status</code> reports which schema version your <code>.kit.toml</code> targets and whether that is still current — because <strong>present is not current</strong>, and a config that quietly fell a version behind is a config whose rules you no longer know. Both kinds of drift are reported, through a read-only planner: asking the question never needs a write path, so asking is always safe.</p>
       </div>
       <div class="card">
         <div class="num">[71 verbs]</div>
-        <h3>A flag that silently does nothing</h3>
-        <p><code>kit check --category security</code> ran the <em>full</em> check for six majors because nothing rejected the flag, and <code>kit upgrade --self.</code> — one trailing period — fell through, rewrote every timestamp, installed nothing and printed the success line. 43 of 45 command modules accepted anything. Sweeping 43 handlers would have fixed today and rotted tomorrow, so the shape is the one the write surface already uses: a <strong>generated</strong> table of 71 verbs and one refusal at dispatch.</p>
+        <h3>A flag kit does not accept is refused, not ignored</h3>
+        <p>A misread flag is the quietest kind of failure: the command exits 0, prints its success line, and does something other than what you asked — a filter that filters nothing, a mistyped subcommand that takes the wrong branch. Every verb now validates its flags against a <strong>generated</strong> table, with one refusal at dispatch rather than a check per handler, so the surface cannot drift back as commands are added.</p>
       </div>
     </div>
   </section>
