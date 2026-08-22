@@ -678,7 +678,7 @@ the hard rules; what you need to know:
       <div class="card">
         <div class="num">[claim gates]</div>
         <h3>kit is what kit says it is</h3>
-        <p>Documentation claims are tested as behaviour: README pillars run against real projects in CI, <code>--category</code> filters actually filter (an unknown value refuses instead of silently running everything), and a claims table maps every promise to the test that proves it.</p>
+        <p>Documentation claims are tested as behaviour: README pillars run against real projects in CI, <code>--category</code> filters actually filter (an unknown value refuses instead of silently running everything), and a claims table maps every promise to the test that proves it. The documentation check now runs <strong>both ways</strong>: no doc may name something kit lacks, and no human-facing command may be absent from the docs — the second direction is one a forward check cannot catch, because an undocumented command leaves no reference to verify.</p>
       </div>
       <div class="card">
         <div class="num">[13 packages]</div>
@@ -704,6 +704,36 @@ the hard rules; what you need to know:
         <div class="num">[browser doctor]</div>
         <h3>Which browser your verification actually gets</h3>
         <p><code>kit browser doctor</code> reports the strategy a repo really resolves to — Playwright, system Chrome, or CDP — or names the blocker standing in the way, with <code>status</code>, <code>cdp-url</code> and <code>playwright-env</code> for wiring a test runner. <code>--json</code> on each.</p>
+      </div>
+      <div class="card">
+        <div class="num">[no token]</div>
+        <h3>Nothing left to steal from the publish job</h3>
+        <p>All 13 packages publish over <strong>trusted publishing (OIDC)</strong>, and <code>NODE_AUTH_TOKEN</code> is <em>gone</em> from both publish steps — which is the part that actually switches the credential, because npm prefers a token whenever one is present, so the two cannot both be in effect. Each publisher names this repo, this workflow and the <code>npm-publish</code> environment, with the single permission <code>npm publish</code>. A re-added token would be a <strong>silent downgrade</strong> back to the credential npm is retiring, so a test fails if any executing line in the workflow carries one.</p>
+      </div>
+      <div class="card">
+        <div class="num">[grants]</div>
+        <h3>"How broad is this grant" is not "did anyone look at it"</h3>
+        <p>npm no longer runs a dependency's install scripts unless you allow it — so the allow-list became a thing worth auditing. Shape analysis can say how <em>broad</em> a grant is; it cannot say whether the package was ever evaluated. <code>kit check</code> now reads the triage ledger and asks: a pinned grant for a package nothing has ever triaged warns at <strong>high</strong>, above an unpinned grant for one cleared yesterday. A grant whose only triage predates the freshness window is reported separately, because <em>"reviewed a month ago"</em> and <em>"never reviewed"</em> are not the same claim.</p>
+      </div>
+      <div class="card">
+        <div class="num">[one machine]</div>
+        <h3>N working trees gave N green verdicts and no answer</h3>
+        <p><code>kit audit verify</code> answers for one working tree — correctly, since a git worktree <em>is</em> a distinct working tree with its own chain. Under a worktree-per-session harness that produced a green per tree and no whole-machine answer. <code>kit audit verify --all</code> reads the anchor record that was already on disk and unread, and reports four outcomes rather than collapsing them: <code>verified</code>, <code>stalled</code>, <code>missing</code> and <code>failed</code> — because a deleted temp clone and a rewritten log are not the same event, and a report that says "problem" to both is one nobody reads.</p>
+      </div>
+      <div class="card">
+        <div class="num">[wrong account]</div>
+        <h3>Authenticated is not the same as authorised</h3>
+        <p>A CLI logged in as the wrong account was <em>green</em>: the check printed <code>✓ vercel authenticated &lt;account&gt;</code> and compared it to nothing. <code>[context]</code> now declares the identity a repo must use — <code>vercel.user</code>, <code>github.user</code> (distinct from the remote's owner), <code>convex.account</code> — and kit asserts it, exactly like <code>git.email</code>: declared → asserted, mismatch → red and non-zero, unreadable → <code>unknown</code>. "Cannot tell" and "wrong account" are different findings and are reported as such.</p>
+      </div>
+      <div class="card">
+        <div class="num">[present ≠ current]</div>
+        <h3>A config that fell behind, silently</h3>
+        <p><code>kit status</code> used to say <code>✓ .kit.toml present</code> — and "present" is not "current". The schema-drift detector had existed since versioning landed and had <strong>no caller</strong>; measured on kit's own repo, the config was at v0 while the schema was v1 and nothing said so. Both kinds of drift are now reported, through a read-only planner that can answer without a write path.</p>
+      </div>
+      <div class="card">
+        <div class="num">[71 verbs]</div>
+        <h3>A flag that silently does nothing</h3>
+        <p><code>kit check --category security</code> ran the <em>full</em> check for six majors because nothing rejected the flag, and <code>kit upgrade --self.</code> — one trailing period — fell through, rewrote every timestamp, installed nothing and printed the success line. 43 of 45 command modules accepted anything. Sweeping 43 handlers would have fixed today and rotted tomorrow, so the shape is the one the write surface already uses: a <strong>generated</strong> table of 71 verbs and one refusal at dispatch.</p>
       </div>
     </div>
   </section>
@@ -1004,6 +1034,7 @@ $ pnpm dev</pre>
           <li><code>kit secrets</code><span class="d">Materialize <code>.env.local</code> from template + your vault.</span></li>
           <li><code>kit login</code><span class="d">Guided login to every configured service.</span></li>
           <li><code>kit context check</code><span class="d">Lock each CLI to the declared account + project — no wrong-org pushes.</span></li>
+          <li><code>kit tools list [--latest]</code><span class="d">Inventory of the CLIs kit manages <em>and</em> the undeclared ones agents decide from (<code>gh</code>, <code>op</code>, <code>jq</code>, <code>docker</code>, …): resolved path, owning installer, version, how far behind.</span></li>
           <li><code>kit run</code><span class="d">Run a command with the project's env vars loaded.</span></li>
         </ul>
       </div>
@@ -1036,6 +1067,7 @@ $ pnpm dev</pre>
           <li><code>kit profile</code><span class="d">Traveling signed profile — scope/RoE, drift, export/import to a fresh host.</span></li>
           <li><code>kit gate-egress</code><span class="d">Exec-broker PreToolUse gate: block egress/writes outside the signed scope.</span></li>
           <li><code>kit audit</code><span class="d">Tamper-evident, attributable audit log (verify / anchor / export).</span></li>
+          <li><code>kit audit verify --all</code><span class="d">Union view over every audit log this machine sealed — <code>verified</code> / <code>stalled</code> / <code>missing</code> / <code>failed</code>, kept distinct.</span></li>
           <li><code>kit panic</code><span class="d">Compromise response: rotate identity + emit a signed revocation.</span></li>
         </ul>
       </div>
