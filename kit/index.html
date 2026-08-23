@@ -678,7 +678,7 @@ the hard rules; what you need to know:
       <div class="card">
         <div class="num">[claim gates]</div>
         <h3>kit is what kit says it is</h3>
-        <p>Documentation claims are tested as behaviour: README pillars run against real projects in CI, <code>--category</code> filters actually filter (an unknown value refuses instead of silently running everything), and a claims table maps every promise to the test that proves it.</p>
+        <p>Documentation claims are tested as behaviour: README pillars run against real projects in CI, <code>--category</code> filters actually filter (an unknown value refuses instead of silently running everything), and a claims table maps every promise to the test that proves it. The documentation check now runs <strong>both ways</strong>: no doc may name something kit lacks, and no human-facing command may be absent from the docs — the second direction is one a forward check cannot catch, because an undocumented command leaves no reference to verify.</p>
       </div>
       <div class="card">
         <div class="num">[13 packages]</div>
@@ -687,8 +687,8 @@ the hard rules; what you need to know:
       </div>
       <div class="card">
         <div class="num">[policy enforced]</div>
-        <h3>A config block that changed no decision now changes them</h3>
-        <p><code>[policy.agent_writes]</code> was parsed, hashed into <code>KIT_POLICY_HASH</code>, travelled with the repo — and was consulted by nothing. <strong>6.3.2</strong> gave it a choke point inside kit; <strong>6.4.0</strong> carried it into the <code>kit-plugin-*</code> packages kit-core cannot call, which receive an exported deny list rather than your config. It narrows only, by design: unsigned config an agent could edit must never be able to satisfy a gate.</p>
+        <h3>An agent cannot approve its own writes</h3>
+        <p><code>[policy.agent_writes]</code> declares which vendor writes an agent may make without asking, and it is enforced at kit's own choke points <em>and</em> inside the <code>kit-plugin-*</code> packages kit-core cannot call — they receive the resolved decision as a deny list and never see your config. It <strong>narrows only</strong>, by design: the block is unsigned config anyone who can edit the repo could add a line to, so declaring an op must never be able to satisfy a gate. That is what keeps an agent from approving its own writes.</p>
       </div>
       <div class="card">
         <div class="num">[deploy env]</div>
@@ -704,6 +704,56 @@ the hard rules; what you need to know:
         <div class="num">[browser doctor]</div>
         <h3>Which browser your verification actually gets</h3>
         <p><code>kit browser doctor</code> reports the strategy a repo really resolves to — Playwright, system Chrome, or CDP — or names the blocker standing in the way, with <code>status</code>, <code>cdp-url</code> and <code>playwright-env</code> for wiring a test runner. <code>--json</code> on each.</p>
+      </div>
+      <div class="card">
+        <div class="num">[no token]</div>
+        <h3>Nothing left to steal from the publish job</h3>
+        <p>All 13 packages publish over <strong>trusted publishing (OIDC)</strong> — there is no npm token to leak, rotate, or steal, because none exists. No credential sits in the publish steps at all, and that absence is the mechanism: npm prefers a token whenever one is present, so leaving one in place would quietly keep the old credential in effect instead. Each publisher names this repository, this workflow and a review-gated environment, with the single permission <code>npm publish</code>.</p>
+      </div>
+      <div class="card">
+        <div class="num">[grants]</div>
+        <h3>"How broad is this grant" is not "did anyone look at it"</h3>
+        <p>npm no longer runs a dependency's install scripts unless you allow it — so the allow-list became a thing worth auditing. Shape analysis can say how <em>broad</em> a grant is; it cannot say whether the package was ever evaluated. <code>kit check</code> now reads the triage ledger and asks: a pinned grant for a package nothing has ever triaged warns at <strong>high</strong>, above an unpinned grant for one cleared yesterday. A grant whose only triage predates the freshness window is reported separately, because <em>"reviewed a month ago"</em> and <em>"never reviewed"</em> are not the same claim.</p>
+      </div>
+      <div class="card">
+        <div class="num">[one machine]</div>
+        <h3>One answer for a machine running many working trees</h3>
+        <p><code>kit audit verify</code> answers for one working tree — correctly, since a git worktree <em>is</em> a distinct working tree with its own chain. Under a worktree-per-session harness that produced a green per tree and no whole-machine answer. <code>kit audit verify --all</code> reads the anchor record that was already on disk and unread, and reports four outcomes rather than collapsing them: <code>verified</code>, <code>stalled</code>, <code>missing</code> and <code>failed</code> — because a deleted temp clone and a rewritten log are not the same event, and a report that says "problem" to both is one nobody reads.</p>
+      </div>
+      <div class="card">
+        <div class="num">[wrong account]</div>
+        <h3>Authenticated is not the same as authorised</h3>
+        <p>A CLI can be logged in and still be pointed at the wrong account — which is how work lands in a personal org instead of the company's. <code>[context]</code> declares the identity a repo <em>must</em> use — <code>vercel.user</code>, <code>github.user</code> (distinct from the remote's owner), <code>convex.account</code> — and kit asserts it the way it already asserts <code>git.email</code>: a mismatch is red and non-zero, while something unreadable comes back <code>unknown</code>. <strong>"Cannot tell" and "wrong account" are different findings</strong>, and collapsing them is how one of them gets ignored.</p>
+      </div>
+      <div class="card">
+        <div class="num">[present ≠ current]</div>
+        <h3>Your config, checked against the schema it was written for</h3>
+        <p><code>kit status</code> reports which schema version your <code>.kit.toml</code> targets and whether that is still current — because <strong>present is not current</strong>, and a config that quietly fell a version behind is a config whose rules you no longer know. Both kinds of drift are reported, through a read-only planner: asking the question never needs a write path, so asking is always safe.</p>
+      </div>
+      <div class="card">
+        <div class="num">[71 verbs]</div>
+        <h3>A flag kit does not accept is refused, not ignored</h3>
+        <p>A misread flag is the quietest kind of failure: the command exits 0, prints its success line, and does something other than what you asked — a filter that filters nothing, a mistyped subcommand that takes the wrong branch. Every verb now validates its flags against a <strong>generated</strong> table, with one refusal at dispatch rather than a check per handler, so the surface cannot drift back as commands are added.</p>
+      </div>
+      <div class="card">
+        <div class="num">[bundle]</div>
+        <h3>The leak that was never committed</h3>
+        <p>A <code>VITE_*</code> or <code>NEXT_PUBLIC_*</code> variable holding a real secret is inlined into your bundle at build time and shipped to <strong>every visitor</strong> — without ever entering git. <code>.gitignore</code> does not protect against it, and history scanning cannot see it, because there is nothing in history to find. kit now checks what actually reaches the browser, not only what reached the repository.</p>
+      </div>
+      <div class="card">
+        <div class="num">[new debt]</div>
+        <h3>A gate that fails on everything gets turned off</h3>
+        <p>A repo carrying thirty known advisories cannot adopt a check that fails on all thirty — it gets disabled the same afternoon, and then nothing is watched at all. An <strong>advisory baseline</strong> freezes today's debt and fails the moment something <em>new</em> appears. You keep the signal you can act on and lose the wall of findings you cannot.</p>
+      </div>
+      <div class="card">
+        <div class="num">[usage]</div>
+        <h3>What ran, what couldn't, and what you own</h3>
+        <p><code>kit usage</code> puts the evidence in one place, switchable with the number keys: audited operations and refusals; the enumerated checks of the last run — pass, warn, fail, <strong>and what could not run, with each reason</strong>; the memory store you own, its path and size and per-project breakdown; what was triaged before it was installed; and every repo this machine has sealed an audit log in.</p>
+      </div>
+      <div class="card">
+        <div class="num">[attributable]</div>
+        <h3>An audit line that says where it happened</h3>
+        <p>Every audit entry now carries a location and whether it came from a test run. Without that, a total is a number you cannot act on — a gate exercised by a suite and a gate exercised by an operator look identical, so "how often was this refused in real use?" has no answer. Attribution is what turns a log into evidence.</p>
       </div>
     </div>
   </section>
@@ -1004,6 +1054,8 @@ $ pnpm dev</pre>
           <li><code>kit secrets</code><span class="d">Materialize <code>.env.local</code> from template + your vault.</span></li>
           <li><code>kit login</code><span class="d">Guided login to every configured service.</span></li>
           <li><code>kit context check</code><span class="d">Lock each CLI to the declared account + project — no wrong-org pushes.</span></li>
+          <li><code>kit usage</code><span class="d">One screen for the evidence: audited operations, the last run's checks including what could not run and why, the memory store you own, and every repo this machine has sealed a log in.</span></li>
+          <li><code>kit tools list [--latest]</code><span class="d">Inventory of the CLIs kit manages <em>and</em> the undeclared ones agents decide from (<code>gh</code>, <code>op</code>, <code>jq</code>, <code>docker</code>, …): resolved path, owning installer, version, how far behind.</span></li>
           <li><code>kit run</code><span class="d">Run a command with the project's env vars loaded.</span></li>
         </ul>
       </div>
@@ -1036,6 +1088,7 @@ $ pnpm dev</pre>
           <li><code>kit profile</code><span class="d">Traveling signed profile — scope/RoE, drift, export/import to a fresh host.</span></li>
           <li><code>kit gate-egress</code><span class="d">Exec-broker PreToolUse gate: block egress/writes outside the signed scope.</span></li>
           <li><code>kit audit</code><span class="d">Tamper-evident, attributable audit log (verify / anchor / export).</span></li>
+          <li><code>kit audit verify --all</code><span class="d">Union view over every audit log this machine sealed — <code>verified</code> / <code>stalled</code> / <code>missing</code> / <code>failed</code>, kept distinct.</span></li>
           <li><code>kit panic</code><span class="d">Compromise response: rotate identity + emit a signed revocation.</span></li>
         </ul>
       </div>
@@ -1047,6 +1100,7 @@ $ pnpm dev</pre>
           <li><code>kit doctor</code><span class="d">Deep environment diagnostics + OS-containment posture (container/seccomp + gVisor/Firecracker fingerprints; honest <code>unknown</code> off-Linux). <code>[governance.containment] require</code> makes it fail-closed.</span></li>
           <li><code>kit browser doctor</code><span class="d">Which browser strategy a repo actually gets for verification — Playwright, system Chrome, CDP — or the blocker in the way; plus <code>status</code>, <code>cdp-url</code>, <code>playwright-env</code>.</span></li>
           <li><code>kit map</code><span class="d">Deterministic repo-map: the relevant slice around a file (owners, budget, co-change).</span></li>
+          <li><code>kit config sections</code><span class="d">The declared configuration surface, and the generated <code>docs/CONFIGURATION.md</code> that cannot drift from it.</span></li>
           <li><code>kit config knobs</code><span class="d">List every power-user env var + <code>.kit.toml</code> field kit honors.</span></li>
         </ul>
       </div>
