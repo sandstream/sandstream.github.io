@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type · Scale</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #F4F2EC; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .header b { color: #0E1A1A; font-weight: 500; }
+  .stage { flex: 1; display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+  .row {
+    display: grid;
+    grid-template-columns: 80px 70px 1fr;
+    align-items: baseline;
+    gap: 16px;
+    padding: 4px 0;
+    border-top: 1px solid rgba(10,10,12,0.06);
+  }
+  .row:first-child { border-top: none; }
+  .lbl, .px {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #5A6464;
+  }
+  .lbl b { color: #0E1A1A; font-weight: 500; }
+  .spec { font-family: "Instrument Serif", serif; color: #0E1A1A; line-height: 1; }
+  .spec.sans { font-family: "Geist", sans-serif; line-height: 1.2; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Type scale</b> — display + sans</span>
+      <span>11 → 168px</span>
+    </div>
+    <div class="stage">
+      <div class="row"><span class="lbl"><b>5xl</b></span><span class="px">96–168px</span><span class="spec" style="font-size:88px">Sandstream</span></div>
+      <div class="row"><span class="lbl"><b>4xl</b></span><span class="px">80px</span><span class="spec" style="font-size:54px">Display large</span></div>
+      <div class="row"><span class="lbl"><b>2xl</b></span><span class="px">40px</span><span class="spec sans" style="font-size:28px">Heading one</span></div>
+      <div class="row"><span class="lbl"><b>lg</b></span><span class="px">20px</span><span class="spec sans" style="font-size:18px; font-weight:500">Heading three</span></div>
+      <div class="row"><span class="lbl"><b>md</b></span><span class="px">17px</span><span class="spec sans" style="font-size:15px; font-weight:400">Body paragraph copy</span></div>
+      <div class="row"><span class="lbl"><b>sm</b></span><span class="px">13px</span><span class="spec sans" style="font-size:12px; font-weight:400; color:#5A6464">Caption / meta</span></div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Meta strip</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #0E1A1A; color: #F4F2EC; position: relative; overflow: hidden; }
+  body::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.15;
+    mix-blend-mode: overlay;
+  }
+  .card { position: relative; z-index: 1; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #A6ADAB;
+  }
+  .header b { color: #F4F2EC; font-weight: 500; }
+  .stage {
+    flex: 1;
+    display: flex; flex-direction: column;
+    gap: 14px; justify-content: center;
+  }
+  .strip {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex; gap: 14px; flex-wrap: wrap;
+    padding: 10px 14px;
+    border: 1px solid #2C3838;
+  }
+  .strip span { display: inline-flex; align-items: center; gap: 6px; color: #A6ADAB; }
+  .strip b { color: #F4F2EC; font-weight: 500; }
+  .strip .dot { width: 6px; height: 6px; border-radius: 50%; background: #1E8A8A; }
+  .strip .pulse {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #2C7A4B;
+    box-shadow: 0 0 0 0 rgba(44,122,75,0.6);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(44,122,75,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(44,122,75,0); }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Meta strip</b> — recurring brand pattern</span>
+      <span>mono · uppercase · narrow tracking</span>
+    </div>
+    <div class="stage">
+      <div class="strip">
+        <span><span class="dot"></span><b>STOCKHOLM</b> 59.33°N · 18.07°E</span>
+        <span><b>v2026.05</b></span>
+        <span><b>LAST EDIT</b> 2026-05-13 14:22 UTC</span>
+      </div>
+      <div class="strip">
+        <span><span class="pulse"></span><b>STATUS</b> AVAILABLE Q3 '26</span>
+        <span><b>BOOKED</b> 14 / 26 WEEKS</span>
+        <span><b>RESPONSE</b> &lt; 24h</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
