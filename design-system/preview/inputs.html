@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form inputs</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #F4F2EC; font-family: "Geist", sans-serif; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .header b { color: #0E1A1A; font-weight: 500; }
+  .stage {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-content: center;
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #5A6464;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  input, textarea, select {
+    font-family: "Geist", sans-serif;
+    font-size: 14px;
+    padding: 12px 14px;
+    background: #F4F2EC;
+    color: #0E1A1A;
+    border: 1px solid #CFC8B5;
+    border-radius: 8px;
+    transition: border 140ms;
+    outline: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: #1E8A8A;
+    box-shadow: 0 0 0 3px rgba(30,138,138,0.18);
+  }
+  input::placeholder { color: #9E9982; }
+  .field.disabled input {
+    background: #EAE7DE; color: #9E9982; border-color: #DFDBCE;
+  }
+  .field.error input { border-color: #B23B2E; }
+  .field.error .msg { color: #B23B2E; font-size: 11px; font-family: "Geist", sans-serif; text-transform: none; letter-spacing: 0; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Form inputs</b> — fields + focus + states</span>
+      <span>focus ring · tangerine</span>
+    </div>
+    <div class="stage">
+      <div class="field">
+        <label>Namn</label>
+        <input type="text" value="Peter Sandström">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" placeholder="hello@example.com">
+      </div>
+      <div class="field disabled">
+        <label>Disabled</label>
+        <input type="text" value="Not editable" disabled>
+      </div>
+      <div class="field error">
+        <label>Email — error</label>
+        <input type="email" value="not-an-email">
+        <span class="msg">Not a valid email address.</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
