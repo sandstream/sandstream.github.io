@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>sandstre.am</title>
+<link rel="icon" type="image/svg+xml" href="../assets/mark-favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    height: 100vh;
+    background: #F4F2EC;
+    color: #0E1A1A;
+    font-family: "Instrument Serif", serif;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+  }
+  body::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/></svg>");
+    opacity: 0.6;
+    z-index: 10;
+  }
+
+  /* Top + bottom meta */
+  .meta {
+    position: fixed;
+    left: 0; right: 0;
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #5A6464;
+    z-index: 20;
+  }
+  .meta.top { top: 0; }
+  .meta.bottom { bottom: 0; }
+  .meta b { color: #0E1A1A; font-weight: 500; }
+  .meta .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #1E8A8A; margin-right: 6px; vertical-align: middle; }
+  .meta .phonetic { color: #1E8A8A; font-style: italic; font-family: "Instrument Serif", serif; font-size: 13px; letter-spacing: 0; text-transform: none; opacity: 0; transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .meta .phonetic.show { opacity: 1; }
+
+  /* Stage holds layered variants */
+  .stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+
+  /* Each variant is its own layer, absolutely positioned on top of each other.
+     They all live in the DOM; we animate opacity/blur/scale/letter-spacing
+     to morph between them. */
+  .variant {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.96);
+    font-size: 16vw;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    color: #0E1A1A;
+    white-space: nowrap;
+    opacity: 0;
+    filter: blur(10px);
+    transition:
+      opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 720ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+      letter-spacing 720ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, filter, transform, letter-spacing;
+    text-rendering: optimizeLegibility;
+    pointer-events: none;
+  }
+  .variant.in {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: -0.025em;
+  }
+  .variant.out {
+    opacity: 0;
+    filter: blur(14px);
+    transform: translate(-50%, -50%) scale(1.04);
+    letter-spacing: 0.28em;
+  }
+
+  /* The final variant — extra dramatic settle */
+  .variant.final {
+    transition:
+      opacity 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+      letter-spacing 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .variant .tld-dot {
+    color: #1E8A8A;
+    opacity: 0;
+    transition: opacity 600ms 600ms;
+  }
+  .variant .tld {
+    color: #1E8A8A;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 600ms 700ms;
+  }
+  .variant.final.in .tld-dot,
+  .variant.final.in .tld { opacity: 1; }
+
+  /* Enter affordance — appears after the final settle */
+  .enter {
+    position: fixed;
+    left: 50%;
+    bottom: 80px;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 500ms 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #5A6464;
+    z-index: 20;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .enter.show { opacity: 1; pointer-events: auto; }
+  .enter a {
+    color: #0E1A1A;
+    text-decoration: none;
+    border-bottom: 1px solid #0E1A1A;
+    padding-bottom: 2px;
+    transition: color 140ms, border-color 140ms;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .enter a:hover { color: #1E8A8A; border-color: #1E8A8A; }
+  .enter .arr {
+    display: inline-block;
+    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .enter a:hover .arr { transform: translateX(4px); }
+
+  /* Skip hint */
+  .skip {
+    position: fixed;
+    top: 18px;
+    right: 22px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9E9982;
+    z-index: 30;
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+  .skip.show { opacity: 1; }
+  .skip kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    border: 1px solid #CFC8B5;
+    border-radius: 3px;
+    color: #0E1A1A;
+    margin-left: 4px;
+    font-family: inherit;
+  }
+
+  /* The hairline progress bar at the bottom — fills as variants advance */
+  .progress {
+    position: fixed;
+    left: 22px;
+    right: 22px;
+    bottom: 56px;
+    height: 1px;
+    background: #CFC8B5;
+    z-index: 18;
+  }
+  .progress .fill {
+    height: 100%;
+    background: #1E8A8A;
+    width: 0%;
+    transition: width 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+</style>
+</head>
+<body>
+
+<div class="meta top">
+  <span><span class="dot"></span><b>SANDSTRE.AM</b></span>
+  <span class="phonetic" id="phonetic">/ˈsanˌstreːm/</span>
+</div>
+
+<div class="stage" id="stage">
+  <!-- variants injected here -->
+</div>
+
+<div class="progress"><div class="fill" id="progress"></div></div>
+
+<div class="meta bottom">
+  <span><b>v2026.05</b></span>
+  <span id="step-indicator">01 / 05</span>
+</div>
+
+<div class="enter" id="enter">
+  <a href="../ui_kits/portfolio/index.html">enter site <span class="arr">→</span></a>
+</div>
+
+<div class="skip" id="skip">PRESS<kbd>ESC</kbd> TO SKIP</div>
+
+<script>
+  const VARIANTS = [
+    { html: 'sandström' },
+    { html: 'sandstroem' },
+    { html: 'sandstream' },
+    { html: 'săndstrēm' },
+    { html: 'sandstre<span class="tld-dot">.</span><span class="tld">am</span>', final: true },
+  ];
+
+  const HOLD_MS = 780;        // time a variant stays "in"
+  const CROSSFADE_MS = 240;   // overlap between out and in
+  const FINAL_HOLD_MS = 1100; // extra time for the final settle
+
+  const stage = document.getElementById('stage');
+  const stepEl = document.getElementById('step-indicator');
+  const enterEl = document.getElementById('enter');
+  const skipEl = document.getElementById('skip');
+  const phoneticEl = document.getElementById('phonetic');
+  const progressEl = document.getElementById('progress');
+
+  // Build all variant layers up front, so they share a stacking context
+  const layers = VARIANTS.map((v, i) => {
+    const el = document.createElement('div');
+    el.className = 'variant' + (v.final ? ' final' : '');
+    el.innerHTML = v.html;
+    el.setAttribute('data-i', i);
+    stage.appendChild(el);
+    return el;
+  });
+
+  let idx = -1;
+  let timer = null;
+  let done = false;
+
+  // Fit each variant's font-size so it fills the viewport width
+  function fitAll() {
+    const target = window.innerWidth * 0.84; // 8% pad each side
+    layers.forEach((layer) => {
+      // Measure natural width at a known size, then scale
+      const naturalSize = 100;
+      const prev = layer.style.fontSize;
+      layer.style.fontSize = naturalSize + 'px';
+      // Temporarily make visible-but-transparent to measure
+      const wasOpaque = layer.style.opacity;
+      const wasTransform = layer.style.transform;
+      layer.style.opacity = '0';
+      layer.style.transform = 'translate(-50%, -50%) scale(1)';
+      layer.style.filter = 'none';
+      const w = layer.getBoundingClientRect().width;
+      layer.style.fontSize = (naturalSize * (target / w)) + 'px';
+      // restore — actual class-driven state will override on next frame
+      layer.style.opacity = wasOpaque;
+      layer.style.transform = wasTransform;
+      layer.style.filter = '';
+    });
+  }
+
+  function showNext() {
+    // mark the current one .out, the next .in
+    if (idx >= 0) {
+      const cur = layers[idx];
+      cur.classList.remove('in');
+      cur.classList.add('out');
+    }
+    idx++;
+    if (idx >= layers.length) return; // shouldn't happen
+
+    const next = layers[idx];
+    next.classList.remove('out');
+    next.classList.add('in');
+
+    stepEl.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(layers.length).padStart(2, '0');
+    progressEl.style.width = (((idx + 1) / layers.length) * 100) + '%';
+
+    // Reveal phonetic hint on the second-to-last variant
+    if (idx === layers.length - 2) phoneticEl.classList.add('show');
+
+    const isFinal = idx === layers.length - 1;
+    if (isFinal) {
+      done = true;
+      skipEl.classList.remove('show');
+      setTimeout(() => { enterEl.classList.add('show'); }, 600);
+      return;
+    }
+
+    timer = setTimeout(showNext, HOLD_MS);
+  }
+
+  function skipToEnd() {
+    if (done) return;
+    if (timer) clearTimeout(timer);
+    // mark every non-final as out, the final as in
+    layers.forEach((l, i) => {
+      l.classList.remove('in', 'out');
+      l.classList.add(i === layers.length - 1 ? 'in' : 'out');
+    });
+    idx = layers.length - 1;
+    stepEl.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(layers.length).padStart(2, '0');
+    progressEl.style.width = '100%';
+    phoneticEl.classList.add('show');
+    done = true;
+    skipEl.classList.remove('show');
+    setTimeout(() => { enterEl.classList.add('show'); }, 700);
+  }
+
+  // Boot
+  function boot() {
+    fitAll();
+    showNext();
+    setTimeout(() => skipEl.classList.add('show'), 600);
+  }
+  // wait for fonts so measurements are accurate
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(boot);
+  } else {
+    setTimeout(boot, 200);
+  }
+
+  // Interactions
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') skipToEnd();
+    if (e.key === 'Enter' && done) window.location.href = '../ui_kits/portfolio/index.html';
+  });
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    if (!done) skipToEnd();
+    else window.location.href = '../ui_kits/portfolio/index.html';
+  });
+  window.addEventListener('resize', () => requestAnimationFrame(fitAll));
+</script>
+
+</body>
+</html>

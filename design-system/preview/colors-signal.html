@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colors · Signal</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; font-family: "Geist", sans-serif; }
+  .card { height: 100vh; display: flex; flex-direction: column; background: #F4F2EC; }
+  .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 16px 22px 14px;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+    border-bottom: 1px solid rgba(10,10,12,0.08);
+  }
+  .head .ttl { font-family: "Instrument Serif", serif; font-size: 22px; line-height: 1; letter-spacing: -0.01em; color: #0E1A1A; text-transform: none; }
+  .head .ttl em { font-style: italic; }
+
+  .body { flex: 1; display: grid; grid-template-columns: 2fr 1fr; }
+
+  /* The primary tangerine block — full-bleed signature */
+  .primary {
+    background: #1E8A8A;
+    color: #F4F2EC;
+    padding: 26px 26px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .primary .corner {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.85;
+  }
+  .primary .name {
+    font-family: "Instrument Serif", serif;
+    font-size: 64px;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+  }
+  .primary .name em { font-style: italic; }
+  .primary .footer {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  }
+  .primary .hex {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+  }
+  .primary .use {
+    font-family: "Geist", sans-serif;
+    font-size: 12px;
+    opacity: 0.85;
+    max-width: 28ch;
+    text-align: right;
+  }
+
+  /* the variant column */
+  .variants { display: flex; flex-direction: column; }
+  .variant {
+    flex: 1;
+    padding: 16px 18px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    border-bottom: 1px solid rgba(10,10,12,0.08);
+  }
+  .variant:last-child { border-bottom: none; }
+  .variant .label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.8;
+  }
+  .variant .vname {
+    font-family: "Instrument Serif", serif;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.015em;
+  }
+  .variant .vhex {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <span class="ttl"><em>Signal</em> — the one accent</span>
+      <span>one accent per view</span>
+    </div>
+    <div class="body">
+      <div class="primary">
+        <span class="corner">/ SIGNAL · PRIMARY</span>
+        <div class="name"><em>Tangerine.</em></div>
+        <div class="footer">
+          <span class="hex">#1E8A8A</span>
+          <span class="use">CTA · wordmark dot · link hover · marks. Never decorative.</span>
+        </div>
+      </div>
+      <div class="variants">
+        <div class="variant" style="background:#166E6E; color:#F4F2EC">
+          <span class="label">hover</span>
+          <span class="vname">Hover</span>
+          <span class="vhex">#166E6E</span>
+        </div>
+        <div class="variant" style="background:#D9EDED; color:#062626">
+          <span class="label">tint</span>
+          <span class="vname">Tint</span>
+          <span class="vhex">#D9EDED</span>
+        </div>
+        <div class="variant" style="background:#062626; color:#D9EDED">
+          <span class="label">ink-on-signal</span>
+          <span class="vname">Ink</span>
+          <span class="vhex">#062626</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

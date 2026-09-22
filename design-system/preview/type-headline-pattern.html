@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type · Headline pattern</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #F4F2EC; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .header b { color: #0E1A1A; font-weight: 500; }
+  .stage { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+  .h {
+    font-family: "Instrument Serif", serif;
+    font-size: 48px;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: #0E1A1A;
+    text-wrap: balance;
+  }
+  .h em { font-style: italic; }
+  .note {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #5A6464;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(10,10,12,0.1);
+    padding-top: 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Headline pattern</b> — one italic word</span>
+      <span>signature move</span>
+    </div>
+    <div class="stage">
+      <div class="h">Tjugo år av ledarskap inom <em>tech.</em></div>
+      <div class="h">Strategy for the spaces <em>in between.</em></div>
+      <div class="note">Set one word — usually a noun — in italic. Never two. Never the whole phrase.</div>
+    </div>
+  </div>
+</body>
+</html>

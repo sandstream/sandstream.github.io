@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colors · Ink</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; font-family: "Geist", sans-serif; }
+  .card { height: 100vh; display: flex; flex-direction: column; background: #F4F2EC; }
+  .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 16px 22px 14px;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+    border-bottom: 1px solid rgba(10,10,12,0.08);
+  }
+  .head .ttl { font-family: "Instrument Serif", serif; font-size: 22px; line-height: 1; letter-spacing: -0.01em; color: #0E1A1A; text-transform: none; }
+  .head .ttl em { font-style: italic; }
+  .stripes { flex: 1; display: flex; flex-direction: column; }
+  .stripe {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.3fr 0.6fr;
+    align-items: center;
+    padding: 0 22px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #F4F2EC;
+  }
+  .stripe.l { color: #0E1A1A; border-bottom-color: rgba(10,10,12,0.06); }
+  .stripe:last-child { border-bottom: none; }
+  .name {
+    font-family: "Instrument Serif", serif;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .hex {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .use {
+    font-family: "Geist", sans-serif;
+    font-size: 12px;
+  }
+  .token {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: right;
+    opacity: 0.65;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <span class="ttl"><em>Ink</em> — cool warm-black scale</span>
+      <span>text · dark surfaces · borders</span>
+    </div>
+    <div class="stripes">
+      <div class="stripe" style="background:#0E1A1A">
+        <span class="name">ink&#8201;/&#8201;900</span>
+        <span class="hex">#0E1A1A</span>
+        <span class="use">Primary text · dark page.</span>
+        <span class="token">--fg</span>
+      </div>
+      <div class="stripe" style="background:#131F1F">
+        <span class="name">ink&#8201;/&#8201;800</span>
+        <span class="hex">#131F1F</span>
+        <span class="use">Dark surface · raised panel.</span>
+        <span class="token">dk --surface</span>
+      </div>
+      <div class="stripe" style="background:#1C2828">
+        <span class="name">ink&#8201;/&#8201;700</span>
+        <span class="hex">#1C2828</span>
+        <span class="use">Dark hover · raised surface.</span>
+        <span class="token">dk --surface-2</span>
+      </div>
+      <div class="stripe" style="background:#2C3838">
+        <span class="name">ink&#8201;/&#8201;600</span>
+        <span class="hex">#2C3838</span>
+        <span class="use">Dark borders + dividers.</span>
+        <span class="token">dk --border</span>
+      </div>
+      <div class="stripe" style="background:#475252">
+        <span class="name">ink&#8201;/&#8201;500</span>
+        <span class="hex">#475252</span>
+        <span class="use">Dark secondary text.</span>
+        <span class="token">dk --fg-2</span>
+      </div>
+      <div class="stripe l" style="background:#76807F">
+        <span class="name">ink&#8201;/&#8201;400</span>
+        <span class="hex">#76807F</span>
+        <span class="use">Dark tertiary · captions.</span>
+        <span class="token">dk --fg-3</span>
+      </div>
+      <div class="stripe l" style="background:#A6ADAB">
+        <span class="name">ink&#8201;/&#8201;300</span>
+        <span class="hex">#A6ADAB</span>
+        <span class="use">Inverse muted.</span>
+        <span class="token">—</span>
+      </div>
+      <div class="stripe l" style="background:#D4D8D6">
+        <span class="name">ink&#8201;/&#8201;200</span>
+        <span class="hex">#D4D8D6</span>
+        <span class="use">Inverse hairline.</span>
+        <span class="token">—</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
