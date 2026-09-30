@@ -681,9 +681,9 @@ the hard rules; what you need to know:
         <p>Documentation claims are tested as behaviour: README pillars run against real projects in CI, <code>--category</code> filters actually filter (an unknown value refuses instead of silently running everything), and a claims table maps every promise to the test that proves it. The documentation check now runs <strong>both ways</strong>: no doc may name something kit lacks, and no human-facing command may be absent from the docs — the second direction is one a forward check cannot catch, because an undocumented command leaves no reference to verify.</p>
       </div>
       <div class="card">
-        <div class="num">[13 packages]</div>
+        <div class="num">[14 packages]</div>
         <h3>The plugin ecosystem is on npm</h3>
-        <p>The CLI, the frozen <code>sandstream-kit-adapter-sdk@1.x</code> contract, and eleven first-party plugins (Vercel, Cloudflare, Fly, Railway, Supabase, GitHub, Stripe secret-rotation; Snyk, Wiz, Sentry, Sentrux ingestion) publish together — idempotently, peer-ordered, with npm provenance. The SDK name third-party authors are told to install is now owned, not squattable.</p>
+        <p>The CLI, the frozen <code>sandstream-kit-adapter-sdk@1.x</code> contract, and twelve first-party plugins (Vercel, Cloudflare, Fly, Railway, Supabase, GitHub, Stripe secret-rotation; Snyk, Wiz, Sentry, Sentrux, AISLE ingestion) publish together — idempotently, peer-ordered, with npm provenance. The SDK name third-party authors are told to install is now owned, not squattable.</p>
       </div>
       <div class="card">
         <div class="num">[policy enforced]</div>
@@ -708,7 +708,7 @@ the hard rules; what you need to know:
       <div class="card">
         <div class="num">[no token]</div>
         <h3>Nothing left to steal from the publish job</h3>
-        <p>All 13 packages publish over <strong>trusted publishing (OIDC)</strong> — there is no npm token to leak, rotate, or steal, because none exists. No credential sits in the publish steps at all, and that absence is the mechanism: npm prefers a token whenever one is present, so leaving one in place would quietly keep the old credential in effect instead. Each publisher names this repository, this workflow and a review-gated environment, with the single permission <code>npm publish</code>.</p>
+        <p>All 14 packages publish over <strong>trusted publishing (OIDC)</strong> — there is no npm token to leak, rotate, or steal, because none exists. No credential sits in the publish steps at all, and that absence is the mechanism: npm prefers a token whenever one is present, so leaving one in place would quietly keep the old credential in effect instead. Each publisher names this repository, this workflow and a review-gated environment, with the single permission <code>npm publish</code>.</p>
       </div>
       <div class="card">
         <div class="num">[grants]</div>
@@ -754,6 +754,31 @@ the hard rules; what you need to know:
         <div class="num">[attributable]</div>
         <h3>An audit line that says where it happened</h3>
         <p>Every audit entry now carries a location and whether it came from a test run. Without that, a total is a number you cannot act on — a gate exercised by a suite and a gate exercised by an operator look identical, so "how often was this refused in real use?" has no answer. Attribution is what turns a log into evidence.</p>
+      </div>
+      <div class="card">
+        <div class="num">[monkey test]</div>
+        <h3>A release gate for apps that take money</h3>
+        <p><code>kit monkey-test plan|init|run</code> crawls a money app as each role in a declared role matrix, on desktop and mobile, runs a sandbox payment flow, and reports security findings. A test that passes by failing, or a denial that is only a page mentioning "forbidden", does not count as evidence.</p>
+      </div>
+      <div class="card">
+        <div class="num">[memory transport]</div>
+        <h3>Memory that travels without holding everything in RAM</h3>
+        <p>Encrypted backups move in independently authenticated 1&nbsp;MiB frames, and Git pulls stream long histories through a disk-backed index. <code>kit memory project init</code> gives a repo one identity across its clones, so recall follows the project instead of a path.</p>
+      </div>
+      <div class="card">
+        <div class="num">[native Windows]</div>
+        <h3>The whole suite, on real Windows</h3>
+        <p>The full test suite runs natively on Windows in CI, not only under WSL. It found real defects on the way: path normalisation, auth probes that now fail closed on an ambiguous exit, and atomic writes that used the wrong basename.</p>
+      </div>
+      <div class="card">
+        <div class="num">[honest lock]</div>
+        <h3>A lock file that cannot contradict its declaration</h3>
+        <p><code>kit upgrade</code> locks the version that is installed, and refuses when it misses the pin in <code>.kit.toml</code>: with <code>node = "22"</code> declared and node 25 on PATH, it writes nothing and says why. A refused upgrade leaves no lock file behind at all.</p>
+      </div>
+      <div class="card">
+        <div class="num">[verified publish]</div>
+        <h3>Every package, one publish path</h3>
+        <p>All fourteen packages publish over npm trusted publishing with provenance, and none accepts a 2FA-bypass token. A package whose settings have not been read back is skipped with a warning instead of failing mid-release, and a test fails if a package is neither verified nor explicitly skipped.</p>
       </div>
     </div>
   </section>
