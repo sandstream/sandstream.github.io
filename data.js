@@ -30,7 +30,7 @@ const T = {
     stat2l: "Största teamet · Devoteam",
     stat3l: "Idéer → prod, varje gång",
     s02: "byggen",
-    casesHeadline: ["Nio byggen. ", "En metod."],
+    casesHeadline: ["Tio byggen. ", "En metod."],
     casesIntro: "Projekt som visar hur Peter jobbar: tätt team, snabba beslut, idéer varje dag och stark dragning mot att leverera något verkligt på veckor, inte planera det i kvartal.",
     s03: "musikprojekt",
     musicHeadline: ["Vid sidan av: ", "musik."],
@@ -76,7 +76,7 @@ const T = {
     stat2l: "Largest team led · Devoteam",
     stat3l: "Ideas → prod, every time",
     s02: "builds",
-    casesHeadline: ["Nine builds. ", "One method."],
+    casesHeadline: ["Ten builds. ", "One method."],
     casesIntro: "Projects showing how Peter works: tight team, fast decisions, daily ideas and a strong bias toward shipping something real in weeks, not planning it in quarters.",
     s03: "music projects",
     musicHeadline: ["On the side: ", "music."],
@@ -239,6 +239,22 @@ const CASES = [
       { l: "YEAR", v: "2026" },
     ],
     href: "https://github.com/sandstream/synapse", hrefLabel: "github.com/sandstream/synapse",
+  },
+  {
+    num: "/10",
+    name: ["Lyssna"], italic: 0,
+    tagline: { sv: "Lokal mötestranskribering för Mac · ljudet lämnar aldrig datorn.", en: "Local meeting transcription for Mac · the audio never leaves the computer." },
+    desc: {
+      sv: "Mötesverktyg skickar ljudet till en molntjänst, och de klarar sällan möten där svenska och engelska blandas. Peter byggde Lyssna: en Mac-app som transkriberar mötet medan det pågår, skiljer på röster och skriver sammanfattning och åtgärdslista med en lokal språkmodell. Allt körs på datorn. En MCP-server låter Claude Code söka i mötesbiblioteket. Signerad och notariserad testversion.",
+      en: "Meeting tools send the audio to a cloud service, and they rarely handle meetings that mix Swedish and English. Peter built Lyssna: a Mac app that transcribes the meeting while it happens, tells voices apart and writes a summary and action list with a local language model. Everything runs on the computer. An MCP server lets Claude Code search the meeting library. Signed and notarized test release.",
+    },
+    meta: [
+      { l: "ROLE", v: "Creator · product" },
+      { l: "STACK", v: "Rust · Tauri · Svelte · Ollama" },
+      { l: "SECTOR", v: "Productivity · local AI" },
+      { l: "YEAR", v: "2026" },
+    ],
+    href: "/lyssna/", hrefLabel: "www.sandstre.am/lyssna",
   },
 ];
 
