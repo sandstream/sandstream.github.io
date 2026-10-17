@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colors · Bone</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100vh; font-family: "Geist", sans-serif; }
+  .card { height: 100vh; display: flex; flex-direction: column; background: #F4F2EC; }
+  .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 16px 22px 14px;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+    border-bottom: 1px solid rgba(10,10,12,0.08);
+  }
+  .head .ttl { font-family: "Instrument Serif", serif; font-size: 22px; line-height: 1; letter-spacing: -0.01em; color: #0E1A1A; text-transform: none; }
+  .head .ttl em { font-style: italic; }
+  .stripes { flex: 1; display: flex; flex-direction: column; }
+  .stripe {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1.3fr 0.6fr;
+    align-items: center;
+    padding: 0 22px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(10,10,12,0.06);
+  }
+  .stripe:last-child { border-bottom: none; }
+  .name {
+    font-family: "Instrument Serif", serif;
+    font-size: 26px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .hex {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .use {
+    font-family: "Geist", sans-serif;
+    font-size: 12px;
+  }
+  .token {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: right;
+    opacity: 0.7;
+  }
+  /* dark text default, override per row */
+  .stripe.dark .name, .stripe.dark .hex, .stripe.dark .use, .stripe.dark .token { color: #F4F2EC; }
+  .stripe.dark .token { opacity: 0.6; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <span class="ttl"><em>Bone</em> — warm neutrals</span>
+      <span>page · surface · borders</span>
+    </div>
+    <div class="stripes">
+      <div class="stripe" style="background:#F4F2EC; color:#0E1A1A">
+        <span class="name">bone&#8201;/&#8201;50</span>
+        <span class="hex">#F4F2EC</span>
+        <span class="use">Default page background.</span>
+        <span class="token">--bg</span>
+      </div>
+      <div class="stripe" style="background:#EAE7DE; color:#0E1A1A">
+        <span class="name">bone&#8201;/&#8201;100</span>
+        <span class="hex">#EAE7DE</span>
+        <span class="use">Surface · raised panels.</span>
+        <span class="token">--surface</span>
+      </div>
+      <div class="stripe" style="background:#DFDBCE; color:#0E1A1A">
+        <span class="name">bone&#8201;/&#8201;200</span>
+        <span class="hex">#DFDBCE</span>
+        <span class="use">Secondary surface.</span>
+        <span class="token">--surface-2</span>
+      </div>
+      <div class="stripe" style="background:#CFC8B5; color:#0E1A1A">
+        <span class="name">bone&#8201;/&#8201;300</span>
+        <span class="hex">#CFC8B5</span>
+        <span class="use">Hairline dividers + borders.</span>
+        <span class="token">--border</span>
+      </div>
+      <div class="stripe dark" style="background:#9E9982">
+        <span class="name">bone&#8201;/&#8201;400</span>
+        <span class="hex">#9E9982</span>
+        <span class="use">Tertiary text · captions.</span>
+        <span class="token">--fg-3</span>
+      </div>
+      <div class="stripe dark" style="background:#5A6464">
+        <span class="name">bone&#8201;/&#8201;500</span>
+        <span class="hex">#5A6464</span>
+        <span class="use">Secondary body text.</span>
+        <span class="token">--fg-2</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -32,3 +32,10 @@ _site/
 .jekyll-cache/
 *.icloud
 archive/
+
+# The full CV is deliberately not published here: the site's own position is
+# "Fullständigt CV och case-beskrivningar på begäran". The complete design
+# system, CV included, lives in the local skill at
+# ~/.claude/skills/sandstream-design/.
+design-system/assets/peter-cv-*.txt
+design-system/assets/peter-cv-*.pdf

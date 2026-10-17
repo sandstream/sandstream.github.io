@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shadows + elevation</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #F4F2EC; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .header b { color: #0E1A1A; font-weight: 500; }
+  .stage {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    align-content: center;
+    padding: 12px 0;
+  }
+  .demo {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 12px;
+  }
+  .box {
+    width: 130px; height: 90px;
+    background: #F4F2EC;
+  }
+  .b1 { box-shadow: inset 0 0 0 1px #CFC8B5; }
+  .b2 { box-shadow: 0 1px 0 rgba(10,10,12,0.04), 0 12px 32px -16px rgba(10,10,12,0.18); }
+  .b3 { box-shadow: 0 2px 0 rgba(10,10,12,0.05), 0 24px 48px -24px rgba(10,10,12,0.28); }
+  .lbl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #5A6464;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+  .lbl b { color: #0E1A1A; font-weight: 500; display: block; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Elevation</b> — hairline first, shadow rarely</span>
+      <span>hairline · card · pop</span>
+    </div>
+    <div class="stage">
+      <div class="demo"><div class="box b1"></div><span class="lbl"><b>--shadow-hairline</b>inset 1px border · default</span></div>
+      <div class="demo"><div class="box b2"></div><span class="lbl"><b>--shadow-card</b>card hover · rare</span></div>
+      <div class="demo"><div class="box b3"></div><span class="lbl"><b>--shadow-pop</b>floating CTA · once per page</span></div>
+    </div>
+  </div>
+</body>
+</html>

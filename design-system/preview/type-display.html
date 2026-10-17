@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type · Display</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #F4F2EC; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .header b { color: #0E1A1A; font-weight: 500; }
+  .stage { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+  .specimen {
+    font-family: "Instrument Serif", serif;
+    color: #0E1A1A;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  .big { font-size: 132px; }
+  .big em { font-style: italic; }
+  .info {
+    display: flex; gap: 16px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #5A6464;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 8px;
+  }
+  .info span b { color: #0E1A1A; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Display</b> — Instrument Serif</span>
+      <span>regular + italic</span>
+    </div>
+    <div class="stage">
+      <div class="specimen big">Sand<em>stream.</em></div>
+      <div class="info">
+        <span><b>Family</b> Instrument Serif</span>
+        <span><b>Weight</b> 400</span>
+        <span><b>Tracking</b> −0.02em</span>
+        <span><b>Use</b> hero · headline · pull-quote</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

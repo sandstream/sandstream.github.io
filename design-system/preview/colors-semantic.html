@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colors · Semantic</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #F4F2EC; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .header b { color: #0E1A1A; font-weight: 500; }
+  .table {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1.1fr;
+    gap: 8px;
+    flex: 1;
+  }
+  .col {
+    border: 1px solid rgba(10,10,12,0.08);
+    padding: 12px 14px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .col.dark { background: #0E1A1A; color: #F4F2EC; border-color: #2C3838; }
+  .col-title {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .col.dark .col-title { color: #A6ADAB; }
+  .row {
+    display: flex; align-items: center; gap: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+  }
+  .chip {
+    width: 18px; height: 18px;
+    border: 1px solid rgba(10,10,12,0.15);
+  }
+  .col.dark .chip { border-color: rgba(255,255,255,0.2); }
+  .name { font-weight: 500; }
+  .val { opacity: 0.6; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Semantic tokens</b> — reference these, not raw palette</span>
+      <span>light · dark</span>
+    </div>
+    <div class="table">
+      <div class="col">
+        <div class="col-title">Light</div>
+        <div class="row"><span class="chip" style="background:#F4F2EC"></span><span class="name">--bg</span><span class="val">bone-50</span></div>
+        <div class="row"><span class="chip" style="background:#EAE7DE"></span><span class="name">--surface</span><span class="val">bone-100</span></div>
+        <div class="row"><span class="chip" style="background:#CFC8B5"></span><span class="name">--border</span><span class="val">bone-300</span></div>
+        <div class="row"><span class="chip" style="background:#0E1A1A"></span><span class="name">--fg</span><span class="val">ink-900</span></div>
+        <div class="row"><span class="chip" style="background:#5A6464"></span><span class="name">--fg-2</span><span class="val">bone-500</span></div>
+      </div>
+      <div class="col">
+        <div class="col-title">Accent</div>
+        <div class="row"><span class="chip" style="background:#1E8A8A"></span><span class="name">--accent</span><span class="val">signal</span></div>
+        <div class="row"><span class="chip" style="background:#166E6E"></span><span class="name">--accent-hover</span><span class="val">signal/h</span></div>
+        <div class="row"><span class="chip" style="background:#D9EDED"></span><span class="name">--accent-tint</span><span class="val">signal/t</span></div>
+        <div class="row"><span class="chip" style="background:#062626"></span><span class="name">--accent-ink</span><span class="val">signal/i</span></div>
+      </div>
+      <div class="col dark">
+        <div class="col-title">Dark</div>
+        <div class="row"><span class="chip" style="background:#0E1A1A"></span><span class="name">--bg</span><span class="val">ink-900</span></div>
+        <div class="row"><span class="chip" style="background:#131F1F"></span><span class="name">--surface</span><span class="val">ink-800</span></div>
+        <div class="row"><span class="chip" style="background:#2C3838"></span><span class="name">--border</span><span class="val">ink-600</span></div>
+        <div class="row"><span class="chip" style="background:#F4F2EC"></span><span class="name">--fg</span><span class="val">bone-50</span></div>
+        <div class="row"><span class="chip" style="background:#A6ADAB"></span><span class="name">--fg-2</span><span class="val">ink-300</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
