@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Radii</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #F4F2EC; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .header b { color: #0E1A1A; font-weight: 500; }
+  .stage {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    align-content: center;
+  }
+  .demo {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 10px;
+  }
+  .box {
+    width: 80px; height: 80px;
+    background: #0E1A1A;
+    position: relative;
+  }
+  .box.outline {
+    background: transparent;
+    border: 1.5px solid #0E1A1A;
+  }
+  .lbl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #5A6464;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+  .lbl b { color: #0E1A1A; font-weight: 500; display: block; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Radii</b> — sharp by default</span>
+      <span>0 · 4 · 8 · 14 · pill</span>
+    </div>
+    <div class="stage">
+      <div class="demo"><div class="box" style="border-radius:0"></div><span class="lbl"><b>--radius-0</b>0px · cards</span></div>
+      <div class="demo"><div class="box" style="border-radius:4px"></div><span class="lbl"><b>--radius-sm</b>4px · code</span></div>
+      <div class="demo"><div class="box" style="border-radius:8px"></div><span class="lbl"><b>--radius-md</b>8px · buttons</span></div>
+      <div class="demo"><div class="box" style="border-radius:14px"></div><span class="lbl"><b>--radius-lg</b>14px · panels</span></div>
+      <div class="demo"><div class="box" style="border-radius:999px; width:120px; height:48px"></div><span class="lbl"><b>--radius-pill</b>full · tags · CTA</span></div>
+    </div>
+  </div>
+</body>
+</html>

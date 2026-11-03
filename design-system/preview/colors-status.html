@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Colors · Status</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #F4F2EC; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .header b { color: #0E1A1A; font-weight: 500; }
+  .stage {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    flex: 1;
+  }
+  .sw {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px;
+    border: 1px solid rgba(10,10,12,0.06);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    line-height: 1.4;
+    color: #F4F2EC;
+  }
+  .label { text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; }
+  .role {
+    font-family: "Geist", sans-serif;
+    font-size: 13px; font-weight: 500;
+    text-transform: none; letter-spacing: 0;
+  }
+  .hex { font-size: 11px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; display: inline-block; margin-right: 6px; }
+  .role-row { display: flex; align-items: center; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Stream + status</b> — secondary signals</span>
+      <span>data viz + system feedback</span>
+    </div>
+    <div class="stage">
+      <div class="sw" style="background:#1E8A8A">
+        <span class="label">stream · teal</span>
+        <div>
+          <div class="role-row"><span class="dot"></span><span class="role">Stream</span></div>
+          <span class="hex">#1E8A8A</span>
+        </div>
+      </div>
+      <div class="sw" style="background:#2C7A4B">
+        <span class="label">status · ok</span>
+        <div>
+          <div class="role-row"><span class="dot"></span><span class="role">OK</span></div>
+          <span class="hex">#2C7A4B</span>
+        </div>
+      </div>
+      <div class="sw" style="background:#B5651D">
+        <span class="label">status · warn</span>
+        <div>
+          <div class="role-row"><span class="dot"></span><span class="role">Warn</span></div>
+          <span class="hex">#B5651D</span>
+        </div>
+      </div>
+      <div class="sw" style="background:#B23B2E">
+        <span class="label">status · err</span>
+        <div>
+          <div class="role-row"><span class="dot"></span><span class="role">Error</span></div>
+          <span class="hex">#B23B2E</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

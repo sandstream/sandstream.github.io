@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Buttons</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #F4F2EC; font-family: "Geist", sans-serif; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .header b { color: #0E1A1A; font-weight: 500; }
+  .stage {
+    flex: 1;
+    display: flex; flex-direction: column;
+    gap: 14px; justify-content: center;
+  }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .lbl {
+    width: 90px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #5A6464;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .btn {
+    font-family: "Geist", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 12px 18px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 140ms cubic-bezier(0.22,1,0.36,1);
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 8px;
+  }
+  .btn-primary { background: #1E8A8A; color: #F4F2EC; }
+  .btn-primary:hover { background: #166E6E; }
+  .btn-secondary { background: #0E1A1A; color: #F4F2EC; }
+  .btn-secondary:hover { background: #2C3838; }
+  .btn-ghost { background: transparent; color: #0E1A1A; border-color: #CFC8B5; }
+  .btn-ghost:hover { border-color: #0E1A1A; }
+  .btn-link {
+    background: transparent; color: #0E1A1A;
+    padding: 12px 0;
+    border-radius: 0;
+    border-bottom: 1px solid #0E1A1A;
+  }
+  .btn-link:hover { color: #1E8A8A; border-color: #1E8A8A; }
+  .arrow { font-family: "JetBrains Mono", monospace; }
+  .btn-pill { border-radius: 999px; padding: 12px 22px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Buttons</b> — primary · secondary · ghost · link</span>
+      <span>radius 8px · pill for CTA</span>
+    </div>
+    <div class="stage">
+      <div class="row">
+        <span class="lbl">primary</span>
+        <button class="btn btn-primary">Boka ett möte <span class="arrow">→</span></button>
+        <button class="btn btn-primary btn-pill">Schedule a call <span class="arrow">→</span></button>
+      </div>
+      <div class="row">
+        <span class="lbl">secondary</span>
+        <button class="btn btn-secondary">Read the bio</button>
+        <button class="btn btn-ghost">Download CV</button>
+        <button class="btn btn-link">View LinkedIn <span class="arrow">↗</span></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

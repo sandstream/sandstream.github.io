@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Logo · Dark</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; min-height: 100vh; background: #0E1A1A; color: #F4F2EC; font-family: "Geist", sans-serif; position: relative; overflow: hidden; }
+  body::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.14;
+    mix-blend-mode: overlay;
+    z-index: 0;
+  }
+  .card { min-height: 100vh; display: flex; flex-direction: column; position: relative; z-index: 1; }
+
+  .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 14px 22px;
+    border-bottom: 1px solid #2C3838;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #A6ADAB;
+  }
+  .head .ttl { font-family: "Instrument Serif", serif; font-size: 22px; line-height: 1; letter-spacing: -0.01em; color: #F4F2EC; text-transform: none; }
+  .head .ttl em { font-style: italic; }
+
+  .stage {
+    padding: 28px 22px 22px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .wm-primary {
+    font-family: "Instrument Serif", serif;
+    font-size: 96px;
+    line-height: 1;
+    color: #F4F2EC;
+    letter-spacing: -0.025em;
+    display: inline-flex; align-items: baseline;
+  }
+  .wm-primary .tld-dot { color: #1E8A8A; }
+  .wm-primary .tld { color: #1E8A8A; font-style: italic; }
+
+  .lockups {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid #2C3838;
+    margin-top: auto;
+  }
+  .lockup {
+    padding: 16px 18px;
+    border-right: 1px solid #2C3838;
+    display: flex; flex-direction: column; gap: 8px;
+    background: #131F1F;
+  }
+  .lockup:last-child { border-right: none; }
+  .lockup .lbl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    color: #A6ADAB;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .wm-nav {
+    font-family: "Instrument Serif", serif;
+    font-size: 26px;
+    line-height: 1;
+    color: #F4F2EC;
+    letter-spacing: -0.02em;
+    display: inline-flex; align-items: baseline;
+  }
+  .wm-nav .tld-dot { color: #1E8A8A; }
+  .wm-nav .tld { color: #1E8A8A; font-style: italic; }
+
+  .wm-stack {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .wm-stack .top {
+    font-family: "Instrument Serif", serif;
+    font-size: 22px;
+    line-height: 1;
+    color: #F4F2EC;
+    letter-spacing: -0.02em;
+    display: inline-flex; align-items: baseline;
+  }
+  .wm-stack .top .tld-dot { color: #1E8A8A; }
+  .wm-stack .top .tld { color: #1E8A8A; font-style: italic; }
+  .wm-stack .role {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #A6ADAB;
+  }
+
+  .mark-block { display: flex; align-items: center; gap: 10px; }
+  .mark {
+    width: 44px; height: 44px;
+    background: #F4F2EC;
+    color: #0E1A1A;
+    display: inline-flex;
+    align-items: baseline; justify-content: flex-start;
+    font-family: "Instrument Serif", serif;
+    font-size: 30px;
+    line-height: 1;
+    padding-left: 8px; padding-bottom: 6px;
+  }
+  .mark .tld-dot { color: #1E8A8A; }
+  .mark .tld { color: #1E8A8A; font-style: italic; }
+  .mark-meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    color: #A6ADAB;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.3;
+  }
+  .mark-meta b { color: #F4F2EC; font-weight: 500; display: block; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <span class="ttl"><em>Wordmark</em> — option B · dark + grain</span>
+      <span>noise@0.14</span>
+    </div>
+
+    <div class="stage">
+      <span class="wm-primary">sandstre<span class="tld-dot">.</span><span class="tld">am</span></span>
+    </div>
+
+    <div class="lockups">
+      <div class="lockup">
+        <span class="lbl">NAV · 26PX</span>
+        <span class="wm-nav">sandstre<span class="tld-dot">.</span><span class="tld">am</span></span>
+      </div>
+      <div class="lockup">
+        <span class="lbl">STACKED · WITH ROLE</span>
+        <div class="wm-stack">
+          <span class="top">sandstre<span class="tld-dot">.</span><span class="tld">am</span></span>
+          <span class="role">Peter Sandström · Interim Tech</span>
+        </div>
+      </div>
+      <div class="lockup">
+        <span class="lbl">FAVICON · APP ICON</span>
+        <div class="mark-block">
+          <span class="mark">s<span class="tld-dot">.</span><span class="tld">a</span></span>
+          <span class="mark-meta"><b>mark-favicon.svg</b>square crop · 80×80</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

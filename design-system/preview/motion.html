@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Motion · easing</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; min-height: 100vh; background: #F4F2EC; color: #0E1A1A; font-family: "Geist", sans-serif; }
+  .card { min-height: 100vh; display: flex; flex-direction: column; }
+
+  .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 14px 22px;
+    border-bottom: 1px solid rgba(10,10,12,0.08);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .head .ttl { font-family: "Instrument Serif", serif; font-size: 22px; line-height: 1; letter-spacing: -0.01em; color: #0E1A1A; text-transform: none; }
+  .head .ttl em { font-style: italic; }
+
+  .rows { flex: 1; display: flex; flex-direction: column; }
+  .row {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.4fr 96px 1.4fr;
+    gap: 24px;
+    align-items: center;
+    padding: 14px 22px;
+    border-bottom: 1px solid rgba(10,10,12,0.08);
+  }
+  .row:last-child { border-bottom: none; }
+
+  .spec { display: flex; flex-direction: column; gap: 4px; }
+  .spec .nm {
+    font-family: "Instrument Serif", serif;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.015em;
+  }
+  .spec .nm em { font-style: italic; }
+  .spec .bez {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: #5A6464;
+    letter-spacing: 0.02em;
+  }
+  .spec .desc {
+    font-family: "Geist", sans-serif;
+    font-size: 11px;
+    color: #5A6464;
+    line-height: 1.45;
+    max-width: 36ch;
+  }
+
+  /* The bezier curve SVG container */
+  .curve {
+    width: 96px; height: 72px;
+    position: relative;
+    background:
+      linear-gradient(to right, rgba(10,10,12,0.06) 1px, transparent 1px) 0 0/24px 100%,
+      linear-gradient(to bottom, rgba(10,10,12,0.06) 1px, transparent 1px) 0 0/100% 18px;
+  }
+  .curve svg { display: block; width: 100%; height: 100%; }
+  .curve .path { fill: none; stroke: #1E8A8A; stroke-width: 1.5; }
+  .curve .handle { stroke: #9E9982; stroke-width: 1; stroke-dasharray: 2 2; fill: none; }
+  .curve .pt { fill: #0E1A1A; }
+
+  /* The motion specimen */
+  .demo {
+    height: 28px;
+    position: relative;
+    background: #EAE7DE;
+    border: 1px solid #DFDBCE;
+    overflow: hidden;
+  }
+  .ball {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 18px; height: 18px;
+    background: #1E8A8A;
+    transform: translateY(-50%);
+    animation: slide 2.4s infinite;
+  }
+  .ball.e-out { animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+  .ball.e-spring { animation-timing-function: cubic-bezier(0.34, 1.32, 0.64, 1); }
+  .ball.e-linear { animation-timing-function: linear; }
+  @keyframes slide {
+    0%, 8% { left: 4px; }
+    50%, 58% { left: calc(100% - 22px); }
+    100% { left: 4px; }
+  }
+
+  /* Press specimen — a button that scales down on a tick */
+  .press {
+    height: 28px;
+    background: #1E8A8A;
+    color: #F4F2EC;
+    font-family: "Geist", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 14px;
+    border-radius: 6px;
+    animation: pressSeq 2.4s infinite;
+    transform-origin: center;
+  }
+  @keyframes pressSeq {
+    0%, 30%, 70%, 100% { transform: scale(1); }
+    35%, 65% { transform: scale(0.94); }
+  }
+
+  /* counter specimen — number ticks up */
+  .counter {
+    font-family: "Instrument Serif", serif;
+    font-size: 28px;
+    color: #0E1A1A;
+    letter-spacing: -0.02em;
+    height: 28px;
+    display: flex; align-items: center;
+  }
+  .counter::before {
+    counter-reset: n;
+    content: counter(n);
+    animation: tick 2.4s infinite linear;
+  }
+  @keyframes tick {
+    /* CSS counters can't animate values, so we cycle text via steps + content
+       — fall back to a steady visible figure for the still preview */
+  }
+  .counter .digits {
+    display: inline-block;
+  }
+  .demo-cell { display: flex; flex-direction: column; gap: 4px; }
+  .demo-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px;
+    color: #5A6464;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <span class="ttl"><em>Motion</em> — easing + duration</span>
+      <span>confident · never bouncy in UI</span>
+    </div>
+
+    <div class="rows">
+      <!-- Row 1: ease-out — the default -->
+      <div class="row">
+        <div class="spec">
+          <span class="nm"><em>ease-out</em> — default</span>
+          <span class="bez">cubic-bezier(0.22, 1, 0.36, 1) · 220ms</span>
+          <span class="desc">Used for everything functional — page entry, menu reveal, modal in. Confident exit curve, no overshoot.</span>
+        </div>
+        <div class="curve" aria-hidden="true">
+          <svg viewBox="0 0 96 72" preserveAspectRatio="none">
+            <line class="handle" x1="0" y1="72" x2="21" y2="0"></line>
+            <line class="handle" x1="96" y1="0" x2="61" y2="0"></line>
+            <path class="path" d="M 0 72 C 21 0, 35 0, 96 0"></path>
+            <circle class="pt" cx="0" cy="72" r="2"></circle>
+            <circle class="pt" cx="96" cy="0" r="2"></circle>
+          </svg>
+        </div>
+        <div class="demo-cell">
+          <span class="demo-label">SPECIMEN — slide-in</span>
+          <div class="demo"><div class="ball e-out"></div></div>
+        </div>
+      </div>
+
+      <!-- Row 2: spring — for press feedback only -->
+      <div class="row">
+        <div class="spec">
+          <span class="nm"><em>spring</em> — press only</span>
+          <span class="bez">cubic-bezier(0.34, 1.32, 0.64, 1) · 140ms</span>
+          <span class="desc">Reserved for tactile press feedback. The only "bouncy" curve in the system. Never use on layout or page transitions.</span>
+        </div>
+        <div class="curve" aria-hidden="true">
+          <svg viewBox="0 0 96 72" preserveAspectRatio="none">
+            <line class="handle" x1="0" y1="72" x2="33" y2="-23"></line>
+            <line class="handle" x1="96" y1="0" x2="61" y2="0"></line>
+            <path class="path" d="M 0 72 C 33 -23, 61 0, 96 0"></path>
+            <circle class="pt" cx="0" cy="72" r="2"></circle>
+            <circle class="pt" cx="96" cy="0" r="2"></circle>
+          </svg>
+        </div>
+        <div class="demo-cell">
+          <span class="demo-label">SPECIMEN — button press</span>
+          <div class="press">Boka 30 min →</div>
+        </div>
+      </div>
+
+      <!-- Row 3: linear — counters + progress -->
+      <div class="row">
+        <div class="spec">
+          <span class="nm"><em>linear</em> — data &amp; counters</span>
+          <span class="bez">linear · 600–1200ms</span>
+          <span class="desc">Counting up hero numbers, progress bars, status pulses. Anything time-truthful where curvature would lie about the data.</span>
+        </div>
+        <div class="curve" aria-hidden="true">
+          <svg viewBox="0 0 96 72" preserveAspectRatio="none">
+            <path class="path" d="M 0 72 L 96 0"></path>
+            <circle class="pt" cx="0" cy="72" r="2"></circle>
+            <circle class="pt" cx="96" cy="0" r="2"></circle>
+          </svg>
+        </div>
+        <div class="demo-cell">
+          <span class="demo-label">SPECIMEN — count-up</span>
+          <div class="demo"><div class="ball e-linear"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

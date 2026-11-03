@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cards</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { background: #F4F2EC; font-family: "Geist", sans-serif; color: #0E1A1A; }
+  .header {
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .header b { color: #0E1A1A; font-weight: 500; }
+  .stage {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-content: center;
+  }
+  .ds-card {
+    background: #F4F2EC;
+    border: 1px solid #CFC8B5;
+    padding: 22px 22px 20px;
+    transition: border 140ms;
+    display: flex; flex-direction: column; gap: 10px;
+    position: relative;
+  }
+  .ds-card:hover { border-color: #0E1A1A; }
+  .ds-card .tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #5A6464;
+  }
+  .ds-card .title {
+    font-family: "Instrument Serif", serif;
+    font-size: 32px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .ds-card .title em { font-style: italic; }
+  .ds-card .body {
+    font-size: 13px;
+    color: #5A6464;
+    line-height: 1.5;
+  }
+  .ds-card .link {
+    margin-top: auto;
+    font-size: 13px;
+    color: #0E1A1A;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    align-self: flex-start;
+  }
+  .ds-card .link:hover { color: #1E8A8A; }
+  .ds-card.dark {
+    background: #0E1A1A;
+    border-color: #2C3838;
+    color: #F4F2EC;
+  }
+  .ds-card.dark .tag, .ds-card.dark .body { color: #A6ADAB; }
+  .ds-card.dark .link { color: #F4F2EC; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <span><b>Cards</b> — hairline border, no shadow</span>
+      <span>hover darkens border</span>
+    </div>
+    <div class="stage">
+      <div class="ds-card">
+        <span class="tag">/ 01 — interim</span>
+        <div class="title">Interim <em>ledarskap.</em></div>
+        <div class="body">CTO, CIO, CPO, CDO eller MD inom tech. Sex till tjugofyra månader.</div>
+        <a class="link" href="#">Read more →</a>
+      </div>
+      <div class="ds-card dark">
+        <span class="tag">/ 02 — advisory</span>
+        <div class="title">Strategic <em>advisory.</em></div>
+        <div class="body">Board, investor and exec advisory for digital transformation programmes.</div>
+        <a class="link" href="#">Read more →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
