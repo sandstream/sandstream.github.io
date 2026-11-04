@@ -658,6 +658,65 @@ the hard rules; what you need to know:
   </section>
 
   <section>
+    <h2>What the 7.x line added</h2>
+    <p>
+      <strong>7.0</strong> had one breaking change, to the skill fingerprint. Since then:
+    </p>
+    <div class="grid">
+      <div class="card">
+        <div class="num">[projects]</div>
+        <h3>Several projects in one repository</h3>
+        <p><code>[projects] paths</code> in <code>.kit.toml</code> lets <code>kit check</code> run the repo level once in the root and the project level once per directory, so a root without a manifest no longer reports that it looked in the wrong place.</p>
+      </div>
+      <div class="card">
+        <div class="num">[failure feeds]</div>
+        <h3>Failures become action items that close themselves</h3>
+        <p><code>kit escalate feed github</code> and <code>kit escalate feed vercel</code> turn failed workflows, Dependabot alerts and failed production deploys into action items, and close them when the source is green again.</p>
+      </div>
+      <div class="card">
+        <div class="num">[gate evidence]</div>
+        <h3>A gate that was only configured is not evidence</h3>
+        <p>The <code>enforcement evidence</code> row of <code>kit check</code> runs negative controls against the gates on every check: an install kit cannot verify is refused, a plaintext credential written to <code>.env</code> is refused, a harmless command is allowed. It counts commits that skipped the hook, and says what it does not prove.</p>
+      </div>
+      <div class="card">
+        <div class="num">[cooling]</div>
+        <h3>A new release waits, a security patch does not</h3>
+        <p><code>kit triage npm</code> warns about a release younger than 14 days. The warning is waived only when OSV says the release is the first one that fixes an advisory for the version your lockfile pins. A release that merely calls itself a security fix is not waived.</p>
+      </div>
+      <div class="card">
+        <div class="num">[installs]</div>
+        <h3>Every Node on the machine, not only the one that answers</h3>
+        <p><code>runtime installs: node</code> lists what mise, Homebrew, nvm, fnm, Volta and <code>/usr/local</code> keep, names the one PATH runs, judges each against the end-of-life and security data, and proposes removing the unused ones. It never removes anything, and it executes nothing to find them.</p>
+      </div>
+      <div class="card">
+        <div class="num">[worktrees]</div>
+        <h3>A new worktree starts gated</h3>
+        <p>The PreToolUse gates live per checkout, so a new git worktree used to start without them. A <code>post-checkout</code> hook now installs them when git creates the worktree, before any session starts. Windows is not verified yet.</p>
+      </div>
+      <div class="card">
+        <div class="num">[anon access]</div>
+        <h3>The tables anyone with the public key can read</h3>
+        <p><code>kit check</code> reads <code>CREATE POLICY</code>, <code>GRANT</code> and <code>REVOKE</code> in your SQL files and lists the tables that anon can select from. A table with a phone, email, person name or national id column fails. It reads files only and contacts no database.</p>
+      </div>
+      <div class="card">
+        <div class="num">[deployed]</div>
+        <h3>Which findings are in the build that runs</h3>
+        <p><code>[deploy.health]</code> names an endpoint that returns the running commit. <code>kit check --online</code> then tags each dependency finding <code>deployed</code> or <code>branch only</code> by reading the lockfile at that commit.</p>
+      </div>
+      <div class="card">
+        <div class="num">[watch]</div>
+        <h3>Open security pull requests, ranked</h3>
+        <p><code>kit watch</code> ranks the open Dependabot pull requests that fix an open advisory by severity and CI state, and shows them in the status line. A missing alert source reads <code>unverified</code>, never an empty green list.</p>
+      </div>
+      <div class="card">
+        <div class="num">[fail closed]</div>
+        <h3>A scanner that crashes fails the gate</h3>
+        <p>The Semgrep gate runs a pinned version and fails on findings, scanner errors, partial parses and files it did not scan. <code>kit security scan-build</code> reports every gap in its coverage instead of passing over it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <h2>What the 6.x line added</h2>
     <p>
       <strong>6.0</strong> was the deletion major: the deprecation cycle completed and the MCP
