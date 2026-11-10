@@ -36,7 +36,7 @@
   "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a hardware-rooted Ed25519 identity. kit 5 makes it a portable, fail-closed governance layer for the agent loop — hardware-rooted identity with honest degradation, an offline-verified control plane (org-signed policy pull + keyless RFC 9421 credentials), one exec-broker enforcing a signed scope across the CLI gates and MCP runtime, and a traveling profile you can export/import to a fresh host. Strict by default (a check that could not run FAILS the gate — no false green), built on a floor you can prove and frozen, versioned CLI, config, and SDK contracts.",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "7.2.2",
+  "softwareVersion": "7.3.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -402,7 +402,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v7.2.2</span>
+      <span class="pill accent" id="version-pill">v7.3.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
@@ -727,6 +727,16 @@ the hard rules; what you need to know:
         <div class="num">[release SBOMs]</div>
         <h3>SBOMs that list the dependencies</h3>
         <p>The SBOMs on the 7.2.0 release held only the root component, because the scan ran on a tarball without <code>node_modules</code>. Since 7.2.1 the publish job scans the installed package and fails when an SBOM lists fewer than 10 dependencies.</p>
+      </div>
+      <div class="card">
+        <div class="num">[tool evidence]</div>
+        <h3>Memory keeps what the agent's tools did</h3>
+        <p>Since 7.3.0, memory schema 18 records native tool requests and reported responses for Claude Code and Codex. A report separates executed, denied and unknown actions, and missing capture is never read as proof that a tool was not used. Schema 18 is a one-way upgrade: 7.2.2 and older refuse the store.</p>
+      </div>
+      <div class="card">
+        <div class="num">[refuse]</div>
+        <h3>Commands refuse what they cannot honor</h3>
+        <p>Since 7.3.0, unknown flags and malformed arguments are refused before dispatch, so <code>kit secrets --dry-run</code> can no longer write <code>.env.local</code>. Approval, revocation, budget and audit-receipt checks fail closed on invalid state. A script that passed an ignored flag now gets a non-zero exit.</p>
       </div>
     </div>
   </section>
