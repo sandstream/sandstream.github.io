@@ -36,7 +36,7 @@
   "description": "Deterministic, local-first developer environment manager for AI agents and humans. One command from git clone to a working dev environment; multi-vault secrets, per-CLI context lock, cross-harness memory, and a hardware-rooted Ed25519 identity. kit 5 makes it a portable, fail-closed governance layer for the agent loop — hardware-rooted identity with honest degradation, an offline-verified control plane (org-signed policy pull + keyless RFC 9421 credentials), one exec-broker enforcing a signed scope across the CLI gates and MCP runtime, and a traveling profile you can export/import to a fresh host. Strict by default (a check that could not run FAILS the gate — no false green), built on a floor you can prove and frozen, versioned CLI, config, and SDK contracts.",
   "url": "https://www.sandstre.am/kit",
   "downloadUrl": "https://www.npmjs.com/package/sandstream-kit",
-  "softwareVersion": "7.3.0",
+  "softwareVersion": "7.4.0",
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -402,7 +402,7 @@
     </div>
 
     <div class="pills">
-      <span class="pill accent" id="version-pill">v7.3.0</span>
+      <span class="pill accent" id="version-pill">v7.4.0</span>
       <span class="pill">MIT</span>
       <span class="pill">Node 22+</span>
       <span class="pill">macOS · Linux · Windows</span>
@@ -737,6 +737,16 @@ the hard rules; what you need to know:
         <div class="num">[refuse]</div>
         <h3>Commands refuse what they cannot honor</h3>
         <p>Since 7.3.0, unknown flags and malformed arguments are refused before dispatch, so <code>kit secrets --dry-run</code> can no longer write <code>.env.local</code>. Approval, revocation, budget and audit-receipt checks fail closed on invalid state. A script that passed an ignored flag now gets a non-zero exit.</p>
+      </div>
+      <div class="card">
+        <div class="num">[licenses.allow]</div>
+        <h3>Accept a copyleft package, with a reason</h3>
+        <p>Since 7.4.0, <code>[licenses.allow]</code> in <code>.kit.toml</code> records a reviewed copyleft package, such as a dynamically linked LGPL binary. Each entry needs the exact license and a reason, and applies only when the package reports exactly that license. An entry without a reason is not applied, and the check detail still lists every accepted package.</p>
+      </div>
+      <div class="card">
+        <div class="num">[anon_access]</div>
+        <h3>Tables that anon reads on purpose</h3>
+        <p>Since 7.4.0, <code>[anon_access.public]</code> declares the tables a public page needs, each with a reason. A declared table stops the anonymous database access warning, unless it has a personal-looking column: then it still fails. A committed, in-sync lockfile also makes <code>^</code> and <code>~</code> ranges count as pinned.</p>
       </div>
     </div>
   </section>
