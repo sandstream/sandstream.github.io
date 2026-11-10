@@ -23,6 +23,8 @@ Key properties:
 - Gated worktrees (7.2) a `post-checkout` hook installs the PreToolUse gates in a new git worktree when git creates it.
 - Instruction files (7.2.1) `kit triage instructions [path]` reads `CLAUDE.md`, `AGENTS.md`, `SKILL.md` and other agent instruction files for injection patterns, secret paths with an outbound target and fresh downloads. It is a pattern scan, a floor and not a guard: the first rules caught 3 of 20 attacker lines in a blind test, and the rules added in 7.2.2 have no blind figure yet.
 - macOS installers (7.2.2) `kit triage pkg <file.pkg>` checks the SHA-256 against the publisher's list, the signing Team ID against the expected publisher (the Node.js Foundation is built in) and Apple's notarization; a package with no expected publisher never passes. macOS only, and unverified in CI.
+- Tool evidence (7.3) memory schema 18 records native tool requests and reported responses for Claude Code and Codex; reports separate executed, denied and unknown actions. Schema 18 is a one-way upgrade: 7.2.2 and older refuse the store.
+- Refused arguments (7.3) unknown flags and malformed arguments are refused before dispatch; approval, revocation, budget and audit-receipt checks fail closed on invalid state.
 - SBOMs with dependencies (7.2.1) the release SBOMs list the dependencies; the publish job scans the installed package and fails when an SBOM lists fewer than 10.
 - Anonymous database access (7.2) `kit check` lists the tables that anon can read from the SQL policies and grants in the project.
 - Deployed or branch only (7.2) `[deploy.health]` reads the running commit and tags dependency findings by whether the vulnerable package is in the deployed build; `kit watch` ranks open security pull requests.
