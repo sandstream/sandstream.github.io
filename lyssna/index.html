@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lyssna · lokal mötestranskribering för Mac</title>
-<meta name="description" content="Lyssna transkriberar möten på din Mac, även när svenska och engelska blandas. Ljudet lämnar aldrig datorn. Första testversionen för Mac med Apple-processor.">
+<meta name="description" content="Lyssna transkriberar möten på din Mac, även när svenska och engelska blandas. Ljudet lämnar aldrig datorn. Testversion för Mac med Apple-processor.">
 <meta name="theme-color" content="#0a0e0e" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f7faf9" media="(prefers-color-scheme: light)">
 <meta property="og:title" content="Lyssna · lokal mötestranskribering för Mac">
@@ -21,9 +21,9 @@
   "name": "Lyssna",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "macOS 14.4 or later, Apple silicon",
-  "softwareVersion": "0.1.0",
+  "softwareVersion": "0.1.16",
   "url": "https://www.sandstre.am/lyssna",
-  "downloadUrl": "https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.0",
+  "downloadUrl": "https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.16",
   "author": { "@type": "Organization", "name": "Sandstream AB", "url": "https://www.sandstre.am" }
 }
 </script>
@@ -59,25 +59,29 @@
   <div class="hero">
     <h1>Lyssna</h1>
     <p class="lead">Lyssna transkriberar möten på din Mac, även när svenska och engelska blandas i samma möte. Ljudet lämnar aldrig datorn.</p>
-    <a class="btn" href="https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.0">Ladda ner 0.1.0 för Mac</a>
-    <p class="meta">Första testversionen (pre-release). Se kraven nedan. Signerad av Sandstream AB och notariserad av Apple.</p>
+    <a class="btn" href="https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.16">Ladda ner 0.1.16 för Mac</a>
+    <p class="meta">Testversion (pre-release) från 12 november 2026. Se kraven nedan. Signerad av Sandstream AB och notariserad av Apple.</p>
   </div>
   <section>
     <h2>Vad Lyssna gör</h2>
     <ul>
-      <li><strong>Fångar mötet.</strong> Appen tar ljudet från Teams och mikrofonen. Ingen bot går med i mötet.</li>
+      <li><strong>Fångar mötet.</strong> Appen tar ljudet från Teams, Zoom, webbläsaren eller allt systemljud, och från mikrofonen. Ingen bot går med i mötet.</li>
+      <li><strong>Startar snabbt.</strong> Starta från ikonen i menyraden, eller med kortkommandot ⌃⌥L (Control, Option och L) i vilken app som helst.</li>
       <li><strong>Transkriberar lokalt.</strong> Svenska, engelska och blandade meningar hanteras per segment. Texten sparas bara på din dator.</li>
       <li><strong>Sammanfattar.</strong> Med Ollama och en lokal modell får du översikt, beslut och åtgärder. Utan Ollama fungerar transkriberingen, men inte sammanfattningen.</li>
+      <li><strong>Skiljer röster åt.</strong> Lyssna grupperar de andra deltagarnas tal efter röst, och du kan ge rösterna namn. Grupperingen är maskinell, så en person kan ibland delas på två röster.</li>
       <li><strong>Rättar efteråt.</strong> Du lär appen dina kundnamn och facktermer med en egen ordlista.</li>
-      <li><strong>Följer upp.</strong> Du bjuder in Claude Code till mötet. Då skickas mötestexten till Anthropic.</li>
+      <li><strong>Följer upp.</strong> Du kan bjuda in Claude Code eller Codex till mötet. Då skickas mötestexten till Anthropic respektive OpenAI.</li>
+      <li><strong>Skyddar personuppgifter.</strong> Innan mötestexten skickas byter Lyssna namn, nummer och adresser mot platshållare. Skyddet är påslaget från början. Det är maskinellt och kan missa ett ovanligt namn.</li>
+      <li><strong>Uppdaterar sig själv.</strong> Lyssna installerar nya versioner när fönstret är stängt och ingenting pågår. Du kan stänga av det i Inställningar.</li>
     </ul>
   </section>
   <section>
     <h2>Krav</h2>
     <ul>
       <li><strong>Mac med Apple-processor</strong> (M1 eller senare) och macOS 14.4 eller senare. Intel-Mac fungerar inte.</li>
-      <li><strong>Ingen separat grafikkort behövs.</strong> Apple-processorn har grafik och minne i samma chip. Taligenkänningen använder det.</li>
-      <li><strong>Cirka 2 GB ledigt diskutrymme</strong> för appen och taligenkänningsmodellerna.</li>
+      <li><strong>Inget separat grafikkort behövs.</strong> Apple-processorn har grafik och minne i samma chip. Taligenkänningen använder det.</li>
+      <li><strong>Cirka 2 GB ledigt diskutrymme</strong> för appen och taligenkänningsmodellerna. Namnmodellen för skyddet av personuppgifter kräver 1,2 GB till, om du laddar ner den.</li>
       <li><strong>Ollama för sammanfattningar.</strong> Installera <a href="https://ollama.com/download">Ollama</a> och hämta en modell. Utan Ollama fungerar transkriberingen, men inte sammanfattningen.</li>
       <li><strong>Minne för sammanfattningar.</strong> <code>ollama pull qwen2.5:7b-instruct</code> (4,7 GB) passar en Mac med 16 GiB RAM. <code>ollama pull gemma4:26b</code> (16 GB) hittar fler åtgärder och kräver 32 GiB RAM.</li>
     </ul>
@@ -85,17 +89,24 @@
   <section>
     <h2>Installera</h2>
     <ul>
-      <li>Ladda ner DMG-filen och dra Lyssna till Program.</li>
+      <li>Ladda ner DMG-filen och dra Lyssna till Program. Har du redan 0.1.12 eller senare installerar Lyssna den nya versionen själv.</li>
       <li>Starta appen. Taligenkänningsmodellerna (cirka 1,8 GB) laddas ner vid första start, med kontroll av SHA-256.</li>
       <li>Ge appen behörighet för mikrofonen och för att spela in ljud från andra appar.</li>
     </ul>
   </section>
   <section>
-    <h2>Begränsningar i 0.1.0</h2>
+    <h2>Integritet</h2>
+    <ul>
+      <li>Ljudet sparas inte. Taligenkänningen körs på din dator, och texten sparas bara där.</li>
+      <li>Lyssna frågar GitHub efter nya versioner. GitHub ser då datorns IP-adress. Ingenting om dig eller dina möten skickas.</li>
+      <li>Mötestexten lämnar datorn bara om du bjuder in Claude Code eller Codex till mötet.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Begränsningar i 0.1.16</h2>
     <ul>
       <li>Windows saknas. Det kommer efter Mac.</li>
-      <li>Talare bland övriga deltagare skiljs inte åt. De visas som "Andra".</li>
-      <li>Appen märker mötet, men du ansvarar för att deltagarna vet att mötet transkriberas.</li>
+      <li>Lyssna frågar om deltagarna är informerade innan inspelningen startar. Du ansvarar för att de vet att mötet transkriberas.</li>
     </ul>
   </section>
   <footer>Lyssna är byggd av Sandstream AB. Skicka synpunkter till <a href="mailto:hello@sandstre.am">hello@sandstre.am</a>.</footer>
