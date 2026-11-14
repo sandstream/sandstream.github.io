@@ -21,9 +21,9 @@
   "name": "Lyssna",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "macOS 14.4 or later, Apple silicon",
-  "softwareVersion": "0.1.16",
+  "softwareVersion": "0.1.17",
   "url": "https://www.sandstre.am/lyssna",
-  "downloadUrl": "https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.16",
+  "downloadUrl": "https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.17",
   "author": { "@type": "Organization", "name": "Sandstream AB", "url": "https://www.sandstre.am" }
 }
 </script>
@@ -46,7 +46,7 @@
   .meta { margin-top: 14px; font-size: 14px; color: var(--ink-3); }
   section { padding: 40px 0; border-bottom: 1px solid var(--line); }
   h2 { font-family: var(--mono); font-size: 20px; margin-bottom: 16px; }
-  ul { padding-left: 1.2em; } li { margin-bottom: 8px; color: var(--ink-2); } li strong { color: var(--ink); }
+  ul, ol { padding-left: 1.2em; } h3 { font-family: var(--mono); font-size: 16px; margin: 20px 0 10px; } li { margin-bottom: 8px; color: var(--ink-2); } li strong { color: var(--ink); }
   p { color: var(--ink-2); margin-bottom: 12px; }
   code { font-family: var(--mono); font-size: 0.9em; background: var(--bg-2); padding: 2px 6px; border-radius: 4px; word-break: break-all; }
   a { color: var(--accent); }
@@ -59,8 +59,8 @@
   <div class="hero">
     <h1>Lyssna</h1>
     <p class="lead">Lyssna transkriberar möten på din Mac, även när svenska och engelska blandas i samma möte. Ljudet lämnar aldrig datorn.</p>
-    <a class="btn" href="https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.16">Ladda ner 0.1.16 för Mac</a>
-    <p class="meta">Testversion (pre-release) från 12 november 2026. Se kraven nedan. Signerad av Sandstream AB och notariserad av Apple.</p>
+    <a class="btn" href="https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.17">Ladda ner 0.1.17 för Mac</a>
+    <p class="meta">Testversion (pre-release) från 14 november 2026. Se kraven nedan. Signerad av Sandstream AB och notariserad av Apple.</p>
   </div>
   <section>
     <h2>Vad Lyssna gör</h2>
@@ -71,6 +71,7 @@
       <li><strong>Sammanfattar.</strong> Med Ollama och en lokal modell får du översikt, beslut och åtgärder. Utan Ollama fungerar transkriberingen, men inte sammanfattningen.</li>
       <li><strong>Skiljer röster åt.</strong> Lyssna grupperar de andra deltagarnas tal efter röst, och du kan ge rösterna namn. Grupperingen är maskinell, så en person kan ibland delas på två röster.</li>
       <li><strong>Rättar efteråt.</strong> Du lär appen dina kundnamn och facktermer med en egen ordlista.</li>
+      <li><strong>Tar emot röstmemon.</strong> Spela in med Röstmemon på iPhone eller Apple Watch. Lyssna transkriberar inspelningen när den har nått Macen. Se nedan.</li>
       <li><strong>Följer upp.</strong> Du kan bjuda in Claude Code eller Codex till mötet. Se nedan.</li>
       <li><strong>Skyddar personuppgifter.</strong> Innan mötestexten skickas byter Lyssna namn, nummer och adresser mot platshållare. Skyddet är påslaget från början. Det är maskinellt och kan missa ett ovanligt namn.</li>
       <li><strong>Uppdaterar sig själv.</strong> Lyssna installerar nya versioner när fönstret är stängt och ingenting pågår. Du kan stänga av det i Inställningar.</li>
@@ -86,6 +87,31 @@
       <li><strong>Bara du styr.</strong> Claude kör inga verktyg, skickar ingenting och ändrar inga filer för att någon sa det i mötet. Claude gör bara det du ber om i terminalen.</li>
       <li><strong>Det här lämnar datorn.</strong> Mötestexten skickas till Anthropic, eller till OpenAI om du väljer Codex. Ljudet stannar på datorn. Med skyddet av personuppgifter påslaget får Claude platshållare i stället för namn, nummer och adresser.</li>
       <li><strong>Krav.</strong> <a href="https://claude.com/claude-code">Claude Code</a> eller Codex installerat på datorn, med ett eget konto.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Spela in med iPhone eller Apple Watch</h2>
+    <p>Lyssna kan bevaka appen Röstmemon. När en inspelning från telefonen eller klockan har synkats till Macen via iCloud, transkriberar Lyssna den som ett möte.</p>
+    <h3>Ställ in en gång</h3>
+    <ol>
+      <li>Öppna Inställningar på iPhone och tryck på ditt namn. Välj iCloud och slå på Röstmemon. Ibland ligger det under Visa alla.</li>
+      <li>Öppna Systeminställningar på Macen och klicka på ditt namn. Välj iCloud och slå på Röstmemon.</li>
+      <li>Öppna appen Röstmemon på Macen en gång.</li>
+      <li>Öppna Inställningar i Lyssna och välj Inspelning. Slå på Importera nya inspelningar från Röstmemon.</li>
+      <li>Om Lyssna säger att den inte får läsa mappen: välj Öppna Full skivåtkomst och slå på Lyssna. Starta sedan om Lyssna.</li>
+    </ol>
+    <h3>Spela in</h3>
+    <ul>
+      <li><strong>Med iPhone.</strong> Öppna Röstmemon och tryck på den röda knappen. Tryck igen när mötet är slut. Ge gärna inspelningen ett namn, så blir det mötets titel i Lyssna.</li>
+      <li><strong>Med Apple Watch.</strong> Öppna Röstmemon på klockan och tryck på den röda knappen. Tryck igen när mötet är slut. Inspelningen går till telefonen när klockan är nära den, och sedan vidare till iCloud.</li>
+      <li><strong>På Macen.</strong> Macen måste vara vaken och Lyssna måste vara igång. Det räcker att Lyssna ligger i menyraden. Mötet dyker upp ungefär en minut efter att inspelningen har nått Macen.</li>
+    </ul>
+    <h3>Bra att veta</h3>
+    <ul>
+      <li>Lyssna importerar bara inspelningar som du gör efter att du har slagit på bevakningen.</li>
+      <li>Lyssna kan inte påminna dig om att informera deltagarna före en automatisk import. Mötet märks därför som inte informerat. Du ansvarar för att deltagarna vet om inspelningen.</li>
+      <li>Lyssna läser bara inspelningarna. Lyssna ändrar och raderar aldrig något i Röstmemon.</li>
+      <li>Röstmemon sparar inspelningen i iCloud. Det styr Apple och dina iCloud-inställningar, inte Lyssna.</li>
     </ul>
   </section>
   <section>
@@ -109,13 +135,13 @@
   <section>
     <h2>Integritet</h2>
     <ul>
-      <li>Ljudet sparas inte. Taligenkänningen körs på din dator, och texten sparas bara där.</li>
+      <li>Lyssna sparar inte ljudet. Taligenkänningen körs på din dator, och texten sparas bara där.</li>
       <li>Lyssna frågar GitHub efter nya versioner. GitHub ser då datorns IP-adress. Ingenting om dig eller dina möten skickas.</li>
       <li>Mötestexten lämnar datorn bara om du bjuder in Claude Code eller Codex till mötet.</li>
     </ul>
   </section>
   <section>
-    <h2>Begränsningar i 0.1.16</h2>
+    <h2>Begränsningar i 0.1.17</h2>
     <ul>
       <li>Windows saknas. Det kommer efter Mac.</li>
       <li>Lyssna frågar om deltagarna är informerade innan inspelningen startar. Du ansvarar för att de vet att mötet transkriberas.</li>
