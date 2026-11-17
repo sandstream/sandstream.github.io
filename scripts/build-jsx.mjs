@@ -39,16 +39,22 @@ function tscCommand() {
 }
 
 const [cmd, ...pre] = tscCommand();
+const shell = process.platform === 'win32';
+// TypeScript 6 deprecates --target ES5 and refuses it unless told to ignore that; 5.x rejects
+// the same flag value, so pass it only to 6 and later.
+const version = spawnSync(cmd, [...pre, '--version'], { encoding: 'utf8', shell });
+const major = Number(/Version (\d+)\./.exec(version.stdout ?? '')?.[1] ?? 0);
+const compat = major >= 6 ? ['--ignoreDeprecations', '6.0'] : [];
 let drift = 0;
 for (const dir of DIRS) {
   const abs = join(repo, dir);
   const sources = readdirSync(abs).filter((f) => f.endsWith('.jsx')).sort();
   if (sources.length === 0) continue;
   const out = check ? mkdtempSync(join(tmpdir(), 'build-jsx-')) : abs;
-  const args = [...pre, '--jsx', 'react', '--target', 'ES5', '--lib', 'es2019,dom',
+  const args = [...pre, ...compat, '--jsx', 'react', '--target', 'ES5', '--lib', 'es2019,dom',
     '--allowJs', '--noCheck', '--skipLibCheck', '--noResolve', '--newLine', 'lf',
     '--outDir', out, ...sources.map((f) => join(abs, f))];
-  const r = spawnSync(cmd, args, { stdio: 'inherit', shell: process.platform === 'win32' });
+  const r = spawnSync(cmd, args, { stdio: 'inherit', shell });
   if (r.status !== 0) {
     console.error(`tsc failed in ${dir} (exit ${r.status ?? r.error})`);
     process.exit(2);
