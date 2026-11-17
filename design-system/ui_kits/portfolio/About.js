@@ -1,0 +1,31 @@
+// About.jsx — portrait + bio + stats. The "om Peter" section.
+function About() {
+    return (React.createElement("section", { id: "about", className: "section", "data-screen-label": "01 Bio" },
+        React.createElement("div", { className: "section-label" },
+            React.createElement("span", null,
+                React.createElement("span", { className: "num" }, "/ 01"),
+                " \u00A0 om peter"),
+            React.createElement("span", { className: "bar" })),
+        React.createElement("div", { className: "about-grid" },
+            React.createElement("div", { className: "about-portrait" },
+                React.createElement("img", { src: "../../assets/peter-portrait.jpg", alt: "Peter Sandstr\u00F6m" }),
+                React.createElement("div", { className: "corner" }, "PORTRAIT \u00B7 2025")),
+            React.createElement("div", { className: "about-body" },
+                React.createElement("h2", { className: "about-h" },
+                    "Strategi f\u00F6r det ",
+                    React.createElement("em", null, "mellanrum"),
+                    " d\u00E4r tech m\u00F6ter aff\u00E4r."),
+                React.createElement("p", { className: "about-p" }, "Peter \u00E4r en erfaren teknologiledare med \u00F6ver 20 \u00E5rs erfarenhet av IT-ledning och digital transformation. Han har byggt och lett tekniska team genom komplexa f\u00F6r\u00E4ndringar \u2014 fr\u00E5n dynamiska startups till etablerade nordiska koncerner."),
+                React.createElement("p", { className: "about-p muted" }, "Senaste \u00E5ren har fokus skiftat mot aff\u00E4rsn\u00E4ra AI-implementation: generativ AI, agentiska arbetsfl\u00F6den, vector embeddings, och praktiska automationer som faktiskt g\u00E5r i produktion. Just nu AI & Innovation Lead p\u00E5 Frontwalker, samtidigt som Sandstream AB tar interimsuppdrag och advisory."),
+                React.createElement("div", { className: "about-stats" },
+                    React.createElement("div", { className: "stat" },
+                        React.createElement("div", { className: "n" }, "20+"),
+                        React.createElement("div", { className: "l" }, "Years in tech leadership")),
+                    React.createElement("div", { className: "stat" },
+                        React.createElement("div", { className: "n" }, "35"),
+                        React.createElement("div", { className: "l" }, "Largest team led \u00B7 Devoteam")),
+                    React.createElement("div", { className: "stat" },
+                        React.createElement("div", { className: "n" }, "4"),
+                        React.createElement("div", { className: "l" }, "CXO + MD interim roles")))))));
+}
+window.About = About;
