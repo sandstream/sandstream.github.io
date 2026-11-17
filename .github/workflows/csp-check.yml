@@ -1,0 +1,21 @@
+# Fails when a page's Content-Security-Policy no longer matches the page: a new inline
+# <style> or style="" attribute, a new script, an inline handler. Fix: node scripts/csp.mjs
+# and commit. The script is stdlib-only; nothing is installed.
+name: csp check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  csp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - run: node scripts/csp.mjs --check

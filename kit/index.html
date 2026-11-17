@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at/count.js; style-src https://fonts.googleapis.com 'sha256-wWV1u//OchoOvbPlXl1tCCr1HiRs4HeMdG6j3Gd8HUM=' 'unsafe-hashes' 'sha256-46+61c47586dlpGM0yUJOXUoiYJ0LUtHwn0uBru+ALc=' 'sha256-EfPqb5Qv15OXbrQ2XyuSD3UM9LLDrUd6GMTSwzAODhE=' 'sha256-MvHg5IhHCbjd4FP8BJTVkGBZPOrIFNhL8dfHLKSZhbM=' 'sha256-NOIvf1CRb2XEfzH3VfG4B/Y63udbPNxuYP8fo1MRekQ=' 'sha256-VQSkvWgqU9xiRRhRvSkktusLKbIG+YSGeAkDan/thsY=' 'sha256-XR1ifurz0Vc9AJhuBC7MC9JJpcpnAjLsp/7+xgxqJNQ=' 'sha256-dY63+OXyEOdjvG+MZZ0oc7RDqgoGfQ6T0kvCZFmQYOU=' 'sha256-dpd8yfJCMWPr8AcEBnAp5lQvVCkf37RcSr5lAnbF4NQ=' 'sha256-gWqUsLw1+ocQIJb4l+0SSXKWrVQC4kNeqHoitO/P7g4=' 'sha256-gc5X/ufcVTLcNlULLL8igjlbiyslC3xiOc5mURgjFv4=' 'sha256-jrKdR5YVKPudsexjiP6mwERRlI0n9T4Su4CRfilDqUc=' 'sha256-m5z2VHwY56arEEYdrYdvUgZgL3ClVaDsod4zn+PxHNw=' 'sha256-qwP49SAf9mnMMnbflvPqQjuDyOTZAt8WKx4nSopU8fM=' 'sha256-w5IVo9Txm0hT2m1yQmlND1yLpsp6KItx7WDlZMqaFu8=' 'sha256-wVCiN3mio300XcM4/mEcqpzDGxHRkiH9NmqcZJl/GTw=' 'sha256-yeLt2fK6tLIIZkTug3jECrXpQXI0/kIPPgV+s9o4Qtc='; font-src https://fonts.gstatic.com; img-src 'self' https://sandstream.goatcounter.com; connect-src https://registry.npmjs.org https://sandstream.goatcounter.com; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kit · developer kit. deterministic. local-first.</title>
 <meta name="description" content="One command from git clone to working dev environment — and a portable, fail-closed governance layer for the agent loop. Deterministic, local-first, multi-vault. For AI agents and humans.">
@@ -394,11 +395,11 @@
 
     <div class="install-block">
       <span class="cmd" id="install-cmd">npx sandstream-kit setup</span>
-      <button onclick="copyCmd(this)">copy</button>
+      <button type="button" data-copy>copy</button>
     </div>
     <div class="install-block">
       <span class="cmd">npm install -g sandstream-kit</span>
-      <button onclick="copyCmd(this)">copy</button>
+      <button type="button" data-copy>copy</button>
     </div>
 
     <div class="pills">
@@ -1375,31 +1376,7 @@ $ kit context check  <span class="c"># lock each CLI to the right account + proj
 
 </div>
 
-<script>
-  function copyCmd(btn) {
-    const cmd = btn.previousElementSibling.textContent;
-    navigator.clipboard.writeText(cmd).then(() => {
-      btn.classList.add('copied');
-      btn.textContent = 'copied';
-      setTimeout(() => {
-        btn.classList.remove('copied');
-        btn.textContent = 'copy';
-      }, 1500);
-    });
-  }
-
-  // Keep the version pill in sync with the published npm release (no drift).
-  // Fails open: the hardcoded fallback above stays if the fetch is blocked.
-  fetch('https://registry.npmjs.org/sandstream-kit/latest')
-    .then((r) => (r.ok ? r.json() : null))
-    .then((d) => {
-      if (d && d.version) {
-        const el = document.getElementById('version-pill');
-        if (el) el.textContent = 'v' + d.version;
-      }
-    })
-    .catch(() => { /* offline / blocked — keep fallback */ });
-</script>
+<script src="/kit/kit.js"></script>
 
 <script data-goatcounter="https://sandstream.goatcounter.com/count"
         async src="https://gc.zgo.at/count.js"></script>

@@ -2,6 +2,7 @@
 <html lang="sv">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at/count.js https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js https://unpkg.com/react@18.3.1/umd/react.production.min.js; style-src 'self' https://fonts.googleapis.com 'sha256-0gamHYV6UK6aga39d+vmjSc62jvnd7yVSX36NgB4M/A='; font-src https://fonts.gstatic.com; img-src 'self' data: https://sandstream.goatcounter.com; connect-src https://sandstream.goatcounter.com; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Peter Sandström · Sandstream</title>
 <meta name="description" content="Peter Sandström · hands-on tech lead och konsult. Idéer varje dag, kod varje dag. Tar interim- och projektuppdrag inom AI, produktutveckling och digital transformation.">
@@ -57,7 +58,6 @@
 <link rel="stylesheet" href="portfolio.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- Statically prerendered content: crawlers and answer engines (no JS) read this;
@@ -137,16 +137,16 @@
   </div>
 </div>
 <script src="data.js"></script>
-<script type="text/babel" src="MetaStrip.jsx"></script>
-<script type="text/babel" src="Header.jsx"></script>
-<script type="text/babel" src="Hero.jsx"></script>
-<script type="text/babel" src="About.jsx"></script>
-<script type="text/babel" src="Cases.jsx"></script>
-<script type="text/babel" src="Music.jsx"></script>
-<script type="text/babel" src="Roles.jsx"></script>
-<script type="text/babel" src="Contact.jsx"></script>
-<script type="text/babel" src="FloatingPill.jsx"></script>
-<script type="text/babel" src="App.jsx"></script>
+<script src="MetaStrip.js"></script>
+<script src="Header.js"></script>
+<script src="Hero.js"></script>
+<script src="About.js"></script>
+<script src="Cases.js"></script>
+<script src="Music.js"></script>
+<script src="Roles.js"></script>
+<script src="Contact.js"></script>
+<script src="FloatingPill.js"></script>
+<script src="App.js"></script>
 <script data-goatcounter="https://sandstream.goatcounter.com/count"
         async src="https://gc.zgo.at/count.js"></script>
 </body>
