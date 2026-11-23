@@ -22,9 +22,9 @@
   "name": "Lyssna",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "macOS 14.4 or later, Apple silicon",
-  "softwareVersion": "0.1.20",
+  "softwareVersion": "0.1.21",
   "url": "https://www.sandstre.am/lyssna",
-  "downloadUrl": "https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.20",
+  "downloadUrl": "https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.21",
   "author": { "@type": "Organization", "name": "Sandstream AB", "url": "https://www.sandstre.am" }
 }
 </script>
@@ -60,7 +60,7 @@
   <div class="hero">
     <h1>Lyssna</h1>
     <p class="lead">Lyssna transkriberar möten på din Mac, även när svenska och engelska blandas i samma möte. Ljudet lämnar aldrig datorn.</p>
-    <a class="btn" href="https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.20">Ladda ner 0.1.20 för Mac</a>
+    <a class="btn" href="https://github.com/sandstream/lyssna-releases/releases/tag/v0.1.21">Ladda ner 0.1.21 för Mac</a>
     <p class="meta">Testversion (pre-release) från 14 november 2026. Se kraven nedan. Signerad av Sandstream AB och notariserad av Apple.</p>
   </div>
   <section>
@@ -70,7 +70,7 @@
       <li><strong>Startar snabbt.</strong> Starta från ikonen i menyraden, eller med kortkommandot ⌃⌥L (Control, Option och L) i vilken app som helst.</li>
       <li><strong>Transkriberar lokalt.</strong> Svenska, engelska och blandade meningar hanteras per segment. Texten sparas bara på din dator.</li>
       <li><strong>Sammanfattar.</strong> Med Ollama och en lokal modell får du översikt, beslut och åtgärder. Utan Ollama fungerar transkriberingen, men inte sammanfattningen.</li>
-      <li><strong>Skiljer röster åt.</strong> Lyssna grupperar de andra deltagarnas tal efter röst, och du kan ge rösterna namn. Grupperingen är maskinell, så en person kan ibland delas på två röster.</li>
+      <li><strong>Skiljer röster åt.</strong> Lyssna grupperar de andra deltagarnas tal efter röst, och du kan ge rösterna namn. Grupperingen är maskinell, så en person kan ibland delas på två röster. Lyssna skiljer bara rösterna åt när du har markerat att deltagarna är informerade.</li>
       <li><strong>Rättar efteråt.</strong> Du lär appen dina kundnamn och facktermer med en egen ordlista.</li>
       <li><strong>Tar emot röstmemon.</strong> Spela in med Röstmemon på iPhone eller Apple Watch. Lyssna frågar om inspelningen ska transkriberas när den har nått Macen. Se nedan.</li>
       <li><strong>Följer upp.</strong> Du kan bjuda in Claude Code eller Codex till mötet. Se nedan.</li>
@@ -105,7 +105,7 @@
     <ul>
       <li><strong>Med iPhone.</strong> Öppna Röstmemon och tryck på den röda knappen. Tryck igen när mötet är slut. Ge gärna inspelningen ett namn, så blir det mötets titel i Lyssna.</li>
       <li><strong>Med Apple Watch.</strong> Öppna Röstmemon på klockan och tryck på den röda knappen. Tryck igen när mötet är slut. Inspelningen går till telefonen när klockan är nära den, och sedan vidare till iCloud.</li>
-      <li><strong>På Macen.</strong> Macen måste vara vaken och Lyssna måste vara igång. Det räcker att Lyssna ligger i menyraden. Ungefär en minut efter att inspelningen har nått Macen visar Lyssna den överst under Nytt möte. I menyraden står det att ett röstmemo väntar. Välj Importera, eller Hoppa över om inspelningen inte är ett möte.</li>
+      <li><strong>På Macen.</strong> Macen måste vara vaken och Lyssna måste vara igång. Det räcker att Lyssna ligger i menyraden. Ungefär en minut efter att inspelningen har nått Macen visar Lyssna den överst under Nytt möte. Panelen under ikonen i menyraden visar att ett röstmemo väntar. Välj Importera, eller Hoppa över om inspelningen inte är ett möte.</li>
     </ul>
     <h3>Bra att veta</h3>
     <ul>
@@ -142,7 +142,7 @@
     </ul>
   </section>
   <section>
-    <h2>Begränsningar i 0.1.20</h2>
+    <h2>Begränsningar i 0.1.21</h2>
     <ul>
       <li>Windows saknas. Det kommer efter Mac.</li>
       <li>Lyssna frågar om deltagarna är informerade innan inspelningen startar. Du ansvarar för att de vet att mötet transkriberas.</li>
