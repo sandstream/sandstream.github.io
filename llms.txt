@@ -27,6 +27,10 @@ Key properties:
 - Refused arguments (7.3) unknown flags and malformed arguments are refused before dispatch; approval, revocation, budget and audit-receipt checks fail closed on invalid state.
 - Accepted licenses (7.4) `[licenses.allow]` records a reviewed copyleft package with its exact license and a reason; an entry without a reason is not applied.
 - Public tables (7.4) `[anon_access.public]` declares tables anon reads on purpose, each with a reason; a declared table with a personal-looking column still fails. A committed, in-sync lockfile makes `^` and `~` ranges count as pinned.
+- Irreversible commands (7.5) the agent gates refuse a force push, a push to `main` and `git reset --hard`, and decoded or downloaded text piped into an interpreter; they also gate `gem install` and `bundle add` and read installs run through Windows shells.
+- Machine-wide gates (7.5) `kit agent-config --user` writes deny rules, the sandbox and gate hooks for every checkout on the machine; `kit hooks gates` wires them at session start, `kit panic --stop` halts every gated agent until `--resume`, and `kit gate-limits` caps time, tool calls and child agents per session.
+- New check rows (7.5) a planted agent hook, browser scripts, an AI dev server beyond loopback, `.worktreeinclude` copying `.env`, Docker images against published IOCs and a loopback MCP server that sends no token; `kit gha-audit` flags a wide `id-token: write` and install scripts in CI.
+- Cooling enforced (7.5) the cooling period holds back a release younger than 14 days by default; `min_release_age_enforce = false` restores warn-only.
 - SBOMs with dependencies (7.2.1) the release SBOMs list the dependencies; the publish job scans the installed package and fails when an SBOM lists fewer than 10.
 - Anonymous database access (7.2) `kit check` lists the tables that anon can read from the SQL policies and grants in the project.
 - Deployed or branch only (7.2) `[deploy.health]` reads the running commit and tags dependency findings by whether the vulnerable package is in the deployed build; `kit watch` ranks open security pull requests.

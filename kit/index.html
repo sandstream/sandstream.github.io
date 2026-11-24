@@ -749,6 +749,26 @@ the hard rules; what you need to know:
         <h3>Tables that anon reads on purpose</h3>
         <p>Since 7.4.0, <code>[anon_access.public]</code> declares the tables a public page needs, each with a reason. A declared table stops the anonymous database access warning, unless it has a personal-looking column: then it still fails. A committed, in-sync lockfile also makes <code>^</code> and <code>~</code> ranges count as pinned.</p>
       </div>
+      <div class="card">
+        <div class="num">[irreversible]</div>
+        <h3>The gates refuse what cannot be undone</h3>
+        <p>Since 7.5.0, the agent gates refuse a force push, a push to <code>main</code> and <code>git reset --hard</code>, and decoded or downloaded text piped into an interpreter. They also gate <code>gem install</code> and <code>bundle add</code>, and read installs run through Windows shells.</p>
+      </div>
+      <div class="card">
+        <div class="num">[--user]</div>
+        <h3>Gates for every checkout on the machine</h3>
+        <p>Since 7.5.0, <code>kit agent-config --user</code> writes deny rules, the sandbox and gate hooks for every checkout on the machine. <code>kit hooks gates</code> wires the gates at session start, <code>kit panic --stop</code> halts every gated agent until <code>--resume</code>, and <code>kit gate-limits</code> caps time, tool calls and child agents per session.</p>
+      </div>
+      <div class="card">
+        <div class="num">[kit check]</div>
+        <h3>New rows, and what could not be checked</h3>
+        <p>Since 7.5.0, <code>kit check</code> reports a planted agent hook, browser scripts, an AI dev server beyond loopback, <code>.worktreeinclude</code> copying <code>.env</code>, Docker images against published IOCs, and a loopback MCP server that sends no token. <code>kit gha-audit</code> flags a wide <code>id-token: write</code> and install scripts in CI.</p>
+      </div>
+      <div class="card">
+        <div class="num">[update]</div>
+        <h3>Four things to know before you update</h3>
+        <p>In 7.5.0 the cooling period holds back a release younger than 14 days by default (<code>min_release_age_enforce = false</code> restores warn-only). A script that force-pushes or pipes a download into an interpreter exits 2 under <code>kit gate-bash</code>. An agent session in a kit-managed checkout that never installed the gates fails <code>kit check</code>. <code>kit mcp web</code> exposes kit read-only. macOS is unverified in CI.</p>
+      </div>
     </div>
   </section>
 
