@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'sha256-HIHVQ4ChTFPwQv3c7HUgMN77XiPZIY+JmCFzXL5nRYQ='; font-src 'none'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lugn · ordning i menyraden på Mac</title>
+<meta name="description" content="Lugn döljer och visar andra programs ikoner i menyraden på Mac och föreslår vilka som ska synas. Testversion för Mac med Apple-processor.">
+<meta name="theme-color" content="#0a0e0e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7faf9" media="(prefers-color-scheme: light)">
+<meta property="og:title" content="Lugn · ordning i menyraden på Mac">
+<meta property="og:description" content="Döljer och visar ikoner i menyraden och föreslår vilka som ska synas utifrån vad du gör.">
+<meta property="og:url" content="https://www.sandstre.am/lugn">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sandstream">
+<link rel="canonical" href="https://www.sandstre.am/lugn">
+<link rel="icon" href="/assets/mark-favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Lugn",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "macOS 27 or later, Apple silicon",
+  "url": "https://www.sandstre.am/lugn",
+  "downloadUrl": "https://github.com/sandstream/lugn-releases/releases",
+  "author": { "@type": "Organization", "name": "Sandstream AB", "url": "https://www.sandstre.am" }
+}
+</script>
+<style>
+  :root { --bg:#0a0e0e; --bg-2:#11181a; --line:#243133; --ink:#e6f0ed; --ink-2:#a8b8b5; --ink-3:#8fa09d; --accent:#00ff9c; --on-accent:#04140d;
+    --mono: ui-monospace, SFMono-Regular, Menlo, monospace; --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7faf9; --bg-2:#eef3f2; --line:#d3dddb; --ink:#0c1514; --ink-2:#31413e; --ink-3:#4f5f5c; --accent:#00744c; --on-accent:#fff; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 48px 0 24px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 14px; color: var(--ink-2); }
+  header a { color: inherit; text-decoration: none; }
+  .hero { padding: 56px 0 40px; border-bottom: 1px solid var(--line); }
+  h1 { font-family: var(--mono); font-size: clamp(40px, 8vw, 72px); letter-spacing: -0.04em; line-height: 1; margin-bottom: 20px; }
+  .lead { font-size: 20px; color: var(--ink-2); max-width: 36em; margin-bottom: 28px; }
+  .btn { display: inline-block; background: var(--accent); color: var(--on-accent); font-weight: 600; padding: 12px 20px; border-radius: 8px; text-decoration: none; }
+  .btn:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .meta { margin-top: 14px; font-size: 14px; color: var(--ink-3); }
+  section { padding: 40px 0; border-bottom: 1px solid var(--line); }
+  h2 { font-family: var(--mono); font-size: 20px; margin-bottom: 16px; }
+  ul, ol { padding-left: 1.2em; } h3 { font-family: var(--mono); font-size: 16px; margin: 20px 0 10px; } li { margin-bottom: 8px; color: var(--ink-2); } li strong { color: var(--ink); }
+  p { color: var(--ink-2); margin-bottom: 12px; }
+  code { font-family: var(--mono); font-size: 0.9em; background: var(--bg-2); padding: 2px 6px; border-radius: 4px; word-break: break-all; }
+  a { color: var(--accent); }
+  footer { padding: 32px 0 64px; font-size: 14px; color: var(--ink-3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><a href="/">sandstream</a> / lugn</header>
+  <div class="hero">
+    <h1>Lugn</h1>
+    <p class="lead">Lugn döljer och visar andra programs ikoner i menyraden. Appen föreslår vilka ikoner som ska synas utifrån vad du gör, och du godkänner varje förslag med ett klick.</p>
+    <a class="btn" href="https://github.com/sandstream/lugn-releases/releases">Ladda ner Lugn för Mac</a>
+    <p class="meta">Testversion (pre-release). Den senaste versionen ligger överst på sidan med versioner. Kräver macOS 27 och en Mac med Apple-processor. Signerad av Sandstream AB och notariserad av Apple.</p>
+  </div>
+  <section>
+    <h2>Vad Lugn gör</h2>
+    <ul>
+      <li><strong>Visar en panel.</strong> Klicka på ikonen i menyraden. Panelen delar programmen i synliga och dolda, med en strömbrytare per program.</li>
+      <li><strong>Föreslår ett läge.</strong> Lugn registrerar vilka program du använder. Apples lokala språkmodell ger varje program en kategori och föreslår ett läge, till exempel Kodning. Utan språkmodell använder Lugn enkla regler.</li>
+      <li><strong>Låser det viktiga.</strong> Du kan låsa ett program som Alltid synlig eller Alltid dold. Ett förslag ändrar aldrig ett låst program.</li>
+      <li><strong>Styr macOS egna ikoner.</strong> Lugn kan dölja till exempel Wi‑Fi, Ljud och Textinmatning. Klockan går inte att dölja. Förslag ändrar aldrig macOS egna ikoner.</li>
+      <li><strong>Visar batteriet vid behov.</strong> Med batteriregeln visas batteriikonen under 50 procent och döljs från 52 procent.</li>
+      <li><strong>Ångrar.</strong> Visa alla slår på alla program. Återställ förra läget ångrar det.</li>
+      <li><strong>Uppdaterar sig själv.</strong> Lugn installerar nya versioner när panelen är stängd och ingenting pågår. Du kan stänga av det under Inställningar i panelen.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Installera</h2>
+    <ol>
+      <li>Öppna <a href="https://github.com/sandstream/lugn-releases/releases">sidan med versioner</a> och ladda ner DMG-filen för den översta versionen.</li>
+      <li>Kontrollera filen om du vill. Kör <code>shasum -a 256 Lugn-*.dmg</code> i Terminal och jämför summan med filen som slutar på <code>.sha256</code>.</li>
+      <li>Öppna DMG-filen och dra Lugn till Program.</li>
+      <li>Starta Lugn. Godkänn behörigheten Hjälpmedel i Systeminställningar när Lugn frågar.</li>
+    </ol>
+    <p>Har du redan Lugn 0.2.0 eller senare installerar Lugn nya versioner själv.</p>
+  </section>
+  <section>
+    <h2>Så fungerar det</h2>
+    <ul>
+      <li>Lugn ändrar macOS egen lista Tillåt i menyraden i Systeminställningar. Det är den enda väg som fungerar i macOS 27. Systeminställningar öppnas dolt en kort stund när Lugn läser eller ändrar listan.</li>
+      <li>En ändring tar cirka en sekund. Klick medan Lugn arbetar sparas och utförs efteråt.</li>
+      <li>Avinstallera i panelen slår på alla ikoner igen och tar bort det Lugn har lagt på datorn.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Integritet</h2>
+    <ul>
+      <li>Lugn behöver bara behörigheten Hjälpmedel. Lugn begär aldrig skärminspelning och bevakar inte musklick.</li>
+      <li>Lugn frågar GitHub efter nya versioner vid start och en gång per dygn. GitHub ser då datorns IP-adress. Ingenting om dig skickas.</li>
+      <li>Före en uppdatering kontrollerar Lugn att appen är signerad av Sandstream AB och notariserad av Apple.</li>
+    </ul>
+  </section>
+  <footer>Lugn är byggd av Sandstream AB. Skicka synpunkter till <a href="mailto:hello@sandstre.am">hello@sandstre.am</a>.</footer>
+</div>
+</body>
+</html>
