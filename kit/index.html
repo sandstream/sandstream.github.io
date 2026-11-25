@@ -727,7 +727,7 @@ the hard rules; what you need to know:
       <div class="card">
         <div class="num">[release SBOMs]</div>
         <h3>SBOMs that list the dependencies</h3>
-        <p>The SBOMs on the 7.2.0 release held only the root component, because the scan ran on a tarball without <code>node_modules</code>. Since 7.2.1 the publish job scans the installed package and fails when an SBOM lists fewer than 10 dependencies.</p>
+        <p>The SBOMs on the 7.2.0 release held only the root component, because the scan ran on a tarball without <code>node_modules</code>. Since 7.2.1 the publish job scans the installed package and checks both SBOMs before it attaches them. The 7.6.0 SBOMs list both runtime dependencies, <code>zod</code> and <code>smol-toml</code>.</p>
       </div>
       <div class="card">
         <div class="num">[tool evidence]</div>
@@ -768,6 +768,26 @@ the hard rules; what you need to know:
         <div class="num">[update]</div>
         <h3>Four things to know before you update</h3>
         <p>In 7.5.0 the cooling period holds back a release younger than 14 days by default (<code>min_release_age_enforce = false</code> restores warn-only). A script that force-pushes or pipes a download into an interpreter exits 2 under <code>kit gate-bash</code>. An agent session in a kit-managed checkout that never installed the gates fails <code>kit check</code>. <code>kit mcp web</code> exposes kit read-only. macOS is unverified in CI.</p>
+      </div>
+      <div class="card">
+        <div class="num">[evidence]</div>
+        <h3>No result counts as clean unless the evidence is complete</h3>
+        <p>Since 7.6.0, a scanner report that is missing, partial, stale, malformed or out of scope is its own outcome, separate from a complete report with no findings. This covers the npm, pnpm, Yarn, Bun and pip audits, OSV, Trivy, Grype, Semgrep, GuardDog, Bumblebee, Alpine apk floors, CISA KEV and FIRST EPSS, and the AISLE, Sentrux, Snyk and Wiz plugins. Readable findings from an incomplete report are kept.</p>
+      </div>
+      <div class="card">
+        <div class="num">[audit log]</div>
+        <h3>A lost audit event fails the command</h3>
+        <p>Since 7.6.0, a command that cannot write its audit event fails, and an empty log is no longer reported as an intact chain. <code>kit scan</code> marks findings with KEV and EPSS, and <code>kit ingest osv</code> says whether the project's own source imports each vulnerable package.</p>
+      </div>
+      <div class="card">
+        <div class="num">[two deps]</div>
+        <h3>Two runtime dependencies</h3>
+        <p>Since 7.6.0, <code>kit mcp</code> runs on kit's own stdio server and <code>@upstash/redis</code> is gone, so kit installs <code>zod</code> and <code>smol-toml</code> and nothing else. New <code>kit check</code> rows report plaintext credentials in the home directory, a redirected model endpoint and a stopped <code>kit watch</code>. The gates refuse an agent's write that adds a hook to a Claude Code settings file.</p>
+      </div>
+      <div class="card">
+        <div class="num">[update]</div>
+        <h3>Two things to know before you update to 7.6</h3>
+        <p>A required or strict scan with incomplete coverage now fails where it used to pass. An agent can no longer add a hook to <code>.claude/settings.json</code> itself. macOS is unverified in CI.</p>
       </div>
     </div>
   </section>
