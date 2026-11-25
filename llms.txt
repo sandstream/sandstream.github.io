@@ -35,7 +35,7 @@ Key properties:
 - Audit loss is loud (7.6) a command that cannot write its audit event fails, and an empty audit log is not an intact chain.
 - Two runtime dependencies (7.6) kit installs `zod` and `smol-toml` only; `kit mcp` runs on kit's own stdio server.
 - Hooks are gated (7.6) the gates refuse an agent's write that adds a hook to a Claude Code settings file.
-- SBOMs with dependencies (7.2.1) the release SBOMs list the dependencies; the publish job scans the installed package and fails when an SBOM lists fewer than 10.
+- SBOMs with dependencies (7.2.1) the release SBOMs list the dependencies; the publish job scans the installed package and checks both SBOMs before it attaches them; the 7.6.0 SBOMs list both runtime dependencies, `zod` and `smol-toml`.
 - Anonymous database access (7.2) `kit check` lists the tables that anon can read from the SQL policies and grants in the project.
 - Deployed or branch only (7.2) `[deploy.health]` reads the running commit and tags dependency findings by whether the vulnerable package is in the deployed build; `kit watch` ranks open security pull requests.
 - Stable contracts — the CLI, `.kit.toml` config schema, and adapter SDK are versioned, tiered, and drift-tested. The promise holds across every major since 2.0: additive, no stable command removed or downgraded (enforced by a public-surface invariant).

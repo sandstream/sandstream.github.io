@@ -19,7 +19,7 @@ const T = {
     ],
     heroMetaBottomRight: [
       { label: "SPRÅK", value: "Svenska · Engelska" },
-      { label: "BASERAT", value: "Stockholm · remote-first" },
+      { label: "BASERAT", value: "Stockholm · hybrid" },
     ],
     navLabels: ["Bio", "Byggen", "Musik", "Roller", "Kontakt"],
     s01: "om peter",
@@ -30,7 +30,7 @@ const T = {
     stat2l: "Största teamet · Devoteam",
     stat3l: "Idéer → prod, varje gång",
     s02: "byggen",
-    casesHeadline: ["Tio byggen. ", "En metod."],
+    casesHeadline: ["Tolv byggen. ", "En metod."],
     casesIntro: "Projekt som visar hur Peter jobbar: tätt team, snabba beslut, idéer varje dag och stark dragning mot att leverera något verkligt på veckor, inte planera det i kvartal.",
     s03: "musikprojekt",
     musicHeadline: ["Vid sidan av: ", "musik."],
@@ -65,7 +65,7 @@ const T = {
     ],
     heroMetaBottomRight: [
       { label: "LANG", value: "Swedish · English" },
-      { label: "BASED", value: "Stockholm · remote-first" },
+      { label: "BASED", value: "Stockholm · hybrid" },
     ],
     navLabels: ["Bio", "Builds", "Music", "Roles", "Contact"],
     s01: "about peter",
@@ -76,7 +76,7 @@ const T = {
     stat2l: "Largest team led · Devoteam",
     stat3l: "Ideas → prod, every time",
     s02: "builds",
-    casesHeadline: ["Ten builds. ", "One method."],
+    casesHeadline: ["Twelve builds. ", "One method."],
     casesIntro: "Projects showing how Peter works: tight team, fast decisions, daily ideas and a strong bias toward shipping something real in weeks, not planning it in quarters.",
     s03: "music projects",
     musicHeadline: ["On the side: ", "music."],
@@ -255,6 +255,38 @@ const CASES = [
       { l: "YEAR", v: "2026" },
     ],
     href: "/lyssna/", hrefLabel: "www.sandstre.am/lyssna",
+  },
+  {
+    num: "/11",
+    name: ["Lugn"], italic: 0,
+    tagline: { sv: "Ordning i menyraden på Mac · förslag du godkänner med ett klick.", en: "Order in the Mac menu bar · suggestions you approve with one click." },
+    desc: {
+      sv: "Menyraden fylls med ikoner från program som sällan behövs. Peter byggde Lugn: en menyradsapp som döljer och visar andra programs ikoner. Apples lokala språkmodell ger varje program en kategori, och Lugn föreslår vilka ikoner som ska synas utifrån vad du gör. Du godkänner varje förslag. Signerad och notariserad testversion som uppdaterar sig själv.",
+      en: "The menu bar fills up with icons from apps you rarely need. Peter built Lugn: a menu bar app that hides and shows other apps' icons. Apple's on-device language model gives each app a category, and Lugn suggests which icons to show based on what you do. You approve each suggestion. Signed and notarized test release that updates itself.",
+    },
+    meta: [
+      { l: "ROLE", v: "Creator · product" },
+      { l: "STACK", v: "Swift · SwiftUI · Foundation Models" },
+      { l: "SECTOR", v: "Productivity · macOS" },
+      { l: "YEAR", v: "2026" },
+    ],
+    href: "/lugn/", hrefLabel: "www.sandstre.am/lugn",
+  },
+  {
+    num: "/12",
+    name: ["Vaken"], italic: 0,
+    tagline: { sv: "Håller Macen vaken medan kodagenterna arbetar · sover när de är klara.", en: "Keeps the Mac awake while coding agents work · sleeps when they are done." },
+    desc: {
+      sv: "En MacBook somnar när locket stängs, även när Claude Code eller Codex är mitt i en uppgift. Peter byggde Vaken: en menyradsapp som håller datorn vaken med stängt lock medan agenterna arbetar och låter den sova när de är klara. Vaken släpper taget om datorn blir för varm eller batteriet blir lågt. Signerad och notariserad testversion som uppdaterar sig själv.",
+      en: "A MacBook sleeps when the lid closes, even when Claude Code or Codex is in the middle of a task. Peter built Vaken: a menu bar app that keeps the computer awake with the lid closed while the agents work and lets it sleep when they are done. Vaken lets go if the computer gets too hot or the battery gets low. Signed and notarized test release that updates itself.",
+    },
+    meta: [
+      { l: "ROLE", v: "Creator · product" },
+      { l: "STACK", v: "Swift · SwiftUI · launchd" },
+      { l: "SECTOR", v: "Developer tooling · agents" },
+      { l: "YEAR", v: "2026" },
+    ],
+    href: "/vaken/", hrefLabel: "www.sandstre.am/vaken",
   },
 ];
 

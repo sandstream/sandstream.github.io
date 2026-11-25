@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'sha256-HIHVQ4ChTFPwQv3c7HUgMN77XiPZIY+JmCFzXL5nRYQ='; font-src 'none'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaken · håller Macen vaken medan agenterna arbetar</title>
+<meta name="description" content="Vaken håller en MacBook vaken med stängt lock medan Claude Code och Codex arbetar. Testversion för Mac med Apple-processor.">
+<meta name="theme-color" content="#0a0e0e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7faf9" media="(prefers-color-scheme: light)">
+<meta property="og:title" content="Vaken · håller Macen vaken medan agenterna arbetar">
+<meta property="og:description" content="Håller en MacBook vaken med stängt lock medan kodagenter arbetar. När agenterna är klara får datorn sova igen.">
+<meta property="og:url" content="https://www.sandstre.am/vaken">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sandstream">
+<link rel="canonical" href="https://www.sandstre.am/vaken">
+<link rel="icon" href="/assets/mark-favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Vaken",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "macOS 15 or later, Apple silicon",
+  "url": "https://www.sandstre.am/vaken",
+  "downloadUrl": "https://github.com/sandstream/vaken-releases/releases",
+  "author": { "@type": "Organization", "name": "Sandstream AB", "url": "https://www.sandstre.am" }
+}
+</script>
+<style>
+  :root { --bg:#0a0e0e; --bg-2:#11181a; --line:#243133; --ink:#e6f0ed; --ink-2:#a8b8b5; --ink-3:#8fa09d; --accent:#00ff9c; --on-accent:#04140d;
+    --mono: ui-monospace, SFMono-Regular, Menlo, monospace; --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7faf9; --bg-2:#eef3f2; --line:#d3dddb; --ink:#0c1514; --ink-2:#31413e; --ink-3:#4f5f5c; --accent:#00744c; --on-accent:#fff; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 48px 0 24px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 14px; color: var(--ink-2); }
+  header a { color: inherit; text-decoration: none; }
+  .hero { padding: 56px 0 40px; border-bottom: 1px solid var(--line); }
+  h1 { font-family: var(--mono); font-size: clamp(40px, 8vw, 72px); letter-spacing: -0.04em; line-height: 1; margin-bottom: 20px; }
+  .lead { font-size: 20px; color: var(--ink-2); max-width: 36em; margin-bottom: 28px; }
+  .btn { display: inline-block; background: var(--accent); color: var(--on-accent); font-weight: 600; padding: 12px 20px; border-radius: 8px; text-decoration: none; }
+  .btn:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .meta { margin-top: 14px; font-size: 14px; color: var(--ink-3); }
+  section { padding: 40px 0; border-bottom: 1px solid var(--line); }
+  h2 { font-family: var(--mono); font-size: 20px; margin-bottom: 16px; }
+  ul, ol { padding-left: 1.2em; } h3 { font-family: var(--mono); font-size: 16px; margin: 20px 0 10px; } li { margin-bottom: 8px; color: var(--ink-2); } li strong { color: var(--ink); }
+  p { color: var(--ink-2); margin-bottom: 12px; }
+  code { font-family: var(--mono); font-size: 0.9em; background: var(--bg-2); padding: 2px 6px; border-radius: 4px; word-break: break-all; }
+  a { color: var(--accent); }
+  footer { padding: 32px 0 64px; font-size: 14px; color: var(--ink-3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><a href="/">sandstream</a> / vaken</header>
+  <div class="hero">
+    <h1>Vaken</h1>
+    <p class="lead">Vaken håller en MacBook vaken med stängt lock medan kodagenter som Claude Code och Codex arbetar. När agenterna är klara får datorn sova igen.</p>
+    <a class="btn" href="https://github.com/sandstream/vaken-releases/releases">Ladda ner Vaken för Mac</a>
+    <p class="meta">Testversion (pre-release). Den senaste versionen ligger överst på sidan med versioner. Kräver macOS 15 eller senare och en Mac med Apple-processor. Signerad av Sandstream AB och notariserad av Apple.</p>
+  </div>
+  <section>
+    <h2>Vad Vaken gör</h2>
+    <ul>
+      <li><strong>Ser agenterna.</strong> Vaken känner igen Claude Code och Codex som arbetar på datorn. Med Koppla Claude Code får Vaken också besked från Claude Code när ett svar är klart.</li>
+      <li><strong>Håller datorn vaken.</strong> Medan en agent arbetar sover datorn inte, inte heller med stängt lock.</li>
+      <li><strong>Släpper när arbetet är klart.</strong> När agenterna är klara får datorn sova som vanligt.</li>
+      <li><strong>Skyddar datorn.</strong> Vaken låter datorn sova om den blir för varm, om batteriet når 20 procent utan laddare, eller om appen slutar svara i 90 sekunder.</li>
+      <li><strong>Uppdaterar sig själv.</strong> Vaken installerar nya versioner när ingen agent håller datorn vaken och panelen är stängd. Du kan stänga av det under Inställningar i panelen.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Installera</h2>
+    <ol>
+      <li>Öppna <a href="https://github.com/sandstream/vaken-releases/releases">sidan med versioner</a> och ladda ner DMG-filen för den översta versionen.</li>
+      <li>Kontrollera filen om du vill. Kör <code>shasum -a 256 Vaken-*.dmg</code> i Terminal och jämför summan med filen som slutar på <code>.sha256</code>.</li>
+      <li>Öppna DMG-filen och dra Vaken till Program.</li>
+      <li>Starta Vaken. Godkänn hjälpprocessen i Systeminställningar under Inloggningsobjekt när Vaken frågar.</li>
+    </ol>
+    <p>Har du redan Vaken 0.2.0 eller senare installerar Vaken nya versioner själv.</p>
+  </section>
+  <section>
+    <h2>Så fungerar det</h2>
+    <ul>
+      <li>En hjälpprocess med administratörsrätt sätter macOS inställning för att inte sova. Hjälpprocessen återställer inställningen när den startar, när den stoppas och när appen slutar svara.</li>
+      <li>Koppla Claude Code lägger till krokar i <code>~/.claude/settings.json</code>. Vaken sparar en kopia av filen först.</li>
+      <li>Avinstallera i panelens sidfot låter datorn sova som vanligt, tar bort krokarna och hjälpprocessen, och flyttar Vaken till papperskorgen.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Integritet</h2>
+    <ul>
+      <li>Vaken läser bara vilka agentprocesser som körs. Vaken läser inte vad agenterna gör.</li>
+      <li>Vaken frågar GitHub efter nya versioner vid start och en gång per dygn. GitHub ser då datorns IP-adress. Ingenting om dig skickas.</li>
+      <li>Före en uppdatering kontrollerar Vaken att appen är signerad av Sandstream AB och notariserad av Apple.</li>
+    </ul>
+  </section>
+  <footer>Vaken är byggd av Sandstream AB. Skicka synpunkter till <a href="mailto:hello@sandstre.am">hello@sandstre.am</a>.</footer>
+</div>
+</body>
+</html>
